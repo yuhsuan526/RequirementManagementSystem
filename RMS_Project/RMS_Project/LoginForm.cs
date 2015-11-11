@@ -17,9 +17,12 @@ namespace RMS_Project
 {
     public partial class LoginForm : Form
     {
-        public LoginForm()
+        private MainForm mainForm;
+
+        public LoginForm(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -53,10 +56,30 @@ namespace RMS_Project
                 response = await httpClient.PostAsync("http://140.124.183.32:3000/user/login", new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
                 string content = await response.Content.ReadAsStringAsync();
                 Console.WriteLine(content);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    Console.WriteLine(content);
+                    JObject json = JObject.Parse(content);
+                    string message = json["result"].ToString();
+                    if (message == "success")
+                    {
+                        mainForm.AddFormToPanel(new ProjectListForm(mainForm));
+                        MessageBox.Show("註冊成功", "Error", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("帳號或密碼錯誤", "Error", MessageBoxButtons.OK);
+                    }
+                } 
+                else
+                {
+                    MessageBox.Show("登入失敗", "Error", MessageBoxButtons.OK);
+                }
             }
             catch (HttpRequestException e)
             {
                 Console.WriteLine(e.ToString());
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
             }
 
         }
@@ -64,9 +87,6 @@ namespace RMS_Project
         private void LoginConfirmButton_Click(object sender, EventArgs e)
         {
             PostProduct();
-            ProjectListForm projectListForm = new ProjectListForm();
-            this.Hide();
-            projectListForm.Show();
         }
 
     }

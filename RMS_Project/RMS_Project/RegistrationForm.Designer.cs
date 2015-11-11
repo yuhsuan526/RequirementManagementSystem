@@ -125,7 +125,7 @@
             this.password.Location = new System.Drawing.Point(83, 125);
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(367, 22);
-            this.password.TabIndex = 4;
+            this.password.TabIndex = 2;
             // 
             // confirmButton
             // 
@@ -133,7 +133,7 @@
             this.confirmButton.Location = new System.Drawing.Point(295, 307);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(75, 23);
-            this.confirmButton.TabIndex = 5;
+            this.confirmButton.TabIndex = 4;
             this.confirmButton.Text = "confirm";
             this.confirmButton.UseVisualStyleBackColor = true;
             this.confirmButton.Click += new System.EventHandler(this.comfirmButton);
@@ -144,7 +144,7 @@
             this.backButton.Location = new System.Drawing.Point(376, 307);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(74, 23);
-            this.backButton.TabIndex = 8;
+            this.backButton.TabIndex = 5;
             this.backButton.Text = "back";
             this.backButton.UseVisualStyleBackColor = true;
             // 

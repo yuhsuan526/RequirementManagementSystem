@@ -17,9 +17,11 @@ namespace RMS_Project
 {
     public partial class RegistrantionForm : Form
     {
-        public RegistrantionForm()
+        private MainForm mainForm;
+        public RegistrantionForm(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -35,9 +37,6 @@ namespace RMS_Project
         private void comfirmButton(object sender, EventArgs e)
         {
             PostProduct();
-            LoginForm lgf = new LoginForm();
-            this.Hide();
-            lgf.Show();
         }
 
         private async void PostProduct()
@@ -56,11 +55,26 @@ namespace RMS_Project
             {
                 response = await httpClient.PostAsync("http://140.124.183.32:3000/user/register", new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
                 string content = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(content);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    Console.WriteLine(content);
+                    JObject json = JObject.Parse(content);
+                    string message = json["result"].ToString();
+                    if (message == "success")
+                    {
+                        mainForm.AddFormToPanel(new LoginForm(mainForm));
+                        MessageBox.Show("註冊成功", "Error", MessageBoxButtons.OK);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("註冊失敗", "Error", MessageBoxButtons.OK);
+                }
             }
             catch (HttpRequestException e)
             {
                 Console.WriteLine(e.ToString());
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
             }
         }
     }

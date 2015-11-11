@@ -12,9 +12,12 @@ namespace RMS_Project
 {
     public partial class ProjectListForm : Form
     {
-        public ProjectListForm()
+        private MainForm mainForm;
+
+        public ProjectListForm(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
     }
 }

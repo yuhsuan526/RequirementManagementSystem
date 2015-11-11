@@ -12,9 +12,12 @@ namespace RMS_Project
 {
     public partial class ProjectEditorForm : Form
     {
-        public ProjectEditorForm()
+        private MainForm mainForm;
+
+        public ProjectEditorForm(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
     }
 }
