@@ -18,6 +18,9 @@ namespace RMS_Project
         {
             InitializeComponent();
             this.mainForm = mainForm;
+            this.ProjectListDataGridView.Rows.Add("Requirement Management System", "5:2:0");
+            this.ProjectListDataGridView.Rows.Add("Requirement Management System", "5:2:0");
+            this.ProjectListDataGridView.ClearSelection();
         }
     }
 }
