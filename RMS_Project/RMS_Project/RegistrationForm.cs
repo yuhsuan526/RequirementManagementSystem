@@ -24,21 +24,6 @@ namespace RMS_Project
             this.mainForm = mainForm;
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comfirmButton(object sender, EventArgs e)
-        {
-            PostProduct();
-        }
-
         private async void PostProduct()
         {
             JObject jObject = new JObject();
@@ -76,6 +61,16 @@ namespace RMS_Project
                 Console.WriteLine(e.ToString());
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
             }
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            mainForm.AddFormToPanel(new LoginForm(mainForm));
+        }
+
+        private void createButton_Click(object sender, EventArgs e)
+        {
+            PostProduct();
         }
     }
 }

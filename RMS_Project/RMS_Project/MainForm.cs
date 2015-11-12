@@ -15,15 +15,6 @@ namespace RMS_Project
         public MainForm()
         {
             InitializeComponent();
-        }
-
-        private void mainFormRegisterButton_Click(object sender, EventArgs e)
-        {
-            AddFormToPanel(new RegistrantionForm(this));
-        }
-
-        private void mainFormLoginButton_Click(object sender, EventArgs e)
-        {
             AddFormToPanel(new LoginForm(this));
         }
 

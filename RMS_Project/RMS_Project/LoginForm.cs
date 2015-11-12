@@ -64,7 +64,6 @@ namespace RMS_Project
                     if (message == "success")
                     {
                         mainForm.AddFormToPanel(new ProjectListForm(mainForm));
-                        MessageBox.Show("註冊成功", "Error", MessageBoxButtons.OK);
                     }
                     else
                     {
@@ -84,7 +83,12 @@ namespace RMS_Project
 
         }
 
-        private void LoginConfirmButton_Click(object sender, EventArgs e)
+        private void registerButton_Click(object sender, EventArgs e)
+        {
+            mainForm.AddFormToPanel(new RegistrantionForm(mainForm));
+        }
+
+        private void signInButton_Click(object sender, EventArgs e)
         {
             PostProduct();
         }
