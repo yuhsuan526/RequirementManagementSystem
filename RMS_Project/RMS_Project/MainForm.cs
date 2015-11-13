@@ -28,5 +28,16 @@ namespace RMS_Project
             form.Dock = DockStyle.Fill;
             form.Show();
         }
+
+        public void AddFormToNavigationPanel(Form form)
+        {
+            form.TopLevel = false;
+            while (navigationPanel.Controls.Count > 0)
+                navigationPanel.Controls.RemoveAt(0);
+            navigationPanel.Controls.Add(form);
+            form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            form.Show();
+        }
     }
 }

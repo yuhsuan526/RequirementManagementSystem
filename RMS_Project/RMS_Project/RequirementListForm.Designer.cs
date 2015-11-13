@@ -28,37 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.RequirementListDataGridView = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.RequirementListDataGridView)).BeginInit();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
-            // RequirementListDataGridView
+            // listView1
             // 
-            this.RequirementListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.RequirementListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RequirementListDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.RequirementListDataGridView.Name = "RequirementListDataGridView";
-            this.RequirementListDataGridView.RowTemplate.Height = 24;
-            this.RequirementListDataGridView.Size = new System.Drawing.Size(519, 363);
-            this.RequirementListDataGridView.TabIndex = 0;
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(519, 363);
+            this.listView1.TabIndex = 1;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // RequirementListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(519, 363);
-            this.Controls.Add(this.RequirementListDataGridView);
+            this.Controls.Add(this.listView1);
             this.Name = "RequirementListForm";
             this.Text = "RequirementListForm";
-            this.Load += new System.EventHandler(this.TestEditorForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.RequirementListDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView RequirementListDataGridView;
+        private System.Windows.Forms.ListView listView1;
 
     }
 }
