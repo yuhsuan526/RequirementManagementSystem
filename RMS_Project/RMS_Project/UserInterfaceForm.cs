@@ -55,7 +55,7 @@ namespace RMS_Project
             model.arrow = new PictureBox();
             model.arrow.Image = Properties.Resources.ios7_arrow_forward_small;
             model.arrow.SizeMode = PictureBoxSizeMode.AutoSize;
-            model.arrow.Margin = new Padding(0, 25, 0, 0);
+            model.arrow.Margin = new Padding(0, 30, 0, 0);
             model.button = GetItemButton();
             model.button.Image = image;
             model.button.Text = buttonName;
@@ -99,7 +99,7 @@ namespace RMS_Project
             button.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             button.FlatAppearance.MouseOverBackColor = SystemColors.Control;
             button.FlatAppearance.BorderSize = 0;
-            button.Margin = new Padding(0, 8, 0, 0);
+            button.Margin = new Padding(0, 13, 0, 2);
             button.Font = new Font("Times New Roman", 16);
             return button;
         }
