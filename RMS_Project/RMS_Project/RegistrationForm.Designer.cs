@@ -93,6 +93,7 @@
             // 
             // createButton
             // 
+            this.createButton.AccessibleName = "createAccountButton";
             this.createButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.createButton.Location = new System.Drawing.Point(231, 384);
             this.createButton.Name = "createButton";
@@ -148,6 +149,7 @@
             // 
             // userName
             // 
+            this.userName.AccessibleName = "userNameLabel";
             this.userName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.registerTableLayoutPanel.SetColumnSpan(this.userName, 2);
             this.userName.Location = new System.Drawing.Point(53, 128);
@@ -157,6 +159,7 @@
             // 
             // email
             // 
+            this.email.AccessibleName = "emailLabel";
             this.email.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.registerTableLayoutPanel.SetColumnSpan(this.email, 2);
             this.email.Location = new System.Drawing.Point(53, 178);
@@ -166,6 +169,7 @@
             // 
             // password
             // 
+            this.password.AccessibleName = "passwordLabel";
             this.password.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.registerTableLayoutPanel.SetColumnSpan(this.password, 2);
             this.password.Location = new System.Drawing.Point(53, 228);
@@ -188,6 +192,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.AccessibleName = "confirmPasswordLabel";
             this.registerTableLayoutPanel.SetColumnSpan(this.textBox1, 2);
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Location = new System.Drawing.Point(53, 278);

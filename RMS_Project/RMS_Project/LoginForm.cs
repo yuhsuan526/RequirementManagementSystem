@@ -23,6 +23,15 @@ namespace RMS_Project
         {
             InitializeComponent();
             this.mainForm = mainForm;
+            try
+            {
+                email.Text = Properties.Settings.Default["email"].ToString();
+                password.Text = Properties.Settings.Default["password"].ToString();
+            }
+            catch
+            {
+
+            }
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -63,7 +72,14 @@ namespace RMS_Project
                     string message = json["result"].ToString();
                     if (message == "success")
                     {
+                        if (rememberCheckBox.Checked)
+                        {
+                            Properties.Settings.Default["email"] = email.Text;
+                            Properties.Settings.Default["password"] = password.Text;
+                            Properties.Settings.Default.Save();
+                        }
                         mainForm.AddFormToPanel(new ProjectListForm(mainForm));
+                        mainForm.AddFormToNavigationPanel(new UserInterfaceForm(mainForm));
                     }
                     else
                     {
