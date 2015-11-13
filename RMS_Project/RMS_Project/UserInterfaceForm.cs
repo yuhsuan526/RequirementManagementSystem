@@ -25,7 +25,7 @@ namespace RMS_Project
             buttons = new ArrayList();
             NoFocusCueButton projectsButton = GetItemButton();
             projectsButton.Text = "Projects";
-            projectsButton.Margin = new Padding(10, 13, 0, 0);
+            projectsButton.Margin = new Padding(10, 13, 0, 2);
             projectsButton.Image = Properties.Resources.ios7_folder_outline;
             projectsButton.Click += projectsButton_Click;
             flowLayoutPanel1.Controls.Add(projectsButton);
