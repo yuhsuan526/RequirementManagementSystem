@@ -92,3 +92,4 @@ C:\Users\Jamie\Documents\RequirementManagementSystem\RMS_Project\RMS_Project\obj
 C:\Users\Jamie\Documents\RequirementManagementSystem\RMS_Project\RMS_Project\obj\Debug\RMS_Project.csproj.GenerateResource.Cache
 =======
 >>>>>>> origin/master
+C:\Users\Lab\Documents\RequirementManagementSystem\RMS_Project\RMS_Project\obj\Debug\RMS_Project.DefaultInterfaceForm.resources

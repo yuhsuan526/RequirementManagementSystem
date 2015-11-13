@@ -21,6 +21,7 @@ namespace RMS_Project
         {
             InitializeComponent();
             AddFormToPanel(new LoginForm(this));
+            AddFormToNavigationPanel(new DefaultInterfaceForm());
         }
 
         public int UID
@@ -67,7 +68,7 @@ namespace RMS_Project
                 this.userInterface.AddFormButtonToBar(form, name, image);
         }
 
-        public void SetAccount(int uid, string name)
+        public void SignIn(int uid, string name)
         {
             this.accountId = uid;
             this.username = name;
@@ -75,6 +76,15 @@ namespace RMS_Project
             UserInterfaceForm form = new UserInterfaceForm(this);
             AddFormToNavigationPanel(form);
             this.userInterface = form;
+        }
+
+        public void SignOut()
+        {
+            this.accountId = -1;
+            this.username = "";
+            AddFormToPanel(new LoginForm(this));
+            AddFormToNavigationPanel(new DefaultInterfaceForm());
+            this.userInterface = null;
         }
     }
 }

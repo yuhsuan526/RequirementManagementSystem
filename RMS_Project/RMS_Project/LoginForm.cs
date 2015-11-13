@@ -76,7 +76,7 @@ namespace RMS_Project
                         }
                         int uid = Int32.Parse(json["uid"].ToString());
                         string username = json["name"].ToString();
-                        mainForm.SetAccount(uid, username);
+                        mainForm.SignIn(uid, username);
                     }
                     else
                     {

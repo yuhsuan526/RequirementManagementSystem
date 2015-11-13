@@ -67,6 +67,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultInterfaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DefaultInterfaceForm.Designer.cs">
+      <DependentUpon>DefaultInterfaceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     <Compile Include="UserInterfaceForm.Designer.cs">
       <DependentUpon>UserInterfaceForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DefaultInterfaceForm.resx">
+      <DependentUpon>DefaultInterfaceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

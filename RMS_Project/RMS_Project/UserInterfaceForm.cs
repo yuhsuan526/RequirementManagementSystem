@@ -16,6 +16,7 @@ namespace RMS_Project
     {
         private MainForm mainForm;
         private ArrayList buttons;
+        private ContextMenuStrip contextMenuStrip;
 
         public UserInterfaceForm(MainForm mainForm)
         {
@@ -24,9 +25,25 @@ namespace RMS_Project
             buttons = new ArrayList();
             NoFocusCueButton projectsButton = GetItemButton();
             projectsButton.Text = "Projects";
+            projectsButton.Margin = new Padding(10, 13, 0, 0);
             projectsButton.Image = Properties.Resources.ios7_folder_outline;
             projectsButton.Click += projectsButton_Click;
             flowLayoutPanel1.Controls.Add(projectsButton);
+            contextMenuStrip = new ContextMenuStrip();
+            contextMenuStrip.Items.Add("Edit account");
+            contextMenuStrip.Items.Add("Manage organizations");
+            contextMenuStrip.Items.Add("Help");
+            contextMenuStrip.Items.Add("Sign out");
+            contextMenuStrip.ShowImageMargin = false;
+            contextMenuStrip.ItemClicked += contextMenuStrip_ItemClicked;
+        }
+
+        void contextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Text == "Sign out")
+            {
+                mainForm.SignOut();
+            }
         }
 
         void projectsButton_Click(object sender, EventArgs e)
@@ -128,7 +145,7 @@ namespace RMS_Project
 
         private void userButton_Click(object sender, EventArgs e)
         {
-
+            contextMenuStrip.Show(userButton, new Point(userButton.Width / 2, (int)(userButton.Height * 0.7f)));
         }
 
         private void userButton_MouseHover(object sender, EventArgs e)
