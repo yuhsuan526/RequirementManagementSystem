@@ -54,8 +54,8 @@ namespace RMS_Project
                     string message = json["result"].ToString();
                     if (message == "success")
                     {
-                        mainForm.AddFormToPanel(new LoginForm(mainForm));
-                        MessageBox.Show("專案建立成功", "Error", MessageBoxButtons.OK);
+                        mainForm.AddFormToPanel(new ProjectListForm(mainForm));
+                        MessageBox.Show("專案建立成功", "Success", MessageBoxButtons.OK);
                     }
                 }
                 else
