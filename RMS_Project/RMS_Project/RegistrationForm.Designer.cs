@@ -98,7 +98,7 @@
             this.createButton.Location = new System.Drawing.Point(231, 384);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(120, 23);
-            this.createButton.TabIndex = 4;
+            this.createButton.TabIndex = 5;
             this.createButton.Text = "Create account";
             this.createButton.UseVisualStyleBackColor = true;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
@@ -109,7 +109,7 @@
             this.backButton.Location = new System.Drawing.Point(357, 384);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(74, 23);
-            this.backButton.TabIndex = 5;
+            this.backButton.TabIndex = 6;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
@@ -155,7 +155,7 @@
             this.userName.Location = new System.Drawing.Point(53, 128);
             this.userName.Name = "userName";
             this.userName.Size = new System.Drawing.Size(378, 22);
-            this.userName.TabIndex = 3;
+            this.userName.TabIndex = 1;
             // 
             // email
             // 
@@ -165,7 +165,7 @@
             this.email.Location = new System.Drawing.Point(53, 178);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(378, 22);
-            this.email.TabIndex = 1;
+            this.email.TabIndex = 2;
             // 
             // password
             // 
@@ -175,7 +175,7 @@
             this.password.Location = new System.Drawing.Point(53, 228);
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(378, 22);
-            this.password.TabIndex = 2;
+            this.password.TabIndex = 3;
             this.password.UseSystemPasswordChar = true;
             // 
             // confirmPasswordLabel
@@ -198,7 +198,7 @@
             this.textBox1.Location = new System.Drawing.Point(53, 278);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(378, 22);
-            this.textBox1.TabIndex = 9;
+            this.textBox1.TabIndex = 4;
             this.textBox1.UseSystemPasswordChar = true;
             // 
             // RegistrantionForm

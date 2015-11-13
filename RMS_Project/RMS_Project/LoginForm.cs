@@ -23,15 +23,6 @@ namespace RMS_Project
         {
             InitializeComponent();
             this.mainForm = mainForm;
-            try
-            {
-                email.Text = Properties.Settings.Default["email"].ToString();
-                password.Text = Properties.Settings.Default["password"].ToString();
-            }
-            catch
-            {
-
-            }
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -74,8 +65,13 @@ namespace RMS_Project
                     {
                         if (rememberCheckBox.Checked)
                         {
-                            Properties.Settings.Default["email"] = email.Text;
-                            Properties.Settings.Default["password"] = password.Text;
+                            Properties.Settings.Default.Save();
+                        }
+                        else
+                        {
+                            Properties.Settings.Default.Email = "";
+                            Properties.Settings.Default.Password = "";
+                            Properties.Settings.Default.RememberMe = false;
                             Properties.Settings.Default.Save();
                         }
                         mainForm.AddFormToPanel(new ProjectListForm(mainForm));
