@@ -12,6 +12,8 @@ namespace RMS_Project
 {
     public partial class MainForm : Form
     {
+        private UserInterfaceForm userInterface;
+
         public MainForm()
         {
             InitializeComponent();
@@ -38,6 +40,17 @@ namespace RMS_Project
             form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
             form.Show();
+        }
+
+        public void SetUserInterfaceForm(UserInterfaceForm form)
+        {
+            this.userInterface = form;
+        }
+
+        public void AddFormButtonToUserInterface(Form form, string name, Image image)
+        {
+            if (this.userInterface != null)
+                this.userInterface.AddFormButtonToBar(form, name, image);
         }
     }
 }

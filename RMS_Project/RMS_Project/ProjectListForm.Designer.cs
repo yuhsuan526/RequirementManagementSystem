@@ -77,6 +77,7 @@
             this.ProjectListDataGridView.RowTemplate.ReadOnly = true;
             this.ProjectListDataGridView.Size = new System.Drawing.Size(468, 440);
             this.ProjectListDataGridView.TabIndex = 1;
+            this.ProjectListDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProjectListDataGridView_CellClick);
             // 
             // Column1
             // 

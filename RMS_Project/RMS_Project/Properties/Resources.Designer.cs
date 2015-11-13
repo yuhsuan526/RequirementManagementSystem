@@ -2083,6 +2083,16 @@ namespace RMS_Project.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
+        internal static System.Drawing.Bitmap ios7_arrow_forward_small {
+            get {
+                object obj = ResourceManager.GetObject("ios7_arrow_forward_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
         internal static System.Drawing.Bitmap ios7_arrow_left {
             get {
                 object obj = ResourceManager.GetObject("ios7_arrow_left", resourceCulture);

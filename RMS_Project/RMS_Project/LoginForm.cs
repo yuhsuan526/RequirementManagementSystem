@@ -75,7 +75,9 @@ namespace RMS_Project
                             Properties.Settings.Default.Save();
                         }
                         mainForm.AddFormToPanel(new ProjectListForm(mainForm));
-                        mainForm.AddFormToNavigationPanel(new UserInterfaceForm(mainForm));
+                        UserInterfaceForm form = new UserInterfaceForm(mainForm);
+                        mainForm.AddFormToNavigationPanel(form);
+                        mainForm.SetUserInterfaceForm(form);
                     }
                     else
                     {
