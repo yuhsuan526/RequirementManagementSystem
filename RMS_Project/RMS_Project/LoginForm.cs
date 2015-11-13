@@ -74,10 +74,9 @@ namespace RMS_Project
                             Properties.Settings.Default.RememberMe = false;
                             Properties.Settings.Default.Save();
                         }
-                        mainForm.AddFormToPanel(new ProjectListForm(mainForm));
-                        UserInterfaceForm form = new UserInterfaceForm(mainForm);
-                        mainForm.AddFormToNavigationPanel(form);
-                        mainForm.SetUserInterfaceForm(form);
+                        int uid = Int32.Parse(json["uid"].ToString());
+                        string username = json["name"].ToString();
+                        mainForm.SetAccount(uid, username);
                     }
                     else
                     {

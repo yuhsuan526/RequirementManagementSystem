@@ -104,29 +104,41 @@ namespace RMS_Project
             return button;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void newButton_Click(object sender, EventArgs e)
+        {
+            if (buttons.Count <= 0)
+            {
+                mainForm.AddFormToPanel(new ProjectEditorForm(mainForm));
+            }
+            else
+            {
+                InterfaceModel model = (InterfaceModel)buttons[buttons.Count - 1];
+            }
+        }
+
+        private void newButton_MouseHover(object sender, EventArgs e)
+        {
+            newButton.ForeColor = Color.CornflowerBlue;
+        }
+
+        private void newButton_MouseLeave(object sender, EventArgs e)
+        {
+            newButton.ForeColor = Color.Black;
+        }
+
+        private void userButton_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_MouseHover(object sender, EventArgs e)
+        private void userButton_MouseHover(object sender, EventArgs e)
         {
-            button2.ForeColor = Color.CornflowerBlue;
+            userButton.ForeColor = Color.CornflowerBlue;
         }
 
-        private void button2_MouseLeave(object sender, EventArgs e)
+        private void userButton_MouseLeave(object sender, EventArgs e)
         {
-            button2.ForeColor = Color.Black;
-        }
-
-        private void button1_MouseHover(object sender, EventArgs e)
-        {
-            button1.ForeColor = Color.CornflowerBlue;
-        }
-
-        private void button1_MouseLeave(object sender, EventArgs e)
-        {
-            button1.ForeColor = Color.Black;
+            userButton.ForeColor = Color.Black;
         }
     }
 

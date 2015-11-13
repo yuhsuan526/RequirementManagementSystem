@@ -13,11 +13,30 @@ namespace RMS_Project
     public partial class MainForm : Form
     {
         private UserInterfaceForm userInterface;
+        private int accountId;
+        private string username;
+        public static string BASE_URL = "http://140.124.183.32:3000/";
 
         public MainForm()
         {
             InitializeComponent();
             AddFormToPanel(new LoginForm(this));
+        }
+
+        public int UID
+        {
+            get
+            {
+                return accountId;
+            }
+        }
+
+        public string Username
+        {
+            get
+            {
+                return username;
+            }
         }
 
         public void AddFormToPanel(Form form)
@@ -42,15 +61,20 @@ namespace RMS_Project
             form.Show();
         }
 
-        public void SetUserInterfaceForm(UserInterfaceForm form)
-        {
-            this.userInterface = form;
-        }
-
         public void AddFormButtonToUserInterface(Form form, string name, Image image)
         {
             if (this.userInterface != null)
                 this.userInterface.AddFormButtonToBar(form, name, image);
+        }
+
+        public void SetAccount(int uid, string name)
+        {
+            this.accountId = uid;
+            this.username = name;
+            AddFormToPanel(new ProjectListForm(this));
+            UserInterfaceForm form = new UserInterfaceForm(this);
+            AddFormToNavigationPanel(form);
+            this.userInterface = form;
         }
     }
 }
