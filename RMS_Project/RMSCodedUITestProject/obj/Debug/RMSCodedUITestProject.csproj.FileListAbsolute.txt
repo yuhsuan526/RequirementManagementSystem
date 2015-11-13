@@ -1,0 +1,10 @@
+\\psf\Home\Desktop\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.dll
+\\psf\Home\Desktop\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.pdb
+\\psf\Home\Desktop\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.csprojResolveAssemblyReference.cache
+\\psf\Home\Desktop\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.dll
+\\psf\Home\Desktop\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.pdb
+\\psf\Home\Downloads\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.dll
+\\psf\Home\Downloads\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.pdb
+\\psf\Home\Downloads\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.csprojResolveAssemblyReference.cache
+\\psf\Home\Downloads\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.dll
+\\psf\Home\Downloads\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.pdb
