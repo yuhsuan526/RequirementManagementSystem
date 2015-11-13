@@ -90,5 +90,4 @@ C:\Users\Jamie\Documents\RequirementManagementSystem\RMS_Project\RMS_Project\obj
 C:\Users\Jamie\Documents\RequirementManagementSystem\RMS_Project\RMS_Project\obj\Debug\RMS_Project.TestDetailForm.resources
 C:\Users\Jamie\Documents\RequirementManagementSystem\RMS_Project\RMS_Project\obj\Debug\RMS_Project.UserInterfaceForm.resources
 C:\Users\Jamie\Documents\RequirementManagementSystem\RMS_Project\RMS_Project\obj\Debug\RMS_Project.csproj.GenerateResource.Cache
-=======
 >>>>>>> origin/master
