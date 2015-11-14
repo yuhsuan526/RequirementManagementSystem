@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,51 +15,73 @@ namespace RMS_Project
 {
     public partial class RequirementListForm : Form
     {
-        public RequirementListForm()
+        private int projectId;
+
+        public RequirementListForm(MainForm mainForm, int projectId)
         {
             InitializeComponent();
-            // Initialize myListView.
-            listView1.View = View.Tile;
-            
-            // Initialize the tile size.
-            listView1.TileSize = new Size(400, 45);
+
+            this.projectId = projectId;
 
             // Add column headers so the subitems will appear.
-            listView1.Columns.AddRange(new ColumnHeader[] { new ColumnHeader(), new ColumnHeader(), new ColumnHeader() });
+            listView2.Columns.AddRange(new ColumnHeader[] { new ColumnHeader(), new ColumnHeader() });
 
-            // Create items and add them to myListView.
-            ListViewItem item0 = new ListViewItem(new string[] 
-            {"Programming Windows", 
-            "Petzold, Charles", 
-            "1998"}, 0);
-            ListViewItem item1 = new ListViewItem(new string[] 
-            {"Code: The Hidden Language of Computer Hardware and Software", 
-            "Petzold, Charles", 
-            "2000"}, 0);
-            ListViewItem item2 = new ListViewItem(new string[] 
-            {"Programming Windows with C#", 
-            "Petzold, Charles", 
-            "2001"}, 0);
-            ListViewItem item3 = new ListViewItem(new string[] 
-            {"Coding Techniques for Microsoft Visual Basic .NET", 
-            "Connell, John", 
-            "2001"}, 0);
-            ListViewItem item4 = new ListViewItem(new string[] 
-            {"C# for Java Developers", 
-            "Jones, Allen & Freeman, Adam", 
-            "2002"}, 0);
-            ListViewItem item5 = new ListViewItem(new string[] 
-            {"Microsoft .NET XML Web Services Step by Step", 
-            "Jones, Allen & Freeman, Adam", 
-            "2002"}, 0);
-            listView1.Items.AddRange(
-                new ListViewItem[] { item0, item1, item2, item3, item4, item5 });
-
-            // Initialize the form.
-            this.Controls.Add(listView1);
-            this.Size = new System.Drawing.Size(430, 330);
-            this.Text = "ListView Tiling Example";
+            PostProduct();
         }
 
+        private void listView1_ClientSizeChanged(object sender, EventArgs e)
+        {
+            listView1.TileSize = new Size(listView1.ClientSize.Width, listView1.TileSize.Height);
+        }
+
+        
+        private async void PostProduct()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "project/getUserListByProject/";
+                string url = MainForm.BASE_URL + METHOD + projectId.ToString();
+                Console.WriteLine(url);
+                response = await httpClient.GetAsync(url);
+                string content = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    Console.WriteLine(content);
+                    JObject json = JObject.Parse(content);
+                    string message = json["result"].ToString();
+                    JArray jsonArray = JArray.Parse(json["users"].ToString());
+                    if (message == "success")
+                    {
+                        ListViewItem[] items = new ListViewItem[jsonArray.Count];
+                        for (int i = 0; i < jsonArray.Count; i++)
+                        {
+                            JObject jObject = jsonArray[i] as JObject;
+                            ListViewItem item = new ListViewItem(new string[] { jObject["name"].ToString(), jObject["id"].ToString() }, 0);
+                            items[i] = item;
+                        }
+                        listView2.Items.AddRange(items);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(response.ToString());
+                    MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine(e.ToString());
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void listView2_ClientSizeChanged(object sender, EventArgs e)
+        {
+            listView2.TileSize = new Size(listView2.ClientSize.Width, listView2.TileSize.Height);
+        }
+        
     }
 }

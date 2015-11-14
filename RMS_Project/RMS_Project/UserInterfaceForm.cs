@@ -17,6 +17,7 @@ namespace RMS_Project
         private MainForm mainForm;
         private ArrayList buttons;
         private ContextMenuStrip contextMenuStrip;
+        ProjectListForm projectListForm;
 
         public UserInterfaceForm(MainForm mainForm)
         {
@@ -36,25 +37,30 @@ namespace RMS_Project
             contextMenuStrip.Items.Add("Sign out");
             contextMenuStrip.ShowImageMargin = false;
             contextMenuStrip.ItemClicked += contextMenuStrip_ItemClicked;
+            projectListForm = new ProjectListForm(mainForm);
+            mainForm.AddFormToPanel(projectListForm);
         }
 
         void contextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             if (e.ClickedItem.Text == "Sign out")
             {
+                contextMenuStrip.Hide();
                 mainForm.SignOut();
             }
         }
 
         void projectsButton_Click(object sender, EventArgs e)
         {
-            mainForm.AddFormToPanel(new ProjectListForm(mainForm));
-            for (int i = 0; i < buttons.Count; i++)
+            if (mainForm.PopFormsFromPanel(projectListForm))
             {
-                InterfaceModel model = (InterfaceModel)buttons[i];
-                flowLayoutPanel1.Controls.Remove(model.arrow);
-                flowLayoutPanel1.Controls.Remove(model.button);
-                buttons.Remove(model);
+                for (int i = 0; i < buttons.Count; i++)
+                {
+                    InterfaceModel model = (InterfaceModel)buttons[i];
+                    flowLayoutPanel1.Controls.Remove(model.arrow);
+                    flowLayoutPanel1.Controls.Remove(model.button);
+                    buttons.Remove(model);
+                }
             }
         }
 
@@ -85,20 +91,25 @@ namespace RMS_Project
         void button_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            bool isFinded = false;
-            for (int i = 0; i < buttons.Count; i++)
+            bool isAvailable = false;
+            int i;
+            for (i = 0; i < buttons.Count; i++)
             {
                 InterfaceModel model = (InterfaceModel)buttons[i];
-                if (isFinded)
+                if (model.button == button)
                 {
+                    isAvailable = mainForm.PopFormsFromPanel(model.form);
+                    break;
+                }
+            }
+            if (isAvailable)
+            {
+                for (i = i + 1; i < buttons.Count; i++)
+                {
+                    InterfaceModel model = (InterfaceModel)buttons[i];
                     flowLayoutPanel1.Controls.Remove(model.arrow);
                     flowLayoutPanel1.Controls.Remove(model.button);
                     buttons.Remove(model);
-                }
-                else if (model.button == button)
-                {
-                    mainForm.AddFormToPanel(model.form);
-                    isFinded = true;
                 }
             }
         }

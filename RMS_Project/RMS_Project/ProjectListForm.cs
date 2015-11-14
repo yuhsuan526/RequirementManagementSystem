@@ -28,9 +28,9 @@ namespace RMS_Project
         private void ProjectListDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewCell cell = ProjectListDataGridView.Rows[e.RowIndex].Cells[0];
-            Form form = new RequirementListForm();
-            mainForm.AddFormToPanel(form);
-            mainForm.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_paper_outline);
+            Form form = new RequirementListForm(mainForm, Int32.Parse(ProjectListDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString()));
+            if(mainForm.AddFormToPanel(form))
+                mainForm.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_paper_outline);
         }
 
 
@@ -41,7 +41,7 @@ namespace RMS_Project
             var httpClient = new HttpClient();
             try
             {
-                const string METHOD = "project/list/";
+                const string METHOD = "project/getProjectListByUser/";
                 string url = MainForm.BASE_URL + METHOD + mainForm.UID.ToString();
                 Console.WriteLine(url);
                 response = await httpClient.GetAsync(url);
@@ -56,7 +56,7 @@ namespace RMS_Project
                     {
                         foreach (JObject jObject in jsonArray)
                         {
-                            this.ProjectListDataGridView.Rows.Add(jObject["name"], jObject["updated_at"]);
+                            this.ProjectListDataGridView.Rows.Add(jObject["name"], jObject["id"]);
                         }
                     }
                 }
