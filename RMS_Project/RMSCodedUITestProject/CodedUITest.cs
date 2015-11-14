@@ -69,7 +69,8 @@ namespace RMSCodedUITestProject
             Robot.AssertWindowExist("loginForm", true);
         }
 
-
+        [TestMethod]
+        [DeploymentItem("RMS_Project.exe")]
         public void LoginPasswordErrorCodedUITestMethod()
         {
             //密碼輸入錯誤
@@ -83,6 +84,7 @@ namespace RMSCodedUITestProject
             //按下messageButton後，回到loginForm
             Robot.AssertWindowExist("loginForm", true);
         }
+
         [TestMethod]
         [DeploymentItem("RMS_Project.exe")]
         public void RegisterErrorCodedUITestMethod()
@@ -92,7 +94,7 @@ namespace RMSCodedUITestProject
             Robot.SetOtherFormEdit("registrantionForm", "userNameLabel", "ZZ");
             Robot.SetOtherFormEdit("registrantionForm", "emailLabel", "j00064qaz123@gmail.com");
             Robot.SetOtherFormUseSystemPasswordChar("registrantionForm", "passwordLabel", "a123456");
-            Robot.SetOtherFormUseSystemPasswordChar("registrantionForm", "confirmPasswordLable", "a123456");
+            Robot.SetOtherFormUseSystemPasswordChar("registrantionForm", "confirmPasswordLabel", "a123456");
 
             //assert輸入值沒錯
             Robot.AssertOtherFormEdit("registrantionForm", "userNameLabel", "ZZ");
@@ -115,7 +117,7 @@ namespace RMSCodedUITestProject
             Robot.SetOtherFormEdit("registrantionForm", "userNameLabel", "ZZ");
             Robot.SetOtherFormEdit("registrantionForm", "emailLabel", "a00064qaz123@gmail.com");
             Robot.SetOtherFormUseSystemPasswordChar("registrantionForm", "passwordLabel", "a123456");
-            Robot.SetOtherFormUseSystemPasswordChar("registrantionForm", "confirmPasswordLable", "a123456");
+            Robot.SetOtherFormUseSystemPasswordChar("registrantionForm", "confirmPasswordLabel", "a123456");
 
             //assert輸入值沒錯
             Robot.AssertOtherFormEdit("registrantionForm", "userNameLabel", "ZZ");
