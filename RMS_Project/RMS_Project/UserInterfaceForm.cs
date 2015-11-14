@@ -18,7 +18,7 @@ namespace RMS_Project
         private ArrayList buttons;
         private ContextMenuStrip contextMenuStrip;
         ProjectListForm projectListForm;
-
+        public enum FeatureType { New, Edit, Hide };
         public UserInterfaceForm(MainForm mainForm)
         {
             InitializeComponent();
@@ -69,6 +69,26 @@ namespace RMS_Project
             public Form form;
             public PictureBox arrow;
             public Button button;
+        }
+
+        public void SetFeatureButton(FeatureType type)
+        {
+            switch(type)
+            {
+                case FeatureType.New:
+                    newButton.Text = "New";
+                    newButton.Image = Properties.Resources.ios7_plus_outline;
+                    newButton.Visible = true;
+                    break;
+                case FeatureType.Edit:
+                    newButton.Text = "Edit";
+                    newButton.Image = Properties.Resources.edit;
+                    newButton.Visible = true;
+                    break;
+                case FeatureType.Hide:
+                    newButton.Visible = false;
+                    break;
+            }
         }
 
         public void AddFormButtonToBar(Form form, string buttonName, Image image)
@@ -136,11 +156,20 @@ namespace RMS_Project
         {
             if (buttons.Count <= 0)
             {
-                mainForm.AddFormToPanel(new ProjectEditorForm(mainForm));
+                Control control = mainForm.GetCurrentFormInPancel();
+                if (!control.GetType().Equals(typeof(ProjectEditorForm)))
+                {
+                    mainForm.AddFormToPanel(new ProjectEditorForm(mainForm));
+                }
             }
             else
             {
-                InterfaceModel model = (InterfaceModel)buttons[buttons.Count - 1];
+                Control control = mainForm.GetCurrentFormInPancel();
+                if (control.GetType().Equals(typeof(ProjectMainForm)))
+                {
+                    ProjectMainForm form = control as ProjectMainForm;
+                    form.ClickNewButton();
+                }
             }
         }
 

@@ -93,3 +93,5 @@ C:\Users\Jamie\Documents\RequirementManagementSystem\RMS_Project\RMS_Project\obj
 =======
 >>>>>>> origin/master
 C:\Users\Lab\Documents\RequirementManagementSystem\RMS_Project\RMS_Project\obj\Debug\RMS_Project.DefaultInterfaceForm.resources
+C:\Users\Lab\Documents\RequirementManagementSystem\RMS_Project\RMS_Project\obj\Debug\RMS_Project.ProjectDetailForm.resources
+C:\Users\Lab\Documents\RequirementManagementSystem\RMS_Project\RMS_Project\obj\Debug\RMS_Project.ProjectMainForm.resources

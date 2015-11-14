@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,19 +17,22 @@ namespace RMS_Project
     public partial class ProjectListForm : Form
     {
         private MainForm mainForm;
+        private ArrayList array;
 
         public ProjectListForm(MainForm mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
             this.ProjectListDataGridView.ClearSelection();
+            array = new ArrayList();
             PostProduct();
         }
 
         private void ProjectListDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewCell cell = ProjectListDataGridView.Rows[e.RowIndex].Cells[0];
-            Form form = new RequirementListForm(mainForm, Int32.Parse(ProjectListDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString()));
+            Project project = array[e.RowIndex] as Project;
+            Form form = new ProjectMainForm(mainForm, project);
             if(mainForm.AddFormToPanel(form))
                 mainForm.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_paper_outline);
         }
@@ -57,6 +61,8 @@ namespace RMS_Project
                         foreach (JObject jObject in jsonArray)
                         {
                             this.ProjectListDataGridView.Rows.Add(jObject["name"], jObject["id"]);
+                            Project project = new Project(int.Parse(jObject["id"].ToString()), jObject["name"].ToString(), jObject["descript"].ToString());
+                            array.Add(project);
                         }
                     }
                 }

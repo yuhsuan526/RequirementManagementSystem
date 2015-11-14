@@ -206,6 +206,11 @@ namespace RMS_Project
             }
         }
 
+        public UserInterfaceForm GetUserInterface()
+        {
+            return userInterface;
+        }
+
         public void AddFormButtonToUserInterface(Form form, string name, Image image)
         {
             if (this.userInterface != null)
