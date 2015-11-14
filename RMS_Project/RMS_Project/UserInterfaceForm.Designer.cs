@@ -59,6 +59,7 @@
             // 
             // userButton
             // 
+            this.userButton.AccessibleName = "UserButton";
             this.userButton.AutoSize = true;
             this.userButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.userButton.FlatAppearance.BorderSize = 0;
@@ -82,6 +83,7 @@
             // 
             // newButton
             // 
+            this.newButton.AccessibleName = "NewProjectButton";
             this.newButton.AutoSize = true;
             this.newButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.newButton.FlatAppearance.BorderSize = 0;
@@ -119,6 +121,7 @@
             // 
             // UserInterfaceForm
             // 
+            this.AccessibleName = "UserInterfaceForm";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
