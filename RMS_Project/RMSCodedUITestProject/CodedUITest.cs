@@ -130,5 +130,36 @@ namespace RMSCodedUITestProject
             //按下messageButton後，回到loginForm
             Robot.AssertWindowExist("loginForm", true);
         }
+
+
+        [TestMethod]
+        [DeploymentItem("RMS_Project.exe")]
+        public void NewProjectCodedUITestMethod()
+        {
+            //設定帳密
+            Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "a123456");
+
+            //確認登入資料
+            Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.ClickOtherFormButton("loginForm", "signInButton");
+            Robot.AssertWindowExist("projectListForm", true);
+
+            //新增專案
+            Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
+            Robot.SetOtherFormEdit("ProjectEditorForm", "ProjectName", "RMS_Project");
+            Robot.SetOtherFormEdit("ProjectEditorForm", "ProjectDescription", "This project aims to develop a system that facilitates the management of project requirements.");
+
+            //確認專案內容
+            Robot.AssertOtherFormEdit("ProjectEditorForm", "ProjectName", "RMS_Project");
+
+            Robot.ClickOtherFormButton("ProjectEditorForm", "Confirm");
+            
+            //messageBox成功
+            Robot.AssertWindowExist("Success", true);
+            Robot.ClickOtherFormButton("Success", "確定");
+            Robot.AssertWindowExist("projectListForm", true);
+
+        }
     }
 }

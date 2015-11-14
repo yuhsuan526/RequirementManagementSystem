@@ -39,6 +39,7 @@
             // 
             // button1
             // 
+            this.button1.AccessibleName = "Confirm";
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Location = new System.Drawing.Point(368, 347);
             this.button1.Name = "button1";
@@ -50,6 +51,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.AccessibleName = "ProjectName";
             this.tableLayoutPanel1.SetColumnSpan(this.textBox1, 4);
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Location = new System.Drawing.Point(53, 48);
@@ -109,6 +111,7 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.AccessibleName = "ProjectDescription";
             this.tableLayoutPanel1.SetColumnSpan(this.richTextBox1, 4);
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(53, 103);
@@ -119,6 +122,7 @@
             // 
             // ProjectEditorForm
             // 
+            this.AccessibleName = "ProjectEditorForm";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(523, 404);
