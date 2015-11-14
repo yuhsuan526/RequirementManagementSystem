@@ -173,14 +173,10 @@ namespace RMS_Project
             }
         }
 
-        private void newButton_MouseHover(object sender, EventArgs e)
-        {
-            newButton.ForeColor = Color.CornflowerBlue;
-        }
-
         private void newButton_MouseLeave(object sender, EventArgs e)
         {
             newButton.ForeColor = Color.Black;
+            newButton.Image = MainForm.ChangeColor(new Bitmap(newButton.Image), Color.Black);
         }
 
         private void userButton_Click(object sender, EventArgs e)
@@ -188,14 +184,23 @@ namespace RMS_Project
             contextMenuStrip.Show(userButton, new Point(userButton.Width / 2, (int)(userButton.Height * 0.7f)));
         }
 
-        private void userButton_MouseHover(object sender, EventArgs e)
-        {
-            userButton.ForeColor = Color.CornflowerBlue;
-        }
 
         private void userButton_MouseLeave(object sender, EventArgs e)
         {
             userButton.ForeColor = Color.Black;
+            userButton.Image = MainForm.ChangeColor(new Bitmap(userButton.Image), Color.Black);
+        }
+
+        private void newButton_MouseMove(object sender, MouseEventArgs e)
+        {
+            newButton.ForeColor = Color.CornflowerBlue;
+            newButton.Image = MainForm.ChangeColor(new Bitmap(newButton.Image), Color.CornflowerBlue);
+        }
+
+        private void userButton_MouseMove(object sender, MouseEventArgs e)
+        {
+            userButton.ForeColor = Color.CornflowerBlue;
+            userButton.Image = MainForm.ChangeColor(new Bitmap(userButton.Image), Color.CornflowerBlue);
         }
     }
 

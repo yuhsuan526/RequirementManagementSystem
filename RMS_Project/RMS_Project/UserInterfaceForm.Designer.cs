@@ -78,7 +78,7 @@
             this.userButton.UseVisualStyleBackColor = true;
             this.userButton.Click += new System.EventHandler(this.userButton_Click);
             this.userButton.MouseLeave += new System.EventHandler(this.userButton_MouseLeave);
-            this.userButton.MouseHover += new System.EventHandler(this.userButton_MouseHover);
+            this.userButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.userButton_MouseMove);
             // 
             // newButton
             // 
@@ -101,7 +101,7 @@
             this.newButton.UseVisualStyleBackColor = true;
             this.newButton.Click += new System.EventHandler(this.newButton_Click);
             this.newButton.MouseLeave += new System.EventHandler(this.newButton_MouseLeave);
-            this.newButton.MouseHover += new System.EventHandler(this.newButton_MouseHover);
+            this.newButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.newButton_MouseMove);
             // 
             // flowLayoutPanel1
             // 

@@ -149,6 +149,12 @@
     <Compile Include="UserInterfaceForm.Designer.cs">
       <DependentUpon>UserInterfaceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserListForm.Designer.cs">
+      <DependentUpon>UserListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Util.cs" />
     <EmbeddedResource Include="DefaultInterfaceForm.resx">
       <DependentUpon>DefaultInterfaceForm.cs</DependentUpon>
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserInterfaceForm.resx">
       <DependentUpon>UserInterfaceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userListForm.resx">
+      <DependentUpon>UserListForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
