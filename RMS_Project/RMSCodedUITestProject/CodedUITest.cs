@@ -41,7 +41,7 @@ namespace RMSCodedUITestProject
 
         [TestMethod]
         [DeploymentItem("RMS_Project.exe")]
-        public void LoginSuccessCodedUITestMethod()
+        public void LoginSuccess()
         {
             Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
 
@@ -55,7 +55,7 @@ namespace RMSCodedUITestProject
 
         [TestMethod]
         [DeploymentItem("RMS_Project.exe")]
-        public void LoginAccountErrorCodedUITestMethod()
+        public void LoginAccountError()
         {
             //帳號錯誤
             Robot.SetOtherFormEdit("loginForm", "emailLabel", "a00064qaz123@gmail.com");
@@ -72,7 +72,7 @@ namespace RMSCodedUITestProject
 
         [TestMethod]
         [DeploymentItem("RMS_Project.exe")]
-        public void LoginPasswordErrorCodedUITestMethod()
+        public void LoginPasswordError()
         {
             //密碼輸入錯誤
             Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
@@ -88,7 +88,7 @@ namespace RMSCodedUITestProject
 
         [TestMethod]
         [DeploymentItem("RMS_Project.exe")]
-        public void RegisterErrorCodedUITestMethod()
+        public void RegisterError()
         {
             Robot.ClickOtherFormButton("loginForm", "createAccountButton");
             //帳號存在
@@ -111,7 +111,7 @@ namespace RMSCodedUITestProject
 
         [TestMethod]
         [DeploymentItem("RMS_Project.exe")]
-        public void RegisterSuccessCodedUITestMethod()
+        public void RegisterSuccess()
         {
             Robot.ClickOtherFormButton("loginForm", "createAccountButton");
             //帳號不存在
@@ -135,7 +135,7 @@ namespace RMSCodedUITestProject
 
         [TestMethod]
         [DeploymentItem("RMS_Project.exe")]
-        public void NewProjectCodedUITestMethod()
+        public void NewProjectCoded()
         {
             //設定帳密
             Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
@@ -161,6 +161,42 @@ namespace RMSCodedUITestProject
             Robot.ClickOtherFormButton("Success", "確定");
             Robot.AssertWindowExist("projectListForm", true);
 
+        }
+
+        [TestMethod]
+        [DeploymentItem("RMS_Project.exe")]
+        public void CheckDataListData()
+        {
+
+            //設定帳密
+            Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "a123456");
+
+            //確認登入資料
+            Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.ClickOtherFormButton("loginForm", "signInButton");
+            Robot.AssertWindowExist("projectListForm", true);
+            Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm","projectDataGridView", 0, 0, "ZZ");
+            Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm", "projectDataGridView", 0, 1, "5");
+            Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm", "projectDataGridView", 1, 0, "RMS_Project");
+            Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm", "projectDataGridView", 1, 1, "6");
+        }
+
+        [TestMethod]
+        [DeploymentItem("RMS_Project.exe")]
+        public void ClickDataGridViewToProjectDetailForm()
+        {
+            //設定帳密
+            Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "a123456");
+
+            //確認登入資料
+            Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.ClickOtherFormButton("loginForm", "signInButton");
+            Robot.AssertWindowExist("projectListForm", true);
+
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0);
+            Robot.AssertWindowExist("ProjectDetailForm", true);
         }
     }
 }

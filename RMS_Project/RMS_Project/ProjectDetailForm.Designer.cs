@@ -98,6 +98,7 @@
             // 
             // numberLabel
             // 
+            this.numberLabel.AccessibleName = "projectNumber";
             this.numberLabel.AutoSize = true;
             this.numberLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numberLabel.Location = new System.Drawing.Point(153, 20);
@@ -107,6 +108,7 @@
             // 
             // nameLabel
             // 
+            this.nameLabel.AccessibleName = "projectName";
             this.nameLabel.AutoSize = true;
             this.nameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nameLabel.Location = new System.Drawing.Point(153, 45);
@@ -116,6 +118,7 @@
             // 
             // descriptionLabel
             // 
+            this.descriptionLabel.AccessibleName = "projectDescription";
             this.descriptionLabel.AutoSize = true;
             this.descriptionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.descriptionLabel.Location = new System.Drawing.Point(153, 70);
@@ -126,6 +129,7 @@
             // 
             // ProjectDetailForm
             // 
+            this.AccessibleName = "projectDetailForm";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
