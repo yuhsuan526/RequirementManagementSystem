@@ -12,14 +12,12 @@ namespace RMS_Project
 {
     public partial class RequirementEditorForm : Form
     {
-        public RequirementEditorForm()
+        Project project;
+
+        public RequirementEditorForm(Project project)
         {
             InitializeComponent();
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            this.project = project;
         }
     }
 }

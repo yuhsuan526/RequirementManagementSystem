@@ -20,8 +20,7 @@ namespace RMS_Project
         private ProjectDetailForm projectDetailForm;
         private RequirementListForm requirementListForm;
         private UserListForm userListForm;
-        private enum TabType { Detail, Member, Requirement, Test };
-        private TabType tabType = TabType.Detail;
+        private RequirementEditorForm requirementEditorForm;
         private Button currentActiveButton = null;
 
         public ProjectMainForm(MainForm mainForm, Project project)
@@ -32,6 +31,7 @@ namespace RMS_Project
             projectDetailForm = new ProjectDetailForm(project);
             requirementListForm = new RequirementListForm(project);
             userListForm = new UserListForm(mainForm, project);
+            requirementEditorForm = new RequirementEditorForm(project);
             AddFormToPanel(projectDetailForm);
             UserInterfaceForm form = mainForm.GetUserInterface();
             if (form != null)
@@ -65,7 +65,7 @@ namespace RMS_Project
             }
             else if (currentActiveButton == requirementButton)
             {
-
+                AddFormToPanel(requirementEditorForm);
             }
             else if (currentActiveButton == testButton)
             {
