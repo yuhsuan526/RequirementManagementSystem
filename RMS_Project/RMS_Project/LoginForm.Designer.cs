@@ -80,9 +80,7 @@
             // 
             // registerButton
             // 
-
             this.registerButton.AccessibleName = "createAccountButton";
-
             this.registerButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.registerButton.Location = new System.Drawing.Point(229, 277);
             this.registerButton.Name = "registerButton";
@@ -94,9 +92,7 @@
             // 
             // signInButton
             // 
-
             this.signInButton.AccessibleName = "signInButton";
-
             this.signInButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.signInButton.Location = new System.Drawing.Point(317, 277);
             this.signInButton.Name = "signInButton";

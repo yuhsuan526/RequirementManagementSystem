@@ -22,5 +22,10 @@ namespace RMS_Project
             this.ProjectListDataGridView.Rows.Add("Requirement Management System", "5:2:0");
             this.ProjectListDataGridView.ClearSelection();
         }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
     }
 }

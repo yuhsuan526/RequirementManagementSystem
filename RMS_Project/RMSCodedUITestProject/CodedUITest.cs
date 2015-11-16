@@ -83,6 +83,7 @@ namespace RMSCodedUITestProject
             //按下messageButton後，回到loginForm
             Robot.AssertWindowExist("loginForm", true);
         }
+
         [TestMethod]
         [DeploymentItem("RMS_Project.exe")]
         public void RegisterErrorCodedUITestMethod()

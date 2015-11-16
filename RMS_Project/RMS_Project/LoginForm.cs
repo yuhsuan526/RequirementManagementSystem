@@ -70,12 +70,16 @@ namespace RMS_Project
                     Console.WriteLine(content);
                     JObject json = JObject.Parse(content);
                     string message = json["result"].ToString();
+                    string uid = json["uid"].ToString();
+                    string name = json["name"].ToString();
                     if (message == "success")
                     {
                         if (rememberCheckBox.Checked)
                         {
                             Properties.Settings.Default["email"] = email.Text;
                             Properties.Settings.Default["password"] = password.Text;
+                            Properties.Settings.Default["uid"] = uid;
+                            Properties.Settings.Default["name"] = name;
                             Properties.Settings.Default.Save();
                         }
                         mainForm.AddFormToPanel(new ProjectListForm(mainForm));
