@@ -48,7 +48,18 @@ namespace RMS_Project
                     if (message == "success")
                     {
                         mainForm.AddFormToPanel(new LoginForm(mainForm));
-                        MessageBox.Show("註冊成功", "Error", MessageBoxButtons.OK);
+                        MessageBox.Show("註冊成功", "Success", MessageBoxButtons.OK);
+<<<<<<< HEAD
+                    }
+                    else
+                    {
+                        MessageBox.Show("註冊失敗", "Error", MessageBoxButtons.OK);
+=======
+                    }
+                    else
+                    {
+                        MessageBox.Show("註冊失敗", "Error", MessageBoxButtons.OK);
+>>>>>>> 977b606c22726ee196186f1454e5f6912a4f3ab3
                     }
                 }
                 else
@@ -70,7 +81,14 @@ namespace RMS_Project
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            PostProduct();
+            if (password.Text.Equals(confirmPasswordTextBox.Text))
+                PostProduct();
+            else
+            {
+                password.Text = "";
+                confirmPasswordTextBox.Text = "";
+                MessageBox.Show("密碼不一致，請在確認一次", "Error", MessageBoxButtons.OK);
+            }
         }
     }
 }
