@@ -11,6 +11,21 @@
     <AssemblyName>RMS_Project</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>發行\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +47,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,6 +68,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultInterfaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DefaultInterfaceForm.Designer.cs">
+      <DependentUpon>DefaultInterfaceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +85,18 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectDetailForm.Designer.cs">
+      <DependentUpon>ProjectDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectMainForm.Designer.cs">
+      <DependentUpon>ProjectMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectEditorForm.cs">
       <SubType>Form</SubType>
@@ -96,6 +130,7 @@
     <Compile Include="RequirementListForm.Designer.cs">
       <DependentUpon>RequirementListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="TestListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,11 +149,27 @@
     <Compile Include="UserInterfaceForm.Designer.cs">
       <DependentUpon>UserInterfaceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserListForm.Designer.cs">
+      <DependentUpon>UserListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util.cs" />
+    <EmbeddedResource Include="DefaultInterfaceForm.resx">
+      <DependentUpon>DefaultInterfaceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectDetailForm.resx">
+      <DependentUpon>ProjectDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectMainForm.resx">
+      <DependentUpon>ProjectMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectEditorForm.resx">
       <DependentUpon>ProjectEditorForm.cs</DependentUpon>
@@ -153,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserInterfaceForm.resx">
       <DependentUpon>UserInterfaceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userListForm.resx">
+      <DependentUpon>UserListForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -1970,6 +2024,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="images\xbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\ios7-arrow-forward-small.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

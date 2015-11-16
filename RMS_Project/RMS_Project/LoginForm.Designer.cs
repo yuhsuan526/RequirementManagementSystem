@@ -31,8 +31,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.registerButton = new System.Windows.Forms.Button();
             this.signInButton = new System.Windows.Forms.Button();
-            this.email = new System.Windows.Forms.TextBox();
-            this.password = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.rememberCheckBox = new System.Windows.Forms.CheckBox();
@@ -40,6 +38,8 @@
             this.forgetPasswordLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.email = new System.Windows.Forms.TextBox();
+            this.password = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,53 +80,27 @@
             // 
             // registerButton
             // 
-
             this.registerButton.AccessibleName = "createAccountButton";
-
             this.registerButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.registerButton.Location = new System.Drawing.Point(229, 277);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(82, 34);
-            this.registerButton.TabIndex = 5;
+            this.registerButton.TabIndex = 6;
             this.registerButton.Text = "Create account";
             this.registerButton.UseVisualStyleBackColor = true;
             this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // signInButton
             // 
-
             this.signInButton.AccessibleName = "signInButton";
-
             this.signInButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.signInButton.Location = new System.Drawing.Point(317, 277);
             this.signInButton.Name = "signInButton";
             this.signInButton.Size = new System.Drawing.Size(83, 34);
-            this.signInButton.TabIndex = 8;
+            this.signInButton.TabIndex = 7;
             this.signInButton.Text = "Sign in";
             this.signInButton.UseVisualStyleBackColor = true;
             this.signInButton.Click += new System.EventHandler(this.signInButton_Click);
-            // 
-            // email
-            // 
-            this.email.AccessibleName = "emailLabel";
-            this.tableLayoutPanel1.SetColumnSpan(this.email, 2);
-            this.email.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.email.Location = new System.Drawing.Point(53, 158);
-            this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(170, 22);
-            this.email.TabIndex = 1;
-            this.email.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // password
-            // 
-            this.password.AccessibleName = "passwordLabel";
-            this.tableLayoutPanel1.SetColumnSpan(this.password, 2);
-            this.password.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.password.Location = new System.Drawing.Point(229, 158);
-            this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(171, 22);
-            this.password.TabIndex = 4;
-            this.password.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -155,12 +129,14 @@
             // 
             this.rememberCheckBox.AutoSize = true;
             this.rememberCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rememberCheckBox.Checked = global::RMS_Project.Properties.Settings.Default.RememberMe;
             this.tableLayoutPanel1.SetColumnSpan(this.rememberCheckBox, 2);
+            this.rememberCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::RMS_Project.Properties.Settings.Default, "RememberMe", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.rememberCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rememberCheckBox.Location = new System.Drawing.Point(229, 252);
             this.rememberCheckBox.Name = "rememberCheckBox";
             this.rememberCheckBox.Size = new System.Drawing.Size(171, 19);
-            this.rememberCheckBox.TabIndex = 10;
+            this.rememberCheckBox.TabIndex = 5;
             this.rememberCheckBox.Text = "Remember me";
             this.rememberCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rememberCheckBox.UseVisualStyleBackColor = true;
@@ -175,8 +151,7 @@
             this.emailLinkLabel.Location = new System.Drawing.Point(53, 220);
             this.emailLinkLabel.Name = "emailLinkLabel";
             this.emailLinkLabel.Size = new System.Drawing.Size(347, 29);
-            this.emailLinkLabel.TabIndex = 11;
-            this.emailLinkLabel.TabStop = true;
+            this.emailLinkLabel.TabIndex = 4;
             this.emailLinkLabel.Text = "Can\'t find your confirmation email?";
             this.emailLinkLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
@@ -191,8 +166,7 @@
             this.forgetPasswordLinkLabel.Location = new System.Drawing.Point(53, 195);
             this.forgetPasswordLinkLabel.Name = "forgetPasswordLinkLabel";
             this.forgetPasswordLinkLabel.Size = new System.Drawing.Size(347, 25);
-            this.forgetPasswordLinkLabel.TabIndex = 12;
-            this.forgetPasswordLinkLabel.TabStop = true;
+            this.forgetPasswordLinkLabel.TabIndex = 3;
             this.forgetPasswordLinkLabel.Text = "Forgot your password?";
             this.forgetPasswordLinkLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
@@ -220,6 +194,32 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Sign into your Account";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // email
+            // 
+            this.email.AccessibleName = "emailLabel";
+            this.tableLayoutPanel1.SetColumnSpan(this.email, 2);
+            this.email.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::RMS_Project.Properties.Settings.Default, "Email", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.email.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.email.Location = new System.Drawing.Point(53, 158);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(170, 22);
+            this.email.TabIndex = 1;
+            this.email.Text = global::RMS_Project.Properties.Settings.Default.Email;
+            this.email.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // password
+            // 
+            this.password.AccessibleName = "passwordLabel";
+            this.tableLayoutPanel1.SetColumnSpan(this.password, 2);
+            this.password.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::RMS_Project.Properties.Settings.Default, "Password", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.password.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.password.Location = new System.Drawing.Point(229, 158);
+            this.password.Name = "password";
+            this.password.Size = new System.Drawing.Size(171, 22);
+            this.password.TabIndex = 2;
+            this.password.Text = global::RMS_Project.Properties.Settings.Default.Password;
+            this.password.UseSystemPasswordChar = true;
             // 
             // LoginForm
             // 
