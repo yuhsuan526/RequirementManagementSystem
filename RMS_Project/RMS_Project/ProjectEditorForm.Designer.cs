@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< HEAD
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -134,7 +133,6 @@
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
-=======
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -240,7 +238,6 @@
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
->>>>>>> 977b606c22726ee196186f1454e5f6912a4f3ab3
         }
 
         #endregion

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< HEAD
             this.registerTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.createButton = new System.Windows.Forms.Button();
@@ -214,7 +213,6 @@
             this.registerTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
-=======
             this.registerTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.createButton = new System.Windows.Forms.Button();
@@ -400,7 +398,6 @@
             this.registerTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
->>>>>>> 977b606c22726ee196186f1454e5f6912a4f3ab3
         }
 
         #endregion

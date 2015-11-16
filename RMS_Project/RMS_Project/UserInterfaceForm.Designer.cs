@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< HEAD
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.userButton = new RMS_Project.NoFocusCueButton();
             this.newButton = new RMS_Project.NoFocusCueButton();
@@ -131,11 +130,11 @@
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
-=======
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+
+            /*this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.userButton = new RMS_Project.NoFocusCueButton();
             this.newButton = new RMS_Project.NoFocusCueButton();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();*/
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -183,7 +182,7 @@
             this.userButton.UseVisualStyleBackColor = true;
             this.userButton.Click += new System.EventHandler(this.userButton_Click);
             this.userButton.MouseLeave += new System.EventHandler(this.userButton_MouseLeave);
-            this.userButton.MouseHover += new System.EventHandler(this.userButton_MouseHover);
+            //this.userButton.MouseHover += new System.EventHandler(this.userButton_MouseHover);
             // 
             // newButton
             // 
@@ -207,7 +206,7 @@
             this.newButton.UseVisualStyleBackColor = true;
             this.newButton.Click += new System.EventHandler(this.newButton_Click);
             this.newButton.MouseLeave += new System.EventHandler(this.newButton_MouseLeave);
-            this.newButton.MouseHover += new System.EventHandler(this.newButton_MouseHover);
+            //this.newButton.MouseHover += new System.EventHandler(this.newButton_MouseHover);
             // 
             // flowLayoutPanel1
             // 
@@ -237,7 +236,7 @@
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
->>>>>>> 1f1ff84ae386262ab90d8d75d0567642e071ea69
+
         }
 
         #endregion
