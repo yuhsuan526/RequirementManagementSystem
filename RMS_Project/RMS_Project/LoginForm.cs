@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.Net;
 using System.IO;
 using System.Net.Http;
-using System.Json;
 using Newtonsoft.Json.Linq;
 
 namespace RMS_Project
@@ -61,16 +60,13 @@ namespace RMS_Project
                     Console.WriteLine(content);
                     JObject json = JObject.Parse(content);
                     string message = json["result"].ToString();
-                    string _uid = json["uid"].ToString();
-                    string name = json["name"].ToString();
                     if (message == "success")
                     {
                         if (rememberCheckBox.Checked)
                         {
-                            Properties.Settings.Default["email"] = email.Text;
-                            Properties.Settings.Default["password"] = password.Text;
-                            Properties.Settings.Default["uid"] = _uid;
-                            Properties.Settings.Default["name"] = name;
+                            Properties.Settings.Default.Email = email.Text;
+                            Properties.Settings.Default.Password = email.Text;
+                            Properties.Settings.Default.RememberMe = true;
                             Properties.Settings.Default.Save();
                         }
                         else
