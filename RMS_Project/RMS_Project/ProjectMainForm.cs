@@ -20,6 +20,9 @@ namespace RMS_Project
         private ProjectDetailForm projectDetailForm;
         private RequirementListForm requirementListForm;
         private UserListForm userListForm;
+        private enum TabType { Detail, Member, Requirement, Test };
+        private TabType tabType = TabType.Detail;
+        private Button currentActiveButton = null;
 
         public ProjectMainForm(MainForm mainForm, Project project)
         {
@@ -35,6 +38,8 @@ namespace RMS_Project
             {
                 form.SetFeatureButton(UserInterfaceForm.FeatureType.Edit);
             }
+            currentActiveButton = projectButton;
+            SetButtonColor(projectButton);
         }
 
         public void AddFormToPanel(Form form)
@@ -50,6 +55,22 @@ namespace RMS_Project
 
         public void ClickNewButton()
         {
+            if (currentActiveButton == projectButton)
+            {
+
+            }
+            else if (currentActiveButton == memberButton)
+            {
+
+            }
+            else if (currentActiveButton == requirementButton)
+            {
+
+            }
+            else if (currentActiveButton == testButton)
+            {
+
+            }
         }
         
         private void noFocusCueButton1_MouseMove(object sender, MouseEventArgs e)
@@ -61,7 +82,8 @@ namespace RMS_Project
         private void noFocusCueButton1_MouseLeave(object sender, EventArgs e)
         {
             Button button = sender as Button;
-            button.Image = MainForm.ChangeColor(new Bitmap(button.Image), Color.Black);
+            if (currentActiveButton != button)
+                button.Image = MainForm.ChangeColor(new Bitmap(button.Image), Color.Black);
         }
 
         private void projectButton_Click(object sender, EventArgs e)
@@ -72,6 +94,7 @@ namespace RMS_Project
             {
                 form.SetFeatureButton(UserInterfaceForm.FeatureType.Edit);
             }
+            ChangeTabType(projectButton);
         }
 
         private void memberButton_Click(object sender, EventArgs e)
@@ -82,6 +105,7 @@ namespace RMS_Project
             {
                 form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
             }
+            ChangeTabType(memberButton);
         }
 
         private void requirementButton_Click(object sender, EventArgs e)
@@ -92,6 +116,7 @@ namespace RMS_Project
             {
                 form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
             }
+            ChangeTabType(requirementButton);
         }
 
         private void testButton_Click(object sender, EventArgs e)
@@ -101,6 +126,38 @@ namespace RMS_Project
             {
                 form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
             }
+            ChangeTabType(testButton);
+        }
+
+        private void SetButtonColor(Button button)
+        {
+            button.Image = MainForm.ChangeColor(new Bitmap(button.Image), Color.CornflowerBlue);
+        }
+
+        private void ResetOtherButtonColor()
+        {
+            if (currentActiveButton != projectButton)
+            {
+                projectButton.Image = MainForm.ChangeColor(new Bitmap(projectButton.Image), Color.Black);
+            }
+            if (currentActiveButton != memberButton)
+            {
+                memberButton.Image = MainForm.ChangeColor(new Bitmap(memberButton.Image), Color.Black);
+            }
+            if (currentActiveButton != requirementButton)
+            {
+                requirementButton.Image = MainForm.ChangeColor(new Bitmap(requirementButton.Image), Color.Black);
+            }
+            if (currentActiveButton != testButton)
+            {
+                testButton.Image = MainForm.ChangeColor(new Bitmap(testButton.Image), Color.Black);
+            }
+        }
+
+        private void ChangeTabType(Button button)
+        {
+            currentActiveButton = button;
+            ResetOtherButtonColor();
         }
     }
 

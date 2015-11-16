@@ -65,7 +65,7 @@ namespace RMS_Project
                         if (rememberCheckBox.Checked)
                         {
                             Properties.Settings.Default.Email = email.Text;
-                            Properties.Settings.Default.Password = email.Text;
+                            Properties.Settings.Default.Password = password.Text;
                             Properties.Settings.Default.RememberMe = true;
                             Properties.Settings.Default.Save();
                         }
