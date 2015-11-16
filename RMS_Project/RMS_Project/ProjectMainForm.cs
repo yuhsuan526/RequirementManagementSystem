@@ -103,7 +103,7 @@ namespace RMS_Project
             AddFormToPanel(userListForm);
             if (form != null)
             {
-                form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
+                form.SetFeatureButton(UserInterfaceForm.FeatureType.Hide);
             }
             ChangeTabType(memberButton);
         }
