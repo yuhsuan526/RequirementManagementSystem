@@ -217,6 +217,24 @@ namespace ezLogUITest
             }
         }
 
+        public static void ClickDataGridView(string formName,string dataGridViewName, int rowIndex, int columnIndex)
+        {
+            const int HALF_BUTTON_WIDTH = 8;
+            const int SPINBUTTON_HEIGHT_FINE_TUNE = 3;
+            //Win window
+            WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
+            //
+
+            WinTable table = Robot.FindWinControl(typeof(WinTable), dataGridViewName, sec) as WinTable;
+            WinRow row = table.Rows[rowIndex] as WinRow;
+            WinCell cell = row.Cells[columnIndex] as WinCell;
+            Rectangle boundingRectangle = cell.BoundingRectangle;
+            int halfHeightOfCell = cell.BoundingRectangle.Height / 2;
+            int upperPartYOffset = halfHeightOfCell - SPINBUTTON_HEIGHT_FINE_TUNE;
+            int lowerPartYOffset = halfHeightOfCell + SPINBUTTON_HEIGHT_FINE_TUNE;
+            Mouse.Click(new Point(boundingRectangle.X + boundingRectangle.Width - HALF_BUTTON_WIDTH, boundingRectangle.Y + upperPartYOffset));
+        }
+
         public static void ClickListViewToEmpty(string name, string data)
         {
             WinWindow window = new WinWindow();
@@ -295,6 +313,7 @@ namespace ezLogUITest
             }
         }
 
+
         public static void AssertDataGridViewByIndex(string name, string index, string[] data)
         {
             WinTable table = (WinTable)Robot.FindWinControl(typeof(WinTable), name, _root);
@@ -307,6 +326,17 @@ namespace ezLogUITest
                 WinCell cell = collection[i] as WinCell;
                 Assert.AreEqual(data[i], cell.Value);
             }
+        }
+
+        public static void AssertDataGridViewNumericUpDownCellValue(string formName,string dataGridViewName, int rowIndex, int columnIndex, string value)
+        {
+            //Win window
+            WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
+            //
+            WinTable table = Robot.FindWinControl(typeof(WinTable), dataGridViewName, sec) as WinTable;
+            WinRow row = table.Rows[rowIndex] as WinRow;
+            WinCell cell = row.Cells[columnIndex] as WinCell;
+            Assert.AreEqual(cell.Value, value);
         }
 
         public static void AssertDataItemsInDataGridView(string name, int items)

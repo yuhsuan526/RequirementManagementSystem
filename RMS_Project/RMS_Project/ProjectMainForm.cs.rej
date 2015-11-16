@@ -1,0 +1,9 @@
+diff a/RMS_Project/RMS_Project/ProjectMainForm.cs b/RMS_Project/RMS_Project/ProjectMainForm.cs	(rejected hunks)
+@@ -103,7 +103,6 @@
+             AddFormToPanel(userListForm);
+             if (form != null)
+             {
+-                form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
+                 form.SetFeatureButton(UserInterfaceForm.FeatureType.Hide);
+             }
+             ChangeTabType(memberButton);

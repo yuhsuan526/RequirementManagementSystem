@@ -35,7 +35,7 @@ namespace RMS_Project
             var httpClient = new HttpClient();
             try
             {
-                const string METHOD = "project/getRequirementByProject/";
+                const string METHOD = "requirement/getRequirementByProject/";
                 string url = MainForm.BASE_URL + METHOD + project.id.ToString();
                 Console.WriteLine(url);
                 response = await httpClient.GetAsync(url);
@@ -51,6 +51,7 @@ namespace RMS_Project
                         foreach (JObject jObject in jsonArray)
                         {
                             this.requirementListDataGridView.Rows.Add(jObject["name"], jObject["id"]);
+                            
                             //Project project = new Project(int.Parse(jObject["id"].ToString()), jObject["name"].ToString(), jObject["descript"].ToString());
                             //array.Add(project);
                         }

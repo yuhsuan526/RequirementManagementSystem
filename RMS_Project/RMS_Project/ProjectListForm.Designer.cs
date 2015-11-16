@@ -31,14 +31,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ProjectListDataGridView = new System.Windows.Forms.DataGridView();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.ProjectListDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // ProjectListDataGridView
             // 
+            this.ProjectListDataGridView.AccessibleName = "projectDataGridView";
             this.ProjectListDataGridView.AllowUserToAddRows = false;
             this.ProjectListDataGridView.AllowUserToDeleteRows = false;
             this.ProjectListDataGridView.AllowUserToResizeColumns = false;
@@ -97,6 +98,10 @@
             this.Column2.ReadOnly = true;
             this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Column2.Width = 5;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
             // ProjectListForm
             // 

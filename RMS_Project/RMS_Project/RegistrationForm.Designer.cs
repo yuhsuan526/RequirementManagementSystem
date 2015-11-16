@@ -48,6 +48,8 @@
             this.registerTableLayoutPanel.ColumnCount = 2;
             this.registerTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.registerTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.registerTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.registerTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.registerTableLayoutPanel.Controls.Add(this.label1, 0, 0);
             this.registerTableLayoutPanel.Controls.Add(this.createButton, 0, 10);
             this.registerTableLayoutPanel.Controls.Add(this.backButton, 1, 10);

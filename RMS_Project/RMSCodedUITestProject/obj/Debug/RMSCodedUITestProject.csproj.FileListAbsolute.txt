@@ -1,0 +1,5 @@
+D:\SERequirementAnalysisSystem\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.dll
+D:\SERequirementAnalysisSystem\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.pdb
+D:\SERequirementAnalysisSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.csprojResolveAssemblyReference.cache
+D:\SERequirementAnalysisSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.dll
+D:\SERequirementAnalysisSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.pdb

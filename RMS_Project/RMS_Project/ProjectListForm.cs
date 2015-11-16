@@ -78,5 +78,10 @@ namespace RMS_Project
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
             }
         }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
     }
 }
