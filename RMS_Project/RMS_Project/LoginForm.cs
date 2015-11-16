@@ -61,19 +61,16 @@ namespace RMS_Project
                     Console.WriteLine(content);
                     JObject json = JObject.Parse(content);
                     string message = json["result"].ToString();
-                    string uid = json["uid"].ToString();
+                    string _uid = json["uid"].ToString();
                     string name = json["name"].ToString();
                     if (message == "success")
                     {
                         if (rememberCheckBox.Checked)
                         {
-<<<<<<< HEAD
                             Properties.Settings.Default["email"] = email.Text;
                             Properties.Settings.Default["password"] = password.Text;
-                            Properties.Settings.Default["uid"] = uid;
+                            Properties.Settings.Default["uid"] = _uid;
                             Properties.Settings.Default["name"] = name;
-=======
->>>>>>> 5b34b6b24dbeefc3ba575de71fe3aae1194c159b
                             Properties.Settings.Default.Save();
                         }
                         else

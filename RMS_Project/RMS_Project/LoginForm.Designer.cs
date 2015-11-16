@@ -31,6 +31,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.registerButton = new System.Windows.Forms.Button();
             this.signInButton = new System.Windows.Forms.Button();
+            this.email = new System.Windows.Forms.TextBox();
+            this.password = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.rememberCheckBox = new System.Windows.Forms.CheckBox();
@@ -38,8 +40,6 @@
             this.forgetPasswordLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.email = new System.Windows.Forms.TextBox();
-            this.password = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,6 +102,32 @@
             this.signInButton.UseVisualStyleBackColor = true;
             this.signInButton.Click += new System.EventHandler(this.signInButton_Click);
             // 
+            // email
+            // 
+            this.email.AccessibleName = "emailLabel";
+            this.tableLayoutPanel1.SetColumnSpan(this.email, 2);
+            this.email.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::RMS_Project.Properties.Settings.Default, "Email", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.email.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.email.Location = new System.Drawing.Point(53, 158);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(170, 22);
+            this.email.TabIndex = 1;
+            this.email.Text = global::RMS_Project.Properties.Settings.Default.Email;
+            this.email.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // password
+            // 
+            this.password.AccessibleName = "passwordLabel";
+            this.tableLayoutPanel1.SetColumnSpan(this.password, 2);
+            this.password.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::RMS_Project.Properties.Settings.Default, "Password", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.password.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.password.Location = new System.Drawing.Point(229, 158);
+            this.password.Name = "password";
+            this.password.Size = new System.Drawing.Size(171, 22);
+            this.password.TabIndex = 2;
+            this.password.Text = global::RMS_Project.Properties.Settings.Default.Password;
+            this.password.UseSystemPasswordChar = true;
+            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -152,6 +178,7 @@
             this.emailLinkLabel.Name = "emailLinkLabel";
             this.emailLinkLabel.Size = new System.Drawing.Size(347, 29);
             this.emailLinkLabel.TabIndex = 4;
+            this.emailLinkLabel.TabStop = true;
             this.emailLinkLabel.Text = "Can\'t find your confirmation email?";
             this.emailLinkLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
@@ -167,6 +194,7 @@
             this.forgetPasswordLinkLabel.Name = "forgetPasswordLinkLabel";
             this.forgetPasswordLinkLabel.Size = new System.Drawing.Size(347, 25);
             this.forgetPasswordLinkLabel.TabIndex = 3;
+            this.forgetPasswordLinkLabel.TabStop = true;
             this.forgetPasswordLinkLabel.Text = "Forgot your password?";
             this.forgetPasswordLinkLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
@@ -194,32 +222,6 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Sign into your Account";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // email
-            // 
-            this.email.AccessibleName = "emailLabel";
-            this.tableLayoutPanel1.SetColumnSpan(this.email, 2);
-            this.email.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::RMS_Project.Properties.Settings.Default, "Email", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.email.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.email.Location = new System.Drawing.Point(53, 158);
-            this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(170, 22);
-            this.email.TabIndex = 1;
-            this.email.Text = global::RMS_Project.Properties.Settings.Default.Email;
-            this.email.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // password
-            // 
-            this.password.AccessibleName = "passwordLabel";
-            this.tableLayoutPanel1.SetColumnSpan(this.password, 2);
-            this.password.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::RMS_Project.Properties.Settings.Default, "Password", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.password.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.password.Location = new System.Drawing.Point(229, 158);
-            this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(171, 22);
-            this.password.TabIndex = 2;
-            this.password.Text = global::RMS_Project.Properties.Settings.Default.Password;
-            this.password.UseSystemPasswordChar = true;
             // 
             // LoginForm
             // 
