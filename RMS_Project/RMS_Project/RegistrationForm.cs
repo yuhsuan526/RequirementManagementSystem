@@ -49,10 +49,17 @@ namespace RMS_Project
                     {
                         mainForm.AddFormToPanel(new LoginForm(mainForm));
                         MessageBox.Show("註冊成功", "Success", MessageBoxButtons.OK);
+<<<<<<< HEAD
                     }
                     else
                     {
                         MessageBox.Show("註冊失敗", "Error", MessageBoxButtons.OK);
+=======
+                    }
+                    else
+                    {
+                        MessageBox.Show("註冊失敗", "Error", MessageBoxButtons.OK);
+>>>>>>> 977b606c22726ee196186f1454e5f6912a4f3ab3
                     }
                 }
                 else

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 \\psf\Home\Desktop\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.dll
 \\psf\Home\Desktop\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.pdb
 \\psf\Home\Desktop\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.csprojResolveAssemblyReference.cache
@@ -18,3 +19,25 @@
 \\psf\Home\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.csprojResolveAssemblyReference.cache
 \\psf\Home\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.dll
 \\psf\Home\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.pdb
+=======
+\\psf\Home\Desktop\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.dll
+\\psf\Home\Desktop\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.pdb
+\\psf\Home\Desktop\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.csprojResolveAssemblyReference.cache
+\\psf\Home\Desktop\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.dll
+\\psf\Home\Desktop\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.pdb
+\\psf\Home\Downloads\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.dll
+\\psf\Home\Downloads\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.pdb
+\\psf\Home\Downloads\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.csprojResolveAssemblyReference.cache
+\\psf\Home\Downloads\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.dll
+\\psf\Home\Downloads\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.pdb
+\\psf\Home\Downloads\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.dll
+\\psf\Home\Downloads\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.pdb
+\\psf\Home\Downloads\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.csprojResolveAssemblyReference.cache
+\\psf\Home\Downloads\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.dll
+\\psf\Home\Downloads\RequirementManagementSystem-master\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.pdb
+\\psf\Home\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.dll
+\\psf\Home\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.pdb
+\\psf\Home\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.csprojResolveAssemblyReference.cache
+\\psf\Home\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.dll
+\\psf\Home\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.pdb
+>>>>>>> 977b606c22726ee196186f1454e5f6912a4f3ab3
