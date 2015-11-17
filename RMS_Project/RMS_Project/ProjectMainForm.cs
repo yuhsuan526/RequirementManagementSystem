@@ -29,7 +29,7 @@ namespace RMS_Project
             this.mainForm = mainForm;
             this.project = project;
             projectDetailForm = new ProjectDetailForm(project);
-            requirementListForm = new RequirementListForm(project);
+            requirementListForm = new RequirementListForm(mainForm,project);
             userListForm = new UserListForm(mainForm, project);
             requirementEditorForm = new RequirementEditorForm(mainForm,project);
             AddFormToPanel(projectDetailForm);

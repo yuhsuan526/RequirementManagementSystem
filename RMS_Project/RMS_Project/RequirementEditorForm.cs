@@ -77,7 +77,7 @@ namespace RMS_Project
         {
             JObject jObject = new JObject();
             jObject["name"] = textBox1.Text;
-            jObject["descript"] = richTextBox2.Text;
+            jObject["description"] = richTextBox2.Text;
             jObject["version"] = textBox3.Text;
             jObject["memo"] = richTextBox1.Text;
             jObject["uid"] = mainForm.UID;
@@ -105,7 +105,7 @@ namespace RMS_Project
                     string message = json["result"].ToString();
                     if (message == "success")
                     {
-                        mainForm.AddFormToPanel(new RequirementListForm(project));
+                        mainForm.AddFormToPanel(new RequirementListForm(mainForm,project));
                         MessageBox.Show("需求建立成功", "Success", MessageBoxButtons.OK);
                     }
                 }

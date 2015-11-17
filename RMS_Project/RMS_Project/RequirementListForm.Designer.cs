@@ -77,6 +77,7 @@
             this.requirementListDataGridView.RowTemplate.ReadOnly = true;
             this.requirementListDataGridView.Size = new System.Drawing.Size(419, 363);
             this.requirementListDataGridView.TabIndex = 2;
+            this.requirementListDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.requirementListDataGridView_CellClick);
             // 
             // Column1
             // 
