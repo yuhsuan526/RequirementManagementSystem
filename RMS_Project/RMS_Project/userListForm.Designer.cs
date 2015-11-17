@@ -55,6 +55,7 @@
             // 
             // userListView
             // 
+            this.userListView.AccessibleName = "userList";
             this.userListView.AutoArrange = false;
             this.userListView.BackColor = System.Drawing.SystemColors.Control;
             this.userListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -93,6 +94,7 @@
             // 
             // UserListForm
             // 
+            this.AccessibleName = "userListForm";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
