@@ -31,7 +31,7 @@ namespace RMS_Project
             projectDetailForm = new ProjectDetailForm(project);
             requirementListForm = new RequirementListForm(project);
             userListForm = new UserListForm(mainForm, project);
-            requirementEditorForm = new RequirementEditorForm(project);
+            requirementEditorForm = new RequirementEditorForm(mainForm,project);
             AddFormToPanel(projectDetailForm);
             UserInterfaceForm form = mainForm.GetUserInterface();
             if (form != null)

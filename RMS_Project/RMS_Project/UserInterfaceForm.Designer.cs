@@ -233,12 +233,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 51e7af06cba672493c93d19a552df5b108ec4de2
-        }
+       }
 
         #endregion
 
