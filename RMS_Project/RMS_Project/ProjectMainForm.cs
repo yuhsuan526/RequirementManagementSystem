@@ -175,4 +175,21 @@ namespace RMS_Project
         public string name;
         public string description;
     }
+
+    public class Requirement
+    {
+        public Requirement(int id, string name, string description, string version, string memo)
+        {
+            this.id = id;
+            this.name = name;
+            this.description = description;
+            this.version = version;
+            this.memo = memo;
+        }
+        public int id;
+        public string name;
+        public string description;
+        public string version;
+        public string memo;
+    }
 }
