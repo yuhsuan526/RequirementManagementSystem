@@ -39,6 +39,7 @@
             // 
             // requirementListDataGridView
             // 
+            this.requirementListDataGridView.AccessibleName = "requirementListDataGridView";
             this.requirementListDataGridView.AllowUserToAddRows = false;
             this.requirementListDataGridView.AllowUserToDeleteRows = false;
             this.requirementListDataGridView.AllowUserToResizeColumns = false;

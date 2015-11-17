@@ -277,6 +277,16 @@ namespace ezLogUITest
             Assert.AreEqual(edit.DisplayText, assertValue);
         }
 
+        public static void AssertOtherText(string formName,string name, string assertValue)
+        {
+            WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
+
+            //WinTable table = Robot.FindWinControl(typeof(WinTable), dataGridViewName, sec) as WinTable;
+
+            WinText edit = Robot.FindWinControl(typeof(WinText), name , sec) as WinText;
+            Assert.AreEqual(edit.DisplayText, assertValue);
+        }
+
         public static void AssertCheckBox(string name, bool isChecked)
         {
             WinCheckBox checkBox = (WinCheckBox)Robot.FindWinControl(typeof(WinCheckBox), name, _root);
@@ -298,6 +308,21 @@ namespace ezLogUITest
         {
             WinComboBox comboBox = (WinComboBox)Robot.FindWinControl(typeof(WinComboBox), name, _root);
             Assert.AreEqual(comboBox.SelectedItem, assertValue);
+        }
+
+        public static void AssertOtherListViewByValue(string formName,string name, string[] data)
+        {
+            WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
+
+            WinList list = Robot.FindWinControl(typeof(WinList), name, sec) as WinList;
+
+            //WinList list = new WinList(window);
+            list.WindowTitles.Add("Task Type");
+            UITestControlCollection collection = list.Items;
+            for (int i = 0; i < collection.Count; i++)
+            {
+                Assert.AreEqual(data[i], collection[i].Name);
+            }
         }
 
         public static void AssertListViewByValue(string name, string[] data)

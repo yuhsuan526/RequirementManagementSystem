@@ -197,6 +197,45 @@ namespace RMSCodedUITestProject
 
             Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0);
             Robot.AssertWindowExist("ProjectDetailForm", true);
+
+            //確認Detail資料顯示是否正確
+            Robot.AssertOtherText("projectDetailForm", "projectNumber", "5");
+            Robot.AssertOtherText("projectDetailForm", "projectName", "ZZ");
+            Robot.AssertOtherText("projectDetailForm", "projectDescription", "AAA");
+        }
+
+        [TestMethod]
+        [DeploymentItem("RMS_Project.exe")]
+        public void ClickProjectDetailFormButtonAndCheckData()
+        {
+            string []data = new string[2];
+            data[0] = "ZZ";
+            data[1] = "j00064qaz123@gmail.com";
+            //設定帳密
+            Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "a123456");
+
+            //確認登入資料
+            Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.ClickOtherFormButton("loginForm", "signInButton");
+            Robot.AssertWindowExist("projectListForm", true);
+
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0);
+            Robot.AssertWindowExist("ProjectDetailForm", true);
+
+            //確認Detail資料顯示是否正確
+            Robot.AssertOtherText("projectDetailForm", "projectNumber", "5");
+            Robot.AssertOtherText("projectDetailForm", "projectName", "ZZ");
+            Robot.AssertOtherText("projectDetailForm", "projectDescription", "AAA");
+
+            //確認 member資料是否正確
+            Robot.ClickOtherFormButton("projectMainForm", "memberButton");
+            Robot.AssertOtherListViewByValue("userListForm", "userList", data);
+
+            //確認requirement資料是否正確
+            Robot.ClickOtherFormButton("projectMainForm", "requirementButton");
+            Robot.AssertDataGridViewNumericUpDownCellValue("projectMainForm", "requirementListDataGridView", 0, 0, "ZZ_Quirement");
+            Robot.AssertDataGridViewNumericUpDownCellValue("projectMainForm", "requirementListDataGridView", 0, 1, "4");
         }
     }
 }

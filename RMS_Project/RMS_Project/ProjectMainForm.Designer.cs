@@ -80,6 +80,7 @@
             // 
             // projectButton
             // 
+            this.projectButton.AccessibleName = "projectButton";
             this.projectButton.BackColor = System.Drawing.Color.Transparent;
             this.projectButton.FlatAppearance.BorderSize = 0;
             this.projectButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -98,6 +99,7 @@
             // 
             // memberButton
             // 
+            this.memberButton.AccessibleName = "memberButton";
             this.memberButton.BackColor = System.Drawing.Color.Transparent;
             this.memberButton.FlatAppearance.BorderSize = 0;
             this.memberButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -116,6 +118,7 @@
             // 
             // requirementButton
             // 
+            this.requirementButton.AccessibleName = "requirementButton";
             this.requirementButton.BackColor = System.Drawing.Color.Transparent;
             this.requirementButton.FlatAppearance.BorderSize = 0;
             this.requirementButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -134,6 +137,7 @@
             // 
             // testButton
             // 
+            this.testButton.AccessibleName = "testButton";
             this.testButton.BackColor = System.Drawing.Color.Transparent;
             this.testButton.FlatAppearance.BorderSize = 0;
             this.testButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -152,13 +156,13 @@
             // 
             // ProjectMainForm
             // 
-            this.AccessibleName = "ProjectDetailForm";
+            this.AccessibleName = "ProjectMainForm";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 361);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ProjectMainForm";
-            this.Text = "ProjectDetailForm";
+            this.Text = "ProjectMainForm";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
