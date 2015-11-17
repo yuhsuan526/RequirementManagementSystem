@@ -51,7 +51,7 @@ namespace RMS_Project
                         foreach (JObject jObject in jsonArray)
                         {
                             this.requirementListDataGridView.Rows.Add(jObject["name"], jObject["id"]);
-                            
+                            //Requirement requirement = new Requirement((int)jObject["id"],jObject["name"].ToString(),jObject["descript"].ToString(),jObject["version"].ToString(),jObject["memo"].ToString());
                             //Project project = new Project(int.Parse(jObject["id"].ToString()), jObject["name"].ToString(), jObject["descript"].ToString());
                             //array.Add(project);
                         }

@@ -31,7 +31,7 @@ namespace RMS_Project
             projectDetailForm = new ProjectDetailForm(project);
             requirementListForm = new RequirementListForm(project);
             userListForm = new UserListForm(mainForm, project);
-            requirementEditorForm = new RequirementEditorForm(project);
+            requirementEditorForm = new RequirementEditorForm(mainForm,project);
             AddFormToPanel(projectDetailForm);
             UserInterfaceForm form = mainForm.GetUserInterface();
             if (form != null)
@@ -174,5 +174,22 @@ namespace RMS_Project
         public int id;
         public string name;
         public string description;
+    }
+
+    public class Requirement
+    {
+        public Requirement(int id, string name, string description, string version, string memo)
+        {
+            this.id = id;
+            this.name = name;
+            this.description = description;
+            this.version = version;
+            this.memo = memo;
+        }
+        public int id;
+        public string name;
+        public string description;
+        public string version;
+        public string memo;
     }
 }
