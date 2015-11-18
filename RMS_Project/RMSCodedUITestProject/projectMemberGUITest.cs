@@ -59,5 +59,34 @@ namespace RMSCodedUITestProject
             Robot.ClickOtherFormButton("projectMainForm", "memberButton");
             Robot.AssertOtherListViewByValue("userListForm", "userList", data);
         }
+
+
+        [TestMethod]
+        [DeploymentItem("RMS_Project.exe")]
+        public void AddMemberData()
+        {
+            string[] data = new string[4];
+            data[0] = "zz";
+            data[1] = "AA";
+            data[2] = "j00064qaz123@gmail.com";
+            data[3] = "user@user.com";
+            //設定帳密
+            Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "a123456");
+
+            //確認登入資料
+            Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.ClickOtherFormButton("loginForm", "signInButton");
+
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0);
+
+            //確認 member資料是否正確
+            Robot.ClickOtherFormButton("projectMainForm", "memberButton");
+            Robot.SetOtherFormEdit("projectMainForm", "userName", "user@user.com");
+            Robot.ClickOtherFormButton("projectMainForm", "userButton");
+            Robot.AssertWindowExist("Success", true);
+            Robot.ClickOtherFormButton("Success", "確定");
+            Robot.AssertOtherListViewByValue("projectMainForm", "userList", data);
+        }
     }
 }

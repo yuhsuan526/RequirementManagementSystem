@@ -332,11 +332,12 @@ namespace ezLogUITest
 
             WinList list = Robot.FindWinControl(typeof(WinList), name, sec) as WinList;
 
-            //WinList list = new WinList(window);
             list.WindowTitles.Add("Task Type");
             UITestControlCollection collection = list.Items;
+            
             for (int i = 0; i < collection.Count; i++)
             {
+                //Console.WriteLine(collection[i].Name.ToString());
                 Assert.AreEqual(data[i], collection[i].Name);
             }
         }
