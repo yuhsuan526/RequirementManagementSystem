@@ -124,11 +124,9 @@ namespace ezLogUITest
 
         public static void SetOtherFormEdit(string formName, string editName, string keys)
         {
-            WinWindow window = new WinWindow();
-            window.SearchProperties[WinWindow.PropertyNames.Name] = formName;
-            window.WindowTitles.Add(formName);
-            WinEdit edit = new WinEdit(window);
-            edit.SearchProperties[WinWindow.PropertyNames.Name] = editName;
+            WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
+            //
+            WinEdit edit = Robot.FindWinControl(typeof(WinEdit), editName, sec) as WinEdit;
             if (edit.Text != keys)
                 edit.Text = keys;
         }
@@ -154,6 +152,24 @@ namespace ezLogUITest
             WinButton button = new WinButton(window);
             button.SearchProperties[WinWindow.PropertyNames.Name] = buttonName;
             Mouse.Click(button);
+        }
+
+        public static void ClickOtherFormComboBox(string formName, string conboBoxName,string selectName)
+        {
+            string[] item;
+            //Win window
+            WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
+            //
+            WinComboBox comboBox = Robot.FindWinControl(typeof(WinComboBox), conboBoxName, sec) as WinComboBox;
+            item = comboBox.GetContent();
+            foreach (string items in item) 
+            {
+                if (items.Contains(selectName)) 
+                {
+                    comboBox.SelectedItem = selectName;
+                    break;
+                } 
+            }
         }
 
         public static void CloseWindow(string name)
@@ -316,11 +332,12 @@ namespace ezLogUITest
 
             WinList list = Robot.FindWinControl(typeof(WinList), name, sec) as WinList;
 
-            //WinList list = new WinList(window);
             list.WindowTitles.Add("Task Type");
             UITestControlCollection collection = list.Items;
+            
             for (int i = 0; i < collection.Count; i++)
             {
+                //Console.WriteLine(collection[i].Name.ToString());
                 Assert.AreEqual(data[i], collection[i].Name);
             }
         }

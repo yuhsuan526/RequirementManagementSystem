@@ -89,6 +89,8 @@
             // 
             // priorityComboBox
             // 
+            this.priorityComboBox.AccessibleName = "priorityComboBox";
+            this.priorityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.priorityComboBox.FormattingEnabled = true;
             this.priorityComboBox.Location = new System.Drawing.Point(303, 101);
             this.priorityComboBox.Name = "priorityComboBox";
@@ -98,6 +100,8 @@
             // 
             // statusComboBox
             // 
+            this.statusComboBox.AccessibleName = "statusComboBox";
+            this.statusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.statusComboBox.FormattingEnabled = true;
             this.statusComboBox.Location = new System.Drawing.Point(428, 101);
             this.statusComboBox.Name = "statusComboBox";
@@ -130,6 +134,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.AccessibleName = "requirementName";
             this.tableLayoutPanel1.SetColumnSpan(this.textBox1, 4);
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Location = new System.Drawing.Point(53, 49);
@@ -150,6 +155,7 @@
             // 
             // textBox3
             // 
+            this.textBox3.AccessibleName = "versionLabel";
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox3.Location = new System.Drawing.Point(178, 101);
             this.textBox3.Name = "textBox3";
@@ -204,6 +210,7 @@
             // 
             // richTextBox2
             // 
+            this.richTextBox2.AccessibleName = "descriptionLabel";
             this.tableLayoutPanel1.SetColumnSpan(this.richTextBox2, 4);
             this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox2.Location = new System.Drawing.Point(53, 153);
@@ -214,6 +221,7 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.AccessibleName = "memoLabel";
             this.tableLayoutPanel1.SetColumnSpan(this.richTextBox1, 4);
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(53, 282);
@@ -224,6 +232,7 @@
             // 
             // confirmButton
             // 
+            this.confirmButton.AccessibleName = "confirmButton";
             this.confirmButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.confirmButton.Location = new System.Drawing.Point(428, 385);
             this.confirmButton.Name = "confirmButton";
@@ -235,6 +244,8 @@
             // 
             // typeComboBox
             // 
+            this.typeComboBox.AccessibleName = "typeComboBox";
+            this.typeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeComboBox.FormattingEnabled = true;
             this.typeComboBox.Location = new System.Drawing.Point(53, 101);
             this.typeComboBox.Name = "typeComboBox";
@@ -244,12 +255,14 @@
             // 
             // RequirementEditorForm
             // 
+            this.AccessibleName = "requirementEditorForm";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 443);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "RequirementEditorForm";
             this.Text = "RequirementEditorForm";
+            this.Load += new System.EventHandler(this.RequirementEditorForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -272,7 +285,7 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button confirmButton;
         private System.Windows.Forms.ComboBox statusComboBox;
-        private System.Windows.Forms.ComboBox typeComboBox;
         private System.Windows.Forms.ComboBox priorityComboBox;
+        private System.Windows.Forms.ComboBox typeComboBox;
     }
 }

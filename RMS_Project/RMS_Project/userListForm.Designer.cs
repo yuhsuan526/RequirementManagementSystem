@@ -74,6 +74,7 @@
             // 
             // button1
             // 
+            this.button1.AccessibleName = "userButton";
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Location = new System.Drawing.Point(204, 211);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
@@ -86,6 +87,7 @@
             // 
             // userTextBox
             // 
+            this.userTextBox.AccessibleName = "userName";
             this.userTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.userTextBox.Location = new System.Drawing.Point(53, 215);
             this.userTextBox.Name = "userTextBox";
