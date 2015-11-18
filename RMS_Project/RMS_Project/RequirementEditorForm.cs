@@ -243,5 +243,10 @@ namespace RMS_Project
                 }
             }
         }
+
+        private void RequirementEditorForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
