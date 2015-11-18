@@ -16,12 +16,14 @@ namespace RMS_Project
 {
     public partial class RequirementListForm : Form
     {
+        private MainForm mainForm;
         private Project project;
         private ArrayList array;
 
-        public RequirementListForm(Project project)
+        public RequirementListForm(MainForm mainForm,Project project)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
             this.project = project;
             this.requirementListDataGridView.ClearSelection();
             array = new ArrayList();
@@ -50,10 +52,9 @@ namespace RMS_Project
                     {
                         foreach (JObject jObject in jsonArray)
                         {
-                            this.requirementListDataGridView.Rows.Add(jObject["name"], jObject["id"]);
-                            //Requirement requirement = new Requirement((int)jObject["id"],jObject["name"].ToString(),jObject["descript"].ToString(),jObject["version"].ToString(),jObject["memo"].ToString());
-                            //Project project = new Project(int.Parse(jObject["id"].ToString()), jObject["name"].ToString(), jObject["descript"].ToString());
-                            //array.Add(project);
+                            this.requirementListDataGridView.Rows.Add(jObject["name"], jObject["updated_at"]);
+                            Requirement requirement = new Requirement((int)jObject["id"], jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString());
+                            array.Add(requirement);
                         }
                     }
                 }
@@ -68,6 +69,15 @@ namespace RMS_Project
                 Console.WriteLine(e.ToString());
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
             }
+        }
+
+        private void requirementListDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewCell cell = requirementListDataGridView.Rows[e.RowIndex].Cells[0];
+            Requirement requirement = array[e.RowIndex] as Requirement;
+            Form form = new RequirementDetailForm(requirement);
+            if (mainForm.AddFormToPanel(form))
+                mainForm.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_paper_outline);
         }
     }
 }
