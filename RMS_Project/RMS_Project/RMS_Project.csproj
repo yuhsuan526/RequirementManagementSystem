@@ -133,6 +133,12 @@
       <DependentUpon>RequirementListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="TestEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestEditorForm.Designer.cs">
+      <DependentUpon>TestEditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,12 @@
     </Compile>
     <Compile Include="TestDetailForm.Designer.cs">
       <DependentUpon>TestDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TraceabilityMatrixForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TraceabilityMatrixForm.Designer.cs">
+      <DependentUpon>TraceabilityMatrixForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserInterfaceForm.cs">
       <SubType>Form</SubType>
@@ -201,11 +213,17 @@
     <EmbeddedResource Include="RequirementListForm.resx">
       <DependentUpon>RequirementListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TestEditorForm.resx">
+      <DependentUpon>TestEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestListForm.resx">
       <DependentUpon>TestListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestDetailForm.resx">
       <DependentUpon>TestDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TraceabilityMatrixForm.resx">
+      <DependentUpon>TraceabilityMatrixForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserInterfaceForm.resx">
       <DependentUpon>UserInterfaceForm.cs</DependentUpon>

@@ -38,6 +38,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.TestName = new System.Windows.Forms.Label();
@@ -46,7 +47,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.TestListDataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -192,6 +192,17 @@
             this.tableLayoutPanel1.TabIndex = 2;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
+            // richTextBox2
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.richTextBox2, 2);
+            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox2.Location = new System.Drawing.Point(138, 323);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ReadOnly = true;
+            this.richTextBox2.Size = new System.Drawing.Size(479, 74);
+            this.richTextBox2.TabIndex = 30;
+            this.richTextBox2.Text = "";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -287,17 +298,6 @@
             this.richTextBox1.TabIndex = 29;
             this.richTextBox1.Text = "";
             // 
-            // richTextBox2
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.richTextBox2, 2);
-            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox2.Location = new System.Drawing.Point(138, 323);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(479, 74);
-            this.richTextBox2.TabIndex = 30;
-            this.richTextBox2.Text = "";
-            // 
             // TestDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -306,7 +306,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.TestListDataGridView);
             this.Name = "TestDetailForm";
-            this.Text = "TestList";
+            this.Text = "Test Detail";
             ((System.ComponentModel.ISupportInitialize)(this.TestListDataGridView)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
