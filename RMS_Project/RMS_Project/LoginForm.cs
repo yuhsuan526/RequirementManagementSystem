@@ -45,6 +45,40 @@ namespace RMS_Project
             jObject["email"] = email.Text;
             jObject["password"] = password.Text;
 
+            string status = await mainForm._model.SignIn(jObject);
+            if (status == "success")
+            {
+                if (rememberCheckBox.Checked)
+                {
+                    Properties.Settings.Default.Email = email.Text;
+                    Properties.Settings.Default.Password = password.Text;
+                    Properties.Settings.Default.RememberMe = true;
+                    Properties.Settings.Default.Save();
+                }
+                else
+                {
+                    Properties.Settings.Default.Email = "";
+                    Properties.Settings.Default.Password = "";
+                    Properties.Settings.Default.RememberMe = false;
+                    Properties.Settings.Default.Save();
+                }
+                mainForm.SignIn();
+
+            }
+            else if (status == "帳號或密碼錯誤")
+            {
+                MessageBox.Show("帳號或密碼錯誤", "Error", MessageBoxButtons.OK);
+            }
+            else if (status == "登入失敗")
+            {
+                MessageBox.Show("登入失敗", "Error", MessageBoxButtons.OK);
+            }
+            else if (status == "伺服器無回應")
+            {
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+
+            /*
             HttpClient client = new HttpClient();
 
             HttpResponseMessage response;
@@ -95,7 +129,7 @@ namespace RMS_Project
                 Console.WriteLine(e.ToString());
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
             }
-
+            */
         }
 
         private void registerButton_Click(object sender, EventArgs e)

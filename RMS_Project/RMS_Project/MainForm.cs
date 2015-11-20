@@ -12,10 +12,12 @@ namespace RMS_Project
 {
     public partial class MainForm : Form
     {
+        public Model _model = new Model();
+
         private UserInterfaceForm userInterface;
-        private int accountId;
-        private string username;
-        public static string BASE_URL = "http://140.124.183.32:3000/";
+        //private int accountId;
+        //private string username;
+        //public static string BASE_URL = "http://140.124.183.32:3000/";
         private bool isAnimating = false;
         private LoginForm loginForm;
 
@@ -41,21 +43,21 @@ namespace RMS_Project
             panelCommnadQueue = new Queue<PanelCommand>();
         }
 
-        public int UID
+        /*public int UID
         {
             get
             {
                 return accountId;
             }
-        }
+        }*/
 
-        public string Username
+        /*public string Username
         {
             get
             {
                 return username;
             }
-        }
+        }*/
 
         public bool AddFormToPanel(Form form)
         {
@@ -241,10 +243,10 @@ namespace RMS_Project
             return false;
         }
 
-        public void SignIn(int uid, string name)
+        public void SignIn()
         {
-            this.accountId = uid;
-            this.username = name;
+            /*this.accountId = uid;
+            this.username = name;*/
             UserInterfaceForm form = new UserInterfaceForm(this);
             AddFormToNavigationPanel(form);
             this.userInterface = form;
@@ -254,8 +256,9 @@ namespace RMS_Project
         {
             if (PopFormsFromPanel(loginForm))
             {
-                this.accountId = -1;
-                this.username = "";
+                /*this.accountId = -1;
+                this.username = "";*/
+                _model.SignOut();
                 PopFormFromNavigationPanelAnimated();
                 this.userInterface = null;
             }

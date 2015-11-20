@@ -30,6 +30,21 @@ namespace RMS_Project
             jObject["email"] = email.Text;
             jObject["password"] = password.Text;
 
+            string status = await mainForm._model.Registry(jObject);
+            if (status == "success")
+            {
+                mainForm.AddFormToPanel(new LoginForm(mainForm));
+                MessageBox.Show("註冊成功", "Success", MessageBoxButtons.OK);
+            }
+            else if (status == "註冊失敗")
+            {
+                MessageBox.Show("註冊失敗", "Error", MessageBoxButtons.OK);
+            }
+            else if (status == "伺服器無回應")
+            {
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+            /*
             HttpClient client = new HttpClient();
 
             HttpResponseMessage response;
@@ -65,7 +80,7 @@ namespace RMS_Project
             {
                 Console.WriteLine(e.ToString());
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
-            }
+            }*/
         }
 
         private void backButton_Click(object sender, EventArgs e)

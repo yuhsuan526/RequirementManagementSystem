@@ -29,45 +29,33 @@ namespace RMS_Project
 
         private async void GetUserListByProject()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response;
-            var httpClient = new HttpClient();
-            try
+            HttpResponseMessage response = await mainForm._model.GetUserListByProject(project.id.ToString());
+            string content = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                const string METHOD = "project/getUserListByProject/";
-                string url = MainForm.BASE_URL + METHOD + project.id.ToString();
-                Console.WriteLine(url);
-                response = await httpClient.GetAsync(url);
-                string content = await response.Content.ReadAsStringAsync();
-                if (response.StatusCode == HttpStatusCode.OK)
+                JObject json = JObject.Parse(content);
+                string message = json["result"].ToString();
+                JArray jsonArray = JArray.Parse(json["users"].ToString());
+                if (message == "success")
                 {
-                    Console.WriteLine(content);
-                    JObject json = JObject.Parse(content);
-                    string message = json["result"].ToString();
-                    JArray jsonArray = JArray.Parse(json["users"].ToString());
-                    if (message == "success")
+                    ListViewItem[] items = new ListViewItem[jsonArray.Count];
+                    for (int i = 0; i < jsonArray.Count; i++)
                     {
-                        ListViewItem[] items = new ListViewItem[jsonArray.Count];
-                        for (int i = 0; i < jsonArray.Count; i++)
-                        {
-                            JObject jObject = jsonArray[i] as JObject;
-                            ListViewItem item = new ListViewItem(new string[] { jObject["name"].ToString(), jObject["email"].ToString() }, 0);
-                            items[i] = item;
-                        }
-                        userListView.Items.Clear();
-                        userListView.Items.AddRange(items);
+                        JObject jObject = jsonArray[i] as JObject;
+                        ListViewItem item = new ListViewItem(new string[] { jObject["name"].ToString(), jObject["email"].ToString() }, 0);
+                        items[i] = item;
                     }
-                }
-                else
-                {
-                    Console.WriteLine(response.ToString());
-                    MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
+                    userListView.Items.Clear();
+                    userListView.Items.AddRange(items);
                 }
             }
-            catch (HttpRequestException e)
+            else if (response.StatusCode == HttpStatusCode.RequestTimeout)
             {
-                Console.WriteLine(e.ToString());
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
             }
         }
 
@@ -88,47 +76,36 @@ namespace RMS_Project
         {
             JObject jObject = new JObject();
             jObject["add_email"] = userTextBox.Text;
-            jObject["uid"] = mainForm.UID;
+            jObject["uid"] = mainForm._model.UID;
             jObject["pid"] = project.id;
 
-            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await mainForm._model.PostAddUserToProject(jObject);
 
-            HttpResponseMessage response;
-            Console.WriteLine(jObject.ToString());
-            var httpClient = new HttpClient();
-            try
+            string content = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                const string METHOD = "project/addUserToProject";
-                string url = MainForm.BASE_URL + METHOD;
-                Console.WriteLine(url);
-                response = await httpClient.PostAsync(url, new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
-                string content = await response.Content.ReadAsStringAsync();
-                if (response.StatusCode == HttpStatusCode.OK)
+                Console.WriteLine(content);
+                JObject json = JObject.Parse(content);
+                string message = json["result"].ToString();
+                if (message == "success")
                 {
-                    Console.WriteLine(content);
-                    JObject json = JObject.Parse(content);
-                    string message = json["result"].ToString();
-                    if (message == "success")
-                    {
-                        userTextBox.Text = "";
-                        GetUserListByProject();
-                        MessageBox.Show("加入成功", "Success", MessageBoxButtons.OK);
-                    }
-                    else
-                    {
-                        MessageBox.Show(json["message"].ToString(), "Error", MessageBoxButtons.OK);
-                    }
+                    userTextBox.Text = "";
+                    GetUserListByProject();
+                    MessageBox.Show("加入成功", "Success", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    Console.WriteLine(response.ToString());
-                    MessageBox.Show("加入失敗", "Error", MessageBoxButtons.OK);
+                    MessageBox.Show(json["message"].ToString(), "Error", MessageBoxButtons.OK);
                 }
             }
-            catch (HttpRequestException e)
+            else if (response.StatusCode == HttpStatusCode.RequestTimeout)
             {
-                Console.WriteLine(e.ToString());
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                Console.WriteLine(response.ToString());
+                MessageBox.Show("加入失敗", "Error", MessageBoxButtons.OK);
             }
         }
     }

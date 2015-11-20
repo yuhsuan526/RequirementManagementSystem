@@ -63,9 +63,9 @@ namespace RMS_Project
             snames = new List<string>();
 
 
-            getMethod(PRIORITY);
-            getMethod(REQUIREMENT);
-            getMethod(STATUS);
+            GetMethod(PRIORITY);
+            GetMethod(REQUIREMENT);
+            GetMethod(STATUS);
         }
 
         private void confirm_Click(object sender, EventArgs e)
@@ -80,130 +80,97 @@ namespace RMS_Project
             jObject["description"] = richTextBox2.Text;
             jObject["version"] = textBox3.Text;
             jObject["memo"] = richTextBox1.Text;
-            jObject["uid"] = mainForm.UID;
+            jObject["uid"] = mainForm._model.UID;
             jObject["pid"] = project.id;
             jObject["type"] = selectedType;
             jObject["priority"] = selectedPriority;
             jObject["status"] = selectedStatus;
 
-            HttpClient client = new HttpClient();
-
-            HttpResponseMessage response;
-            Console.WriteLine(jObject.ToString());
-            var httpClient = new HttpClient();
-            try
+            string status = await mainForm._model.AddRequirement(jObject);
+            if (status == "success")
             {
-                const string METHOD = "requirement/new";
-                string url = MainForm.BASE_URL + METHOD;
-                //Console.WriteLine(url);
-                response = await httpClient.PostAsync(url, new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
-                string content = await response.Content.ReadAsStringAsync();
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    //Console.WriteLine(content);
-                    JObject json = JObject.Parse(content);
-                    string message = json["result"].ToString();
-                    if (message == "success")
-                    {
-                        mainForm.AddFormToPanel(new RequirementListForm(mainForm,project));
-                        MessageBox.Show("需求建立成功", "Success", MessageBoxButtons.OK);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine(response.ToString());
-                    MessageBox.Show("需求建立失敗", "Error", MessageBoxButtons.OK);
-                }
+                mainForm.AddFormToPanel(new RequirementListForm(mainForm, project));
+                MessageBox.Show("需求建立成功", "Success", MessageBoxButtons.OK);
             }
-            catch (HttpRequestException e)
+            else if (status == "需求建立失敗")
             {
-                Console.WriteLine(e.ToString());
+                MessageBox.Show("需求建立失敗", "Error", MessageBoxButtons.OK);
+            }
+            else if (status == "伺服器無回應")
+            {
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
             }
         }
 
-        private async void getMethod(String method)
+        private async void GetMethod(String method)
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response;
-            var httpClient = new HttpClient();
-            try
+            HttpResponseMessage response = await mainForm._model.GetMethod(method);
+
+            string content = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                const string METHOD = "requirement/";
-                string url = MainForm.BASE_URL + METHOD + method;
-                Console.WriteLine(url);
-                response = await httpClient.GetAsync(url);
-                string content = await response.Content.ReadAsStringAsync();
-                if (response.StatusCode == HttpStatusCode.OK)
+                JObject json = JObject.Parse(content);
+                string message = json["result"].ToString();
+                JArray jsonArray = null;
+                switch (method)
                 {
-                    //Console.WriteLine(content);
-                    JObject json = JObject.Parse(content);
-                    string message = json["result"].ToString();
-                    JArray jsonArray = null;
-                    switch (method)
-                    {
-                        case PRIORITY:
-                            jsonArray = JArray.Parse(json["priority"].ToString());
-                            if (message == "success" && jsonArray != null)
+                    case PRIORITY:
+                        jsonArray = JArray.Parse(json["priority"].ToString());
+                        if (message == "success" && jsonArray != null)
+                        {
+                            foreach (JObject jObject in jsonArray)
                             {
-                                foreach (JObject jObject in jsonArray)
-                                {
-                                    int id = (int)jObject["id"];
-                                    string name = jObject["name"].ToString();
-                                    //Console.WriteLine(name);
-                                    this.pids.Add(id);
-                                    this.pnames.Add(name);
-                                }
+                                int id = (int)jObject["id"];
+                                string name = jObject["name"].ToString();
+                                this.pids.Add(id);
+                                this.pnames.Add(name);
                             }
-                            for (int i = 0; i < pids.Count; i++)
-                                priorityComboBox.Items.Add(new Item(pids.ElementAt(i), pnames.ElementAt(i)));
-                            break;
-                        case REQUIREMENT:
-                            jsonArray = JArray.Parse(json["type"].ToString());
-                            if (message == "success" && jsonArray != null)
+                        }
+                        for (int i = 0; i < pids.Count; i++)
+                            priorityComboBox.Items.Add(new Item(pids.ElementAt(i), pnames.ElementAt(i)));
+                        break;
+                    case REQUIREMENT:
+                        jsonArray = JArray.Parse(json["type"].ToString());
+                        if (message == "success" && jsonArray != null)
+                        {
+                            foreach (JObject jObject in jsonArray)
                             {
-                                foreach (JObject jObject in jsonArray)
-                                {
-                                    int id = (int)jObject["id"];
-                                    string name = jObject["name"].ToString();
-                                    //Console.WriteLine(name);
-                                    this.rids.Add(id);
-                                    this.rnames.Add(name);
-                                }
+                                int id = (int)jObject["id"];
+                                string name = jObject["name"].ToString();
+                                this.rids.Add(id);
+                                this.rnames.Add(name);
                             }
-                            for (int i = 0; i < rids.Count; i++)
-                                typeComboBox.Items.Add(new Item(rids.ElementAt(i), rnames.ElementAt(i)));
-                            break;
-                        case STATUS:
-                            jsonArray = JArray.Parse(json["statuses"].ToString());
-                            if (message == "success" && jsonArray != null)
+                        }
+                        for (int i = 0; i < rids.Count; i++)
+                            typeComboBox.Items.Add(new Item(rids.ElementAt(i), rnames.ElementAt(i)));
+                        break;
+                    case STATUS:
+                        jsonArray = JArray.Parse(json["statuses"].ToString());
+                        if (message == "success" && jsonArray != null)
+                        {
+                            foreach (JObject jObject in jsonArray)
                             {
-                                foreach (JObject jObject in jsonArray)
-                                {
-                                    int id = (int)jObject["id"];
-                                    string name = jObject["name"].ToString();
-                                    //Console.WriteLine(name);
-                                    this.sids.Add(id);
-                                    this.snames.Add(name);
-                                }
+                                int id = (int)jObject["id"];
+                                string name = jObject["name"].ToString();
+                                this.sids.Add(id);
+                                this.snames.Add(name);
                             }
-                            for (int i = 0; i < sids.Count; i++)
-                                statusComboBox.Items.Add(new Item(sids.ElementAt(i), snames.ElementAt(i)));
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine(response.ToString());
-                    MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
+                        }
+                        for (int i = 0; i < sids.Count; i++)
+                            statusComboBox.Items.Add(new Item(sids.ElementAt(i), snames.ElementAt(i)));
+                        break;
+                    default:
+                        break;
                 }
             }
-            catch (HttpRequestException e)
+            else if (response.StatusCode == HttpStatusCode.RequestTimeout)
             {
-                Console.WriteLine(e.ToString());
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                Console.WriteLine(response.ToString());
+                MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
             }
         }
 

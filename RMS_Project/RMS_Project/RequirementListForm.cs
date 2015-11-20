@@ -20,7 +20,7 @@ namespace RMS_Project
         private Project project;
         private ArrayList array;
 
-        public RequirementListForm(MainForm mainForm,Project project)
+        public RequirementListForm(MainForm mainForm, Project project)
         {
             InitializeComponent();
             this.mainForm = mainForm;
@@ -32,42 +32,32 @@ namespace RMS_Project
 
         private async void GetRequirementByProject()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response;
-            var httpClient = new HttpClient();
-            try
+            HttpResponseMessage response = await mainForm._model.GetRequirementByProject(project.id.ToString());
+            string content = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                const string METHOD = "requirement/getRequirementByProject/";
-                string url = MainForm.BASE_URL + METHOD + project.id.ToString();
-                Console.WriteLine(url);
-                response = await httpClient.GetAsync(url);
-                string content = await response.Content.ReadAsStringAsync();
-                if (response.StatusCode == HttpStatusCode.OK)
+                Console.WriteLine(content);
+                JObject json = JObject.Parse(content);
+                string message = json["result"].ToString();
+                JArray jsonArray = JArray.Parse(json["requirements"].ToString());
+                if (message == "success")
                 {
-                    Console.WriteLine(content);
-                    JObject json = JObject.Parse(content);
-                    string message = json["result"].ToString();
-                    JArray jsonArray = JArray.Parse(json["requirements"].ToString());
-                    if (message == "success")
+                    foreach (JObject jObject in jsonArray)
                     {
-                        foreach (JObject jObject in jsonArray)
-                        {
-                            this.requirementListDataGridView.Rows.Add(jObject["name"], jObject["updated_at"]);
-                            Requirement requirement = new Requirement((int)jObject["id"], jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString());
-                            array.Add(requirement);
-                        }
+                        this.requirementListDataGridView.Rows.Add(jObject["name"], jObject["updated_at"]);
+                        Requirement requirement = new Requirement((int)jObject["id"], jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString());
+                        array.Add(requirement);
                     }
                 }
-                else
-                {
-                    Console.WriteLine(response.ToString());
-                    MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
-                }
             }
-            catch (HttpRequestException e)
+            else if (response.StatusCode == HttpStatusCode.RequestTimeout)
             {
-                Console.WriteLine(e.ToString());
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                Console.WriteLine(response.ToString());
+                MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
             }
         }
 

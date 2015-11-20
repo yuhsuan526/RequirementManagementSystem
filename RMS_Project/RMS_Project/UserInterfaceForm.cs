@@ -14,7 +14,7 @@ namespace RMS_Project
 {
     public partial class UserInterfaceForm : Form
     {
-        private MainForm mainForm;
+        private MainForm _mainForm;
         private ArrayList buttons;
         private ContextMenuStrip contextMenuStrip;
         ProjectListForm projectListForm;
@@ -22,7 +22,7 @@ namespace RMS_Project
         public UserInterfaceForm(MainForm mainForm)
         {
             InitializeComponent();
-            this.mainForm = mainForm;
+            this._mainForm = mainForm;
             buttons = new ArrayList();
             NoFocusCueButton projectsButton = GetItemButton();
             projectsButton.Text = "Projects";
@@ -46,13 +46,13 @@ namespace RMS_Project
             if (e.ClickedItem.Text == "Sign out")
             {
                 contextMenuStrip.Hide();
-                mainForm.SignOut();
+                _mainForm.SignOut();
             }
         }
 
         void projectsButton_Click(object sender, EventArgs e)
         {
-            if (mainForm.PopFormsFromPanel(projectListForm))
+            if (_mainForm.PopFormsFromPanel(projectListForm))
             {
                 for (int i = 0; i < buttons.Count; i++)
                 {
@@ -118,7 +118,7 @@ namespace RMS_Project
                 InterfaceModel model = (InterfaceModel)buttons[i];
                 if (model.button == button)
                 {
-                    isAvailable = mainForm.PopFormsFromPanel(model.form);
+                    isAvailable = _mainForm.PopFormsFromPanel(model.form);
                     break;
                 }
             }
@@ -156,15 +156,15 @@ namespace RMS_Project
         {
             if (buttons.Count <= 0)
             {
-                Control control = mainForm.GetCurrentFormInPancel();
+                Control control = _mainForm.GetCurrentFormInPancel();
                 if (!control.GetType().Equals(typeof(ProjectEditorForm)))
                 {
-                    mainForm.AddFormToPanel(new ProjectEditorForm(mainForm));
+                    _mainForm.AddFormToPanel(new ProjectEditorForm(_mainForm));
                 }
             }
             else
             {
-                Control control = mainForm.GetCurrentFormInPancel();
+                Control control = _mainForm.GetCurrentFormInPancel();
                 if (control.GetType().Equals(typeof(ProjectMainForm)))
                 {
                     ProjectMainForm form = control as ProjectMainForm;
