@@ -116,7 +116,6 @@ namespace RMS_Project
             {
                 const string METHOD = "project/new";
                 string url = BASE_URL + METHOD;
-                Console.WriteLine(url);
                 response = await httpClient.PostAsync(url, new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
                 string content = await response.Content.ReadAsStringAsync();
                 if (response.StatusCode == HttpStatusCode.OK)
@@ -172,7 +171,6 @@ namespace RMS_Project
             {
                 const string METHOD = "project/getUserListByProject/";
                 string url = BASE_URL + METHOD + projectId;
-                //Console.WriteLine(url);
                 response = await httpClient.GetAsync(url);
                 return response;
             }
@@ -230,7 +228,6 @@ namespace RMS_Project
             HttpClient client = new HttpClient();
 
             HttpResponseMessage response;
-            //Console.WriteLine(jObject.ToString());
             var httpClient = new HttpClient();
             try
             {

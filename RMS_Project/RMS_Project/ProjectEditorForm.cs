@@ -40,6 +40,8 @@ namespace RMS_Project
             {
                 mainForm.AddFormToPanel(new ProjectListForm(mainForm));
                 MessageBox.Show("專案建立成功", "Success", MessageBoxButtons.OK);
+                ProjectListForm form = mainForm.GetFormByType(typeof(ProjectListForm)) as ProjectListForm;
+                form.RefreshProjectList();
             }
             else if (status == "專案建立失敗")
             {

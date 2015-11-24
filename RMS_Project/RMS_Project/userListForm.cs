@@ -84,7 +84,6 @@ namespace RMS_Project
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                Console.WriteLine(content);
                 JObject json = JObject.Parse(content);
                 string message = json["result"].ToString();
                 if (message == "success")
@@ -104,7 +103,6 @@ namespace RMS_Project
             }
             else
             {
-                Console.WriteLine(response.ToString());
                 MessageBox.Show("加入失敗", "Error", MessageBoxButtons.OK);
             }
         }

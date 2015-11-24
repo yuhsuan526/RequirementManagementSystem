@@ -169,7 +169,6 @@ namespace RMS_Project
             }
             else
             {
-                Console.WriteLine(response.ToString());
                 MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
             }
         }

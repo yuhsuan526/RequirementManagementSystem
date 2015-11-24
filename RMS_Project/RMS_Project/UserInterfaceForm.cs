@@ -27,7 +27,7 @@ namespace RMS_Project
             NoFocusCueButton projectsButton = GetItemButton();
             projectsButton.Text = "Projects";
             projectsButton.Margin = new Padding(10, 13, 0, 2);
-            projectsButton.Image = Properties.Resources.ios7_folder_outline;
+            projectsButton.Image = Properties.Resources.ios7_briefcase_outline;
             projectsButton.Click += projectsButton_Click;
             flowLayoutPanel1.Controls.Add(projectsButton);
             contextMenuStrip = new ContextMenuStrip();
@@ -59,8 +59,8 @@ namespace RMS_Project
                     InterfaceModel model = (InterfaceModel)buttons[i];
                     flowLayoutPanel1.Controls.Remove(model.arrow);
                     flowLayoutPanel1.Controls.Remove(model.button);
-                    buttons.Remove(model);
                 }
+                buttons.Clear();
             }
         }
 

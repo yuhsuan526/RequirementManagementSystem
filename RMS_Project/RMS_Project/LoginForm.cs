@@ -77,59 +77,6 @@ namespace RMS_Project
             {
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
             }
-
-            /*
-            HttpClient client = new HttpClient();
-
-            HttpResponseMessage response;
-            Console.WriteLine(jObject.ToString());
-            var httpClient = new HttpClient();
-            try
-            {
-                response = await httpClient.PostAsync("http://140.124.183.32:3000/user/login", new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
-                string content = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(content);
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    Console.WriteLine(content);
-                    JObject json = JObject.Parse(content);
-                    string message = json["result"].ToString();
-                    if (message == "success")
-                    {
-                        if (rememberCheckBox.Checked)
-                        {
-                            Properties.Settings.Default.Email = email.Text;
-                            Properties.Settings.Default.Password = password.Text;
-                            Properties.Settings.Default.RememberMe = true;
-                            Properties.Settings.Default.Save();
-                        }
-                        else
-                        {
-                            Properties.Settings.Default.Email = "";
-                            Properties.Settings.Default.Password = "";
-                            Properties.Settings.Default.RememberMe = false;
-                            Properties.Settings.Default.Save();
-                        }
-                        int uid = Int32.Parse(json["uid"].ToString());
-                        string username = json["name"].ToString();
-                        mainForm.SignIn(uid, username);
-                    }
-                    else
-                    {
-                        MessageBox.Show("帳號或密碼錯誤", "Error", MessageBoxButtons.OK);
-                    }
-                } 
-                else
-                {
-                    MessageBox.Show("登入失敗", "Error", MessageBoxButtons.OK);
-                }
-            }
-            catch (HttpRequestException e)
-            {
-                Console.WriteLine(e.ToString());
-                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
-            }
-            */
         }
 
         private void registerButton_Click(object sender, EventArgs e)

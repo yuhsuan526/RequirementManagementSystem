@@ -44,43 +44,6 @@ namespace RMS_Project
             {
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
             }
-            /*
-            HttpClient client = new HttpClient();
-
-            HttpResponseMessage response;
-            Console.WriteLine(jObject.ToString());
-            var httpClient = new HttpClient();
-            try
-            {
-                response = await httpClient.PostAsync("http://140.124.183.32:3000/user/register", new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
-                string content = await response.Content.ReadAsStringAsync();
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    Console.WriteLine(content);
-                    JObject json = JObject.Parse(content);
-                    string message = json["result"].ToString();
-                    if (message == "success")
-                    {
-                        mainForm.AddFormToPanel(new LoginForm(mainForm));
-                        MessageBox.Show("註冊成功", "Success", MessageBoxButtons.OK);
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("註冊失敗", "Error", MessageBoxButtons.OK);
-
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("註冊失敗", "Error", MessageBoxButtons.OK);
-                }
-            }
-            catch (HttpRequestException e)
-            {
-                Console.WriteLine(e.ToString());
-                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
-            }*/
         }
 
         private void backButton_Click(object sender, EventArgs e)

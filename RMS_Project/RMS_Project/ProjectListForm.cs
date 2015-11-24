@@ -25,7 +25,7 @@ namespace RMS_Project
             this.mainForm = mainForm;
             this.ProjectListDataGridView.ClearSelection();
             array = new ArrayList();
-            PostProduct();
+            RefreshProjectList();
         }
 
         private void ProjectListDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -34,11 +34,11 @@ namespace RMS_Project
             Project project = array[e.RowIndex] as Project;
             Form form = new ProjectMainForm(mainForm, project);
             if(mainForm.AddFormToPanel(form))
-                mainForm.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_paper_outline);
+                mainForm.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_folder_outline);
         }
 
 
-        private async void PostProduct()
+        public async void RefreshProjectList()
         {
             HttpResponseMessage response = await mainForm._model.GetProjectList();
             string content = await response.Content.ReadAsStringAsync();

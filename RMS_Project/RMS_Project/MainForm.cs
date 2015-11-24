@@ -21,9 +21,9 @@ namespace RMS_Project
         private bool isAnimating = false;
         private LoginForm loginForm;
 
-        public enum Command { AddFormToPanel, PopFormsFromPanel };
-        private Queue<PanelCommand> panelCommnadQueue;
-        public class PanelCommand
+        //public enum Command { AddFormToPanel, PopFormsFromPanel };
+        //private Queue<PanelCommand> panelCommnadQueue;
+        /*public class PanelCommand
         {
             public PanelCommand(Command command, Control control)
             {
@@ -32,7 +32,7 @@ namespace RMS_Project
             }
             public Command command;
             public Control control;
-        }
+        }*/
 
         public MainForm()
         {
@@ -40,7 +40,7 @@ namespace RMS_Project
             loginForm = new LoginForm(this);
             AddFormToPanel(loginForm);
             AddFormToNavigationPanel(new DefaultInterfaceForm());
-            panelCommnadQueue = new Queue<PanelCommand>();
+            //panelCommnadQueue = new Queue<PanelCommand>();
         }
 
         /*public int UID
@@ -77,8 +77,19 @@ namespace RMS_Project
                 waitForAnimation(500);
                 return true;
             }
-            Console.WriteLine(mainFormPanel.Controls.Count);
             return false;
+        }
+
+        public Control GetFormByType(Type type)
+        {
+            foreach(Control control in mainFormPanel.Controls)
+            {
+                if (control.GetType().Equals(type))
+                {
+                    return control;
+                }
+            }
+            return null;
         }
 
         public void PopFormFromPanel()
@@ -147,7 +158,6 @@ namespace RMS_Project
                     this.BeginInvoke(mi, null);
                 });
             }
-            Console.WriteLine(mainFormPanel.Controls.Count);
             return true;
         }
 
@@ -162,7 +172,7 @@ namespace RMS_Project
                 //this.BeginInvoke(mi, null);
             });
         }
-
+        /*
         private void DoCommand()
         {
             if (panelCommnadQueue.Count > 0)
@@ -182,7 +192,7 @@ namespace RMS_Project
                 }
             }
         }
-
+        */
         public Control GetCurrentFormInPancel()
         {
             if (mainFormPanel.Controls.Count > 0)
@@ -201,7 +211,6 @@ namespace RMS_Project
             form.Width = navigationPanel.Width;
             form.Height = navigationPanel.Height;
             form.Show();
-            Console.WriteLine(form.Location.ToString());
             if (navigationPanel.Controls.Count > 1)
             {
                 Util.Animate(navigationPanel.Controls[navigationPanel.Controls.Count - 2], Util.Effect.Slide, 500, 180);
@@ -256,8 +265,6 @@ namespace RMS_Project
         {
             if (PopFormsFromPanel(loginForm))
             {
-                /*this.accountId = -1;
-                this.username = "";*/
                 _model.SignOut();
                 PopFormFromNavigationPanelAnimated();
                 this.userInterface = null;
