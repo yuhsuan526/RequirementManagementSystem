@@ -1,5 +1,0 @@
-D:\CYL\Documents\GitHub\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.dll
-D:\CYL\Documents\GitHub\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.pdb
-D:\CYL\Documents\GitHub\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.csprojResolveAssemblyReference.cache
-D:\CYL\Documents\GitHub\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.dll
-D:\CYL\Documents\GitHub\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.pdb
