@@ -64,92 +64,101 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultInterfaceForm.cs">
+    <Compile Include="MainForm\DefaultInterfaceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DefaultInterfaceForm.Designer.cs">
+    <Compile Include="MainForm\DefaultInterfaceForm.Designer.cs">
       <DependentUpon>DefaultInterfaceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="MainForm\InterfaceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="MainForm\InterfaceForm.Designer.cs">
+      <DependentUpon>InterfaceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PresentationModel.cs" />
+    <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\Requirement.cs" />
+    <Compile Include="UGMS\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UGMS\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="MainForm\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="MainForm\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Model.cs" />
-    <Compile Include="ProjectDetailForm.cs">
+    <Compile Include="PMS\ProjectDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectDetailForm.Designer.cs">
+    <Compile Include="PMS\ProjectDetailForm.Designer.cs">
       <DependentUpon>ProjectDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectMainForm.cs">
+    <Compile Include="PMS\ProjectMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectMainForm.Designer.cs">
+    <Compile Include="PMS\ProjectMainForm.Designer.cs">
       <DependentUpon>ProjectMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectEditorForm.cs">
+    <Compile Include="PMS\ProjectEditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectEditorForm.Designer.cs">
+    <Compile Include="PMS\ProjectEditorForm.Designer.cs">
       <DependentUpon>ProjectEditorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectListForm.cs">
+    <Compile Include="PMS\ProjectListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectListForm.Designer.cs">
+    <Compile Include="PMS\ProjectListForm.Designer.cs">
       <DependentUpon>ProjectListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegistrationForm.cs">
+    <Compile Include="UGMS\RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistrationForm.Designer.cs">
+    <Compile Include="UGMS\RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequirementDetailForm.cs">
+    <Compile Include="RMIAS\RequirementDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RequirementDetailForm.Designer.cs">
+    <Compile Include="RMIAS\RequirementDetailForm.Designer.cs">
       <DependentUpon>RequirementDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RequirementEditorForm.cs">
+    <Compile Include="RMIAS\RequirementEditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RequirementEditorForm.Designer.cs">
+    <Compile Include="RMIAS\RequirementEditorForm.Designer.cs">
       <DependentUpon>RequirementEditorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RequirementListForm.cs">
+    <Compile Include="RMIAS\RequirementListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RequirementListForm.Designer.cs">
+    <Compile Include="RMIAS\RequirementListForm.Designer.cs">
       <DependentUpon>RequirementListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="TestEditorForm.cs">
+    <Compile Include="TCMS\TestEditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestEditorForm.Designer.cs">
+    <Compile Include="TCMS\TestEditorForm.Designer.cs">
       <DependentUpon>TestEditorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestListForm.cs">
+    <Compile Include="TCMS\TestListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestListForm.Designer.cs">
+    <Compile Include="TCMS\TestListForm.Designer.cs">
       <DependentUpon>TestListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestDetailForm.cs">
+    <Compile Include="TCMS\TestDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestDetailForm.Designer.cs">
+    <Compile Include="TCMS\TestDetailForm.Designer.cs">
       <DependentUpon>TestDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TraceabilityMatrixForm.cs">
@@ -158,41 +167,41 @@
     <Compile Include="TraceabilityMatrixForm.Designer.cs">
       <DependentUpon>TraceabilityMatrixForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserInterfaceForm.cs">
+    <Compile Include="MainForm\UserInterfaceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserInterfaceForm.Designer.cs">
+    <Compile Include="MainForm\UserInterfaceForm.Designer.cs">
       <DependentUpon>UserInterfaceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserListForm.cs">
+    <Compile Include="PMS\UserListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserListForm.Designer.cs">
+    <Compile Include="PMS\UserListForm.Designer.cs">
       <DependentUpon>UserListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
-    <EmbeddedResource Include="DefaultInterfaceForm.resx">
+    <EmbeddedResource Include="MainForm\DefaultInterfaceForm.resx">
       <DependentUpon>DefaultInterfaceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="UGMS\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="MainForm\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectDetailForm.resx">
+    <EmbeddedResource Include="PMS\ProjectDetailForm.resx">
       <DependentUpon>ProjectDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectMainForm.resx">
+    <EmbeddedResource Include="PMS\ProjectMainForm.resx">
       <DependentUpon>ProjectMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectEditorForm.resx">
+    <EmbeddedResource Include="PMS\ProjectEditorForm.resx">
       <DependentUpon>ProjectEditorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectListForm.resx">
+    <EmbeddedResource Include="PMS\ProjectListForm.resx">
       <DependentUpon>ProjectListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegistrationForm.resx">
+    <EmbeddedResource Include="UGMS\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -205,31 +214,31 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RequirementDetailForm.resx">
+    <EmbeddedResource Include="RMIAS\RequirementDetailForm.resx">
       <DependentUpon>RequirementDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RequirementEditorForm.resx">
+    <EmbeddedResource Include="RMIAS\RequirementEditorForm.resx">
       <DependentUpon>RequirementEditorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RequirementListForm.resx">
+    <EmbeddedResource Include="RMIAS\RequirementListForm.resx">
       <DependentUpon>RequirementListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestEditorForm.resx">
+    <EmbeddedResource Include="TCMS\TestEditorForm.resx">
       <DependentUpon>TestEditorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestListForm.resx">
+    <EmbeddedResource Include="TCMS\TestListForm.resx">
       <DependentUpon>TestListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestDetailForm.resx">
+    <EmbeddedResource Include="TCMS\TestDetailForm.resx">
       <DependentUpon>TestDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TraceabilityMatrixForm.resx">
       <DependentUpon>TraceabilityMatrixForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserInterfaceForm.resx">
+    <EmbeddedResource Include="MainForm\UserInterfaceForm.resx">
       <DependentUpon>UserInterfaceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="userListForm.resx">
+    <EmbeddedResource Include="PMS\userListForm.resx">
       <DependentUpon>UserListForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -2069,6 +2078,7 @@
   <ItemGroup>
     <None Include="images\ios7-arrow-forward-small.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -18,9 +18,9 @@ namespace RMS_Project
         {
             InitializeComponent();
             this.project = project;
-            nameLabel.Text = project.name;
-            descriptionLabel.Text = project.description;
-            numberLabel.Text = project.id.ToString();
+            nameLabel.Text = project.NAME;
+            descriptionLabel.Text = project.DESC;
+            numberLabel.Text = project.ID.ToString();
         }
     }
 }

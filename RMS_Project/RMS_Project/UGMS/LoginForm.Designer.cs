@@ -76,7 +76,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(453, 364);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // registerButton
             // 
@@ -113,7 +112,6 @@
             this.email.Size = new System.Drawing.Size(170, 22);
             this.email.TabIndex = 1;
             this.email.Text = global::RMS_Project.Properties.Settings.Default.Email;
-            this.email.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // password
             // 
@@ -138,7 +136,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Email";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 

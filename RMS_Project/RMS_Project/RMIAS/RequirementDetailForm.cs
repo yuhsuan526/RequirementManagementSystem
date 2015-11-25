@@ -16,10 +16,10 @@ namespace RMS_Project
         {
             InitializeComponent();
             
-            numberLabel.Text = requirement.id.ToString();
-            nameLabel.Text = requirement.name;
-            descriptionLabel.Text = requirement.description;
-            memoLabel.Text = requirement.memo;
+            numberLabel.Text = requirement.ID.ToString();
+            nameLabel.Text = requirement.NAME;
+            descriptionLabel.Text = requirement.DESC;
+            memoLabel.Text = requirement.MEMO;
         }
     }
 }

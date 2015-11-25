@@ -81,7 +81,7 @@ namespace RMS_Project
             jObject["version"] = textBox3.Text;
             jObject["memo"] = richTextBox1.Text;
             jObject["uid"] = mainForm._model.UID;
-            jObject["pid"] = project.id;
+            jObject["pid"] = project.ID;
             jObject["type"] = selectedType;
             jObject["priority"] = selectedPriority;
             jObject["status"] = selectedStatus;

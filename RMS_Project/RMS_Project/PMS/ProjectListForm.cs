@@ -49,6 +49,7 @@ namespace RMS_Project
                 JArray jsonArray = JArray.Parse(json["projects"].ToString());
                 if (message == "success")
                 {
+                    this.ProjectListDataGridView.Rows.Clear();
                     foreach (JObject jObject in jsonArray)
                     {
                         this.ProjectListDataGridView.Rows.Add(jObject["name"], jObject["id"]);

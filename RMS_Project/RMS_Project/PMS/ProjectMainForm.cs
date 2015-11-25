@@ -162,34 +162,4 @@ namespace RMS_Project
             ResetOtherButtonColor();
         }
     }
-
-    public class Project
-    {
-        public Project(int id, string name, string description)
-        {
-            this.id = id;
-            this.name = name;
-            this.description = description;
-        }
-        public int id;
-        public string name;
-        public string description;
-    }
-
-    public class Requirement
-    {
-        public Requirement(int id, string name, string description, string version, string memo)
-        {
-            this.id = id;
-            this.name = name;
-            this.description = description;
-            this.version = version;
-            this.memo = memo;
-        }
-        public int id;
-        public string name;
-        public string description;
-        public string version;
-        public string memo;
-    }
 }

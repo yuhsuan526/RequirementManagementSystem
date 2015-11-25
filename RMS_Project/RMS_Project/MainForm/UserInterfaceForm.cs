@@ -16,20 +16,38 @@ namespace RMS_Project
     {
         private MainForm _mainForm;
         private ArrayList buttons;
-        private ContextMenuStrip contextMenuStrip;
         ProjectListForm projectListForm;
+        private ContextMenuStrip contextMenuStrip;
+
         public enum FeatureType { New, Edit, Hide };
+
         public UserInterfaceForm(MainForm mainForm)
         {
             InitializeComponent();
             this._mainForm = mainForm;
             buttons = new ArrayList();
+            addProjectButton();
+            addUserMenu();
+            projectListForm = new ProjectListForm(mainForm);
+            mainForm.AddFormToPanel(projectListForm);
+            ProjectMainForm pMainForm = new ProjectMainForm(mainForm, null);
+            mainForm.AddFormToNavigationPanel(pMainForm);
+        }
+
+        //Add hierarchy button (project button)
+        private void addProjectButton()
+        {
             NoFocusCueButton projectsButton = GetItemButton();
             projectsButton.Text = "Projects";
             projectsButton.Margin = new Padding(10, 13, 0, 2);
             projectsButton.Image = Properties.Resources.ios7_briefcase_outline;
             projectsButton.Click += projectsButton_Click;
-            flowLayoutPanel1.Controls.Add(projectsButton);
+            flowLayoutPanel.Controls.Add(projectsButton);
+        }
+
+        //Add user menu
+        private void addUserMenu()
+        {
             contextMenuStrip = new ContextMenuStrip();
             contextMenuStrip.Items.Add("Edit account");
             contextMenuStrip.Items.Add("Manage organizations");
@@ -37,8 +55,6 @@ namespace RMS_Project
             contextMenuStrip.Items.Add("Sign out");
             contextMenuStrip.ShowImageMargin = false;
             contextMenuStrip.ItemClicked += contextMenuStrip_ItemClicked;
-            projectListForm = new ProjectListForm(mainForm);
-            mainForm.AddFormToPanel(projectListForm);
         }
 
         void contextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -57,8 +73,8 @@ namespace RMS_Project
                 for (int i = 0; i < buttons.Count; i++)
                 {
                     InterfaceModel model = (InterfaceModel)buttons[i];
-                    flowLayoutPanel1.Controls.Remove(model.arrow);
-                    flowLayoutPanel1.Controls.Remove(model.button);
+                    flowLayoutPanel.Controls.Remove(model.arrow);
+                    flowLayoutPanel.Controls.Remove(model.button);
                 }
                 buttons.Clear();
             }
@@ -103,8 +119,8 @@ namespace RMS_Project
             model.button.Image = image;
             model.button.Text = buttonName;
             model.button.Click += button_Click;
-            flowLayoutPanel1.Controls.Add(model.arrow);
-            flowLayoutPanel1.Controls.Add(model.button);
+            flowLayoutPanel.Controls.Add(model.arrow);
+            flowLayoutPanel.Controls.Add(model.button);
             buttons.Add(model);
         }
 
@@ -127,8 +143,8 @@ namespace RMS_Project
                 for (i = i + 1; i < buttons.Count; i++)
                 {
                     InterfaceModel model = (InterfaceModel)buttons[i];
-                    flowLayoutPanel1.Controls.Remove(model.arrow);
-                    flowLayoutPanel1.Controls.Remove(model.button);
+                    flowLayoutPanel.Controls.Remove(model.arrow);
+                    flowLayoutPanel.Controls.Remove(model.button);
                     buttons.Remove(model);
                 }
             }
@@ -156,7 +172,7 @@ namespace RMS_Project
         {
             if (buttons.Count <= 0)
             {
-                Control control = _mainForm.GetCurrentFormInPancel();
+                Control control = _mainForm.GetCurrentFormInPanel();
                 if (!control.GetType().Equals(typeof(ProjectEditorForm)))
                 {
                     _mainForm.AddFormToPanel(new ProjectEditorForm(_mainForm));
@@ -164,7 +180,7 @@ namespace RMS_Project
             }
             else
             {
-                Control control = _mainForm.GetCurrentFormInPancel();
+                Control control = _mainForm.GetCurrentFormInPanel();
                 if (control.GetType().Equals(typeof(ProjectMainForm)))
                 {
                     ProjectMainForm form = control as ProjectMainForm;

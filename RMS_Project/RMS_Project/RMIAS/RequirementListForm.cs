@@ -32,7 +32,7 @@ namespace RMS_Project
 
         private async void GetRequirementByProject()
         {
-            HttpResponseMessage response = await mainForm._model.GetRequirementByProject(project.id.ToString());
+            HttpResponseMessage response = await mainForm._model.GetRequirementByProject(project.ID.ToString());
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -41,6 +41,7 @@ namespace RMS_Project
                 JArray jsonArray = JArray.Parse(json["requirements"].ToString());
                 if (message == "success")
                 {
+                    this.requirementListDataGridView.Rows.Clear();
                     foreach (JObject jObject in jsonArray)
                     {
                         this.requirementListDataGridView.Rows.Add(jObject["name"], jObject["updated_at"]);

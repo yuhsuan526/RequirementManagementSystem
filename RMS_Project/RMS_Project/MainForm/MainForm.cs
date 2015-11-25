@@ -15,55 +15,23 @@ namespace RMS_Project
         public Model _model = new Model();
 
         private UserInterfaceForm userInterface;
-        //private int accountId;
-        //private string username;
-        //public static string BASE_URL = "http://140.124.183.32:3000/";
         private bool isAnimating = false;
         private LoginForm loginForm;
 
-        //public enum Command { AddFormToPanel, PopFormsFromPanel };
-        //private Queue<PanelCommand> panelCommnadQueue;
-        /*public class PanelCommand
-        {
-            public PanelCommand(Command command, Control control)
-            {
-                this.command = command;
-                this.control = control;
-            }
-            public Command command;
-            public Control control;
-        }*/
-
+        //Constructor
         public MainForm()
         {
             InitializeComponent();
             loginForm = new LoginForm(this);
             AddFormToPanel(loginForm);
             AddFormToNavigationPanel(new DefaultInterfaceForm());
-            //panelCommnadQueue = new Queue<PanelCommand>();
         }
 
-        /*public int UID
-        {
-            get
-            {
-                return accountId;
-            }
-        }*/
-
-        /*public string Username
-        {
-            get
-            {
-                return username;
-            }
-        }*/
-
+        //Add form to mainFormPanel
         public bool AddFormToPanel(Form form)
         {
             if (isAnimating)
             {
-                //panelCommnadQueue.Enqueue(new PanelCommand(Command.AddFormToPanel, form));
                 return false;
             }
             form.TopLevel = false;
@@ -80,6 +48,7 @@ namespace RMS_Project
             return false;
         }
 
+        // Get the form from mainFormPanel by type
         public Control GetFormByType(Type type)
         {
             foreach(Control control in mainFormPanel.Controls)
@@ -92,6 +61,7 @@ namespace RMS_Project
             return null;
         }
 
+        //remove form from mainform
         public void PopFormFromPanel()
         {
             if (mainFormPanel.Controls.Count > 0)
@@ -99,32 +69,33 @@ namespace RMS_Project
                 mainFormPanel.Controls.RemoveAt(mainFormPanel.Controls.Count - 1);
             }
         }
+        
+        //User animation to move the panel from mainFormPanel
+        //public bool PopFormFromPanelAnimated()
+        //{
+        //    if (isAnimating)
+        //    {
+        //        return false;
+        //    }
+        //    if (mainFormPanel.Controls.Count > 1)
+        //    {
+        //        Util.Animate(mainFormPanel.Controls[mainFormPanel.Controls.Count - 2], Util.Effect.Slide, 500, 180);
+        //        waitForAnimation(500);
+        //        MethodInvoker mi = new MethodInvoker(this.PopFormFromPanel);
+        //        var delay = Task.Delay(500).ContinueWith(_ =>
+        //        {
+        //            this.BeginInvoke(mi, null);
+        //        });
+        //        return true;
+        //    }
+        //    return false;
+        //}
 
-        public bool PopFormFromPanelAnimated()
-        {
-            if (isAnimating)
-            {
-                return false;
-            }
-            if (mainFormPanel.Controls.Count > 1)
-            {
-                Util.Animate(mainFormPanel.Controls[mainFormPanel.Controls.Count - 2], Util.Effect.Slide, 500, 180);
-                waitForAnimation(500);
-                MethodInvoker mi = new MethodInvoker(this.PopFormFromPanel);
-                var delay = Task.Delay(500).ContinueWith(_ =>
-                {
-                    this.BeginInvoke(mi, null);
-                });
-                return true;
-            }
-            return false;
-        }
-
+        //Use animation to move the panel from mainFormPanel to the right side
         public bool PopFormsFromPanel(Control control)
         {
             if (isAnimating)
             {
-                //panelCommnadQueue.Enqueue(new PanelCommand(Command.PopFormsFromPanel, control));
                 return false;
             }
             Control topControl = null;
@@ -161,39 +132,18 @@ namespace RMS_Project
             return true;
         }
 
-
+        //Waiting time
         public void waitForAnimation(int waitingTime)
         {
             isAnimating = true;
-            //MethodInvoker mi = new MethodInvoker(this.DoCommand);
             var delay = Task.Delay(waitingTime).ContinueWith(_ =>
             {
                 isAnimating = false;
-                //this.BeginInvoke(mi, null);
             });
         }
-        /*
-        private void DoCommand()
-        {
-            if (panelCommnadQueue.Count > 0)
-            {
-                PanelCommand command = panelCommnadQueue.Dequeue();
-                if (command != null)
-                {
-                    switch (command.command)
-                    {
-                        case Command.AddFormToPanel:
-                            AddFormToPanel(command.control as Form);
-                            break;
-                        case Command.PopFormsFromPanel:
-                            PopFormsFromPanel(command.control);
-                            break;
-                    }
-                }
-            }
-        }
-        */
-        public Control GetCurrentFormInPancel()
+
+        //Get current form in mainFormPanel
+        public Control GetCurrentFormInPanel()
         {
             if (mainFormPanel.Controls.Count > 0)
             {
@@ -203,6 +153,7 @@ namespace RMS_Project
             return null;
         }
 
+        //Add form to nevigation panel
         public void AddFormToNavigationPanel(Form form)
         {
             form.TopLevel = false;
@@ -222,12 +173,14 @@ namespace RMS_Project
             return userInterface;
         }
 
+        //Add hierarchy button to userinterface
         public void AddFormButtonToUserInterface(Form form, string name, Image image)
         {
             if (this.userInterface != null)
                 this.userInterface.AddFormButtonToBar(form, name, image);
         }
 
+        //Remove form from navigationPanel
         public void PopFormFromNavigationPanel()
         {
             if (navigationPanel.Controls.Count > 0)
@@ -236,6 +189,7 @@ namespace RMS_Project
             }
         }
 
+        //Use animation to move the panel from navigationPanel to the right side
         public bool PopFormFromNavigationPanelAnimated()
         {
             if (navigationPanel.Controls.Count > 1)
@@ -254,8 +208,6 @@ namespace RMS_Project
 
         public void SignIn()
         {
-            /*this.accountId = uid;
-            this.username = name;*/
             UserInterfaceForm form = new UserInterfaceForm(this);
             AddFormToNavigationPanel(form);
             this.userInterface = form;

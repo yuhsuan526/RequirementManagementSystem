@@ -29,7 +29,7 @@ namespace RMS_Project
 
         private async void GetUserListByProject()
         {
-            HttpResponseMessage response = await mainForm._model.GetUserListByProject(project.id.ToString());
+            HttpResponseMessage response = await mainForm._model.GetUserListByProject(project.ID.ToString());
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -77,7 +77,7 @@ namespace RMS_Project
             JObject jObject = new JObject();
             jObject["add_email"] = userTextBox.Text;
             jObject["uid"] = mainForm._model.UID;
-            jObject["pid"] = project.id;
+            jObject["pid"] = project.ID;
 
             HttpResponseMessage response = await mainForm._model.PostAddUserToProject(jObject);
 

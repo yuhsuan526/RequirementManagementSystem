@@ -30,13 +30,13 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.menuFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.projectButton = new RMS_Project.NoFocusCueButton();
             this.memberButton = new RMS_Project.NoFocusCueButton();
             this.requirementButton = new RMS_Project.NoFocusCueButton();
             this.testButton = new RMS_Project.NoFocusCueButton();
             this.tableLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.menuFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -46,7 +46,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.mainPanel, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.menuFlowLayoutPanel, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -63,20 +63,20 @@
             this.mainPanel.Size = new System.Drawing.Size(718, 355);
             this.mainPanel.TabIndex = 1;
             // 
-            // flowLayoutPanel1
+            // menuFlowLayoutPanel
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel1.Controls.Add(this.projectButton);
-            this.flowLayoutPanel1.Controls.Add(this.memberButton);
-            this.flowLayoutPanel1.Controls.Add(this.requirementButton);
-            this.flowLayoutPanel1.Controls.Add(this.testButton);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 2);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(60, 359);
-            this.flowLayoutPanel1.TabIndex = 2;
+            this.menuFlowLayoutPanel.BackColor = System.Drawing.Color.White;
+            this.menuFlowLayoutPanel.Controls.Add(this.projectButton);
+            this.menuFlowLayoutPanel.Controls.Add(this.memberButton);
+            this.menuFlowLayoutPanel.Controls.Add(this.requirementButton);
+            this.menuFlowLayoutPanel.Controls.Add(this.testButton);
+            this.menuFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menuFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.menuFlowLayoutPanel.Location = new System.Drawing.Point(0, 2);
+            this.menuFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.menuFlowLayoutPanel.Name = "menuFlowLayoutPanel";
+            this.menuFlowLayoutPanel.Size = new System.Drawing.Size(60, 359);
+            this.menuFlowLayoutPanel.TabIndex = 2;
             // 
             // projectButton
             // 
@@ -164,7 +164,7 @@
             this.Name = "ProjectMainForm";
             this.Text = "ProjectMainForm";
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.menuFlowLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -173,7 +173,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel menuFlowLayoutPanel;
         private NoFocusCueButton memberButton;
         private NoFocusCueButton requirementButton;
         private NoFocusCueButton testButton;
