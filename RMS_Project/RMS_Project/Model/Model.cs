@@ -13,7 +13,7 @@ namespace RMS_Project
     {
         private int _accountId;
         private string _username;
-        public static string BASE_URL = "http://140.124.183.32:3000/";
+        private string BASE_URL = "http://140.124.183.32:3000/";
 
         public int UID
         {

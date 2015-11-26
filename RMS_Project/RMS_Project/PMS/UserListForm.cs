@@ -15,21 +15,21 @@ namespace RMS_Project
 {
     public partial class UserListForm : Form
     {
-        private Project project;
-        private MainForm mainForm;
+        private Project _project;
+        private PresentationModel _presentationModel;
 
-        public UserListForm(MainForm mainForm, Project project)
+        public UserListForm(PresentationModel presentationModel, Project project)
         {
             InitializeComponent();
-            this.project = project;
-            this.mainForm = mainForm;
+            this._project = project;
+            this._presentationModel = presentationModel;
             userListView.Columns.AddRange(new ColumnHeader[] { new ColumnHeader(), new ColumnHeader() });
             GetUserListByProject();
         }
 
         private async void GetUserListByProject()
         {
-            HttpResponseMessage response = await mainForm._model.GetUserListByProject(project.ID.ToString());
+            HttpResponseMessage response = await _presentationModel.Model.GetUserListByProject(_project.ID.ToString());
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -64,8 +64,6 @@ namespace RMS_Project
             userListView.TileSize = new Size(userListView.ClientSize.Width, userListView.TileSize.Height);
         }
 
-
-
         private void addUserButton_Click(object sender, EventArgs e)
         {
             if (!userTextBox.Text.Equals(""))
@@ -76,10 +74,10 @@ namespace RMS_Project
         {
             JObject jObject = new JObject();
             jObject["add_email"] = userTextBox.Text;
-            jObject["uid"] = mainForm._model.UID;
-            jObject["pid"] = project.ID;
+            jObject["uid"] = _presentationModel.Model.UID;
+            jObject["pid"] = _project.ID;
 
-            HttpResponseMessage response = await mainForm._model.PostAddUserToProject(jObject);
+            HttpResponseMessage response = await _presentationModel.Model.PostAddUserToProject(jObject);
 
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)

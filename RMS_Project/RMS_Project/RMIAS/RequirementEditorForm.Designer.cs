@@ -262,7 +262,6 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "RequirementEditorForm";
             this.Text = "RequirementEditorForm";
-            this.Load += new System.EventHandler(this.RequirementEditorForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

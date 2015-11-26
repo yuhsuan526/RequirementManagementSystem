@@ -19,49 +19,31 @@ namespace RMS_Project
         private const string REQUIREMENT = "getRequirementType";
         private const string STATUS = "getStatusType";
 
-        private MainForm mainForm;
-        Project project;
-        private int selectedType;
-        private int selectedStatus;
-        private int selectedPriority;
+        private PresentationModel _presentationModel;
+        private Project _project;
+        private int _selectedType;
+        private int _selectedStatus;
+        private int _selectedPriority;
 
-        private List<int> pids;
-        private List<string> pnames;
-        private List<int> rids;
-        private List<string> rnames;
-        private List<int> sids;
-        private List<string> snames;
+        private List<int> _projectIds;
+        private List<string> _projectNames;
+        private List<int> _requireIds;
+        private List<string> _requireNames;
+        private List<int> _statusIds;
+        private List<string> _statusNames;
 
-        private class Item
-        {
-            public int id;
-            public string name;
-
-            public Item(int value, string name)
-            {
-                this.id = value;
-                this.name = name;
-            }
-            public override string ToString()
-            {
-                // Generates the text shown in the combo box
-                return name;
-            }
-        }
-
-        public RequirementEditorForm(MainForm mainForm, Project project)
+        public RequirementEditorForm(PresentationModel presentationModel, Project project)
         {
             InitializeComponent();
-            this.mainForm = mainForm;
-            this.project = project;
+            this._presentationModel = presentationModel;
+            this._project = project;
 
-            pids = new List<int>();
-            pnames = new List<string>();
-            rids = new List<int>();
-            rnames = new List<string>();
-            sids = new List<int>();
-            snames = new List<string>();
-
+            _projectIds = new List<int>();
+            _projectNames = new List<string>();
+            _requireIds = new List<int>();
+            _requireNames = new List<string>();
+            _statusIds = new List<int>();
+            _statusNames = new List<string>();
 
             GetMethod(PRIORITY);
             GetMethod(REQUIREMENT);
@@ -80,16 +62,16 @@ namespace RMS_Project
             jObject["description"] = richTextBox2.Text;
             jObject["version"] = textBox3.Text;
             jObject["memo"] = richTextBox1.Text;
-            jObject["uid"] = mainForm._model.UID;
-            jObject["pid"] = project.ID;
-            jObject["type"] = selectedType;
-            jObject["priority"] = selectedPriority;
-            jObject["status"] = selectedStatus;
+            jObject["uid"] = _presentationModel.Model.UID;
+            jObject["pid"] = _project.ID;
+            jObject["type"] = _selectedType;
+            jObject["priority"] = _selectedPriority;
+            jObject["status"] = _selectedStatus;
 
-            string status = await mainForm._model.AddRequirement(jObject);
+            string status = await _presentationModel.Model.AddRequirement(jObject);
             if (status == "success")
             {
-                mainForm.AddFormToPanel(new RequirementListForm(mainForm, project));
+                _presentationModel.AddFormToPanel(new RequirementListForm(_presentationModel, _project));
                 MessageBox.Show("需求建立成功", "Success", MessageBoxButtons.OK);
             }
             else if (status == "需求建立失敗")
@@ -104,7 +86,7 @@ namespace RMS_Project
 
         private async void GetMethod(String method)
         {
-            HttpResponseMessage response = await mainForm._model.GetMethod(method);
+            HttpResponseMessage response = await _presentationModel.Model.GetMethod(method);
 
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
@@ -122,12 +104,12 @@ namespace RMS_Project
                             {
                                 int id = (int)jObject["id"];
                                 string name = jObject["name"].ToString();
-                                this.pids.Add(id);
-                                this.pnames.Add(name);
+                                this._projectIds.Add(id);
+                                this._projectNames.Add(name);
                             }
                         }
-                        for (int i = 0; i < pids.Count; i++)
-                            priorityComboBox.Items.Add(new Item(pids.ElementAt(i), pnames.ElementAt(i)));
+                        for (int i = 0; i < _projectIds.Count; i++)
+                            priorityComboBox.Items.Add(new Item(_projectIds.ElementAt(i), _projectNames.ElementAt(i)));
                         break;
                     case REQUIREMENT:
                         jsonArray = JArray.Parse(json["type"].ToString());
@@ -137,12 +119,12 @@ namespace RMS_Project
                             {
                                 int id = (int)jObject["id"];
                                 string name = jObject["name"].ToString();
-                                this.rids.Add(id);
-                                this.rnames.Add(name);
+                                this._requireIds.Add(id);
+                                this._requireNames.Add(name);
                             }
                         }
-                        for (int i = 0; i < rids.Count; i++)
-                            typeComboBox.Items.Add(new Item(rids.ElementAt(i), rnames.ElementAt(i)));
+                        for (int i = 0; i < _requireIds.Count; i++)
+                            typeComboBox.Items.Add(new Item(_requireIds.ElementAt(i), _requireNames.ElementAt(i)));
                         break;
                     case STATUS:
                         jsonArray = JArray.Parse(json["statuses"].ToString());
@@ -152,12 +134,12 @@ namespace RMS_Project
                             {
                                 int id = (int)jObject["id"];
                                 string name = jObject["name"].ToString();
-                                this.sids.Add(id);
-                                this.snames.Add(name);
+                                this._statusIds.Add(id);
+                                this._statusNames.Add(name);
                             }
                         }
-                        for (int i = 0; i < sids.Count; i++)
-                            statusComboBox.Items.Add(new Item(sids.ElementAt(i), snames.ElementAt(i)));
+                        for (int i = 0; i < _statusIds.Count; i++)
+                            statusComboBox.Items.Add(new Item(_statusIds.ElementAt(i), _statusNames.ElementAt(i)));
                         break;
                     default:
                         break;
@@ -175,24 +157,23 @@ namespace RMS_Project
 
         private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < rnames.Count; i++)
+            for (int i = 0; i < _requireNames.Count; i++)
             {
-                if (rnames.ElementAt(i).CompareTo(typeComboBox.SelectedValue) == 0)
+                if (_requireNames.ElementAt(i).CompareTo(typeComboBox.SelectedValue) == 0)
                 {
-                    selectedType = rids.ElementAt(i);
+                    _selectedType = _requireIds.ElementAt(i);
                     break;
                 }
             }
-
         }
 
         private void statusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < snames.Count; i++)
+            for (int i = 0; i < _statusNames.Count; i++)
             {
-                if (snames.ElementAt(i).CompareTo(statusComboBox.SelectedValue) == 0)
+                if (_statusNames.ElementAt(i).CompareTo(statusComboBox.SelectedValue) == 0)
                 {
-                    selectedStatus = sids.ElementAt(i);
+                    _selectedStatus = _statusIds.ElementAt(i);
                     break;
                 }
             }
@@ -200,19 +181,14 @@ namespace RMS_Project
 
         private void priorityComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < pnames.Count; i++)
+            for (int i = 0; i < _projectNames.Count; i++)
             {
-                if (pnames.ElementAt(i).CompareTo(priorityComboBox.SelectedValue) == 0)
+                if (_projectNames.ElementAt(i).CompareTo(priorityComboBox.SelectedValue) == 0)
                 {
-                    selectedPriority = pids.ElementAt(i);
+                    _selectedPriority = _projectIds.ElementAt(i);
                     break;
                 }
             }
-        }
-
-        private void RequirementEditorForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

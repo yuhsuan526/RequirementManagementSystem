@@ -12,12 +12,12 @@ namespace RMS_Project
 {
     public partial class ProjectDetailForm : Form
     {
-        private Project project;
+        private Project _project;
 
         public ProjectDetailForm(Project project)
         {
             InitializeComponent();
-            this.project = project;
+            this._project = project;
             nameLabel.Text = project.NAME;
             descriptionLabel.Text = project.DESC;
             numberLabel.Text = project.ID.ToString();

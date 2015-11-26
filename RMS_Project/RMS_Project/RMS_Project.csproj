@@ -76,6 +76,11 @@
     <Compile Include="MainForm\InterfaceForm.Designer.cs">
       <DependentUpon>InterfaceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\InterdaceModel.cs" />
+    <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\NoFocusCueButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Model\PresentationModel.cs" />
     <Compile Include="Model\Project.cs" />
     <Compile Include="Model\Requirement.cs" />
@@ -179,7 +184,7 @@
     <Compile Include="PMS\UserListForm.Designer.cs">
       <DependentUpon>UserListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Util.cs" />
+    <Compile Include="Model\Util.cs" />
     <EmbeddedResource Include="MainForm\DefaultInterfaceForm.resx">
       <DependentUpon>DefaultInterfaceForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +246,7 @@
     <EmbeddedResource Include="PMS\userListForm.resx">
       <DependentUpon>UserListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -16,21 +16,21 @@ namespace RMS_Project
 {
     public partial class LoginForm : Form
     {
-        private MainForm mainForm;
+        private PresentationModel _presentationModel;
 
-        public LoginForm(MainForm mainForm)
+        public LoginForm(PresentationModel presentationModel)
         {
             InitializeComponent();
-            this.mainForm = mainForm;
+            this._presentationModel = presentationModel;
         }
 
-        private async void PostProduct()
+        private async void SignIn()
         {
             JObject jObject = new JObject();
             jObject["email"] = email.Text;
             jObject["password"] = password.Text;
 
-            string status = await mainForm._model.SignIn(jObject);
+            string status = await _presentationModel.Model.SignIn(jObject);
             if (status == "success")
             {
                 if (rememberCheckBox.Checked)
@@ -47,8 +47,7 @@ namespace RMS_Project
                     Properties.Settings.Default.RememberMe = false;
                     Properties.Settings.Default.Save();
                 }
-                mainForm.SignIn();
-
+                _presentationModel.SignIn();
             }
             else if (status == "帳號或密碼錯誤")
             {
@@ -66,13 +65,12 @@ namespace RMS_Project
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-            mainForm.AddFormToPanel(new RegistrantionForm(mainForm));
+            _presentationModel.AddFormToPanel(new RegistrantionForm(_presentationModel));
         }
 
         private void signInButton_Click(object sender, EventArgs e)
         {
-            PostProduct();
+            SignIn();
         }
-
     }
 }

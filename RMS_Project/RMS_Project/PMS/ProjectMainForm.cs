@@ -15,30 +15,30 @@ namespace RMS_Project
 {
     public partial class ProjectMainForm : Form
     {
-        MainForm mainForm;
-        Project project;
-        private ProjectDetailForm projectDetailForm;
-        private RequirementListForm requirementListForm;
-        private UserListForm userListForm;
-        private RequirementEditorForm requirementEditorForm;
-        private Button currentActiveButton = null;
+        private PresentationModel _presentationModel;
+        private Project _project;
+        private ProjectDetailForm _projectDetailForm;
+        private RequirementListForm _requirementListForm;
+        private UserListForm _userListForm;
+        private RequirementEditorForm _requirementEditorForm;
+        private Button _currentActiveButton = null;
 
-        public ProjectMainForm(MainForm mainForm, Project project)
+        public ProjectMainForm(PresentationModel presentationModel, Project project)
         {
             InitializeComponent();
-            this.mainForm = mainForm;
-            this.project = project;
-            projectDetailForm = new ProjectDetailForm(project);
-            requirementListForm = new RequirementListForm(mainForm,project);
-            userListForm = new UserListForm(mainForm, project);
-            requirementEditorForm = new RequirementEditorForm(mainForm,project);
-            AddFormToPanel(projectDetailForm);
-            UserInterfaceForm form = mainForm.GetUserInterface();
+            this._presentationModel = presentationModel;
+            this._project = project;
+            _projectDetailForm = new ProjectDetailForm(project);
+            _requirementListForm = new RequirementListForm(_presentationModel, project);
+            _userListForm = new UserListForm(_presentationModel, project);
+            _requirementEditorForm = new RequirementEditorForm(_presentationModel, project);
+            AddFormToPanel(_projectDetailForm);
+            UserInterfaceForm form = _presentationModel.UserInterface;
             if (form != null)
             {
                 form.SetFeatureButton(UserInterfaceForm.FeatureType.Edit);
             }
-            currentActiveButton = projectButton;
+            _currentActiveButton = projectButton;
             SetButtonColor(projectButton);
         }
 
@@ -55,19 +55,19 @@ namespace RMS_Project
 
         public void ClickNewButton()
         {
-            if (currentActiveButton == projectButton)
+            if (_currentActiveButton == projectButton)
             {
 
             }
-            else if (currentActiveButton == memberButton)
+            else if (_currentActiveButton == memberButton)
             {
 
             }
-            else if (currentActiveButton == requirementButton)
+            else if (_currentActiveButton == requirementButton)
             {
-                AddFormToPanel(requirementEditorForm);
+                AddFormToPanel(_requirementEditorForm);
             }
-            else if (currentActiveButton == testButton)
+            else if (_currentActiveButton == testButton)
             {
 
             }
@@ -76,21 +76,21 @@ namespace RMS_Project
         private void noFocusCueButton1_MouseMove(object sender, MouseEventArgs e)
         {
             Button button = sender as Button;
-            button.Image = MainForm.ChangeColor(new Bitmap(button.Image), Color.CornflowerBlue);
+            button.Image = _presentationModel.ChangeColor(new Bitmap(button.Image), Color.CornflowerBlue);
         }
 
         private void noFocusCueButton1_MouseLeave(object sender, EventArgs e)
         {
             Button button = sender as Button;
-            button.Image = MainForm.ChangeColor(new Bitmap(button.Image), Color.Black);
-            if (currentActiveButton != button)
-                button.Image = MainForm.ChangeColor(new Bitmap(button.Image), Color.Black);
+            button.Image = _presentationModel.ChangeColor(new Bitmap(button.Image), Color.Black);
+            if (_currentActiveButton != button)
+                button.Image = _presentationModel.ChangeColor(new Bitmap(button.Image), Color.Black);
         }
 
         private void projectButton_Click(object sender, EventArgs e)
         {
-            UserInterfaceForm form = mainForm.GetUserInterface();
-            AddFormToPanel(projectDetailForm);
+            UserInterfaceForm form = _presentationModel.UserInterface;
+            AddFormToPanel(_projectDetailForm);
             if (form != null)
             {
                 form.SetFeatureButton(UserInterfaceForm.FeatureType.Edit);
@@ -100,8 +100,8 @@ namespace RMS_Project
 
         private void memberButton_Click(object sender, EventArgs e)
         {
-            UserInterfaceForm form = mainForm.GetUserInterface();
-            AddFormToPanel(userListForm);
+            UserInterfaceForm form = _presentationModel.UserInterface;
+            AddFormToPanel(_userListForm);
             if (form != null)
             {
                 //form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
@@ -112,8 +112,8 @@ namespace RMS_Project
 
         private void requirementButton_Click(object sender, EventArgs e)
         {
-            UserInterfaceForm form = mainForm.GetUserInterface();
-            AddFormToPanel(requirementListForm);
+            UserInterfaceForm form = _presentationModel.UserInterface;
+            AddFormToPanel(_requirementListForm);
             if (form != null)
             {
                 form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
@@ -123,7 +123,7 @@ namespace RMS_Project
 
         private void testButton_Click(object sender, EventArgs e)
         {
-            UserInterfaceForm form = mainForm.GetUserInterface();
+            UserInterfaceForm form = _presentationModel.UserInterface;
             if (form != null)
             {
                 form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
@@ -133,32 +133,32 @@ namespace RMS_Project
 
         private void SetButtonColor(Button button)
         {
-            button.Image = MainForm.ChangeColor(new Bitmap(button.Image), Color.CornflowerBlue);
+            button.Image = _presentationModel.ChangeColor(new Bitmap(button.Image), Color.CornflowerBlue);
         }
 
         private void ResetOtherButtonColor()
         {
-            if (currentActiveButton != projectButton)
+            if (_currentActiveButton != projectButton)
             {
-                projectButton.Image = MainForm.ChangeColor(new Bitmap(projectButton.Image), Color.Black);
+                projectButton.Image = _presentationModel.ChangeColor(new Bitmap(projectButton.Image), Color.Black);
             }
-            if (currentActiveButton != memberButton)
+            if (_currentActiveButton != memberButton)
             {
-                memberButton.Image = MainForm.ChangeColor(new Bitmap(memberButton.Image), Color.Black);
+                memberButton.Image = _presentationModel.ChangeColor(new Bitmap(memberButton.Image), Color.Black);
             }
-            if (currentActiveButton != requirementButton)
+            if (_currentActiveButton != requirementButton)
             {
-                requirementButton.Image = MainForm.ChangeColor(new Bitmap(requirementButton.Image), Color.Black);
+                requirementButton.Image = _presentationModel.ChangeColor(new Bitmap(requirementButton.Image), Color.Black);
             }
-            if (currentActiveButton != testButton)
+            if (_currentActiveButton != testButton)
             {
-                testButton.Image = MainForm.ChangeColor(new Bitmap(testButton.Image), Color.Black);
+                testButton.Image = _presentationModel.ChangeColor(new Bitmap(testButton.Image), Color.Black);
             }
         }
 
         private void ChangeTabType(Button button)
         {
-            currentActiveButton = button;
+            _currentActiveButton = button;
             ResetOtherButtonColor();
         }
     }

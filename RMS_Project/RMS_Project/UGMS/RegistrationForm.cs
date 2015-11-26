@@ -16,24 +16,24 @@ namespace RMS_Project
 {
     public partial class RegistrantionForm : Form
     {
-        private MainForm mainForm;
-        public RegistrantionForm(MainForm mainForm)
+        private PresentationModel _presentationModel;
+        public RegistrantionForm(PresentationModel presentationModel)
         {
             InitializeComponent();
-            this.mainForm = mainForm;
+            this._presentationModel = presentationModel;
         }
 
-        private async void PostProduct()
+        private async void Register()
         {
             JObject jObject = new JObject();
             jObject["name"] = userName.Text;
             jObject["email"] = email.Text;
             jObject["password"] = password.Text;
 
-            string status = await mainForm._model.Registry(jObject);
+            string status = await _presentationModel.Model.Registry(jObject);
             if (status == "success")
             {
-                mainForm.AddFormToPanel(new LoginForm(mainForm));
+                _presentationModel.AddFormToPanel(new LoginForm(_presentationModel));
                 MessageBox.Show("註冊成功", "Success", MessageBoxButtons.OK);
             }
             else if (status == "註冊失敗")
@@ -48,13 +48,13 @@ namespace RMS_Project
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            mainForm.AddFormToPanel(new LoginForm(mainForm));
+            _presentationModel.AddFormToPanel(new LoginForm(_presentationModel));
         }
 
         private void createButton_Click(object sender, EventArgs e)
         {
             if (password.Text.Equals(confirmPasswordTextBox.Text))
-                PostProduct();
+                Register();
             else
             {
                 password.Text = "";

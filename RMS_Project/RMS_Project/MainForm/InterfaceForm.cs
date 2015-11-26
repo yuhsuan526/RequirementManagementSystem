@@ -12,7 +12,7 @@ namespace RMS_Project
 {
     public partial class InterfaceForm : Form
     {
-        private Panel _panel;
+        //private Panel _panel;
 
         public InterfaceForm()
         {

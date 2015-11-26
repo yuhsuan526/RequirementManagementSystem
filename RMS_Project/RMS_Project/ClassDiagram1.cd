@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RMS_Project.DefaultInterfaceForm" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAACAAAACAIAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>MainForm\DefaultInterfaceForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.InterfaceForm" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAgAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>MainForm\InterfaceForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.MainForm" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAACgABKAAAAAAAACAAAACAAAEAAAAAAACBAAAACA=</HashCode>
+      <FileName>MainForm\MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.UserInterfaceForm" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACBAAACRBCBCIAAAAgCEAgBCAAABAAEACAAAgYgQACA=</HashCode>
+      <FileName>MainForm\UserInterfaceForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.InterfaceModel" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAIAAAAAAAAAAAAAAAIAAAAAgAAAAAAEABAA=</HashCode>
+      <FileName>Model\InterdaceModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.Item" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.Model" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAACSAAACEAEAACAAAEAAACAAAAAAAAQIEAAABEAA=</HashCode>
+      <FileName>Model\Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.NoFocusCueButton" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Model\NoFocusCueButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.PresentationModel" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAIDiAAAAAAgAAAiCAABAAAAAAAgCAAQgADAQABAA=</HashCode>
+      <FileName>Model\PresentationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.Project" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAgAAEAABAAAAAAAAEAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Model\Project.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.Requirement" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAIAAAAAQAoAAEAABAAAAAAAAEAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Model\Requirement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.ProjectDetailForm" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABACAAABAAACCAAAACCAAAAAAAAAAAAAQAACA=</HashCode>
+      <FileName>PMS\ProjectDetailForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.ProjectEditorForm" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABCAAABAAAACAAAACAAAIAAAAEEAQAAAAAKA=</HashCode>
+      <FileName>PMS\ProjectEditorForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.ProjectListForm" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABKAAAAAAAACAAAECAAAwAAQAABAAAAEAAAA=</HashCode>
+      <FileName>PMS\ProjectListForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.ProjectMainForm" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQAIIAAABCghgIAAADCQACACAACAAAEEgAEICABAACA=</HashCode>
+      <FileName>PMS\ProjectMainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.UserListForm" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABBCAAAEAAACCAECACCgAIAAAAAAAAAAAAACA=</HashCode>
+      <FileName>PMS\UserListForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.Program" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.RequirementDetailForm" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAAABACAAAAAAAACAAAACGAAAQAAAQAAAAAQAACA=</HashCode>
+      <FileName>RMIAS\RequirementDetailForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.RequirementEditorForm" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAEHGSEEBAAACCAAAhDAAEAAGQCEAgQgAEAFKA=</HashCode>
+      <FileName>RMIAS\RequirementEditorForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.RequirementListForm" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABCAEAAAAACCAAAACAAowAAQAABAAAAAAAAA=</HashCode>
+      <FileName>RMIAS\RequirementListForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.TestDetailForm" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>swAAAAQAACAAARCAAACAAAASAAAYEAAAEAAQAAAAACA=</HashCode>
+      <FileName>TCMS\TestDetailForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.TestEditorForm" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAACgBABBAAACAAEACAAAQABAAIIAQAAFAAAA=</HashCode>
+      <FileName>TCMS\TestEditorForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.TestListForm" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TCMS\TestListForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.TraceabilityMatrixForm" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAICAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TraceabilityMatrixForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.LoginForm" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAACgBCAAABAgAACAAAALEBAAAAAAACAAAgAAACA=</HashCode>
+      <FileName>UGMS\LoginForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.RegistrantionForm" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEAIAAAABCAAABCgBACACAhCAQABAAAwAAAAAgEAAAg=</HashCode>
+      <FileName>UGMS\RegistrationForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.Util" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIgAAAAAEAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Util.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.Properties.Resources" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/+9f//9//3/fbX/z9v33/9/////////s3//////+/d8=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMS_Project.Properties.Settings" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAEAAAAIAAAAAABAAACAAAAAAAgCAA=</HashCode>
+      <FileName>Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft JhengHei UI" Size="9" />
+</ClassDiagram>

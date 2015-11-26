@@ -16,23 +16,23 @@ namespace RMS_Project
 {
     public partial class RequirementListForm : Form
     {
-        private MainForm mainForm;
-        private Project project;
-        private ArrayList array;
+        private PresentationModel _presentationModel;
+        private Project _project;
+        private ArrayList _arrayList;
 
-        public RequirementListForm(MainForm mainForm, Project project)
+        public RequirementListForm(PresentationModel presentationModel, Project project)
         {
             InitializeComponent();
-            this.mainForm = mainForm;
-            this.project = project;
+            this._presentationModel = presentationModel;
+            this._project = project;
             this.requirementListDataGridView.ClearSelection();
-            array = new ArrayList();
+            _arrayList = new ArrayList();
             GetRequirementByProject();
         }
 
         private async void GetRequirementByProject()
         {
-            HttpResponseMessage response = await mainForm._model.GetRequirementByProject(project.ID.ToString());
+            HttpResponseMessage response = await _presentationModel.Model.GetRequirementByProject(_project.ID.ToString());
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -46,7 +46,7 @@ namespace RMS_Project
                     {
                         this.requirementListDataGridView.Rows.Add(jObject["name"], jObject["updated_at"]);
                         Requirement requirement = new Requirement((int)jObject["id"], jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString());
-                        array.Add(requirement);
+                        _arrayList.Add(requirement);
                     }
                 }
             }
@@ -63,10 +63,10 @@ namespace RMS_Project
         private void requirementListDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewCell cell = requirementListDataGridView.Rows[e.RowIndex].Cells[0];
-            Requirement requirement = array[e.RowIndex] as Requirement;
+            Requirement requirement = _arrayList[e.RowIndex] as Requirement;
             Form form = new RequirementDetailForm(requirement);
-            if (mainForm.AddFormToPanel(form))
-                mainForm.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_paper_outline);
+            if (_presentationModel.AddFormToPanel(form))
+                _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_paper_outline);
         }
     }
 }

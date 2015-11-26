@@ -16,31 +16,30 @@ namespace RMS_Project
 {
     public partial class ProjectListForm : Form
     {
-        private MainForm mainForm;
-        private ArrayList array;
+        private PresentationModel _presentationModel;
+        private ArrayList _arrayList;
 
-        public ProjectListForm(MainForm mainForm)
+        public ProjectListForm(PresentationModel presentationModel)
         {
             InitializeComponent();
-            this.mainForm = mainForm;
+            this._presentationModel = presentationModel;
             this.ProjectListDataGridView.ClearSelection();
-            array = new ArrayList();
+            _arrayList = new ArrayList();
             RefreshProjectList();
         }
 
         private void ProjectListDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewCell cell = ProjectListDataGridView.Rows[e.RowIndex].Cells[0];
-            Project project = array[e.RowIndex] as Project;
-            Form form = new ProjectMainForm(mainForm, project);
-            if(mainForm.AddFormToPanel(form))
-                mainForm.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_folder_outline);
+            Project project = _arrayList[e.RowIndex] as Project;
+            Form form = new ProjectMainForm(_presentationModel, project);
+            if (_presentationModel.AddFormToPanel(form))
+                _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_folder_outline);
         }
-
 
         public async void RefreshProjectList()
         {
-            HttpResponseMessage response = await mainForm._model.GetProjectList();
+            HttpResponseMessage response = await _presentationModel.Model.GetProjectList();
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -54,7 +53,7 @@ namespace RMS_Project
                     {
                         this.ProjectListDataGridView.Rows.Add(jObject["name"], jObject["id"]);
                         Project project = new Project(int.Parse(jObject["id"].ToString()), jObject["name"].ToString(), jObject["descript"].ToString());
-                        array.Add(project);
+                        _arrayList.Add(project);
                     }
                 }
             }
@@ -66,11 +65,6 @@ namespace RMS_Project
             {
                 MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
             }
-        }
-
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-
         }
     }
 }
