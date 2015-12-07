@@ -28,35 +28,96 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.testListDataGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            ((System.ComponentModel.ISupportInitialize)(this.testListDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // testListDataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(576, 521);
-            this.dataGridView1.TabIndex = 0;
+            this.testListDataGridView.AccessibleName = "requirementListDataGridView";
+            this.testListDataGridView.AllowUserToAddRows = false;
+            this.testListDataGridView.AllowUserToDeleteRows = false;
+            this.testListDataGridView.AllowUserToResizeColumns = false;
+            this.testListDataGridView.AllowUserToResizeRows = false;
+            this.testListDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.testListDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.testListDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.testListDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.testListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.testListDataGridView.ColumnHeadersVisible = false;
+            this.testListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2});
+            this.testListDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.testListDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            this.testListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.testListDataGridView.Location = new System.Drawing.Point(50, 0);
+            this.testListDataGridView.MultiSelect = false;
+            this.testListDataGridView.Name = "testListDataGridView";
+            this.testListDataGridView.ReadOnly = true;
+            this.testListDataGridView.RowHeadersVisible = false;
+            this.testListDataGridView.RowHeadersWidth = 50;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.testListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.testListDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
+            this.testListDataGridView.RowTemplate.DividerHeight = 1;
+            this.testListDataGridView.RowTemplate.Height = 50;
+            this.testListDataGridView.RowTemplate.ReadOnly = true;
+            this.testListDataGridView.Size = new System.Drawing.Size(476, 521);
+            this.testListDataGridView.TabIndex = 3;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.FillWeight = 179.6954F;
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column2.FillWeight = 20.30457F;
+            this.Column2.HeaderText = "Column2";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column2.Width = 5;
             // 
             // TestListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 521);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.testListDataGridView);
             this.Name = "TestListForm";
+            this.Padding = new System.Windows.Forms.Padding(50, 0, 50, 0);
             this.Text = "TestListForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testListDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView testListDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+
     }
 }

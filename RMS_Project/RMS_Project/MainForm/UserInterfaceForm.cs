@@ -30,8 +30,6 @@ namespace RMS_Project
             addUserMenu();
             _projectListForm = new ProjectListForm(_presentationModel);
             _presentationModel.AddFormToPanel(_projectListForm);
-            ProjectMainForm pMainForm = new ProjectMainForm(_presentationModel, null);
-            _presentationModel.AddFormToNavigationPanel(pMainForm);
         }
 
         //Add hierarchy button (project button)

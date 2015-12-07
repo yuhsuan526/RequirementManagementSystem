@@ -19,6 +19,7 @@ namespace RMS_Project
         private Project _project;
         private ProjectDetailForm _projectDetailForm;
         private RequirementListForm _requirementListForm;
+        private TestListForm _testListForm;
         private UserListForm _userListForm;
         private RequirementEditorForm _requirementEditorForm;
         private Button _currentActiveButton = null;
@@ -30,6 +31,7 @@ namespace RMS_Project
             this._project = project;
             _projectDetailForm = new ProjectDetailForm(project);
             _requirementListForm = new RequirementListForm(_presentationModel, project);
+            _testListForm = new TestListForm(_presentationModel, project);
             _userListForm = new UserListForm(_presentationModel, project);
             _requirementEditorForm = new RequirementEditorForm(_presentationModel, project);
             AddFormToPanel(_projectDetailForm);
@@ -124,6 +126,7 @@ namespace RMS_Project
         private void testButton_Click(object sender, EventArgs e)
         {
             UserInterfaceForm form = _presentationModel.UserInterface;
+            AddFormToPanel(_testListForm);
             if (form != null)
             {
                 form.SetFeatureButton(UserInterfaceForm.FeatureType.New);

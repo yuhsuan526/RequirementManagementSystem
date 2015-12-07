@@ -12,9 +12,15 @@ namespace RMS_Project
 {
     public partial class TestListForm : Form
     {
-        public TestListForm()
+        private PresentationModel _presentationModel;
+        private Project _project;
+
+        public TestListForm(PresentationModel presentationModel, Project project)
         {
             InitializeComponent();
+            this._presentationModel = presentationModel;
+            this._project = project;
+            this.testListDataGridView.Rows.Add("test", "yyyy/mm/dd");
         }
     }
 }
