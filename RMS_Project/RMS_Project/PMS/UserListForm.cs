@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class UserListForm : Form
+    public partial class UserListForm : BasicForm
     {
         private Project _project;
         private PresentationModel _presentationModel;
 
-        public UserListForm(PresentationModel presentationModel, Project project)
+        public UserListForm(PresentationModel presentationModel, Project project, Panel panel) : base(panel) 
         {
             InitializeComponent();
             this._project = project;

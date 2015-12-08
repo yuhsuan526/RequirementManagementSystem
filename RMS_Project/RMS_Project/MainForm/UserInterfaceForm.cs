@@ -28,7 +28,11 @@ namespace RMS_Project
             _buttonArrayList = new ArrayList();
             addProjectButton();
             addUserMenu();
-            _projectListForm = new ProjectListForm(_presentationModel);
+        }
+
+        public void setProjectsButton(ProjectListForm form)
+        {
+            _projectListForm = form;
             _presentationModel.AddFormToPanel(_projectListForm);
         }
 
@@ -98,7 +102,7 @@ namespace RMS_Project
             }
         }
 
-        public void AddFormButtonToBar(Form form, string buttonName, Image image)
+        public void AddFormButtonToBar(BasicForm form, string buttonName, Image image)
         {
             InterfaceModel model = new InterfaceModel();
             model.Form = form;
@@ -125,7 +129,7 @@ namespace RMS_Project
                 InterfaceModel model = (InterfaceModel)_buttonArrayList[i];
                 if (model.Button == button)
                 {
-                    isAvailable = _presentationModel.PopFormsFromPanel(model.Form);
+                    isAvailable = model.Form.PopFormsFromPanel(model.Form);
                     break;
                 }
             }

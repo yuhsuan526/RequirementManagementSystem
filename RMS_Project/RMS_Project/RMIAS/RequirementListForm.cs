@@ -14,18 +14,20 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class RequirementListForm : Form
+    public partial class RequirementListForm : BasicForm
     {
         private PresentationModel _presentationModel;
         private Project _project;
         private ArrayList _arrayList;
+        private Panel _parentPanel;
 
-        public RequirementListForm(PresentationModel presentationModel, Project project)
+        public RequirementListForm(PresentationModel presentationModel, Project project, Panel parentPanel) : base (parentPanel)
         {
             InitializeComponent();
             this._presentationModel = presentationModel;
             this._project = project;
             this.requirementListDataGridView.ClearSelection();
+            this._parentPanel = parentPanel;
             _arrayList = new ArrayList();
             GetRequirementByProject();
         }
@@ -64,8 +66,8 @@ namespace RMS_Project
         {
             DataGridViewCell cell = requirementListDataGridView.Rows[e.RowIndex].Cells[0];
             Requirement requirement = _arrayList[e.RowIndex] as Requirement;
-            Form form = new RequirementDetailForm(requirement);
-            if (_presentationModel.AddFormToPanel(form))
+            BasicForm form = new RequirementDetailForm(requirement, _parentPanel);
+            if (form.AddFormToPanel(form))
                 _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_paper_outline);
         }
     }

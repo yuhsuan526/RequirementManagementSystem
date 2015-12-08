@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using RMS_Project;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class ProjectMainForm : Form
+    public partial class ProjectMainForm : BasicForm
     {
         private PresentationModel _presentationModel;
         private Project _project;
@@ -24,17 +25,20 @@ namespace RMS_Project
         private RequirementEditorForm _requirementEditorForm;
         private Button _currentActiveButton = null;
 
-        public ProjectMainForm(PresentationModel presentationModel, Project project)
+        public ProjectMainForm(PresentationModel presentationModel, Project project, Panel panel) : base(panel)
         {
             InitializeComponent();
             this._presentationModel = presentationModel;
             this._project = project;
-            _projectDetailForm = new ProjectDetailForm(project);
-            _requirementListForm = new RequirementListForm(_presentationModel, project);
-            _testListForm = new TestListForm(_presentationModel, project);
-            _userListForm = new UserListForm(_presentationModel, project);
+
+            _projectDetailForm = new ProjectDetailForm(project, _mainPanel);
+            _requirementListForm = new RequirementListForm(_presentationModel, project, _mainPanel);
+            _testListForm = new TestListForm(_presentationModel, project, _mainPanel);
+            _userListForm = new UserListForm(_presentationModel, project, _mainPanel);
             _requirementEditorForm = new RequirementEditorForm(_presentationModel, project);
-            AddFormToPanel(_projectDetailForm);
+
+            _projectDetailForm.AddFormToPanel(_projectDetailForm);
+
             UserInterfaceForm form = _presentationModel.UserInterface;
             if (form != null)
             {
@@ -43,7 +47,7 @@ namespace RMS_Project
             _currentActiveButton = projectButton;
             SetButtonColor(projectButton);
         }
-
+        /*
         public void AddFormToPanel(Form form)
         {
             form.TopLevel = false;
@@ -53,7 +57,7 @@ namespace RMS_Project
             form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
             form.Show();
-        }
+        }*/
 
         public void ClickNewButton()
         {
@@ -92,7 +96,7 @@ namespace RMS_Project
         private void projectButton_Click(object sender, EventArgs e)
         {
             UserInterfaceForm form = _presentationModel.UserInterface;
-            AddFormToPanel(_projectDetailForm);
+            _projectDetailForm.AddFormToPanel(_projectDetailForm);
             if (form != null)
             {
                 form.SetFeatureButton(UserInterfaceForm.FeatureType.Edit);
@@ -103,7 +107,7 @@ namespace RMS_Project
         private void memberButton_Click(object sender, EventArgs e)
         {
             UserInterfaceForm form = _presentationModel.UserInterface;
-            AddFormToPanel(_userListForm);
+            _userListForm.AddFormToPanel(_userListForm);
             if (form != null)
             {
                 //form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
@@ -115,7 +119,8 @@ namespace RMS_Project
         private void requirementButton_Click(object sender, EventArgs e)
         {
             UserInterfaceForm form = _presentationModel.UserInterface;
-            AddFormToPanel(_requirementListForm);
+            //AddFormToPanel(_requirementListForm);
+            _requirementListForm.AddFormToPanel(_requirementListForm);
             if (form != null)
             {
                 form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
@@ -126,7 +131,7 @@ namespace RMS_Project
         private void testButton_Click(object sender, EventArgs e)
         {
             UserInterfaceForm form = _presentationModel.UserInterface;
-            AddFormToPanel(_testListForm);
+            _testListForm.AddFormToPanel(_testListForm);
             if (form != null)
             {
                 form.SetFeatureButton(UserInterfaceForm.FeatureType.New);

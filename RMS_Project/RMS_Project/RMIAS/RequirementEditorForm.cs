@@ -71,7 +71,7 @@ namespace RMS_Project
             string status = await _presentationModel.Model.AddRequirement(jObject);
             if (status == "success")
             {
-                _presentationModel.AddFormToPanel(new RequirementListForm(_presentationModel, _project));
+                //_presentationModel.AddFormToPanel(new RequirementListForm(_presentationModel, _project));
                 MessageBox.Show("需求建立成功", "Success", MessageBoxButtons.OK);
             }
             else if (status == "需求建立失敗")

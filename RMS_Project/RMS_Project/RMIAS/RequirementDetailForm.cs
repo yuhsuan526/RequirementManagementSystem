@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class RequirementDetailForm : Form
+    public partial class RequirementDetailForm : BasicForm
     {
-        public RequirementDetailForm(Requirement requirement)
+        public RequirementDetailForm(Requirement requirement, Panel parentPanel) : base(parentPanel)
         {
             InitializeComponent();
             

@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class TestListForm : Form
+    public partial class TestListForm : BasicForm
     {
         private PresentationModel _presentationModel;
         private Project _project;
 
-        public TestListForm(PresentationModel presentationModel, Project project)
+        public TestListForm(PresentationModel presentationModel, Project project, Panel panel) : base(panel)
         {
             InitializeComponent();
             this._presentationModel = presentationModel;

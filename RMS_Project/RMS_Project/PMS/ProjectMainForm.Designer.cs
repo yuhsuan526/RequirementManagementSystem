@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.mainPanel = new System.Windows.Forms.Panel();
+            this._mainPanel = new System.Windows.Forms.Panel();
             this.menuFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.projectButton = new RMS_Project.NoFocusCueButton();
             this.memberButton = new RMS_Project.NoFocusCueButton();
@@ -45,7 +45,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.mainPanel, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this._mainPanel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.menuFlowLayoutPanel, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -55,13 +55,13 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 361);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // mainPanel
+            // _mainPanel
             // 
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(63, 3);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(718, 355);
-            this.mainPanel.TabIndex = 1;
+            this._mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._mainPanel.Location = new System.Drawing.Point(63, 3);
+            this._mainPanel.Name = "_mainPanel";
+            this._mainPanel.Size = new System.Drawing.Size(718, 355);
+            this._mainPanel.TabIndex = 1;
             // 
             // menuFlowLayoutPanel
             // 
@@ -172,7 +172,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.Panel _mainPanel;
         private System.Windows.Forms.FlowLayoutPanel menuFlowLayoutPanel;
         private NoFocusCueButton memberButton;
         private NoFocusCueButton requirementButton;

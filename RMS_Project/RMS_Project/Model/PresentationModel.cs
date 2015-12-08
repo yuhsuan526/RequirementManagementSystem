@@ -61,6 +61,7 @@ namespace RMS_Project
             UserInterfaceForm form = new UserInterfaceForm(this);
             AddFormToNavigationPanel(form);
             _userInterface = form;
+            _userInterface.setProjectsButton(new ProjectListForm(this, _mainForm.MainFormPanel));
         }
 
         //Add form to nevigation panel
@@ -79,7 +80,7 @@ namespace RMS_Project
         }
 
         //Add hierarchy button to userinterface
-        public void AddFormButtonToUserInterface(Form form, string name, Image image)
+        public void AddFormButtonToUserInterface(BasicForm form, string name, Image image)
         {
             if (_userInterface != null)
                 _userInterface.AddFormButtonToBar(form, name, image);

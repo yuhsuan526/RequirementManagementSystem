@@ -18,13 +18,15 @@ namespace RMS_Project
     {
         private PresentationModel _presentationModel;
         private ArrayList _arrayList;
+        private Panel _parentPanel;
 
-        public ProjectListForm(PresentationModel presentationModel)
+        public ProjectListForm(PresentationModel presentationModel, Panel panel)
         {
             InitializeComponent();
             this._presentationModel = presentationModel;
             this.ProjectListDataGridView.ClearSelection();
             _arrayList = new ArrayList();
+            _parentPanel = panel;
             RefreshProjectList();
         }
 
@@ -32,7 +34,7 @@ namespace RMS_Project
         {
             DataGridViewCell cell = ProjectListDataGridView.Rows[e.RowIndex].Cells[0];
             Project project = _arrayList[e.RowIndex] as Project;
-            Form form = new ProjectMainForm(_presentationModel, project);
+            BasicForm form = new ProjectMainForm(_presentationModel, project, _parentPanel);
             if (_presentationModel.AddFormToPanel(form))
                 _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_folder_outline);
         }

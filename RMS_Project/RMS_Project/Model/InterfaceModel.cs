@@ -9,11 +9,11 @@ namespace RMS_Project
 {
     public class InterfaceModel
     {
-        private Form _form;
+        private BasicForm _form;
         private PictureBox _arrow;
         private Button _button;
 
-        public Form Form
+        public BasicForm Form
         {
             set
             {

@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interface\BasicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\BasicForm.Designer.cs">
+      <DependentUpon>BasicForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm\DefaultInterfaceForm.cs">
       <SubType>Form</SubType>
     </Compile>
