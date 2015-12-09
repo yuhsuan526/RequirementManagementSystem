@@ -41,13 +41,7 @@ namespace RMS_Project
             label1.Text = project.NAME;
             richTextBox1.Text = project.DESC;
 
-            UserInterfaceForm form = _presentationModel.UserInterface;
-            if (form != null)
-            {
-                form.SetFeatureButton(UserInterfaceForm.FeatureType.Edit);
-            }
             _currentActiveButton = projectButton;
-            SetButtonColor(projectButton);
         }
 
         public void ClickNewButton()

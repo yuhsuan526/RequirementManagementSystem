@@ -36,7 +36,14 @@ namespace RMS_Project
             Project project = _arrayList[e.RowIndex] as Project;
             Form form = new ProjectMainForm(_presentationModel, project);
             if (_presentationModel.AddFormToPanel(form))
+            {
+                UserInterfaceForm userInterface = _presentationModel.UserInterface;
+                if (userInterface != null)
+                {
+                    userInterface.SetFeatureButton(UserInterfaceForm.FeatureType.Edit);
+                }
                 _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_folder_outline);
+            }
         }
 
         public async void RefreshProjectList()
@@ -48,6 +55,7 @@ namespace RMS_Project
                 JObject json = JObject.Parse(content);
                 string message = json["result"].ToString();
                 JArray jsonArray = JArray.Parse(json["projects"].ToString());
+                Console.WriteLine(json["projects"].ToString());
                 if (message == "success")
                 {
                     this.ProjectListDataGridView.Rows.Clear();

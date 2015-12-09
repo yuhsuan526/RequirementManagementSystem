@@ -147,7 +147,7 @@ namespace RMS_Project
                     break;
                 }
                 else
-                    _mainFormPanel.Controls.RemoveAt(_mainFormPanel.Controls.Count - 1);
+                    _mainFormPanel.Controls.RemoveAt(i);
             }
             if (_mainFormPanel.Controls.Count > 0)
             {
