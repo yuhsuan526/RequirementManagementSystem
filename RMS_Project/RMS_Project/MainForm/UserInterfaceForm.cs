@@ -78,6 +78,7 @@ namespace RMS_Project
                     flowLayoutPanel.Controls.Remove(model.PictureBox);
                     flowLayoutPanel.Controls.Remove(model.Button);
                 }
+                SetFeatureButton(FeatureType.New);
                 _buttonArrayList.Clear();
             }
         }
@@ -102,7 +103,7 @@ namespace RMS_Project
             }
         }
 
-        public void AddFormButtonToBar(BasicForm form, string buttonName, Image image)
+        public void AddFormButtonToBar(Form form, string buttonName, Image image)
         {
             InterfaceModel model = new InterfaceModel();
             model.Form = form;
@@ -129,7 +130,7 @@ namespace RMS_Project
                 InterfaceModel model = (InterfaceModel)_buttonArrayList[i];
                 if (model.Button == button)
                 {
-                    isAvailable = model.Form.PopForms(model.Form);
+                    isAvailable = _presentationModel.PopFormsFromPanel(model.Form);
                     break;
                 }
             }

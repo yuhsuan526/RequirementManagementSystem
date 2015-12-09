@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class ProjectMainForm : BasicForm
+    public partial class ProjectMainForm : Form
     {
         private PresentationModel _presentationModel;
         private Project _project;
@@ -25,19 +25,21 @@ namespace RMS_Project
         private RequirementEditorForm _requirementEditorForm;
         private Button _currentActiveButton = null;
 
-        public ProjectMainForm(PresentationModel presentationModel, Project project, Panel panel) : base(panel)
+        public ProjectMainForm(PresentationModel presentationModel, Project project)
         {
             InitializeComponent();
             this._presentationModel = presentationModel;
             this._project = project;
 
-            _projectDetailForm = new ProjectDetailForm(project, _mainPanel);
-            _requirementListForm = new RequirementListForm(_presentationModel, project, panel);
-            _testListForm = new TestListForm(_presentationModel, project, panel);
-            _userListForm = new UserListForm(_presentationModel, project, panel);
+            _projectDetailForm = new ProjectDetailForm(project);
+            _requirementListForm = new RequirementListForm(_presentationModel, project);
+            _testListForm = new TestListForm(_presentationModel, project);
+            _userListForm = new UserListForm(_presentationModel, project);
             _requirementEditorForm = new RequirementEditorForm(_presentationModel, project);
 
-            _projectDetailForm.AddForm(_projectDetailForm);
+           // _presentationModel.AddFormToPanel(_projectDetailForm);
+            label1.Text = project.NAME;
+            richTextBox1.Text = project.DESC;
 
             UserInterfaceForm form = _presentationModel.UserInterface;
             if (form != null)
@@ -60,7 +62,7 @@ namespace RMS_Project
             }
             else if (_currentActiveButton == requirementButton)
             {
-                AddForm(_requirementEditorForm);
+                _presentationModel.AddFormToPanel(_requirementEditorForm);
             }
             else if (_currentActiveButton == testButton)
             {
@@ -99,7 +101,7 @@ namespace RMS_Project
         private void memberButton_Click(object sender, EventArgs e)
         {
             UserInterfaceForm form = _presentationModel.UserInterface;
-            if (_userListForm.AddForm(_userListForm))
+            if (_presentationModel.AddFormToPanel(_userListForm))
             {
                 _presentationModel.AddFormButtonToUserInterface(_userListForm, "Members", Properties.Resources.ios7_people_outline);
                 if (form != null)
@@ -113,7 +115,7 @@ namespace RMS_Project
         private void requirementButton_Click(object sender, EventArgs e)
         {
             UserInterfaceForm form = _presentationModel.UserInterface;
-            if (_requirementListForm.AddForm(_requirementListForm))
+            if (_presentationModel.AddFormToPanel(_requirementListForm))
             {
                 _presentationModel.AddFormButtonToUserInterface(_requirementListForm, "Requirements", Properties.Resources.ios7_paper_outline);
                 if (form != null)
@@ -127,7 +129,7 @@ namespace RMS_Project
         private void testButton_Click(object sender, EventArgs e)
         {
             UserInterfaceForm form = _presentationModel.UserInterface;
-            if (_testListForm.AddForm(_testListForm))
+            if (_presentationModel.AddFormToPanel(_testListForm))
             {
                 _presentationModel.AddFormButtonToUserInterface(_testListForm, "Tests", Properties.Resources.ios7_browsers_outline);
                 if (form != null)

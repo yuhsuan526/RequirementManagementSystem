@@ -34,7 +34,7 @@ namespace RMS_Project
         {
             DataGridViewCell cell = ProjectListDataGridView.Rows[e.RowIndex].Cells[0];
             Project project = _arrayList[e.RowIndex] as Project;
-            BasicForm form = new ProjectMainForm(_presentationModel, project, _parentPanel);
+            Form form = new ProjectMainForm(_presentationModel, project);
             if (_presentationModel.AddFormToPanel(form))
                 _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_folder_outline);
         }

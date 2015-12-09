@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class ProjectDetailForm : BasicForm
+    public partial class ProjectDetailForm : Form
     {
         private Project _project;
 
-        public ProjectDetailForm(Project project, Panel panel) : base (panel) 
+        public ProjectDetailForm(Project project)
         {
             InitializeComponent();
             this._project = project;

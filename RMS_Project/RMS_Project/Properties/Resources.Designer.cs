@@ -5023,6 +5023,16 @@ namespace RMS_Project.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
+        internal static System.Drawing.Bitmap project_icon {
+            get {
+                object obj = ResourceManager.GetObject("project_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
         internal static System.Drawing.Bitmap pull_request {
             get {
                 object obj = ResourceManager.GetObject("pull_request", resourceCulture);
@@ -5096,6 +5106,16 @@ namespace RMS_Project.Properties {
         internal static System.Drawing.Bitmap reply_all {
             get {
                 object obj = ResourceManager.GetObject("reply_all", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap requirement_icon {
+            get {
+                object obj = ResourceManager.GetObject("requirement_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -5833,6 +5853,16 @@ namespace RMS_Project.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
+        internal static System.Drawing.Bitmap test_icon {
+            get {
+                object obj = ResourceManager.GetObject("test_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
         internal static System.Drawing.Bitmap thermometer {
             get {
                 object obj = ResourceManager.GetObject("thermometer", resourceCulture);
@@ -5956,6 +5986,16 @@ namespace RMS_Project.Properties {
         internal static System.Drawing.Bitmap usb {
             get {
                 object obj = ResourceManager.GetObject("usb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap user_icon {
+            get {
+                object obj = ResourceManager.GetObject("user_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -79,7 +79,7 @@ namespace RMS_Project
         }
 
         //Add hierarchy button to userinterface
-        public void AddFormButtonToUserInterface(BasicForm form, string name, Image image)
+        public void AddFormButtonToUserInterface(Form form, string name, Image image)
         {
             if (_userInterface != null)
                 _userInterface.AddFormButtonToBar(form, name, image);

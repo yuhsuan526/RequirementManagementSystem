@@ -1924,4 +1924,16 @@
   <data name="ios7_arrow_forward_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\ios7-arrow-forward-small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="requirement_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\requirement_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="test_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\test_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="project_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\project_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
