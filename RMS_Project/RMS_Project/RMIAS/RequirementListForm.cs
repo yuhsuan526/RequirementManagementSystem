@@ -67,7 +67,7 @@ namespace RMS_Project
             DataGridViewCell cell = requirementListDataGridView.Rows[e.RowIndex].Cells[0];
             Requirement requirement = _arrayList[e.RowIndex] as Requirement;
             BasicForm form = new RequirementDetailForm(requirement, _parentPanel);
-            if (form.AddFormToPanel(form))
+            if (form.AddForm(form))
                 _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_paper_outline);
         }
     }

@@ -70,8 +70,7 @@ namespace RMS_Project
             form.TopLevel = false;
             _navigationPanel.Controls.Add(form);
             form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            form.Width = _navigationPanel.Width;
-            form.Height = _navigationPanel.Height;
+            form.Dock = DockStyle.Fill;
             form.Show();
             if (_navigationPanel.Controls.Count > 1)
             {

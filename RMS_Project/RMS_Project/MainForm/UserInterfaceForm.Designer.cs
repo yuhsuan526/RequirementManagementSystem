@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.userButton = new RMS_Project.NoFocusCueButton();
             this.newButton = new RMS_Project.NoFocusCueButton();
-            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,15 +42,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.userButton, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.newButton, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel, 0, 0);
@@ -60,9 +51,22 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 81);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.AutoScroll = true;
+            this.flowLayoutPanel.AutoSize = true;
+            this.flowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.flowLayoutPanel.Size = new System.Drawing.Size(544, 81);
+            this.flowLayoutPanel.TabIndex = 5;
+            this.flowLayoutPanel.WrapContents = false;
             // 
             // userButton
             // 
@@ -111,20 +115,6 @@
             this.newButton.Click += new System.EventHandler(this.newButton_Click);
             this.newButton.MouseLeave += new System.EventHandler(this.newButton_MouseLeave);
             this.newButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.newButton_MouseMove);
-            // 
-            // flowLayoutPanel
-            // 
-            this.flowLayoutPanel.AutoScroll = true;
-            this.flowLayoutPanel.AutoSize = true;
-            this.flowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.flowLayoutPanel.Size = new System.Drawing.Size(544, 81);
-            this.flowLayoutPanel.TabIndex = 5;
-            this.flowLayoutPanel.WrapContents = false;
             // 
             // UserInterfaceForm
             // 

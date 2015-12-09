@@ -26,7 +26,7 @@ namespace RMS_Project
             _isAnimating = false;
         }
 
-        public bool AddFormToPanel(Form form)
+        public bool AddForm(Form form)
         {
             if (_isAnimating)
             {
@@ -47,7 +47,7 @@ namespace RMS_Project
         }
 
         //Use animation to move the panel from mainFormPanel to the right side
-        public bool PopFormsFromPanel(Control control)
+        public bool PopForms(Control control)
         {
             if (_isAnimating)
             {

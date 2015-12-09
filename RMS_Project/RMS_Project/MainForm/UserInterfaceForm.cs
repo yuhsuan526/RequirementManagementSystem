@@ -129,15 +129,15 @@ namespace RMS_Project
                 InterfaceModel model = (InterfaceModel)_buttonArrayList[i];
                 if (model.Button == button)
                 {
-                    isAvailable = model.Form.PopFormsFromPanel(model.Form);
+                    isAvailable = model.Form.PopForms(model.Form);
                     break;
                 }
             }
             if (isAvailable)
             {
-                for (i = i + 1; i < _buttonArrayList.Count; i++)
+                for (int j = _buttonArrayList.Count - 1; j >= i + 1; j--)
                 {
-                    InterfaceModel model = (InterfaceModel)_buttonArrayList[i];
+                    InterfaceModel model = (InterfaceModel)_buttonArrayList[j];
                     flowLayoutPanel.Controls.Remove(model.PictureBox);
                     flowLayoutPanel.Controls.Remove(model.Button);
                     _buttonArrayList.Remove(model);

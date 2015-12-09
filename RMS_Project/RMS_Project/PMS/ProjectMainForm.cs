@@ -32,12 +32,12 @@ namespace RMS_Project
             this._project = project;
 
             _projectDetailForm = new ProjectDetailForm(project, _mainPanel);
-            _requirementListForm = new RequirementListForm(_presentationModel, project, _mainPanel);
-            _testListForm = new TestListForm(_presentationModel, project, _mainPanel);
-            _userListForm = new UserListForm(_presentationModel, project, _mainPanel);
+            _requirementListForm = new RequirementListForm(_presentationModel, project, panel);
+            _testListForm = new TestListForm(_presentationModel, project, panel);
+            _userListForm = new UserListForm(_presentationModel, project, panel);
             _requirementEditorForm = new RequirementEditorForm(_presentationModel, project);
 
-            _projectDetailForm.AddFormToPanel(_projectDetailForm);
+            _projectDetailForm.AddForm(_projectDetailForm);
 
             UserInterfaceForm form = _presentationModel.UserInterface;
             if (form != null)
@@ -47,17 +47,6 @@ namespace RMS_Project
             _currentActiveButton = projectButton;
             SetButtonColor(projectButton);
         }
-        /*
-        public void AddFormToPanel(Form form)
-        {
-            form.TopLevel = false;
-            while (mainPanel.Controls.Count > 0)
-                mainPanel.Controls.RemoveAt(mainPanel.Controls.Count - 1);
-            mainPanel.Controls.Add(form);
-            form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-            form.Show();
-        }*/
 
         public void ClickNewButton()
         {
@@ -71,7 +60,7 @@ namespace RMS_Project
             }
             else if (_currentActiveButton == requirementButton)
             {
-                AddFormToPanel(_requirementEditorForm);
+                AddForm(_requirementEditorForm);
             }
             else if (_currentActiveButton == testButton)
             {
@@ -95,48 +84,58 @@ namespace RMS_Project
 
         private void projectButton_Click(object sender, EventArgs e)
         {
+            /*
             UserInterfaceForm form = _presentationModel.UserInterface;
-            _projectDetailForm.AddFormToPanel(_projectDetailForm);
-            if (form != null)
+            if (_projectDetailForm.AddFormToPanel(_projectDetailForm))
             {
-                form.SetFeatureButton(UserInterfaceForm.FeatureType.Edit);
-            }
-            ChangeTabType(projectButton);
+                if (form != null)
+                {
+                    form.SetFeatureButton(UserInterfaceForm.FeatureType.Edit);
+                }
+                ChangeTabType(projectButton);
+            }*/
         }
 
         private void memberButton_Click(object sender, EventArgs e)
         {
             UserInterfaceForm form = _presentationModel.UserInterface;
-            _userListForm.AddFormToPanel(_userListForm);
-            if (form != null)
+            if (_userListForm.AddForm(_userListForm))
             {
-                //form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
-                form.SetFeatureButton(UserInterfaceForm.FeatureType.Hide);
+                _presentationModel.AddFormButtonToUserInterface(_userListForm, "Members", Properties.Resources.ios7_people_outline);
+                if (form != null)
+                {
+                    form.SetFeatureButton(UserInterfaceForm.FeatureType.Hide);
+                }
+                //ChangeTabType(memberButton);
             }
-            ChangeTabType(memberButton);
         }
 
         private void requirementButton_Click(object sender, EventArgs e)
         {
             UserInterfaceForm form = _presentationModel.UserInterface;
-            //AddFormToPanel(_requirementListForm);
-            _requirementListForm.AddFormToPanel(_requirementListForm);
-            if (form != null)
+            if (_requirementListForm.AddForm(_requirementListForm))
             {
-                form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
+                _presentationModel.AddFormButtonToUserInterface(_requirementListForm, "Requirements", Properties.Resources.ios7_paper_outline);
+                if (form != null)
+                {
+                    form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
+                }
+                //ChangeTabType(requirementButton);
             }
-            ChangeTabType(requirementButton);
         }
 
         private void testButton_Click(object sender, EventArgs e)
         {
             UserInterfaceForm form = _presentationModel.UserInterface;
-            _testListForm.AddFormToPanel(_testListForm);
-            if (form != null)
+            if (_testListForm.AddForm(_testListForm))
             {
-                form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
+                _presentationModel.AddFormButtonToUserInterface(_testListForm, "Tests", Properties.Resources.ios7_browsers_outline);
+                if (form != null)
+                {
+                    form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
+                }
+                //ChangeTabType(testButton);
             }
-            ChangeTabType(testButton);
         }
 
         private void SetButtonColor(Button button)
