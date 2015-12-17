@@ -2091,16 +2091,16 @@
     <None Include="images\ios7-arrow-forward-small.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\user_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\requirement_icon.png" />
+    <None Include="Resources\project_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\test_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\project_icon.png" />
+    <None Include="Resources\user_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\requirement_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
