@@ -88,17 +88,17 @@ namespace RMS_Project
             switch(type)
             {
                 case FeatureType.New:
-                    newButton.Text = "New";
-                    newButton.Image = Properties.Resources.ios7_plus_outline;
-                    newButton.Visible = true;
+                    _functionalButton.Text = "New";
+                    _functionalButton.Image = Properties.Resources.ios7_plus_outline;
+                    _functionalButton.Visible = true;
                     break;
                 case FeatureType.Edit:
-                    newButton.Text = "Edit";
-                    newButton.Image = Properties.Resources.edit;
-                    newButton.Visible = true;
+                    _functionalButton.Text = "Edit";
+                    _functionalButton.Image = Properties.Resources.edit;
+                    _functionalButton.Visible = true;
                     break;
                 case FeatureType.Hide:
-                    newButton.Visible = false;
+                    _functionalButton.Visible = false;
                     break;
             }
         }
@@ -187,31 +187,31 @@ namespace RMS_Project
 
         private void functionalButton_MouseLeave(object sender, EventArgs e)
         {
-            newButton.ForeColor = Color.Black;
-            newButton.Image = _presentationModel.ChangeColor(new Bitmap(newButton.Image), Color.Black);
+            _functionalButton.ForeColor = Color.Black;
+            _functionalButton.Image = _presentationModel.ChangeColor(new Bitmap(_functionalButton.Image), Color.Black);
         }
 
         private void userButton_Click(object sender, EventArgs e)
         {
-            _contextMenuStrip.Show(userButton, new Point(userButton.Width / 2, (int)(userButton.Height * 0.7f)));
+            _contextMenuStrip.Show(_userButton, new Point(_userButton.Width / 2, (int)(_userButton.Height * 0.7f)));
         }
 
         private void userButton_MouseLeave(object sender, EventArgs e)
         {
-            userButton.ForeColor = Color.Black;
-            userButton.Image = _presentationModel.ChangeColor(new Bitmap(userButton.Image), Color.Black);
+            _userButton.ForeColor = Color.Black;
+            _userButton.Image = _presentationModel.ChangeColor(new Bitmap(_userButton.Image), Color.Black);
         }
 
         private void functionalButton_MouseMove(object sender, MouseEventArgs e)
         {
-            newButton.ForeColor = Color.CornflowerBlue;
-            newButton.Image = _presentationModel.ChangeColor(new Bitmap(newButton.Image), Color.CornflowerBlue);
+            _functionalButton.ForeColor = Color.CornflowerBlue;
+            _functionalButton.Image = _presentationModel.ChangeColor(new Bitmap(_functionalButton.Image), Color.CornflowerBlue);
         }
 
         private void userButton_MouseMove(object sender, MouseEventArgs e)
         {
-            userButton.ForeColor = Color.CornflowerBlue;
-            userButton.Image = _presentationModel.ChangeColor(new Bitmap(userButton.Image), Color.CornflowerBlue);
+            _userButton.ForeColor = Color.CornflowerBlue;
+            _userButton.Image = _presentationModel.ChangeColor(new Bitmap(_userButton.Image), Color.CornflowerBlue);
         }
     }
 }

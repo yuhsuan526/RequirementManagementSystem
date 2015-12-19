@@ -30,8 +30,8 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.userButton = new RMS_Project.NoFocusCueButton();
-            this.newButton = new RMS_Project.NoFocusCueButton();
+            this._userButton = new RMS_Project.NoFocusCueButton();
+            this._functionalButton = new RMS_Project.NoFocusCueButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,8 +42,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.Controls.Add(this.userButton, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.newButton, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this._userButton, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this._functionalButton, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -70,51 +70,51 @@
             // 
             // userButton
             // 
-            this.userButton.AccessibleName = "UserButton";
-            this.userButton.AutoSize = true;
-            this.userButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userButton.FlatAppearance.BorderSize = 0;
-            this.userButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.userButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.userButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.userButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userButton.Image = global::RMS_Project.Properties.Resources.ios7_contact_outline;
-            this.userButton.Location = new System.Drawing.Point(667, 3);
-            this.userButton.Name = "userButton";
-            this.userButton.Size = new System.Drawing.Size(114, 75);
-            this.userButton.TabIndex = 6;
-            this.userButton.TabStop = false;
-            this.userButton.Text = "User";
-            this.userButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.userButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.userButton.UseVisualStyleBackColor = true;
-            this.userButton.Click += new System.EventHandler(this.userButton_Click);
-            this.userButton.MouseLeave += new System.EventHandler(this.userButton_MouseLeave);
-            this.userButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.userButton_MouseMove);
+            this._userButton.AccessibleName = "UserButton";
+            this._userButton.AutoSize = true;
+            this._userButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._userButton.FlatAppearance.BorderSize = 0;
+            this._userButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this._userButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this._userButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._userButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._userButton.Image = global::RMS_Project.Properties.Resources.ios7_contact_outline;
+            this._userButton.Location = new System.Drawing.Point(667, 3);
+            this._userButton.Name = "userButton";
+            this._userButton.Size = new System.Drawing.Size(114, 75);
+            this._userButton.TabIndex = 6;
+            this._userButton.TabStop = false;
+            this._userButton.Text = "User";
+            this._userButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._userButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this._userButton.UseVisualStyleBackColor = true;
+            this._userButton.Click += new System.EventHandler(this.userButton_Click);
+            this._userButton.MouseLeave += new System.EventHandler(this.userButton_MouseLeave);
+            this._userButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.userButton_MouseMove);
             // 
             // newButton
             // 
-            this.newButton.AccessibleName = "NewProjectButton";
-            this.newButton.AutoSize = true;
-            this.newButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newButton.FlatAppearance.BorderSize = 0;
-            this.newButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.newButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.newButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.newButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newButton.Image = global::RMS_Project.Properties.Resources.ios7_plus_outline;
-            this.newButton.Location = new System.Drawing.Point(547, 3);
-            this.newButton.Name = "newButton";
-            this.newButton.Size = new System.Drawing.Size(114, 75);
-            this.newButton.TabIndex = 0;
-            this.newButton.TabStop = false;
-            this.newButton.Text = "New";
-            this.newButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.newButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.newButton.UseVisualStyleBackColor = true;
-            this.newButton.Click += new System.EventHandler(this.functionalButton_Click);
-            this.newButton.MouseLeave += new System.EventHandler(this.functionalButton_MouseLeave);
-            this.newButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.functionalButton_MouseMove);
+            this._functionalButton.AccessibleName = "NewProjectButton";
+            this._functionalButton.AutoSize = true;
+            this._functionalButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._functionalButton.FlatAppearance.BorderSize = 0;
+            this._functionalButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this._functionalButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this._functionalButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._functionalButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._functionalButton.Image = global::RMS_Project.Properties.Resources.ios7_plus_outline;
+            this._functionalButton.Location = new System.Drawing.Point(547, 3);
+            this._functionalButton.Name = "newButton";
+            this._functionalButton.Size = new System.Drawing.Size(114, 75);
+            this._functionalButton.TabIndex = 0;
+            this._functionalButton.TabStop = false;
+            this._functionalButton.Text = "New";
+            this._functionalButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._functionalButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this._functionalButton.UseVisualStyleBackColor = true;
+            this._functionalButton.Click += new System.EventHandler(this.functionalButton_Click);
+            this._functionalButton.MouseLeave += new System.EventHandler(this.functionalButton_MouseLeave);
+            this._functionalButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.functionalButton_MouseMove);
             // 
             // UserInterfaceForm
             // 
@@ -137,7 +137,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
-        private NoFocusCueButton newButton;
-        private NoFocusCueButton userButton;
+        private NoFocusCueButton _functionalButton;
+        private NoFocusCueButton _userButton;
     }
 }
