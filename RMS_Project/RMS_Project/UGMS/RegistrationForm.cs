@@ -33,7 +33,7 @@ namespace RMS_Project
             string status = await _presentationModel.Registry(jObject);
             if (status == "success")
             {
-                _presentationModel.AddFormToPanel(new LoginForm(_presentationModel));
+                _presentationModel.PopFormFromPanel();
                 MessageBox.Show("註冊成功", "Success", MessageBoxButtons.OK);
             }
             else if (status == "註冊失敗")
@@ -48,7 +48,7 @@ namespace RMS_Project
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            _presentationModel.AddFormToPanel(new LoginForm(_presentationModel));
+            _presentationModel.PopFormFromPanel();
         }
 
         private void createButton_Click(object sender, EventArgs e)

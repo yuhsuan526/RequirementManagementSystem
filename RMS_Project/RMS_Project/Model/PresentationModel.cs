@@ -28,14 +28,6 @@ namespace RMS_Project
             _navigationPanel = mainform.NavigationPanel;
         }
 
-        /*public Model Model
-        {
-            get
-            {
-                return _model;
-            }
-        }*/
-
         //Add form to mainFormPanel
         public bool AddFormToPanel(Form form)
         {
@@ -166,7 +158,7 @@ namespace RMS_Project
             }
             if (topControl != null)
             {
-                MethodInvoker mi = new MethodInvoker(this.PopFormFromPanel);
+                MethodInvoker mi = new MethodInvoker(this.PopForm);
                 var delay = Task.Delay(500).ContinueWith(_ =>
                 {
                     _mainForm.BeginInvoke(mi, null);
@@ -175,13 +167,44 @@ namespace RMS_Project
             return true;
         }
 
-        //remove form from mainform
-        public void PopFormFromPanel()
+        private void PopForm()
         {
             if (_mainFormPanel.Controls.Count > 0)
             {
                 _mainFormPanel.Controls.RemoveAt(_mainFormPanel.Controls.Count - 1);
             }
+        }
+
+        //Remove top form from mainform
+        public bool PopFormFromPanel()
+        {
+            if (isAnimating)
+            {
+                return false;
+            }
+            Control topControl = null;
+            if (_mainFormPanel.Controls.Count > 0)
+            {
+                topControl = _mainFormPanel.Controls[_mainFormPanel.Controls.Count - 1];
+            }
+            else
+            {
+                return false;
+            }
+            if (_mainFormPanel.Controls.Count > 1)
+            {
+                Util.Animate(_mainFormPanel.Controls[_mainFormPanel.Controls.Count - 2], Util.Effect.Slide, 500, 180);
+                waitForAnimation(500);
+            }
+            if (topControl != null)
+            {
+                MethodInvoker mi = new MethodInvoker(this.PopForm);
+                var delay = Task.Delay(500).ContinueWith(_ =>
+                {
+                    _mainForm.BeginInvoke(mi, null);
+                });
+            }
+            return true;
         }
 
         //Get current form in mainFormPanel
