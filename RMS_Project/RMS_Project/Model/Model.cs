@@ -107,6 +107,16 @@ namespace RMS_Project
             _username = "";
         }
 
+        public async Task<string> EditProject(Project project)
+        {
+            return null;
+        }
+
+        public async Task<string> DeleteProject(int projectId)
+        {
+            return null;
+        }
+
         public async Task<string> AddProject(JObject jObject)
         {
             HttpClient client = new HttpClient();

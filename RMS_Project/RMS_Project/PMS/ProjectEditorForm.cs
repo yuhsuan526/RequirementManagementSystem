@@ -16,6 +16,7 @@ namespace RMS_Project
     public partial class ProjectEditorForm : Form
     {
         private PresentationModel _presentationModel;
+        private Project _project;
 
         public ProjectEditorForm(PresentationModel presentationModel)
         {
@@ -23,12 +24,19 @@ namespace RMS_Project
             this._presentationModel = presentationModel;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public ProjectEditorForm(PresentationModel presentationModel, Project project)
         {
-            PostProduct();
+            InitializeComponent();
+            this._presentationModel = presentationModel;
+            this._project = project;
         }
 
-        private async void PostProduct()
+        private void modifyProjectButton_Click(object sender, EventArgs e)
+        {
+            AddProject();
+        }
+
+        private async void AddProject()
         {
             JObject jObject = new JObject();
             jObject["name"] = textBox1.Text;
@@ -38,10 +46,10 @@ namespace RMS_Project
             string status = await _presentationModel.AddProject(jObject);
             if (status == "success")
             {
-                //_presentationModel.AddFormToPanel(new ProjectListForm(_presentationModel));
-                MessageBox.Show("專案建立成功", "Success", MessageBoxButtons.OK);
                 ProjectListForm form = _presentationModel.GetFormByType(typeof(ProjectListForm)) as ProjectListForm;
                 form.RefreshProjectList();
+                _presentationModel.PopFormFromPanel();
+                MessageBox.Show("專案建立成功", "Success", MessageBoxButtons.OK);
             }
             else if (status == "專案建立失敗")
             {

@@ -17,6 +17,11 @@ namespace RMS_Project
         public ProjectDetailForm(Project project)
         {
             InitializeComponent();
+            RefreshProjectDetail(project);
+        }
+
+        public void RefreshProjectDetail(Project project)
+        {
             this._project = project;
             nameLabel.Text = project.NAME;
             descriptionLabel.Text = project.DESC;

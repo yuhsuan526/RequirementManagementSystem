@@ -164,7 +164,7 @@ namespace RMS_Project
             return button;
         }
 
-        private void newButton_Click(object sender, EventArgs e)
+        private void functionalButton_Click(object sender, EventArgs e)
         {
             if (_buttonArrayList.Count <= 0)
             {
@@ -185,7 +185,7 @@ namespace RMS_Project
             }
         }
 
-        private void newButton_MouseLeave(object sender, EventArgs e)
+        private void functionalButton_MouseLeave(object sender, EventArgs e)
         {
             newButton.ForeColor = Color.Black;
             newButton.Image = _presentationModel.ChangeColor(new Bitmap(newButton.Image), Color.Black);
@@ -202,7 +202,7 @@ namespace RMS_Project
             userButton.Image = _presentationModel.ChangeColor(new Bitmap(userButton.Image), Color.Black);
         }
 
-        private void newButton_MouseMove(object sender, MouseEventArgs e)
+        private void functionalButton_MouseMove(object sender, MouseEventArgs e)
         {
             newButton.ForeColor = Color.CornflowerBlue;
             newButton.Image = _presentationModel.ChangeColor(new Bitmap(newButton.Image), Color.CornflowerBlue);

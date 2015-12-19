@@ -18,15 +18,13 @@ namespace RMS_Project
     {
         private PresentationModel _presentationModel;
         private ArrayList _arrayList;
-        private Panel _parentPanel;
 
-        public ProjectListForm(PresentationModel presentationModel, Panel panel)
+        public ProjectListForm(PresentationModel presentationModel)
         {
             InitializeComponent();
             this._presentationModel = presentationModel;
             this.ProjectListDataGridView.ClearSelection();
             _arrayList = new ArrayList();
-            _parentPanel = panel;
             RefreshProjectList();
         }
 
@@ -75,6 +73,11 @@ namespace RMS_Project
             {
                 MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
             }
+        }
+
+        void deleteButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

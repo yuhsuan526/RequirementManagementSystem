@@ -57,7 +57,7 @@ namespace RMS_Project
                 UserInterfaceForm form = new UserInterfaceForm(this);
                 AddFormToNavigationPanel(form);
                 _userInterface = form;
-                _userInterface.setProjectsButton(new ProjectListForm(this, _mainForm.MainFormPanel));
+                _userInterface.setProjectsButton(new ProjectListForm(this));
             }
             return status;
         }
@@ -290,6 +290,16 @@ namespace RMS_Project
         public async Task<string> AddProject(JObject jObject)
         {
             return await _model.AddProject(jObject);
+        }
+
+        public async Task<string> EditProject(Project project)
+        {
+            return await _model.EditProject(project);
+        }
+
+        public async Task<string> DeleteProject(int projectId)
+        {
+            return await _model.DeleteProject(projectId);
         }
 
         public async Task<HttpResponseMessage> GetProjectList()

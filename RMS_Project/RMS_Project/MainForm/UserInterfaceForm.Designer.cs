@@ -112,9 +112,9 @@
             this.newButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.newButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.newButton.UseVisualStyleBackColor = true;
-            this.newButton.Click += new System.EventHandler(this.newButton_Click);
-            this.newButton.MouseLeave += new System.EventHandler(this.newButton_MouseLeave);
-            this.newButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.newButton_MouseMove);
+            this.newButton.Click += new System.EventHandler(this.functionalButton_Click);
+            this.newButton.MouseLeave += new System.EventHandler(this.functionalButton_MouseLeave);
+            this.newButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.functionalButton_MouseMove);
             // 
             // UserInterfaceForm
             // 
