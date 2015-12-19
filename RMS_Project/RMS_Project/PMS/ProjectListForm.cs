@@ -48,7 +48,7 @@ namespace RMS_Project
 
         public async void RefreshProjectList()
         {
-            HttpResponseMessage response = await _presentationModel.Model.GetProjectList();
+            HttpResponseMessage response = await _presentationModel.GetProjectList();
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
             {

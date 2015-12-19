@@ -30,7 +30,7 @@ namespace RMS_Project
             jObject["email"] = email.Text;
             jObject["password"] = password.Text;
 
-            string status = await _presentationModel.Model.Registry(jObject);
+            string status = await _presentationModel.Registry(jObject);
             if (status == "success")
             {
                 _presentationModel.AddFormToPanel(new LoginForm(_presentationModel));

@@ -33,9 +33,9 @@ namespace RMS_Project
             JObject jObject = new JObject();
             jObject["name"] = textBox1.Text;
             jObject["descript"] = richTextBox1.Text;
-            jObject["uid"] = _presentationModel.Model.UID;
+            jObject["uid"] = _presentationModel.GetUID();
 
-            string status = await _presentationModel.Model.AddProject(jObject);
+            string status = await _presentationModel.AddProject(jObject);
             if (status == "success")
             {
                 //_presentationModel.AddFormToPanel(new ProjectListForm(_presentationModel));

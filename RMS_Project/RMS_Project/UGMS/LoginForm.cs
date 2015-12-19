@@ -30,7 +30,7 @@ namespace RMS_Project
             jObject["email"] = email.Text;
             jObject["password"] = password.Text;
 
-            string status = await _presentationModel.Model.SignIn(jObject);
+            string status = await _presentationModel.ModelSignIn(jObject);
             if (status == "success")
             {
                 if (rememberCheckBox.Checked)

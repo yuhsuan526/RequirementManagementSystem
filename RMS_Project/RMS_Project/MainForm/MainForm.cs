@@ -54,7 +54,7 @@ namespace RMS_Project
         {
             if (_presentationModel.PopFormsFromPanel(_loginForm))
             {
-                _presentationModel.Model.SignOut();
+                _presentationModel.ModelSignOut();
                 _presentationModel.PopFormFromNavigationPanelAnimated();
                 this._userInterface = null;
             }

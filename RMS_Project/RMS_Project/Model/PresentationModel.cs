@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,13 +29,13 @@ namespace RMS_Project
             _userInterface = mainform.UserInterface;
         }
 
-        public Model Model
+        /*public Model Model
         {
             get
             {
                 return _model;
             }
-        }
+        }*/
 
         //Add form to mainFormPanel
         public bool AddFormToPanel(Form form)
@@ -227,6 +229,61 @@ namespace RMS_Project
                 }
             }
             return newBitmap;
+        }
+
+        public void ModelSignOut()
+        {
+            _model.SignOut();
+        }
+
+        public async Task<HttpResponseMessage> GetUserListByProject(string projectId)
+        {
+            return await _model.GetUserListByProject(projectId);
+        }
+
+        public async Task<string> Registry(JObject jObject)
+        {
+            return await _model.Registry(jObject);
+        }
+
+        public async Task<HttpResponseMessage> GetRequirementByProject(string projectId)
+        {
+            return await _model.GetRequirementByProject(projectId);
+        }
+
+        public int GetUID()
+        {
+            return _model.UID;
+        }
+
+        public async Task<string> AddRequirement(JObject jObject)
+        {
+            return await _model.AddRequirement(jObject);
+        }
+
+        public async Task<string> AddProject(JObject jObject)
+        {
+            return await _model.AddProject(jObject);
+        }
+
+        public async Task<HttpResponseMessage> GetProjectList()
+        {
+            return await _model.GetProjectList();
+        }
+
+        public async Task<HttpResponseMessage> GetMethod(String method)
+        {
+            return await _model.GetMethod(method);
+        }
+
+        public async Task<string> ModelSignIn(JObject jObject)
+        {
+            return await _model.SignIn(jObject);
+        }
+
+        public async Task<HttpResponseMessage> PostAddUserToProject(JObject jObject)
+        {
+            return await _model.PostAddUserToProject(jObject);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace RMS_Project
 
         private async void GetRequirementByProject()
         {
-            HttpResponseMessage response = await _presentationModel.Model.GetRequirementByProject(_project.ID.ToString());
+            HttpResponseMessage response = await _presentationModel.GetRequirementByProject(_project.ID.ToString());
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
             {

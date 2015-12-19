@@ -62,13 +62,13 @@ namespace RMS_Project
             jObject["description"] = richTextBox2.Text;
             jObject["version"] = textBox3.Text;
             jObject["memo"] = richTextBox1.Text;
-            jObject["uid"] = _presentationModel.Model.UID;
+            jObject["uid"] = _presentationModel.GetUID();
             jObject["pid"] = _project.ID;
             jObject["type"] = _selectedType;
             jObject["priority"] = _selectedPriority;
             jObject["status"] = _selectedStatus;
 
-            string status = await _presentationModel.Model.AddRequirement(jObject);
+            string status = await _presentationModel.AddRequirement(jObject);
             if (status == "success")
             {
                 //_presentationModel.AddFormToPanel(new RequirementListForm(_presentationModel, _project));
@@ -86,7 +86,7 @@ namespace RMS_Project
 
         private async void GetMethod(String method)
         {
-            HttpResponseMessage response = await _presentationModel.Model.GetMethod(method);
+            HttpResponseMessage response = await _presentationModel.GetMethod(method);
 
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 12.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/ReverseEngineeringLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2015-12-19T14:38:51" Importance="High" Text="Reverse Engineering Started." />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'a99d54d6-cb47-4ec6-9be2-fb699b370c78' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Integer' -  (PrimitiveType)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::Newtonsoft' -  (Package)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::Newtonsoft::Json' -  (Package)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::Newtonsoft::Json::Linq' -  (Package)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::Newtonsoft::Json::Linq::JObject' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project' -  (Package)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Medium" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model' -  (Class)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::_accountId' -  (Property)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::_username' -  (Property)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::AddProject' -  (Operation)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::AddProject::jObject' -  (Parameter)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::AddRequirement' -  (Operation)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::AddRequirement::jObject' -  (Parameter)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::BASE_URL' -  (Property)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::GetMethod' -  (Operation)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::GetMethod::method' -  (Parameter)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::GetProjectList' -  (Operation)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::GetRequirementByProject' -  (Operation)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::GetRequirementByProject::projectId' -  (Parameter)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::GetUserListByProject' -  (Operation)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::GetUserListByProject::projectId' -  (Parameter)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::Model' -  (Operation)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::PostAddUserToProject' -  (Operation)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::PostAddUserToProject::jObject' -  (Parameter)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::Registry' -  (Operation)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::Registry::jObject' -  (Parameter)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::SignIn' -  (Operation)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::SignIn::jObject' -  (Parameter)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::SignOut' -  (Operation)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::UID' -  (Property)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::RMS_Project::Model::UserName' -  (Property)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System' -  (Package)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System::Net' -  (Package)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System::Net::Http' -  (Package)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System::Net::Http::HttpResponseMessage' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System::Threading' -  (Package)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System::Threading::Tasks' -  (Package)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System::Threading::Tasks::Task' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System::Threading::Tasks::Task&lt;HttpResponseMessage‎&gt;' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System::Threading::Tasks::Task&lt;String‎&gt;' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'String' -  (PrimitiveType)" />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="High" Text="(1) type(s) fully reverse engineered." />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="High" Text="(5) type(s) partially reverse engineered.  These types were not included in the original selection so their full definitions are not reverse engineered.  Instead, this shallow operation has simply ensured these types exist in the UML model because they are needed in order to fully describe other elements." />
+  <Message Timestamp="2015-12-19T14:38:52" Importance="High" Text="The reverse engineering operation completed with (0) error(s), and (0) warning(s)." />
+</Log>
