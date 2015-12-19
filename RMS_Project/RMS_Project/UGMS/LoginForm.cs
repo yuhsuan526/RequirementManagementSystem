@@ -30,7 +30,7 @@ namespace RMS_Project
             jObject["email"] = email.Text;
             jObject["password"] = password.Text;
 
-            string status = await _presentationModel.ModelSignIn(jObject);
+            string status = await _presentationModel.SignIn(jObject);
             if (status == "success")
             {
                 if (rememberCheckBox.Checked)
@@ -47,7 +47,6 @@ namespace RMS_Project
                     Properties.Settings.Default.RememberMe = false;
                     Properties.Settings.Default.Save();
                 }
-                _presentationModel.SignIn();
             }
             else if (status == "帳號或密碼錯誤")
             {

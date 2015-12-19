@@ -26,7 +26,6 @@ namespace RMS_Project
             _mainForm = mainform;
             _mainFormPanel = mainform.MainFormPanel;
             _navigationPanel = mainform.NavigationPanel;
-            _userInterface = mainform.UserInterface;
         }
 
         /*public Model Model
@@ -58,12 +57,17 @@ namespace RMS_Project
             return false;
         }
 
-        public void SignIn()
+        public async Task<string> SignIn(JObject jObject)        
         {
-            UserInterfaceForm form = new UserInterfaceForm(this);
-            AddFormToNavigationPanel(form);
-            _userInterface = form;
-            _userInterface.setProjectsButton(new ProjectListForm(this, _mainForm.MainFormPanel));
+            string status = await _model.SignIn(jObject);
+            if (status == "success")
+            {
+                UserInterfaceForm form = new UserInterfaceForm(this);
+                AddFormToNavigationPanel(form);
+                _userInterface = form;
+                _userInterface.setProjectsButton(new ProjectListForm(this, _mainForm.MainFormPanel));
+            }
+            return status;
         }
 
         //Add form to nevigation panel
@@ -97,7 +101,11 @@ namespace RMS_Project
 
         public void SignOut()
         {
-            _mainForm.SignOut();
+            if (PopFormsFromPanel(_mainForm.LoginForm))
+            {
+                _model.SignOut();
+                PopFormFromNavigationPanelAnimated();
+            }
         }
 
         //Use animation to move the panel from navigationPanel to the right side
@@ -231,11 +239,6 @@ namespace RMS_Project
             return newBitmap;
         }
 
-        public void ModelSignOut()
-        {
-            _model.SignOut();
-        }
-
         public async Task<HttpResponseMessage> GetUserListByProject(string projectId)
         {
             return await _model.GetUserListByProject(projectId);
@@ -276,12 +279,7 @@ namespace RMS_Project
             return await _model.GetMethod(method);
         }
 
-        public async Task<string> ModelSignIn(JObject jObject)
-        {
-            return await _model.SignIn(jObject);
-        }
-
-        public async Task<HttpResponseMessage> PostAddUserToProject(JObject jObject)
+        public async Task<HttpResponseMessage> AddUserToProject(JObject jObject)
         {
             return await _model.PostAddUserToProject(jObject);
         }

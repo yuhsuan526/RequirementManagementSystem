@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.testEditorTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.expectedResultTextBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.ownerComboBox = new System.Windows.Forms.ComboBox();
             this.inputDataLabel = new System.Windows.Forms.Label();
             this.testNameLabel = new System.Windows.Forms.Label();
@@ -40,10 +43,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.confirmButton = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.expectedResultTextBox = new System.Windows.Forms.TextBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.testEditorTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,6 +87,37 @@
             this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.testEditorTableLayoutPanel.Size = new System.Drawing.Size(599, 468);
             this.testEditorTableLayoutPanel.TabIndex = 2;
+            // 
+            // richTextBox1
+            // 
+            this.testEditorTableLayoutPanel.SetColumnSpan(this.richTextBox1, 4);
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Location = new System.Drawing.Point(53, 308);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(493, 97);
+            this.richTextBox1.TabIndex = 25;
+            this.richTextBox1.Text = "";
+            // 
+            // expectedResultTextBox
+            // 
+            this.testEditorTableLayoutPanel.SetColumnSpan(this.expectedResultTextBox, 3);
+            this.expectedResultTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.expectedResultTextBox.Location = new System.Drawing.Point(152, 101);
+            this.expectedResultTextBox.Name = "expectedResultTextBox";
+            this.expectedResultTextBox.Size = new System.Drawing.Size(394, 22);
+            this.expectedResultTextBox.TabIndex = 23;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.testEditorTableLayoutPanel.SetColumnSpan(this.label7, 4);
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(53, 150);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(493, 26);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Assignment";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ownerComboBox
             // 
@@ -202,27 +233,6 @@
             this.confirmButton.Text = "confirm";
             this.confirmButton.UseVisualStyleBackColor = true;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.testEditorTableLayoutPanel.SetColumnSpan(this.label7, 4);
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(53, 150);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(493, 26);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "Assignment";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // expectedResultTextBox
-            // 
-            this.testEditorTableLayoutPanel.SetColumnSpan(this.expectedResultTextBox, 3);
-            this.expectedResultTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.expectedResultTextBox.Location = new System.Drawing.Point(152, 101);
-            this.expectedResultTextBox.Name = "expectedResultTextBox";
-            this.expectedResultTextBox.Size = new System.Drawing.Size(394, 22);
-            this.expectedResultTextBox.TabIndex = 23;
-            // 
             // checkedListBox1
             // 
             this.checkedListBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -231,16 +241,6 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(121, 20);
             this.checkedListBox1.TabIndex = 24;
-            // 
-            // richTextBox1
-            // 
-            this.testEditorTableLayoutPanel.SetColumnSpan(this.richTextBox1, 4);
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(53, 308);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(493, 97);
-            this.richTextBox1.TabIndex = 25;
-            this.richTextBox1.Text = "";
             // 
             // TestEditorForm
             // 

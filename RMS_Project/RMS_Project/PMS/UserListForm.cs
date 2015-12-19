@@ -77,7 +77,7 @@ namespace RMS_Project
             jObject["uid"] = _presentationModel.GetUID();
             jObject["pid"] = _project.ID;
 
-            HttpResponseMessage response = await _presentationModel.PostAddUserToProject(jObject);
+            HttpResponseMessage response = await _presentationModel.AddUserToProject(jObject);
 
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)

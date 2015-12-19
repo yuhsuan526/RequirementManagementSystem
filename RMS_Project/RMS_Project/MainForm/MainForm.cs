@@ -13,7 +13,6 @@ namespace RMS_Project
     public partial class MainForm : Form
     {
         private PresentationModel _presentationModel;
-        private UserInterfaceForm _userInterface;
         private LoginForm _loginForm;
 
         //Constructor
@@ -23,7 +22,6 @@ namespace RMS_Project
             _presentationModel = new PresentationModel(this);
             _loginForm = new LoginForm(_presentationModel);
             _presentationModel.AddFormToPanel(_loginForm);
-            _presentationModel.AddFormToNavigationPanel(new DefaultInterfaceForm());
         }
 
         public Panel MainFormPanel
@@ -41,22 +39,12 @@ namespace RMS_Project
                 return _navigationPanel;
             }
         }
-
-        public UserInterfaceForm UserInterface
+        
+        public LoginForm LoginForm
         {
             get
             {
-                return _userInterface;
-            }
-        }
-        
-        public void SignOut()
-        {
-            if (_presentationModel.PopFormsFromPanel(_loginForm))
-            {
-                _presentationModel.ModelSignOut();
-                _presentationModel.PopFormFromNavigationPanelAnimated();
-                this._userInterface = null;
+                return _loginForm;
             }
         }
     }

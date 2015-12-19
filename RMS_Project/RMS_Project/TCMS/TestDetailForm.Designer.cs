@@ -230,11 +230,11 @@
             // TestName
             // 
             this.TestName.AutoSize = true;
-            this.TestName.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TestName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TestName.Location = new System.Drawing.Point(138, 3);
             this.TestName.Margin = new System.Windows.Forms.Padding(3);
             this.TestName.Name = "TestName";
-            this.TestName.Size = new System.Drawing.Size(51, 34);
+            this.TestName.Size = new System.Drawing.Size(404, 34);
             this.TestName.TabIndex = 21;
             this.TestName.Text = "TestName";
             this.TestName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
