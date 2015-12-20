@@ -67,10 +67,10 @@ namespace RMS_Project
         private void addUserButton_Click(object sender, EventArgs e)
         {
             if (!userTextBox.Text.Equals(""))
-                PostAddUserToProject();
+                AddUserToProject();
         }
 
-        private async void PostAddUserToProject()
+        private async void AddUserToProject()
         {
             JObject jObject = new JObject();
             jObject["add_email"] = userTextBox.Text;

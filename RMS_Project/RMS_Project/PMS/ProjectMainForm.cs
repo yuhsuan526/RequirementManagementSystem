@@ -18,7 +18,6 @@ namespace RMS_Project
     {
         private PresentationModel _presentationModel;
         private Project _project;
-        private ProjectDetailForm _projectDetailForm;
         private RequirementListForm _requirementListForm;
         private TestListForm _testListForm;
         private UserListForm _userListForm;
@@ -29,17 +28,12 @@ namespace RMS_Project
         {
             InitializeComponent();
             this._presentationModel = presentationModel;
-            this._project = project;
+            RefreshProjectDetail(project);
 
-            _projectDetailForm = new ProjectDetailForm(project);
             _requirementListForm = new RequirementListForm(_presentationModel, project);
             _testListForm = new TestListForm(_presentationModel, project);
             _userListForm = new UserListForm(_presentationModel, project);
             _requirementEditorForm = new RequirementEditorForm(_presentationModel, project);
-
-           // _presentationModel.AddFormToPanel(_projectDetailForm);
-            label1.Text = project.NAME;
-            richTextBox1.Text = project.DESC;
 
             _currentActiveButton = projectButton;
         }
@@ -137,6 +131,13 @@ namespace RMS_Project
         private void SetButtonColor(Button button)
         {
             button.Image = _presentationModel.ChangeColor(new Bitmap(button.Image), Color.CornflowerBlue);
+        }
+
+        public void RefreshProjectDetail(Project project)
+        {
+            this._project = project;
+            _nameLabel.Text = project.NAME;
+            _descriptionText.Text = project.DESC;
         }
 
         private void ResetOtherButtonColor()

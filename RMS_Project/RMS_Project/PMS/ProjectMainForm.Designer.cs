@@ -34,11 +34,11 @@
             this._mainPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this._nameLabel = new System.Windows.Forms.Label();
+            this._descriptionText = new System.Windows.Forms.RichTextBox();
             this.memberButton = new RMS_Project.NoFocusCueButton();
             this.requirementButton = new RMS_Project.NoFocusCueButton();
             this.testButton = new RMS_Project.NoFocusCueButton();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this._mainPanel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -110,8 +110,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label1, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.richTextBox1, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this._nameLabel, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this._descriptionText, 2, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
@@ -136,18 +136,32 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // _nameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("新細明體", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(178)))), ((int)(((byte)(153)))));
-            this.label1.Location = new System.Drawing.Point(358, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(346, 40);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._nameLabel.AutoSize = true;
+            this._nameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._nameLabel.Font = new System.Drawing.Font("新細明體", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._nameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(178)))), ((int)(((byte)(153)))));
+            this._nameLabel.Location = new System.Drawing.Point(358, 40);
+            this._nameLabel.Name = "_nameLabel";
+            this._nameLabel.Size = new System.Drawing.Size(346, 40);
+            this._nameLabel.TabIndex = 1;
+            this._nameLabel.Text = "label1";
+            this._nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // _descriptionText
+            // 
+            this._descriptionText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(34)))), ((int)(((byte)(42)))));
+            this._descriptionText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._descriptionText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._descriptionText.Font = new System.Drawing.Font("新細明體", 14F);
+            this._descriptionText.ForeColor = System.Drawing.Color.White;
+            this._descriptionText.Location = new System.Drawing.Point(358, 83);
+            this._descriptionText.Name = "_descriptionText";
+            this._descriptionText.ReadOnly = true;
+            this._descriptionText.Size = new System.Drawing.Size(346, 175);
+            this._descriptionText.TabIndex = 2;
+            this._descriptionText.Text = "";
             // 
             // memberButton
             // 
@@ -215,20 +229,6 @@
             this.testButton.MouseLeave += new System.EventHandler(this.noFocusCueButton1_MouseLeave);
             this.testButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.noFocusCueButton1_MouseMove);
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(34)))), ((int)(((byte)(42)))));
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Font = new System.Drawing.Font("新細明體", 14F);
-            this.richTextBox1.ForeColor = System.Drawing.Color.White;
-            this.richTextBox1.Location = new System.Drawing.Point(358, 83);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(346, 175);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
-            // 
             // ProjectMainForm
             // 
             this.AccessibleName = "ProjectMainForm";
@@ -257,7 +257,7 @@
         private System.Windows.Forms.Panel _mainPanel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label _nameLabel;
+        private System.Windows.Forms.RichTextBox _descriptionText;
     }
 }

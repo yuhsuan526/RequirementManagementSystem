@@ -53,7 +53,6 @@ namespace RMS_Project
                 JObject json = JObject.Parse(content);
                 string message = json["result"].ToString();
                 JArray jsonArray = JArray.Parse(json["projects"].ToString());
-                Console.WriteLine(json["projects"].ToString());
                 if (message == "success")
                 {
                     this.ProjectListDataGridView.Rows.Clear();
