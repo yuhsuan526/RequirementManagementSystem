@@ -18,10 +18,6 @@ namespace RMS_Project
     {
         private PresentationModel _presentationModel;
         private Project _project;
-        private RequirementListForm _requirementListForm;
-        private TestListForm _testListForm;
-        private UserListForm _userListForm;
-        private RequirementEditorForm _requirementEditorForm;
         private Button _currentActiveButton = null;
 
         public ProjectMainForm(PresentationModel presentationModel, Project project)
@@ -29,12 +25,6 @@ namespace RMS_Project
             InitializeComponent();
             this._presentationModel = presentationModel;
             RefreshProjectDetail(project);
-
-            _requirementListForm = new RequirementListForm(_presentationModel, project);
-            _testListForm = new TestListForm(_presentationModel, project);
-            _userListForm = new UserListForm(_presentationModel, project);
-            _requirementEditorForm = new RequirementEditorForm(_presentationModel, project);
-
             _currentActiveButton = projectButton;
         }
 
@@ -50,7 +40,8 @@ namespace RMS_Project
             }
             else if (_currentActiveButton == requirementButton)
             {
-                _presentationModel.AddFormToPanel(_requirementEditorForm);
+                RequirementEditorForm requirementEditorForm = new RequirementEditorForm(_presentationModel, _project);
+                _presentationModel.AddFormToPanel(requirementEditorForm);
             }
             else if (_currentActiveButton == testButton)
             {
@@ -89,9 +80,10 @@ namespace RMS_Project
         private void memberButton_Click(object sender, EventArgs e)
         {
             UserInterfaceForm form = _presentationModel.UserInterface;
-            if (_presentationModel.AddFormToPanel(_userListForm))
+            UserListForm userListForm = new UserListForm(_presentationModel, _project);
+            if (_presentationModel.AddFormToPanel(userListForm))
             {
-                _presentationModel.AddFormButtonToUserInterface(_userListForm, "Members", Properties.Resources.ios7_people_outline);
+                _presentationModel.AddFormButtonToUserInterface(userListForm, "Members", Properties.Resources.ios7_people_outline);
                 if (form != null)
                 {
                     form.SetFeatureButton(UserInterfaceForm.FeatureType.Hide);
@@ -103,9 +95,10 @@ namespace RMS_Project
         private void requirementButton_Click(object sender, EventArgs e)
         {
             UserInterfaceForm form = _presentationModel.UserInterface;
-            if (_presentationModel.AddFormToPanel(_requirementListForm))
+            RequirementListForm requirementListForm = new RequirementListForm(_presentationModel, _project);
+            if (_presentationModel.AddFormToPanel(requirementListForm))
             {
-                _presentationModel.AddFormButtonToUserInterface(_requirementListForm, "Requirements", Properties.Resources.ios7_paper_outline);
+                _presentationModel.AddFormButtonToUserInterface(requirementListForm, "Requirements", Properties.Resources.ios7_paper_outline);
                 if (form != null)
                 {
                     form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
@@ -117,9 +110,10 @@ namespace RMS_Project
         private void testButton_Click(object sender, EventArgs e)
         {
             UserInterfaceForm form = _presentationModel.UserInterface;
-            if (_presentationModel.AddFormToPanel(_testListForm))
+            TestListForm testListForm = new TestListForm(_presentationModel, _project);
+            if (_presentationModel.AddFormToPanel(testListForm))
             {
-                _presentationModel.AddFormButtonToUserInterface(_testListForm, "Tests", Properties.Resources.ios7_browsers_outline);
+                _presentationModel.AddFormButtonToUserInterface(testListForm, "Tests", Properties.Resources.ios7_browsers_outline);
                 if (form != null)
                 {
                     form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
