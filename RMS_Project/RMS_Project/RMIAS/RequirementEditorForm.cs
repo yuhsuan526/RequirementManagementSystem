@@ -50,12 +50,17 @@ namespace RMS_Project
             GetMethod(STATUS);
         }
 
-        private void confirm_Click(object sender, EventArgs e)
+        public RequirementEditorForm(PresentationModel presentationModel, Requirement requirement)
         {
-            PostProduct();
+
         }
 
-        private async void PostProduct()
+        private void confirm_Click(object sender, EventArgs e)
+        {
+            AddRequirementToProject();
+        }
+
+        private async void AddRequirementToProject()
         {
             JObject jObject = new JObject();
             jObject["name"] = textBox1.Text;
@@ -190,5 +195,10 @@ namespace RMS_Project
                 }
             }
         }
+
+        private void RefreshRequirementList()
+        {
+
+        }        
     }
 }

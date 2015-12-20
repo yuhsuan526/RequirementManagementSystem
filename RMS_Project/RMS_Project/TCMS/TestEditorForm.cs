@@ -16,5 +16,20 @@ namespace RMS_Project
         {
             InitializeComponent();
         }
+
+        public TestEditorForm(PresentationModel presentationModel, Project project)
+        {
+
+        }
+
+        void confirm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        void AddTestToProject()
+        {
+
+        }
     }
 }

@@ -68,5 +68,15 @@ namespace RMS_Project
             if (_presentationModel.AddFormToPanel(form))
                 _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_paper_outline);
         }
+
+        void deleteButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        void RefreshRequirementList()
+        {
+
+        }
     }
 }

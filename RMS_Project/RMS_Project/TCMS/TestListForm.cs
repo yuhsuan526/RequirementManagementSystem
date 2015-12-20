@@ -22,5 +22,10 @@ namespace RMS_Project
             this._project = project;
             this.testListDataGridView.Rows.Add("test", "yyyy/mm/dd");
         }
+
+        public void RefreshTestList()
+        {
+
+        }
     }
 }

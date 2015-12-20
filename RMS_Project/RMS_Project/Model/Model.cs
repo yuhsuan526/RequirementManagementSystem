@@ -117,6 +117,16 @@ namespace RMS_Project
             return null;
         }
 
+        public async Task<string> EditRequirement(Requirement requirement)
+        {
+            return null;
+        }
+
+        public async Task<string> DeleteRequirement(int RequirementId)
+        {
+            return null;
+        }
+
         public async Task<string> AddProject(JObject jObject)
         {
             HttpClient client = new HttpClient();

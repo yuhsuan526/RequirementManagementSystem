@@ -316,5 +316,30 @@ namespace RMS_Project
         {
             return await _model.PostAddUserToProject(jObject);
         }
+
+        public async Task<string> EditRequirement(Requirement requirement)
+        {
+            return await _model.EditRequirement(requirement);
+        }
+
+        public async Task<string> DeleteRequirement(int RequirementId)
+        {
+            return await _model.DeleteRequirement(RequirementId);
+        }
+
+        public async Task<string> AddTest(JObject jObject)
+        {
+            return null;
+        }
+
+        public async Task<string> EditTest(Test test)
+        {
+            return null;
+        }
+
+        public async Task<string> DeleteTest(int RTestId)
+        {
+            return null;
+        }
     }
 }
