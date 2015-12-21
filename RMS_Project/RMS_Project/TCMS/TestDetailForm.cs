@@ -41,5 +41,10 @@ namespace RMS_Project
         {
 
         }
+
+        public void RefreshTestDetail(Test test)
+        {
+
+        }
     }
 }

@@ -20,5 +20,10 @@ namespace RMS_Project
             _descriptionRichTextBox.Text = requirement.DESC;
             _memoRichTextBox.Text = requirement.MEMO;
         }
+
+        public void RefreshRequirementDetail(Requirement requirement)
+        {
+
+        }
     }
 }

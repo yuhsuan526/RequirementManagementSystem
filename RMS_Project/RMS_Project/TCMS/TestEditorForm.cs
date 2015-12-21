@@ -17,7 +17,7 @@ namespace RMS_Project
             InitializeComponent();
         }
 
-        public TestEditorForm(PresentationModel presentationModel, Project project)
+        public TestEditorForm(PresentationModel presentationModel, Test test)
         {
 
         }

@@ -341,5 +341,10 @@ namespace RMS_Project
         {
             return null;
         }
+
+        public void ClickFunctionalButton()
+        {
+
+        }
     }
 }

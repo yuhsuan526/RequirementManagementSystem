@@ -27,5 +27,15 @@ namespace RMS_Project
         {
 
         }
+
+        void deleteButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void testListDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
