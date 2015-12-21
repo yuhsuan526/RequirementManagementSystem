@@ -18,35 +18,12 @@ namespace RMS_Project
     {
         private PresentationModel _presentationModel;
         private Project _project;
-        private Button _currentActiveButton = null;
 
         public ProjectMainForm(PresentationModel presentationModel, Project project)
         {
             InitializeComponent();
             this._presentationModel = presentationModel;
             RefreshProjectDetail(project);
-            _currentActiveButton = projectButton;
-        }
-
-        public void ClickNewButton()
-        {
-            if (_currentActiveButton == projectButton)
-            {
-
-            }
-            else if (_currentActiveButton == memberButton)
-            {
-
-            }
-            else if (_currentActiveButton == requirementButton)
-            {
-                RequirementEditorForm requirementEditorForm = new RequirementEditorForm(_presentationModel, _project);
-                _presentationModel.AddFormToPanel(requirementEditorForm);
-            }
-            else if (_currentActiveButton == testButton)
-            {
-
-            }
         }
         
         private void noFocusCueButton1_MouseMove(object sender, MouseEventArgs e)
@@ -59,8 +36,6 @@ namespace RMS_Project
         {
             Button button = sender as Button;
             button.Image = _presentationModel.ChangeColor(new Bitmap(button.Image), Color.Black);
-            if (_currentActiveButton != button)
-                button.Image = _presentationModel.ChangeColor(new Bitmap(button.Image), Color.Black);
         }
 
         private void projectButton_Click(object sender, EventArgs e)
@@ -134,30 +109,12 @@ namespace RMS_Project
             _descriptionText.Text = project.DESC;
         }
 
-        private void ResetOtherButtonColor()
+        public Project Project
         {
-            if (_currentActiveButton != projectButton)
+            get
             {
-                projectButton.Image = _presentationModel.ChangeColor(new Bitmap(projectButton.Image), Color.Black);
+                return _project;
             }
-            if (_currentActiveButton != memberButton)
-            {
-                memberButton.Image = _presentationModel.ChangeColor(new Bitmap(memberButton.Image), Color.Black);
-            }
-            if (_currentActiveButton != requirementButton)
-            {
-                requirementButton.Image = _presentationModel.ChangeColor(new Bitmap(requirementButton.Image), Color.Black);
-            }
-            if (_currentActiveButton != testButton)
-            {
-                testButton.Image = _presentationModel.ChangeColor(new Bitmap(testButton.Image), Color.Black);
-            }
-        }
-
-        private void ChangeTabType(Button button)
-        {
-            _currentActiveButton = button;
-            ResetOtherButtonColor();
         }
     }
 }

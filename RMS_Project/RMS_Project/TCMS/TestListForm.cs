@@ -37,5 +37,13 @@ namespace RMS_Project
         {
 
         }
+
+        public Project Project
+        {
+            get
+            {
+                return _project;
+            }
+        }
     }
 }

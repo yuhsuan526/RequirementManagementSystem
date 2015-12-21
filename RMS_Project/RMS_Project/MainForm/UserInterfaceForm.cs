@@ -166,23 +166,7 @@ namespace RMS_Project
 
         private void functionalButton_Click(object sender, EventArgs e)
         {
-            if (_buttonArrayList.Count <= 0)
-            {
-                Control control = _presentationModel.GetCurrentFormInPanel();
-                if (!control.GetType().Equals(typeof(ProjectEditorForm)))
-                {
-                    _presentationModel.AddFormToPanel(new ProjectEditorForm(_presentationModel));
-                }
-            }
-            else
-            {
-                Control control = _presentationModel.GetCurrentFormInPanel();
-                if (control.GetType().Equals(typeof(ProjectMainForm)))
-                {
-                    ProjectMainForm form = control as ProjectMainForm;
-                    form.ClickNewButton();
-                }
-            }
+            _presentationModel.ClickFunctionalButton();
         }
 
         private void functionalButton_MouseLeave(object sender, EventArgs e)

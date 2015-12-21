@@ -344,7 +344,40 @@ namespace RMS_Project
 
         public void ClickFunctionalButton()
         {
-
+            Control control = GetCurrentFormInPanel();
+            if (control.GetType().Equals(typeof(ProjectListForm)))
+            {
+                AddFormToPanel(new ProjectEditorForm(this));
+            }
+            else if (control.GetType().Equals(typeof(ProjectMainForm)))
+            {
+                ProjectMainForm form = control as ProjectMainForm;
+                AddFormToPanel(new ProjectEditorForm(this, form.Project));
+            }
+            else if (control.GetType().Equals(typeof(RequirementListForm)))
+            {
+                RequirementListForm form = control as RequirementListForm;
+                RequirementEditorForm requirementEditorForm = new RequirementEditorForm(this, form.Project);
+                AddFormToPanel(requirementEditorForm);
+            }
+            else if (control.GetType().Equals(typeof(TestListForm)))
+            {
+                TestListForm form = control as TestListForm;
+                TestEditorForm requirementEditorForm = new TestEditorForm(this, form.Project);
+                AddFormToPanel(requirementEditorForm);
+            }
+            else if (control.GetType().Equals(typeof(RequirementDetailForm)))
+            {
+                RequirementDetailForm form = control as RequirementDetailForm;
+                RequirementEditorForm requirementEditorForm = new RequirementEditorForm(this, form.Project, form.Requirement);
+                AddFormToPanel(requirementEditorForm);
+            }
+            else if (control.GetType().Equals(typeof(TestDetailForm)))
+            {
+                TestDetailForm form = control as TestDetailForm;
+                TestEditorForm requirementEditorForm = new TestEditorForm(this, form.Project, form.Test);
+                AddFormToPanel(requirementEditorForm);
+            }
         }
     }
 }
