@@ -9,6 +9,7 @@ namespace RMS_Project
     public class Requirement
     {
         private int _id;
+        private int _projectId;
         private string _name;
         private string _description;
         private string _version;
@@ -28,6 +29,14 @@ namespace RMS_Project
             get
             {
                 return _id;
+            }
+        }
+
+        public int ProjectID
+        {
+            get
+            {
+                return _projectId;
             }
         }
 

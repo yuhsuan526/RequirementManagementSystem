@@ -50,7 +50,7 @@ namespace RMS_Project
             GetMethod(STATUS);
         }
 
-        public RequirementEditorForm(PresentationModel presentationModel, Project project, Requirement requirement)
+        public RequirementEditorForm(PresentationModel presentationModel, Requirement requirement)
         {
             InitializeComponent();
         }

@@ -13,13 +13,12 @@ namespace RMS_Project
     public partial class RequirementDetailForm : Form
     {
         private Requirement _requirement;
-        private Project _project;
 
-        public RequirementDetailForm(Project project, Requirement requirement)
+        public RequirementDetailForm(Requirement requirement)
         {
             InitializeComponent();
             _requirement = requirement;
-            _project = project;
+ 
             _nameLabel.Text = requirement.ID.ToString() + ": " + requirement.NAME;
             _descriptionRichTextBox.Text = requirement.DESC;
             _memoRichTextBox.Text = requirement.MEMO;
@@ -38,12 +37,5 @@ namespace RMS_Project
             }
         }
 
-        public Project Project
-        {
-            get
-            {
-                return _project;
-            }
-        }
     }
 }

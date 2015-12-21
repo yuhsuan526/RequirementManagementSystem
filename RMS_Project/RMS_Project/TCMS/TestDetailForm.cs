@@ -13,13 +13,11 @@ namespace RMS_Project
     public partial class TestDetailForm : Form
     {
         private Test _test;
-        private Project _project;
 
-        public TestDetailForm(Project project, Test test)
+        public TestDetailForm(Test test)
         {
             InitializeComponent();
             _test = test;
-            _project = project;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -60,12 +58,5 @@ namespace RMS_Project
             }
         }
 
-        public Project Project
-        {
-            get
-            {
-                return _project;
-            }
-        }
     }
 }

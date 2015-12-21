@@ -369,13 +369,13 @@ namespace RMS_Project
             else if (control.GetType().Equals(typeof(RequirementDetailForm)))
             {
                 RequirementDetailForm form = control as RequirementDetailForm;
-                RequirementEditorForm requirementEditorForm = new RequirementEditorForm(this, form.Project, form.Requirement);
+                RequirementEditorForm requirementEditorForm = new RequirementEditorForm(this, form.Requirement);
                 AddFormToPanel(requirementEditorForm);
             }
             else if (control.GetType().Equals(typeof(TestDetailForm)))
             {
                 TestDetailForm form = control as TestDetailForm;
-                TestEditorForm requirementEditorForm = new TestEditorForm(this, form.Project, form.Test);
+                TestEditorForm requirementEditorForm = new TestEditorForm(this, form.Test);
                 AddFormToPanel(requirementEditorForm);
             }
         }
