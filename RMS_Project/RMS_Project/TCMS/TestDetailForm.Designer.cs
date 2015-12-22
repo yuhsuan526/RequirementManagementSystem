@@ -30,15 +30,15 @@
         {
             this.TestListDataGridView = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.confirmButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.AssociatedRequirementsRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.TestName = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.descriptionRichTextBox = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.TestListDataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -73,25 +73,25 @@
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // button1
+            // confirmButton
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1.Location = new System.Drawing.Point(467, 483);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "confirm";
-            this.button1.UseVisualStyleBackColor = true;
+            this.confirmButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.confirmButton.Location = new System.Drawing.Point(467, 483);
+            this.confirmButton.Name = "confirmButton";
+            this.confirmButton.Size = new System.Drawing.Size(75, 23);
+            this.confirmButton.TabIndex = 5;
+            this.confirmButton.Text = "confirm";
+            this.confirmButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // backButton
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button2.Location = new System.Drawing.Point(548, 483);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(69, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "back";
-            this.button2.UseVisualStyleBackColor = true;
+            this.backButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.backButton.Location = new System.Drawing.Point(548, 483);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(69, 23);
+            this.backButton.TabIndex = 8;
+            this.backButton.Text = "back";
+            this.backButton.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -156,10 +156,10 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 410F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.Controls.Add(this.richTextBox2, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.AssociatedRequirementsRichTextBox, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label10, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 2, 7);
+            this.tableLayoutPanel1.Controls.Add(this.confirmButton, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.backButton, 2, 7);
             this.tableLayoutPanel1.Controls.Add(this.label8, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.TestName, 1, 0);
@@ -172,7 +172,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label13, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label14, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label15, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.richTextBox1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.descriptionRichTextBox, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tableLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -192,16 +192,16 @@
             this.tableLayoutPanel1.TabIndex = 2;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
-            // richTextBox2
+            // AssociatedRequirementsRichTextBox
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.richTextBox2, 2);
-            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox2.Location = new System.Drawing.Point(138, 323);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(479, 74);
-            this.richTextBox2.TabIndex = 30;
-            this.richTextBox2.Text = "";
+            this.tableLayoutPanel1.SetColumnSpan(this.AssociatedRequirementsRichTextBox, 2);
+            this.AssociatedRequirementsRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AssociatedRequirementsRichTextBox.Location = new System.Drawing.Point(138, 323);
+            this.AssociatedRequirementsRichTextBox.Name = "AssociatedRequirementsRichTextBox";
+            this.AssociatedRequirementsRichTextBox.ReadOnly = true;
+            this.AssociatedRequirementsRichTextBox.Size = new System.Drawing.Size(479, 74);
+            this.AssociatedRequirementsRichTextBox.TabIndex = 30;
+            this.AssociatedRequirementsRichTextBox.Text = "";
             // 
             // label10
             // 
@@ -287,16 +287,16 @@
             this.label15.Text = "label15";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // richTextBox1
+            // descriptionRichTextBox
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.richTextBox1, 2);
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(138, 43);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(479, 194);
-            this.richTextBox1.TabIndex = 29;
-            this.richTextBox1.Text = "";
+            this.tableLayoutPanel1.SetColumnSpan(this.descriptionRichTextBox, 2);
+            this.descriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionRichTextBox.Location = new System.Drawing.Point(138, 43);
+            this.descriptionRichTextBox.Name = "descriptionRichTextBox";
+            this.descriptionRichTextBox.ReadOnly = true;
+            this.descriptionRichTextBox.Size = new System.Drawing.Size(479, 194);
+            this.descriptionRichTextBox.TabIndex = 29;
+            this.descriptionRichTextBox.Text = "";
             // 
             // TestDetailForm
             // 
@@ -319,8 +319,8 @@
         private System.Windows.Forms.DataGridView TestListDataGridView;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button confirmButton;
+        private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
@@ -333,7 +333,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox descriptionRichTextBox;
+        private System.Windows.Forms.RichTextBox AssociatedRequirementsRichTextBox;
     }
 }

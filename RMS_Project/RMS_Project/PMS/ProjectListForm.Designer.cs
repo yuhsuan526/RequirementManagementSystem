@@ -31,8 +31,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ProjectListDataGridView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.ProjectListDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -51,8 +51,8 @@
             this.ProjectListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProjectListDataGridView.ColumnHeadersVisible = false;
             this.ProjectListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2});
+            this.nameColumn,
+            this.idColumn});
             this.ProjectListDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -82,22 +82,22 @@
             // 
             // Column1
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.FillWeight = 179.6954F;
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.nameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameColumn.FillWeight = 179.6954F;
+            this.nameColumn.HeaderText = "Column1";
+            this.nameColumn.Name = "Column1";
+            this.nameColumn.ReadOnly = true;
+            this.nameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // Column2
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Column2.FillWeight = 20.30457F;
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column2.Width = 5;
+            this.idColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.idColumn.FillWeight = 20.30457F;
+            this.idColumn.HeaderText = "Column2";
+            this.idColumn.Name = "Column2";
+            this.idColumn.ReadOnly = true;
+            this.idColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.idColumn.Width = 5;
             // 
             // backgroundWorker1
             // 
@@ -121,7 +121,7 @@
 
         private System.Windows.Forms.DataGridView ProjectListDataGridView;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
     }
 }

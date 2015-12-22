@@ -39,8 +39,8 @@ namespace RMS_Project
         private async void AddProject()
         {
             JObject jObject = new JObject();
-            jObject["name"] = textBox1.Text;
-            jObject["descript"] = richTextBox1.Text;
+            jObject["name"] = nameTextBox.Text;
+            jObject["descript"] = descriptionRichTextBox.Text;
             jObject["uid"] = _presentationModel.GetUID();
 
             string status = await _presentationModel.AddProject(jObject);
