@@ -30,6 +30,7 @@ namespace RMS_Project
 
         private void ProjectListDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            /*
             DataGridViewCell cell = ProjectListDataGridView.Rows[e.RowIndex].Cells[0];
             Project project = _arrayList[e.RowIndex] as Project;
             Form form = new ProjectMainForm(_presentationModel, project);
@@ -41,7 +42,7 @@ namespace RMS_Project
                     userInterface.SetFeatureButton(UserInterfaceForm.FeatureType.Edit);
                 }
                 _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_folder_outline);
-            }
+            }*/
         }
 
         public async void RefreshProjectList()
@@ -77,6 +78,33 @@ namespace RMS_Project
         void deleteButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ProjectListDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewImageColumn &&
+                e.RowIndex >= 0)
+            {
+                //TODO - Button Clicked - Execute Code Here
+                Console.WriteLine("按下刪除:" + e.RowIndex);
+            }
+            else
+            {
+                DataGridViewCell cell = ProjectListDataGridView.Rows[e.RowIndex].Cells[0];
+                Project project = _arrayList[e.RowIndex] as Project;
+                Form form = new ProjectMainForm(_presentationModel, project);
+                if (_presentationModel.AddFormToPanel(form))
+                {
+                    UserInterfaceForm userInterface = _presentationModel.UserInterface;
+                    if (userInterface != null)
+                    {
+                        userInterface.SetFeatureButton(UserInterfaceForm.FeatureType.Edit);
+                    }
+                    _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_folder_outline);
+                }
+            }
         }
     }
 }
