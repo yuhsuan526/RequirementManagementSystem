@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,13 +18,14 @@ namespace RMS_Project
     {
         private Project _project;
         private PresentationModel _presentationModel;
+        private ArrayList _arrayList;
 
         public UserListForm(PresentationModel presentationModel, Project project)
         {
             InitializeComponent();
             this._project = project;
             this._presentationModel = presentationModel;
-            userListView.Columns.AddRange(new ColumnHeader[] { new ColumnHeader(), new ColumnHeader() });
+            this._arrayList = new ArrayList();
             GetUserListByProject();
         }
 
@@ -38,15 +40,13 @@ namespace RMS_Project
                 JArray jsonArray = JArray.Parse(json["users"].ToString());
                 if (message == "success")
                 {
-                    ListViewItem[] items = new ListViewItem[jsonArray.Count];
+                    _userListDataGridView.Rows.Clear();
                     for (int i = 0; i < jsonArray.Count; i++)
                     {
                         JObject jObject = jsonArray[i] as JObject;
-                        ListViewItem item = new ListViewItem(new string[] { jObject["name"].ToString(), jObject["email"].ToString() }, 0);
-                        items[i] = item;
+                        this._userListDataGridView.Rows.Add(jObject["name"], jObject["email"]);
+                        _arrayList.Add(jObject);
                     }
-                    userListView.Items.Clear();
-                    userListView.Items.AddRange(items);
                 }
             }
             else if (response.StatusCode == HttpStatusCode.RequestTimeout)
@@ -57,11 +57,6 @@ namespace RMS_Project
             {
                 MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
             }
-        }
-
-        private void userListView_ClientSizeChanged(object sender, EventArgs e)
-        {
-            userListView.TileSize = new Size(userListView.ClientSize.Width, userListView.TileSize.Height);
         }
 
         private void addUserButton_Click(object sender, EventArgs e)

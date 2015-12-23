@@ -28,21 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.userListView = new System.Windows.Forms.ListView();
             this.addButton = new System.Windows.Forms.Button();
             this.userTextBox = new System.Windows.Forms.TextBox();
+            this._userListDataGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this._priorityComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._userListDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Controls.Add(this.userListView, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.addButton, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this._userListDataGridView, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.addButton, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.userTextBox, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this._priorityComboBox, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -52,25 +61,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(284, 261);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // userListView
-            // 
-            this.userListView.AccessibleName = "userList";
-            this.userListView.AutoArrange = false;
-            this.userListView.BackColor = System.Drawing.SystemColors.Control;
-            this.userListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tableLayoutPanel1.SetColumnSpan(this.userListView, 2);
-            this.userListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userListView.FullRowSelect = true;
-            this.userListView.Location = new System.Drawing.Point(50, 20);
-            this.userListView.Margin = new System.Windows.Forms.Padding(0);
-            this.userListView.Name = "userListView";
-            this.userListView.Size = new System.Drawing.Size(184, 191);
-            this.userListView.TabIndex = 0;
-            this.userListView.TileSize = new System.Drawing.Size(188, 40);
-            this.userListView.UseCompatibleStateImageBehavior = false;
-            this.userListView.View = System.Windows.Forms.View.Tile;
-            this.userListView.ClientSizeChanged += new System.EventHandler(this.userListView_ClientSizeChanged);
             // 
             // addButton
             // 
@@ -91,8 +81,92 @@
             this.userTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.userTextBox.Location = new System.Drawing.Point(53, 215);
             this.userTextBox.Name = "userTextBox";
-            this.userTextBox.Size = new System.Drawing.Size(148, 22);
+            this.userTextBox.Size = new System.Drawing.Size(48, 22);
             this.userTextBox.TabIndex = 2;
+            // 
+            // _userListDataGridView
+            // 
+            this._userListDataGridView.AccessibleName = "projectDataGridView";
+            this._userListDataGridView.AllowUserToAddRows = false;
+            this._userListDataGridView.AllowUserToDeleteRows = false;
+            this._userListDataGridView.AllowUserToResizeColumns = false;
+            this._userListDataGridView.AllowUserToResizeRows = false;
+            this._userListDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this._userListDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this._userListDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._userListDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this._userListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._userListDataGridView.ColumnHeadersVisible = false;
+            this._userListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.tableLayoutPanel1.SetColumnSpan(this._userListDataGridView, 3);
+            this._userListDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._userListDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            this._userListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._userListDataGridView.Location = new System.Drawing.Point(53, 23);
+            this._userListDataGridView.MultiSelect = false;
+            this._userListDataGridView.Name = "_userListDataGridView";
+            this._userListDataGridView.ReadOnly = true;
+            this._userListDataGridView.RowHeadersVisible = false;
+            this._userListDataGridView.RowHeadersWidth = 50;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._userListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this._userListDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
+            this._userListDataGridView.RowTemplate.DividerHeight = 1;
+            this._userListDataGridView.RowTemplate.Height = 50;
+            this._userListDataGridView.RowTemplate.ReadOnly = true;
+            this._userListDataGridView.Size = new System.Drawing.Size(178, 185);
+            this._userListDataGridView.TabIndex = 3;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.FillWeight = 179.6954F;
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column2.FillWeight = 20.30457F;
+            this.Column2.HeaderText = "Column2";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column2.Width = 5;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column3.HeaderText = "Column3";
+            this.Column3.Image = global::RMS_Project.Properties.Resources.ios7_close_empty;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column3.Width = 5;
+            // 
+            // _priorityComboBox
+            // 
+            this._priorityComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._priorityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._priorityComboBox.FormattingEnabled = true;
+            this._priorityComboBox.Location = new System.Drawing.Point(107, 216);
+            this._priorityComboBox.Name = "_priorityComboBox";
+            this._priorityComboBox.Size = new System.Drawing.Size(94, 20);
+            this._priorityComboBox.TabIndex = 4;
             // 
             // UserListForm
             // 
@@ -105,6 +179,7 @@
             this.Text = "userListForm";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._userListDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -112,8 +187,12 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ListView userListView;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.TextBox userTextBox;
+        private System.Windows.Forms.DataGridView _userListDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewImageColumn Column3;
+        private System.Windows.Forms.ComboBox _priorityComboBox;
     }
 }
