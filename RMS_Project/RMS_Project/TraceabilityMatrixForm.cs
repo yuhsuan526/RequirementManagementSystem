@@ -16,7 +16,7 @@ namespace RMS_Project
         {
             InitializeComponent();
             DataGridViewColumnCollection columns = matrixDataGridView.Columns;
-            columns.Add("nullColumn", "");
+            columns.Add("nullColumn", "Traceability Matrix");
             columns.Add("testColumn1", "Test 1");
             columns.Add("testColumn2", "Test 2");
             columns.Add("testColumn3", "Test 3");
@@ -44,7 +44,10 @@ namespace RMS_Project
             rows.Add("Requirement 7");
             rows.Add("Requirement 8");
             rows.Add("Requirement 9");
-
+            rows.Add("Requirement 10");
+            rows.Add("Requirement 11");
+            rows.Add("Requirement 12");
+            matrixDataGridView.Columns[0].Frozen = true;
             foreach (DataGridViewRow row in matrixDataGridView.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[7];
