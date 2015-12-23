@@ -126,6 +126,7 @@
             this.ownerComboBox.Name = "ownerComboBox";
             this.ownerComboBox.Size = new System.Drawing.Size(118, 20);
             this.ownerComboBox.TabIndex = 21;
+            this.ownerComboBox.SelectedIndexChanged += new System.EventHandler(this.ownerComboBox_SelectedIndexChanged);
             // 
             // inputDataLabel
             // 
@@ -232,6 +233,7 @@
             this.confirmButton.TabIndex = 5;
             this.confirmButton.Text = "confirm";
             this.confirmButton.UseVisualStyleBackColor = true;
+            this.confirmButton.Click += new System.EventHandler(this.confirm_Click);
             // 
             // checkedListBox
             // 

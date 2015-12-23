@@ -320,12 +320,12 @@ namespace RMS_Project
                     }
                     else
                     {
-                        return "需求建立失敗";
+                        return "測試案例建立失敗";
                     }
                 }
                 else
                 {
-                    return "需求建立失敗";
+                    return "測試案例建立失敗";
                 }
             }
             catch (HttpRequestException)
