@@ -347,6 +347,16 @@ namespace RMS_Project
             return null;
         }
 
+        public async Task<string> AddTestCase(JObject jObject)
+        {
+            return await _model.AddTestCase(jObject);
+        }
+
+        public async Task<HttpResponseMessage> GetTestCaseListByRequirementId(int requirementId)
+        {
+            return await _model.GetTestCaseListByRequirementId(requirementId);
+        }
+
         public void ClickFunctionalButton()
         {
             Control control = GetCurrentFormInPanel();
@@ -384,6 +394,7 @@ namespace RMS_Project
                 TestEditorForm requirementEditorForm = new TestEditorForm(this, form.Test);
                 AddFormToPanel(requirementEditorForm);
             }
+
         }
     }
 }
