@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -105,6 +106,73 @@ namespace RMS_Project
         {
             _accountId = -1;
             _username = "";
+        }
+
+        public async Task<Priority[]> GetProjectPriorityType()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "project/getProjectPriorityType/";
+                string url = BASE_URL + METHOD;
+                response = await httpClient.GetAsync(url);
+                string content = await response.Content.ReadAsStringAsync();
+                JArray array = JArray.Parse(content);
+                Priority[] priorities = new Priority[array.Count];
+                for(int i = 0; i < array.Count; i++)
+                {
+                    JObject jObject = (JObject)array[i];
+                    Priority priority = new Priority();
+                    priority.ID = int.Parse(jObject["id"].ToString());
+                    priority.Name = jObject["name"].ToString();
+                    priorities[i] = priority;
+                }
+                return priorities;
+            }
+            catch (HttpRequestException)
+            {
+                throw new Exception("伺服器無回應");
+            }
+        }
+
+        public async Task<string> DeleteUserFromProject(int projectId, int userId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            JObject jObject = new JObject();
+            jObject["uid"] = userId;
+            jObject["pid"] = projectId;
+            try
+            {
+                const string METHOD = "project/deleteUserFromProject";
+                string url = BASE_URL + METHOD;
+                response = await httpClient.PostAsync(url, new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
+                string content = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    JObject json = JObject.Parse(content);
+                    string message = json["result"].ToString();
+                    if (message == "success")
+                    {
+                        return "刪除成功";
+                    }
+                    else
+                    {
+                        throw new Exception("刪除失敗");
+                    }
+                }
+                else
+                {
+                    throw new Exception("刪除失敗");
+                }
+            }
+            catch (HttpRequestException)
+            {
+                throw new Exception("伺服器無回應");
+            }
         }
 
         public async Task<string> EditProject(Project project)

@@ -19,6 +19,7 @@ namespace RMS_Project
         private Project _project;
         private PresentationModel _presentationModel;
         private ArrayList _arrayList;
+        private Priority[] _priorities;
 
         public UserListForm(PresentationModel presentationModel, Project project)
         {
@@ -26,7 +27,41 @@ namespace RMS_Project
             this._project = project;
             this._presentationModel = presentationModel;
             this._arrayList = new ArrayList();
+            _userListDataGridView.Columns[2].Visible = false;
             GetUserListByProject();
+            GetProjectPriorityType();
+        }
+
+        private async void GetProjectPriorityType()
+        {
+            _priorities = await _presentationModel.GetProjectPriorityType();
+            foreach (Priority priority in _priorities)
+            {
+                _priorityComboBox.Items.Add(priority.Name);
+            }
+            _priorityComboBox.SelectedIndex = _priorities.Length - 1;
+        }
+
+        private async void DeleteUserFormProject(int userId)
+        {
+            string message;
+            try
+            {
+                if (userId == _presentationModel.GetUID())
+                {
+                    MessageBox.Show("無法刪除自己", "Error", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    message = await _presentationModel.DeleteUserFromProject(_project.ID, userId);
+                    GetUserListByProject();
+                    MessageBox.Show(message, "Success", MessageBoxButtons.OK);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+            }
         }
 
         private async void GetUserListByProject()
@@ -44,8 +79,13 @@ namespace RMS_Project
                     for (int i = 0; i < jsonArray.Count; i++)
                     {
                         JObject jObject = jsonArray[i] as JObject;
-                        this._userListDataGridView.Rows.Add(jObject["name"], jObject["email"]);
+                        this._userListDataGridView.Rows.Add(jObject["name"], jObject["priority_type_name"]);
                         _arrayList.Add(jObject);
+                        if (jObject["id"].ToString().Equals(_presentationModel.GetUID().ToString()))
+                        {
+                            _userListDataGridView.Columns[2].Visible = jObject["priority_type_name"].ToString().Equals("Owner")
+                                || jObject["priority_type_name"].ToString().Equals("Manager");
+                        }
                     }
                 }
             }
@@ -71,6 +111,7 @@ namespace RMS_Project
             jObject["add_email"] = userTextBox.Text;
             jObject["uid"] = _presentationModel.GetUID();
             jObject["pid"] = _project.ID;
+            jObject["priority_type_id"] = _priorities[_priorityComboBox.SelectedIndex].ID;
 
             HttpResponseMessage response = await _presentationModel.AddUserToProject(jObject);
 
@@ -103,6 +144,17 @@ namespace RMS_Project
         public UserInterfaceForm.FunctionalType GetFunctionalType()
         {
             return UserInterfaceForm.FunctionalType.Hide;
+        }
+
+        private void _userListDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewImageColumn &&
+                e.RowIndex >= 0)
+            {
+                JObject jObect = _arrayList[e.RowIndex] as JObject;
+                DeleteUserFormProject(int.Parse(jObect["id"].ToString()));
+            }
         }
     }
 }

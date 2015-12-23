@@ -39,7 +39,7 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(34)))), ((int)(((byte)(42)))));
+            this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 280F));
@@ -89,11 +89,11 @@
             // 
             // _descriptionRichTextBox
             // 
-            this._descriptionRichTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(34)))), ((int)(((byte)(42)))));
+            this._descriptionRichTextBox.BackColor = System.Drawing.SystemColors.Control;
             this._descriptionRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._descriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this._descriptionRichTextBox.Font = new System.Drawing.Font("新細明體", 14F);
-            this._descriptionRichTextBox.ForeColor = System.Drawing.Color.White;
+            this._descriptionRichTextBox.ForeColor = System.Drawing.Color.Black;
             this._descriptionRichTextBox.Location = new System.Drawing.Point(363, 83);
             this._descriptionRichTextBox.Name = "_descriptionRichTextBox";
             this._descriptionRichTextBox.ReadOnly = true;
@@ -103,11 +103,11 @@
             // 
             // _memoRichTextBox
             // 
-            this._memoRichTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(34)))), ((int)(((byte)(42)))));
+            this._memoRichTextBox.BackColor = System.Drawing.SystemColors.Control;
             this._memoRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._memoRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this._memoRichTextBox.Font = new System.Drawing.Font("新細明體", 14F);
-            this._memoRichTextBox.ForeColor = System.Drawing.Color.White;
+            this._memoRichTextBox.ForeColor = System.Drawing.Color.Black;
             this._memoRichTextBox.Location = new System.Drawing.Point(363, 283);
             this._memoRichTextBox.Name = "_memoRichTextBox";
             this._memoRichTextBox.ReadOnly = true;

@@ -77,6 +77,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Model\PresentationModel.cs" />
+    <Compile Include="Model\Priority.cs" />
     <Compile Include="Model\Project.cs" />
     <Compile Include="Model\Requirement.cs" />
     <Compile Include="Model\Test.cs" />

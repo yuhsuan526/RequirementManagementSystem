@@ -48,7 +48,7 @@ namespace RMS_Project
                     _userInterface.SetFunctionalButton(((FunctionalTypeInterface)form).GetFunctionalType());
                 return true;
             }
-            return false;
+            return true;
         }
 
         public async Task<string> SignIn(JObject jObject)        
@@ -285,6 +285,16 @@ namespace RMS_Project
         public int GetUID()
         {
             return _model.UID;
+        }
+
+        public async Task<Priority[]> GetProjectPriorityType()
+        {
+            return await _model.GetProjectPriorityType();
+        }
+
+        public async Task<string> DeleteUserFromProject(int projectId, int userId)
+        {
+            return await _model.DeleteUserFromProject(projectId, userId);
         }
 
         public async Task<string> AddRequirement(JObject jObject)
