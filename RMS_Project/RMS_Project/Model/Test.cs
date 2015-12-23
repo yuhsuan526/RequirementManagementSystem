@@ -13,6 +13,14 @@ namespace RMS_Project
         string _name;
         string _description;
 
+        public Test(int id,int projectId, string name, string description)
+        {
+            this._id = id;
+            this._projectId = projectId;
+            this._name = name;
+            this._description = description;
+        }
+
         public int ID
         {
             get

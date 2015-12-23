@@ -1,9 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +18,7 @@ namespace RMS_Project
     {
         private PresentationModel _presentationModel;
         private Project _project;
+        private ArrayList _arrayList;
 
         public TestListForm(PresentationModel presentationModel, Project project)
         {
@@ -21,11 +26,38 @@ namespace RMS_Project
             this._presentationModel = presentationModel;
             this._project = project;
             this.testListDataGridView.Rows.Add("test", "yyyy/mm/dd");
+            _arrayList = new ArrayList();
+            RefreshTestList();
         }
 
-        public void RefreshTestList()
+        public async void RefreshTestList()
         {
-
+            HttpResponseMessage response = await _presentationModel.GetTestCaseListByRequirementId(_project.ID);
+            string content = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                JObject json = JObject.Parse(content);
+                string message = json["result"].ToString();
+                JArray jsonArray = JArray.Parse(json["test_case_list"].ToString());
+                if (message == "success")
+                {
+                    this.testListDataGridView.Rows.Clear();
+                    foreach (JObject jObject in jsonArray)
+                    {
+                        this.testListDataGridView.Rows.Add(jObject["name"], jObject["id"]);
+                        Test project = new Test(int.Parse(jObject["id"].ToString()),int.Parse(jObject["name"].ToString()), jObject["name"].ToString(), jObject["description"].ToString());
+                        _arrayList.Add(project);
+                    }
+                }
+            }
+            else if (response.StatusCode == HttpStatusCode.RequestTimeout)
+            {
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
+            }
         }
 
         void deleteButton_Click(object sender, EventArgs e)
