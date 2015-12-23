@@ -319,7 +319,7 @@ namespace RMS_Project
 
         public async Task<HttpResponseMessage> AddUserToProject(JObject jObject)
         {
-            return await _model.PostAddUserToProject(jObject);
+            return await _model.AddUserToProject(jObject);
         }
 
         public async Task<string> EditRequirement(Requirement requirement)
