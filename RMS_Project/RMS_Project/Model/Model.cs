@@ -182,7 +182,21 @@ namespace RMS_Project
 
         public async Task<string> DeleteProject(int projectId)
         {
-            return null;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "project/delete/";
+                string url = BASE_URL + METHOD + projectId;
+                response = await httpClient.GetAsync(url);
+                string content = await response.Content.ReadAsStringAsync();
+                return content;
+            }
+            catch (HttpRequestException)
+            {
+                throw new Exception("伺服器無回應");
+            }
         }
 
         public async Task<string> EditRequirement(Requirement requirement)
@@ -227,6 +241,60 @@ namespace RMS_Project
             catch (HttpRequestException)
             {
                 return "伺服器無回應";
+            }
+        }
+
+        public async Task<Project[]> GetManagedProjectListByUserId()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "project/getManagerProjectListByUserId/";
+                string url = BASE_URL + METHOD + UID.ToString();
+                response = await httpClient.GetAsync(url);
+                string content = await response.Content.ReadAsStringAsync();
+                JArray jsonArray = JArray.Parse(content);
+                Project[] projects = new Project[jsonArray.Count];
+                for (int i = 0; i < jsonArray.Count; i++)
+                {
+                    JObject jObject = jsonArray[i] as JObject;
+                    projects[i] = new Project(int.Parse(jObject["id"].ToString()), jObject["name"].ToString(), jObject["description"].ToString());
+                }
+
+                return projects;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public async Task<Project[]> GetOwnedProjectListByUserId()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "project/getOwnerProjectListByUserId/";
+                string url = BASE_URL + METHOD + UID.ToString();
+                response = await httpClient.GetAsync(url);
+                string content = await response.Content.ReadAsStringAsync();
+                JArray jsonArray = JArray.Parse(content);
+                Project[] projects = new Project[jsonArray.Count];
+                for (int i = 0; i < jsonArray.Count; i++)
+                {
+                    JObject jObject = jsonArray[i] as JObject;
+                    projects[i] = new Project(int.Parse(jObject["id"].ToString()), jObject["name"].ToString(), jObject["description"].ToString());
+                }
+
+                return projects;
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 

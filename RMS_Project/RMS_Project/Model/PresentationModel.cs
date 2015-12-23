@@ -317,6 +317,16 @@ namespace RMS_Project
             return await _model.DeleteProject(projectId);
         }
 
+        public async Task<Project[]> GetManagedProjectListByUserId()
+        {
+            return await _model.GetManagedProjectListByUserId();
+        }
+
+        public async Task<Project[]> GetOwnedProjectListByUserId()
+        {
+            return await _model.GetOwnedProjectListByUserId();
+        }
+
         public async Task<HttpResponseMessage> GetProjectList()
         {
             return await _model.GetProjectList();
