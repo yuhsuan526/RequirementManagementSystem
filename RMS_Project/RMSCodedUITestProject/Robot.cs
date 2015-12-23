@@ -154,6 +154,18 @@ namespace ezLogUITest
             Mouse.Click(button);
         }
 
+        public static void ClickOtherFormDoubleButton(string formName, string buttonName)
+        {
+            WinWindow window = new WinWindow();
+            window.SearchProperties[WinWindow.PropertyNames.Name] = formName;
+            window.WindowTitles.Add(formName);
+            WinButton button = new WinButton(window);
+            button.SearchProperties[WinWindow.PropertyNames.Name] = buttonName;
+            Mouse.Click(button);
+            Mouse.Click(button);
+        }
+
+
         public static void ClickOtherFormComboBox(string formName, string conboBoxName,string selectName)
         {
             string[] item;

@@ -42,7 +42,7 @@ namespace RMSCodedUITestProject
         public void CheckMemberData()
         {
             string[] data = new string[2];
-            data[0] = "zz";
+            data[0] = "ZZ";
             data[1] = "j00064qaz123@gmail.com";
 
             //設定帳密
@@ -56,7 +56,7 @@ namespace RMSCodedUITestProject
             Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0);
 
             //確認 member資料是否正確
-            Robot.ClickOtherFormButton("projectMainForm", "memberButton");
+            Robot.ClickOtherFormDoubleButton("projectMainForm", "memberButton");
             Robot.AssertOtherListViewByValue("userListForm", "userList", data);
         }
 
@@ -66,7 +66,7 @@ namespace RMSCodedUITestProject
         public void AddMemberData()
         {
             string[] data = new string[4];
-            data[0] = "zz";
+            data[0] = "ZZ";
             data[1] = "AA";
             data[2] = "j00064qaz123@gmail.com";
             data[3] = "user@user.com";
@@ -81,7 +81,7 @@ namespace RMSCodedUITestProject
             Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0);
 
             //確認 member資料是否正確
-            Robot.ClickOtherFormButton("projectMainForm", "memberButton");
+            Robot.ClickOtherFormDoubleButton("projectMainForm", "memberButton");
             Robot.SetOtherFormEdit("projectMainForm", "userName", "user@user.com");
             Robot.ClickOtherFormButton("projectMainForm", "userButton");
             Robot.AssertWindowExist("Success", true);
