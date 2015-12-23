@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.addButton = new System.Windows.Forms.Button();
-            this.userTextBox = new System.Windows.Forms.TextBox();
             this._userListDataGridView = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.addButton = new System.Windows.Forms.Button();
+            this.userTextBox = new System.Windows.Forms.TextBox();
             this._priorityComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._userListDataGridView)).BeginInit();
@@ -62,31 +62,9 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(284, 261);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // addButton
-            // 
-            this.addButton.AccessibleName = "userButton";
-            this.addButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addButton.Location = new System.Drawing.Point(204, 211);
-            this.addButton.Margin = new System.Windows.Forms.Padding(0);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(30, 30);
-            this.addButton.TabIndex = 1;
-            this.addButton.Text = "+";
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addUserButton_Click);
-            // 
-            // userTextBox
-            // 
-            this.userTextBox.AccessibleName = "userName";
-            this.userTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.userTextBox.Location = new System.Drawing.Point(53, 215);
-            this.userTextBox.Name = "userTextBox";
-            this.userTextBox.Size = new System.Drawing.Size(48, 22);
-            this.userTextBox.TabIndex = 2;
-            // 
             // _userListDataGridView
             // 
-            this._userListDataGridView.AccessibleName = "projectDataGridView";
+            this._userListDataGridView.AccessibleName = "memberDataGridView";
             this._userListDataGridView.AllowUserToAddRows = false;
             this._userListDataGridView.AllowUserToDeleteRows = false;
             this._userListDataGridView.AllowUserToResizeColumns = false;
@@ -103,14 +81,14 @@
             this.Column3});
             this.tableLayoutPanel1.SetColumnSpan(this._userListDataGridView, 3);
             this._userListDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._userListDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._userListDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this._userListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._userListDataGridView.Location = new System.Drawing.Point(53, 23);
             this._userListDataGridView.MultiSelect = false;
@@ -118,9 +96,9 @@
             this._userListDataGridView.ReadOnly = true;
             this._userListDataGridView.RowHeadersVisible = false;
             this._userListDataGridView.RowHeadersWidth = 50;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._userListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._userListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this._userListDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
             this._userListDataGridView.RowTemplate.DividerHeight = 1;
             this._userListDataGridView.RowTemplate.Height = 50;
@@ -157,6 +135,28 @@
             this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Column3.Width = 5;
+            // 
+            // addButton
+            // 
+            this.addButton.AccessibleName = "userButton";
+            this.addButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addButton.Location = new System.Drawing.Point(204, 211);
+            this.addButton.Margin = new System.Windows.Forms.Padding(0);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(30, 30);
+            this.addButton.TabIndex = 1;
+            this.addButton.Text = "+";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addUserButton_Click);
+            // 
+            // userTextBox
+            // 
+            this.userTextBox.AccessibleName = "userName";
+            this.userTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.userTextBox.Location = new System.Drawing.Point(53, 215);
+            this.userTextBox.Name = "userTextBox";
+            this.userTextBox.Size = new System.Drawing.Size(48, 22);
+            this.userTextBox.TabIndex = 2;
             // 
             // _priorityComboBox
             // 

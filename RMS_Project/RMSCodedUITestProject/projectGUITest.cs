@@ -1,3 +1,4 @@
+
 ﻿using System;
 ﻿using System;
 using System.Collections.Generic;
@@ -82,8 +83,8 @@ namespace RMSCodedUITestProject
             Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
             Robot.ClickOtherFormButton("loginForm", "signInButton");
             Robot.AssertWindowExist("projectListForm", true);
-            Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm", "projectDataGridView", 0, 0, "ZZ");
-            Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm", "projectDataGridView", 1, 0, "RMS_Project");
+            //Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm", "projectDataGridView", 0, 0, "ZZ");
+            Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm", "projectDataGridView", 0, 0, "RMS_Project");
         }
 
         [TestMethod]
@@ -100,11 +101,12 @@ namespace RMSCodedUITestProject
             Robot.AssertWindowExist("projectListForm", true);
 
             Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0);
-            Robot.AssertWindowExist("ProjectDetailForm", true);
+            Robot.AssertWindowExist("ProjectMainForm", true);
 
             //確認Detail資料顯示是否正確
-            Robot.AssertOtherText("projectDetailForm", "projectName", "ZZ");
-            Robot.AssertOtherText("projectDetailForm", "projectDescription", "AAA");
+            Robot.AssertOtherText("ProjectMainForm", "projectName", "RMS_Project");
+           // Robot.AssertOtherText("projectDetailForm", "projectDescription", "AAA");
         }
     }
 }
+

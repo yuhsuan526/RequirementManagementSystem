@@ -154,6 +154,17 @@ namespace ezLogUITest
             Mouse.Click(button);
         }
 
+        public static void ClickOtherFormDoubleButton(string formName, string buttonName)
+        {
+            WinWindow window = new WinWindow();
+            window.SearchProperties[WinWindow.PropertyNames.Name] = formName;
+            window.WindowTitles.Add(formName);
+            WinButton button = new WinButton(window);
+            button.SearchProperties[WinWindow.PropertyNames.Name] = buttonName;
+            Mouse.Click(button);
+            Mouse.Click(button);
+        }
+
         public static void ClickOtherFormComboBox(string formName, string conboBoxName,string selectName)
         {
             string[] item;
@@ -235,7 +246,7 @@ namespace ezLogUITest
 
         public static void ClickDataGridView(string formName,string dataGridViewName, int rowIndex, int columnIndex)
         {
-            const int HALF_BUTTON_WIDTH = 8;
+            const int HALF_BUTTON_WIDTH = 550;
             const int SPINBUTTON_HEIGHT_FINE_TUNE = 3;
             //Win window
             WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
