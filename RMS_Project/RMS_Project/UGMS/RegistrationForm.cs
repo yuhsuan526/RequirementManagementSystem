@@ -14,7 +14,7 @@ using Newtonsoft.Json.Linq;
 
 namespace RMS_Project
 {
-    public partial class RegistrantionForm : Form
+    public partial class RegistrantionForm : Form, FunctionalTypeInterface
     {
         private PresentationModel _presentationModel;
         public RegistrantionForm(PresentationModel presentationModel)
@@ -61,6 +61,11 @@ namespace RMS_Project
                 confirmPasswordTextBox.Text = "";
                 MessageBox.Show("密碼不一致，請在確認一次", "Error", MessageBoxButtons.OK);
             }
+        }
+
+        public UserInterfaceForm.FunctionalType GetFunctionalType()
+        {
+            return UserInterfaceForm.FunctionalType.None;
         }
     }
 }

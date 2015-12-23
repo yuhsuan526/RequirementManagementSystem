@@ -13,7 +13,7 @@ using System.Net.Http;
 
 namespace RMS_Project
 {
-    public partial class RequirementEditorForm : Form
+    public partial class RequirementEditorForm : Form, FunctionalTypeInterface
     {
         private const string PRIORITY = "getPriorityType";
         private const string REQUIREMENT = "getRequirementType";
@@ -199,6 +199,11 @@ namespace RMS_Project
         private void RefreshRequirementList()
         {
 
-        }        
+        }
+
+        public UserInterfaceForm.FunctionalType GetFunctionalType()
+        {
+            return UserInterfaceForm.FunctionalType.Hide;
+        }
     }
 }

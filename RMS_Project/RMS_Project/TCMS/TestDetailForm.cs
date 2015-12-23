@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class TestDetailForm : Form
+    public partial class TestDetailForm : Form, FunctionalTypeInterface
     {
         private Test _test;
 
@@ -58,5 +58,9 @@ namespace RMS_Project
             }
         }
 
+        public UserInterfaceForm.FunctionalType GetFunctionalType()
+        {
+            return UserInterfaceForm.FunctionalType.Edit;
+        }
     }
 }

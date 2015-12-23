@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class ProjectListForm : Form
+    public partial class ProjectListForm : Form, FunctionalTypeInterface
     {
         private PresentationModel _presentationModel;
         private ArrayList _arrayList;
@@ -97,14 +97,14 @@ namespace RMS_Project
                 Form form = new ProjectMainForm(_presentationModel, project);
                 if (_presentationModel.AddFormToPanel(form))
                 {
-                    UserInterfaceForm userInterface = _presentationModel.UserInterface;
-                    if (userInterface != null)
-                    {
-                        userInterface.SetFeatureButton(UserInterfaceForm.FeatureType.Edit);
-                    }
                     _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_folder_outline);
                 }
             }
+        }
+
+        public UserInterfaceForm.FunctionalType GetFunctionalType()
+        {
+            return UserInterfaceForm.FunctionalType.New;
         }
     }
 }

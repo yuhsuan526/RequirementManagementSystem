@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class ProjectMainForm : Form
+    public partial class ProjectMainForm : Form, FunctionalTypeInterface
     {
         private PresentationModel _presentationModel;
         private Project _project;
@@ -54,46 +54,28 @@ namespace RMS_Project
 
         private void memberButton_Click(object sender, EventArgs e)
         {
-            UserInterfaceForm form = _presentationModel.UserInterface;
             UserListForm userListForm = new UserListForm(_presentationModel, _project);
             if (_presentationModel.AddFormToPanel(userListForm))
             {
                 _presentationModel.AddFormButtonToUserInterface(userListForm, "Members", Properties.Resources.ios7_people_outline);
-                if (form != null)
-                {
-                    form.SetFeatureButton(UserInterfaceForm.FeatureType.Hide);
-                }
-                //ChangeTabType(memberButton);
             }
         }
 
         private void requirementButton_Click(object sender, EventArgs e)
         {
-            UserInterfaceForm form = _presentationModel.UserInterface;
             RequirementListForm requirementListForm = new RequirementListForm(_presentationModel, _project);
             if (_presentationModel.AddFormToPanel(requirementListForm))
             {
                 _presentationModel.AddFormButtonToUserInterface(requirementListForm, "Requirements", Properties.Resources.ios7_paper_outline);
-                if (form != null)
-                {
-                    form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
-                }
-                //ChangeTabType(requirementButton);
             }
         }
 
         private void testButton_Click(object sender, EventArgs e)
         {
-            UserInterfaceForm form = _presentationModel.UserInterface;
             TestListForm testListForm = new TestListForm(_presentationModel, _project);
             if (_presentationModel.AddFormToPanel(testListForm))
             {
                 _presentationModel.AddFormButtonToUserInterface(testListForm, "Tests", Properties.Resources.ios7_browsers_outline);
-                if (form != null)
-                {
-                    form.SetFeatureButton(UserInterfaceForm.FeatureType.New);
-                }
-                //ChangeTabType(testButton);
             }
         }
 
@@ -115,6 +97,11 @@ namespace RMS_Project
             {
                 return _project;
             }
+        }
+
+        public UserInterfaceForm.FunctionalType GetFunctionalType()
+        {
+            return UserInterfaceForm.FunctionalType.Edit;
         }
     }
 }

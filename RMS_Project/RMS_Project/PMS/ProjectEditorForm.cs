@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class ProjectEditorForm : Form
+    public partial class ProjectEditorForm : Form, FunctionalTypeInterface
     {
         private PresentationModel _presentationModel;
         private Project _project;
@@ -59,6 +59,11 @@ namespace RMS_Project
             {
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
             }
+        }
+
+        public UserInterfaceForm.FunctionalType GetFunctionalType()
+        {
+            return UserInterfaceForm.FunctionalType.Hide;
         }
     }
 }
