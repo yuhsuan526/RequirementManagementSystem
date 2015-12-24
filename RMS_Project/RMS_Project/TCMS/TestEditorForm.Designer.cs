@@ -47,10 +47,9 @@
             // 
             // testEditorTableLayoutPanel
             // 
-            this.testEditorTableLayoutPanel.ColumnCount = 4;
+            this.testEditorTableLayoutPanel.ColumnCount = 3;
             this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.testEditorTableLayoutPanel.Controls.Add(this.descriptionRichTextBox, 0, 5);
             this.testEditorTableLayoutPanel.Controls.Add(this.expectedResultTextBox, 1, 2);
@@ -62,53 +61,53 @@
             this.testEditorTableLayoutPanel.Controls.Add(this.inputDataTextBox, 1, 1);
             this.testEditorTableLayoutPanel.Controls.Add(this.ownerLabel, 0, 3);
             this.testEditorTableLayoutPanel.Controls.Add(this.label4, 0, 4);
-            this.testEditorTableLayoutPanel.Controls.Add(this.confirmButton, 3, 6);
-            this.testEditorTableLayoutPanel.Controls.Add(this.checkedListBox, 3, 1);
-            this.testEditorTableLayoutPanel.Controls.Add(this.label3, 3, 0);
-            this.testEditorTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.testEditorTableLayoutPanel.Controls.Add(this.confirmButton, 2, 6);
+            this.testEditorTableLayoutPanel.Controls.Add(this.checkedListBox, 2, 1);
+            this.testEditorTableLayoutPanel.Controls.Add(this.label3, 2, 0);
             this.testEditorTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.testEditorTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
             this.testEditorTableLayoutPanel.Name = "testEditorTableLayoutPanel";
-            this.testEditorTableLayoutPanel.Padding = new System.Windows.Forms.Padding(67, 25, 67, 25);
+            this.testEditorTableLayoutPanel.Padding = new System.Windows.Forms.Padding(50, 20, 50, 20);
             this.testEditorTableLayoutPanel.RowCount = 7;
-            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.testEditorTableLayoutPanel.Size = new System.Drawing.Size(799, 585);
+            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.testEditorTableLayoutPanel.Size = new System.Drawing.Size(599, 468);
             this.testEditorTableLayoutPanel.TabIndex = 2;
             // 
             // descriptionRichTextBox
             // 
-            this.testEditorTableLayoutPanel.SetColumnSpan(this.descriptionRichTextBox, 4);
+            this.testEditorTableLayoutPanel.SetColumnSpan(this.descriptionRichTextBox, 3);
             this.descriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.descriptionRichTextBox.Location = new System.Drawing.Point(53, 154);
+            this.descriptionRichTextBox.Location = new System.Drawing.Point(52, 152);
+            this.descriptionRichTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.descriptionRichTextBox.Name = "descriptionRichTextBox";
-            this.descriptionRichTextBox.Size = new System.Drawing.Size(493, 251);
+            this.descriptionRichTextBox.Size = new System.Drawing.Size(495, 254);
             this.descriptionRichTextBox.TabIndex = 25;
             this.descriptionRichTextBox.Text = "";
             // 
             // expectedResultTextBox
             // 
-            this.testEditorTableLayoutPanel.SetColumnSpan(this.expectedResultTextBox, 2);
             this.expectedResultTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.expectedResultTextBox.Location = new System.Drawing.Point(153, 75);
+            this.expectedResultTextBox.Location = new System.Drawing.Point(152, 74);
+            this.expectedResultTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.expectedResultTextBox.Name = "expectedResultTextBox";
-            this.expectedResultTextBox.Size = new System.Drawing.Size(243, 22);
+            this.expectedResultTextBox.Size = new System.Drawing.Size(195, 22);
             this.expectedResultTextBox.TabIndex = 23;
             // 
             // ownerComboBox
             // 
-            this.testEditorTableLayoutPanel.SetColumnSpan(this.ownerComboBox, 2);
             this.ownerComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ownerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ownerComboBox.FormattingEnabled = true;
-            this.ownerComboBox.Location = new System.Drawing.Point(153, 101);
+            this.ownerComboBox.Location = new System.Drawing.Point(152, 100);
+            this.ownerComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ownerComboBox.Name = "ownerComboBox";
-            this.ownerComboBox.Size = new System.Drawing.Size(243, 20);
+            this.ownerComboBox.Size = new System.Drawing.Size(195, 20);
             this.ownerComboBox.TabIndex = 21;
             this.ownerComboBox.SelectedIndexChanged += new System.EventHandler(this.ownerComboBox_SelectedIndexChanged);
             // 
@@ -116,19 +115,19 @@
             // 
             this.inputDataLabel.AutoSize = true;
             this.inputDataLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputDataLabel.Location = new System.Drawing.Point(53, 46);
+            this.inputDataLabel.Location = new System.Drawing.Point(52, 46);
+            this.inputDataLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.inputDataLabel.Name = "inputDataLabel";
-            this.inputDataLabel.Size = new System.Drawing.Size(94, 26);
+            this.inputDataLabel.Size = new System.Drawing.Size(96, 26);
             this.inputDataLabel.TabIndex = 6;
-            this.inputDataLabel.Text = "InputData";
+            this.inputDataLabel.Text = "Input Data";
             this.inputDataLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // testNameLabel
             // 
             this.testNameLabel.AutoSize = true;
             this.testNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.testNameLabel.Location = new System.Drawing.Point(71, 25);
-            this.testNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.testNameLabel.Location = new System.Drawing.Point(53, 20);
             this.testNameLabel.Name = "testNameLabel";
             this.testNameLabel.Size = new System.Drawing.Size(94, 26);
             this.testNameLabel.TabIndex = 0;
@@ -137,51 +136,42 @@
             // 
             // testNameTextBox
             // 
-            this.testEditorTableLayoutPanel.SetColumnSpan(this.testNameTextBox, 2);
             this.testNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.testNameTextBox.Location = new System.Drawing.Point(153, 23);
+            this.testNameTextBox.Location = new System.Drawing.Point(152, 22);
+            this.testNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.testNameTextBox.Name = "testNameTextBox";
-            this.testNameTextBox.Size = new System.Drawing.Size(243, 22);
+            this.testNameTextBox.Size = new System.Drawing.Size(195, 22);
             this.testNameTextBox.TabIndex = 1;
             // 
             // expectedResultLabel
             // 
             this.expectedResultLabel.AutoSize = true;
             this.expectedResultLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.expectedResultLabel.Location = new System.Drawing.Point(53, 72);
+            this.expectedResultLabel.Location = new System.Drawing.Point(52, 72);
+            this.expectedResultLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.expectedResultLabel.Name = "expectedResultLabel";
-            this.expectedResultLabel.Size = new System.Drawing.Size(94, 26);
+            this.expectedResultLabel.Size = new System.Drawing.Size(96, 26);
             this.expectedResultLabel.TabIndex = 10;
             this.expectedResultLabel.Text = "Expected Result";
             this.expectedResultLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // inputDataTextBox
             // 
-            this.testEditorTableLayoutPanel.SetColumnSpan(this.inputDataTextBox, 2);
             this.inputDataTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputDataTextBox.Location = new System.Drawing.Point(153, 49);
+            this.inputDataTextBox.Location = new System.Drawing.Point(152, 48);
+            this.inputDataTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.inputDataTextBox.Name = "inputDataTextBox";
-            this.inputDataTextBox.Size = new System.Drawing.Size(243, 22);
+            this.inputDataTextBox.Size = new System.Drawing.Size(195, 22);
             this.inputDataTextBox.TabIndex = 17;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(402, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 26);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Associated Requirements";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ownerLabel
             // 
             this.ownerLabel.AutoSize = true;
             this.ownerLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ownerLabel.Location = new System.Drawing.Point(53, 98);
+            this.ownerLabel.Location = new System.Drawing.Point(52, 98);
+            this.ownerLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ownerLabel.Name = "ownerLabel";
-            this.ownerLabel.Size = new System.Drawing.Size(94, 27);
+            this.ownerLabel.Size = new System.Drawing.Size(96, 26);
             this.ownerLabel.TabIndex = 12;
             this.ownerLabel.Text = "Owner";
             this.ownerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -189,11 +179,12 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.testEditorTableLayoutPanel.SetColumnSpan(this.label4, 4);
+            this.testEditorTableLayoutPanel.SetColumnSpan(this.label4, 3);
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(53, 125);
+            this.label4.Location = new System.Drawing.Point(52, 124);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(657, 32);
+            this.label4.Size = new System.Drawing.Size(495, 26);
             this.label4.TabIndex = 9;
             this.label4.Text = "Description";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -201,9 +192,10 @@
             // confirmButton
             // 
             this.confirmButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.confirmButton.Location = new System.Drawing.Point(402, 411);
+            this.confirmButton.Location = new System.Drawing.Point(351, 410);
+            this.confirmButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.confirmButton.Name = "confirmButton";
-            this.confirmButton.Size = new System.Drawing.Size(144, 34);
+            this.confirmButton.Size = new System.Drawing.Size(196, 36);
             this.confirmButton.TabIndex = 5;
             this.confirmButton.Text = "confirm";
             this.confirmButton.UseVisualStyleBackColor = true;
@@ -213,31 +205,30 @@
             // 
             this.checkedListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkedListBox.FormattingEnabled = true;
-            this.checkedListBox.Location = new System.Drawing.Point(402, 49);
+            this.checkedListBox.Location = new System.Drawing.Point(351, 48);
+            this.checkedListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkedListBox.Name = "checkedListBox";
             this.testEditorTableLayoutPanel.SetRowSpan(this.checkedListBox, 3);
-            this.checkedListBox.Size = new System.Drawing.Size(144, 73);
+            this.checkedListBox.Size = new System.Drawing.Size(196, 74);
             this.checkedListBox.TabIndex = 26;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(536, 25);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(352, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(192, 32);
+            this.label3.Size = new System.Drawing.Size(194, 26);
             this.label3.TabIndex = 11;
             this.label3.Text = "Associated Requirements";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TestEditorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 585);
+            this.ClientSize = new System.Drawing.Size(599, 468);
             this.Controls.Add(this.testEditorTableLayoutPanel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TestEditorForm";
             this.Text = "TestEditorForm";
             this.testEditorTableLayoutPanel.ResumeLayout(false);

@@ -17,18 +17,13 @@ namespace RMS_Project
         public RequirementDetailForm(Requirement requirement)
         {
             InitializeComponent();
-            _requirement = requirement;
- 
-            _nameLabel.Text = requirement.ID.ToString() + ": " + requirement.Name;
-            _descriptionTextBox.Text = requirement.Description;
-            _memoTextBox.Text = requirement.Memo;
+            this._requirement = requirement;
+            
         }
 
         public void RefreshRequirementDetail(Requirement requirement)
         {
             this._requirement = requirement;
-            _descriptionTextBox.Text = _requirement.Description;
-            _memoTextBox.Text = _requirement.Memo;
         }
 
         public Requirement Requirement

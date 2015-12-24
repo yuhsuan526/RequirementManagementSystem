@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TestListDataGridView = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.confirmButton = new System.Windows.Forms.Button();
@@ -38,6 +38,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this._requirementListDataGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.TestName = new System.Windows.Forms.Label();
@@ -45,9 +48,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.descriptionRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._requirementListDataGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.TestListDataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._requirementListDataGridView)).BeginInit();
@@ -169,6 +169,69 @@
             this.tableLayoutPanel1.TabIndex = 2;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
+            // _requirementListDataGridView
+            // 
+            this._requirementListDataGridView.AccessibleName = "projectDataGridView";
+            this._requirementListDataGridView.AllowUserToAddRows = false;
+            this._requirementListDataGridView.AllowUserToDeleteRows = false;
+            this._requirementListDataGridView.AllowUserToResizeColumns = false;
+            this._requirementListDataGridView.AllowUserToResizeRows = false;
+            this._requirementListDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this._requirementListDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._requirementListDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this._requirementListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._requirementListDataGridView.ColumnHeadersVisible = false;
+            this._requirementListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column3});
+            this._requirementListDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._requirementListDataGridView.DefaultCellStyle = dataGridViewCellStyle7;
+            this._requirementListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._requirementListDataGridView.Location = new System.Drawing.Point(415, 40);
+            this._requirementListDataGridView.Margin = new System.Windows.Forms.Padding(0);
+            this._requirementListDataGridView.MultiSelect = false;
+            this._requirementListDataGridView.Name = "_requirementListDataGridView";
+            this._requirementListDataGridView.ReadOnly = true;
+            this._requirementListDataGridView.RowHeadersVisible = false;
+            this._requirementListDataGridView.RowHeadersWidth = 50;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._requirementListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.tableLayoutPanel1.SetRowSpan(this._requirementListDataGridView, 4);
+            this._requirementListDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
+            this._requirementListDataGridView.RowTemplate.DividerHeight = 1;
+            this._requirementListDataGridView.RowTemplate.Height = 50;
+            this._requirementListDataGridView.RowTemplate.ReadOnly = true;
+            this._requirementListDataGridView.Size = new System.Drawing.Size(205, 430);
+            this._requirementListDataGridView.TabIndex = 31;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.FillWeight = 179.6954F;
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column3.HeaderText = "Column3";
+            this.Column3.Image = global::RMS_Project.Properties.Resources.ios7_close_empty;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column3.Width = 5;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -253,69 +316,6 @@
             this.label1.TabIndex = 32;
             this.label1.Text = "Associated requirements";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Image = global::RMS_Project.Properties.Resources.ios7_close_empty;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column3.Width = 5;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.FillWeight = 179.6954F;
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // _requirementListDataGridView
-            // 
-            this._requirementListDataGridView.AccessibleName = "projectDataGridView";
-            this._requirementListDataGridView.AllowUserToAddRows = false;
-            this._requirementListDataGridView.AllowUserToDeleteRows = false;
-            this._requirementListDataGridView.AllowUserToResizeColumns = false;
-            this._requirementListDataGridView.AllowUserToResizeRows = false;
-            this._requirementListDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-            this._requirementListDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this._requirementListDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this._requirementListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._requirementListDataGridView.ColumnHeadersVisible = false;
-            this._requirementListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column3});
-            this._requirementListDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._requirementListDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
-            this._requirementListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._requirementListDataGridView.Location = new System.Drawing.Point(415, 40);
-            this._requirementListDataGridView.Margin = new System.Windows.Forms.Padding(0);
-            this._requirementListDataGridView.MultiSelect = false;
-            this._requirementListDataGridView.Name = "_requirementListDataGridView";
-            this._requirementListDataGridView.ReadOnly = true;
-            this._requirementListDataGridView.RowHeadersVisible = false;
-            this._requirementListDataGridView.RowHeadersWidth = 50;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._requirementListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.tableLayoutPanel1.SetRowSpan(this._requirementListDataGridView, 4);
-            this._requirementListDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
-            this._requirementListDataGridView.RowTemplate.DividerHeight = 1;
-            this._requirementListDataGridView.RowTemplate.Height = 50;
-            this._requirementListDataGridView.RowTemplate.ReadOnly = true;
-            this._requirementListDataGridView.Size = new System.Drawing.Size(205, 430);
-            this._requirementListDataGridView.TabIndex = 31;
             // 
             // TestDetailForm
             // 
