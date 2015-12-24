@@ -26,7 +26,9 @@ namespace RMS_Project
 
         public void RefreshRequirementDetail(Requirement requirement)
         {
-
+            this._requirement = requirement;
+            _descriptionTextBox.Text = _requirement.Description;
+            _memoTextBox.Text = _requirement.Memo;
         }
 
         public Requirement Requirement
