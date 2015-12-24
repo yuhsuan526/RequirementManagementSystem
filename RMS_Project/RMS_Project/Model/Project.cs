@@ -33,6 +33,10 @@ namespace RMS_Project
             {
                 return _name;
             }
+            set
+            {
+                _name = value;
+            }
         }
 
         public string DESC
@@ -40,6 +44,11 @@ namespace RMS_Project
             get
             {
                 return _description;
+            }
+            set
+            {
+                _description = value;
+
             }
         }
     }

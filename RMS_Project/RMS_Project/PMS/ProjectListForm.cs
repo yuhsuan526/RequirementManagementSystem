@@ -17,34 +17,17 @@ namespace RMS_Project
     public partial class ProjectListForm : Form, FunctionalTypeInterface
     {
         private PresentationModel _presentationModel;
-        private ArrayList _arrayList;
-        private Project[] ownedProjects;
-        private Project[] managedProjects;
+        private ArrayList _joinedProjects;
+        private Project[] _ownedProjects;
+        private Project[] _managedProjects;
 
         public ProjectListForm(PresentationModel presentationModel)
         {
             InitializeComponent();
             this._presentationModel = presentationModel;
             this._yourProjectListDataGridView.ClearSelection();
-            _arrayList = new ArrayList();
+            _joinedProjects = new ArrayList();
             RefreshProjectList();
-        }
-
-        private void ProjectListDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            /*
-            DataGridViewCell cell = ProjectListDataGridView.Rows[e.RowIndex].Cells[0];
-            Project project = _arrayList[e.RowIndex] as Project;
-            Form form = new ProjectMainForm(_presentationModel, project);
-            if (_presentationModel.AddFormToPanel(form))
-            {
-                UserInterfaceForm userInterface = _presentationModel.UserInterface;
-                if (userInterface != null)
-                {
-                    userInterface.SetFeatureButton(UserInterfaceForm.FeatureType.Edit);
-                }
-                _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_folder_outline);
-            }*/
         }
 
         public async void RefreshProjectList()
@@ -65,7 +48,7 @@ namespace RMS_Project
                     {
                         this._joinedProjectListDataGridView.Rows.Add(jObject["name"]);
                         Project project = new Project(int.Parse(jObject["id"].ToString()), jObject["name"].ToString(), jObject["description"].ToString());
-                        _arrayList.Add(project);
+                        _joinedProjects.Add(project);
                     }
                 }
             }
@@ -84,9 +67,9 @@ namespace RMS_Project
             try
             {
                 this._yourProjectListDataGridView.Rows.Clear();
-                ownedProjects = await _presentationModel.GetOwnedProjectListByUserId();
-                Console.WriteLine("count:" + ownedProjects.Length);
-                foreach (Project project in ownedProjects)
+                _ownedProjects = await _presentationModel.GetOwnedProjectListByUserId();
+                Console.WriteLine("count:" + _ownedProjects.Length);
+                foreach (Project project in _ownedProjects)
                 {
                     this._yourProjectListDataGridView.Rows.Add(project.NAME);
                 }
@@ -102,8 +85,8 @@ namespace RMS_Project
             try
             {
                 this._managedProjectListDataGridView.Rows.Clear();
-                managedProjects = await _presentationModel.GetManagedProjectListByUserId();
-                foreach (Project project in managedProjects)
+                _managedProjects = await _presentationModel.GetManagedProjectListByUserId();
+                foreach (Project project in _managedProjects)
                 {
                     this._managedProjectListDataGridView.Rows.Add(project.NAME);
                 }
@@ -114,12 +97,26 @@ namespace RMS_Project
             }
         }
 
-        void deleteButton_Click(object sender, EventArgs e)
+        public UserInterfaceForm.FunctionalType GetFunctionalType()
         {
-
+            return UserInterfaceForm.FunctionalType.New;
         }
 
-        private void ProjectListDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public async void DeleteProject(int projectId)
+        {
+            try
+            {
+                string message = await _presentationModel.DeleteProject(projectId);
+                RefreshProjectList();
+                MessageBox.Show(message, "Success", MessageBoxButtons.OK);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void _managedProjectListDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
 
@@ -128,12 +125,12 @@ namespace RMS_Project
             {
                 //TODO - Button Clicked - Execute Code Here
                 Console.WriteLine("按下刪除:" + e.RowIndex);
-                //_presentationModel.DeleteProject(_arrayList[e.RowIndex])
+                DeleteProject(_managedProjects[e.RowIndex].ID);
             }
             else
             {
-                DataGridViewCell cell = _yourProjectListDataGridView.Rows[e.RowIndex].Cells[0];
-                Project project = _arrayList[e.RowIndex] as Project;
+                DataGridViewCell cell = senderGrid.Rows[e.RowIndex].Cells[0];
+                Project project = _managedProjects[e.RowIndex] as Project;
                 Form form = new ProjectMainForm(_presentationModel, project);
                 if (_presentationModel.AddFormToPanel(form))
                 {
@@ -142,9 +139,40 @@ namespace RMS_Project
             }
         }
 
-        public UserInterfaceForm.FunctionalType GetFunctionalType()
+        private void _joinedProjectListDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            return UserInterfaceForm.FunctionalType.New;
+            var senderGrid = (DataGridView)sender;
+            DataGridViewCell cell = senderGrid.Rows[e.RowIndex].Cells[0];
+            Project project = _joinedProjects[e.RowIndex] as Project;
+            Form form = new ProjectMainForm(_presentationModel, project);
+            if (_presentationModel.AddFormToPanel(form))
+            {
+                _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_folder_outline);
+            }
         }
+
+        private void _yourProjectListDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewImageColumn &&
+                e.RowIndex >= 0)
+            {
+                //TODO - Button Clicked - Execute Code Here
+                Console.WriteLine("按下刪除:" + e.RowIndex);
+                DeleteProject(_ownedProjects[e.RowIndex].ID);
+            }
+            else
+            {
+                DataGridViewCell cell = senderGrid.Rows[e.RowIndex].Cells[0];
+                Project project = _ownedProjects[e.RowIndex] as Project;
+                Form form = new ProjectMainForm(_presentationModel, project);
+                if (_presentationModel.AddFormToPanel(form))
+                {
+                    _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_folder_outline);
+                }
+            }
+        }
+
     }
 }

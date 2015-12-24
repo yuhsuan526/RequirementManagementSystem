@@ -188,6 +188,7 @@ namespace RMS_Project
                 return false;
             }
             Control topControl = null;
+            Control targetControl = null;
             if (_mainFormPanel.Controls.Count > 0)
             {
                 topControl = _mainFormPanel.Controls[_mainFormPanel.Controls.Count - 1];
@@ -198,7 +199,8 @@ namespace RMS_Project
             }
             if (_mainFormPanel.Controls.Count > 1)
             {
-                Util.Animate(_mainFormPanel.Controls[_mainFormPanel.Controls.Count - 2], Util.Effect.Slide, 500, 180);
+                targetControl = _mainFormPanel.Controls[_mainFormPanel.Controls.Count - 2];
+                Util.Animate(targetControl, Util.Effect.Slide, 500, 180);
                 waitForAnimation(500);
             }
             if (topControl != null)
@@ -209,6 +211,8 @@ namespace RMS_Project
                     _mainForm.BeginInvoke(mi, null);
                 });
             }
+            if (_userInterface != null && targetControl != null)
+                _userInterface.SetFunctionalButton(((FunctionalTypeInterface)targetControl).GetFunctionalType());
             return true;
         }
 
@@ -332,9 +336,9 @@ namespace RMS_Project
             return await _model.GetProjectList();
         }
 
-        public async Task<HttpResponseMessage> GetMethod(String method)
+        public async Task<HttpResponseMessage> GetRequirementMethod(String method)
         {
-            return await _model.GetMethod(method);
+            return await _model.GetRequirementMethod(method);
         }
 
         public async Task<HttpResponseMessage> AddUserToProject(JObject jObject)
@@ -352,19 +356,14 @@ namespace RMS_Project
             return await _model.DeleteRequirement(RequirementId);
         }
 
-        public async Task<string> AddTest(JObject jObject)
+        public async Task<string> EditTestCase(Test test)
         {
-            return null;
+            return await _model.EditTestCase(test);
         }
 
-        public async Task<string> EditTest(Test test)
+        public async Task<string> DeleteTestCase(int tsetId)
         {
-            return null;
-        }
-
-        public async Task<string> DeleteTest(int RTestId)
-        {
-            return null;
+            return await  _model.DeleteTestCase(tsetId);
         }
 
         public async Task<string> AddTestCase(JObject jObject)

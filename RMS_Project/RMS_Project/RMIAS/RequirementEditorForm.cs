@@ -45,9 +45,9 @@ namespace RMS_Project
             _statusIds = new List<int>();
             _statusNames = new List<string>();
 
-            GetMethod(PRIORITY);
-            GetMethod(REQUIREMENT);
-            GetMethod(STATUS);
+            GetRequirementMethod(PRIORITY);
+            GetRequirementMethod(REQUIREMENT);
+            GetRequirementMethod(STATUS);
         }
 
         public RequirementEditorForm(PresentationModel presentationModel, Requirement requirement)
@@ -89,9 +89,9 @@ namespace RMS_Project
             }
         }
 
-        private async void GetMethod(String method)
+        private async void GetRequirementMethod(String method)
         {
-            HttpResponseMessage response = await _presentationModel.GetMethod(method);
+            HttpResponseMessage response = await _presentationModel.GetRequirementMethod(method);
 
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)

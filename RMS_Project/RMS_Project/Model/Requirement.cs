@@ -15,9 +15,10 @@ namespace RMS_Project
         private string _version;
         private string _memo;
 
-        public Requirement(int id, string name, string description, string version, string memo)
+        public Requirement(int id, int projectId, string name, string description, string version, string memo)
         {
             this._id = id;
+            this._projectId = projectId;
             this._name = name;
             this._description = description;
             this._version = version;

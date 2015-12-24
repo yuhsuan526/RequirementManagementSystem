@@ -25,7 +25,6 @@ namespace RMS_Project
             InitializeComponent();
             this._presentationModel = presentationModel;
             this._project = project;
-            this.testListDataGridView.Rows.Add("test", "yyyy/mm/dd");
             _arrayList = new ArrayList();
             RefreshTestList();
         }
@@ -45,7 +44,7 @@ namespace RMS_Project
                     foreach (JObject jObject in jsonArray)
                     {
                         this.testListDataGridView.Rows.Add(jObject["name"], jObject["id"]);
-                        Test project = new Test(int.Parse(jObject["id"].ToString()),int.Parse(jObject["name"].ToString()), jObject["name"].ToString(), jObject["description"].ToString());
+                        Test project = new Test(int.Parse(jObject["id"].ToString()), _project.ID, jObject["name"].ToString(), jObject["description"].ToString());
                         _arrayList.Add(project);
                     }
                 }

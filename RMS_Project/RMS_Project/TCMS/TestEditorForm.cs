@@ -108,7 +108,7 @@ namespace RMS_Project
 
                         Console.WriteLine(jObject["name"]);
 
-                        Requirement requirement = new Requirement((int)jObject["id"], jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString());
+                        Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString());
                         _requirementArrayList.Add(requirement);
                     }
                 }

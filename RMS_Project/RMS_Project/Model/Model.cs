@@ -177,7 +177,41 @@ namespace RMS_Project
 
         public async Task<string> EditProject(Project project)
         {
-            return null;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                JObject jObject = new JObject();
+                jObject["pid"] = project.ID;
+                jObject["name"] = project.NAME;
+                jObject["description"] = project.DESC;
+                const string METHOD = "project/update";
+                string url = BASE_URL + METHOD;
+                response = await httpClient.PostAsync(url, new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
+                string content = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    JObject json = JObject.Parse(content);
+                    string message = json["result"].ToString();
+                    if (message == "success")
+                    {
+                        return "專案修改成功";
+                    }
+                    else
+                    {
+                        return "專案修改失敗";
+                    }
+                }
+                else
+                {
+                    return "專案修改失敗";
+                }
+            }
+            catch (HttpRequestException)
+            {
+                return "伺服器無回應";
+            }
         }
 
         public async Task<string> DeleteProject(int projectId)
@@ -191,7 +225,24 @@ namespace RMS_Project
                 string url = BASE_URL + METHOD + projectId;
                 response = await httpClient.GetAsync(url);
                 string content = await response.Content.ReadAsStringAsync();
-                return content;
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    JObject json = JObject.Parse(content);
+                    Console.WriteLine(json.ToString());
+                    string message = json["result"].ToString();
+                    if (message == "success")
+                    {
+                        return "刪除專案成功";
+                    }
+                    else
+                    {
+                        return "刪除專案失敗";
+                    }
+                }
+                else
+                {
+                    return "刪除專案失敗";
+                }
             }
             catch (HttpRequestException)
             {
@@ -415,7 +466,7 @@ namespace RMS_Project
             }
         }
 
-        public async Task<HttpResponseMessage> GetMethod(String method)
+        public async Task<HttpResponseMessage> GetRequirementMethod(String method)
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response;
@@ -467,6 +518,47 @@ namespace RMS_Project
             catch (HttpRequestException)
             {
                 return "伺服器無回應";
+            }
+        }
+
+        public async Task<string> EditTestCase(Test test)
+        {
+            return null;
+        }
+
+        public async Task<string> DeleteTestCase(int tsetId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "test_case/delete/";
+                string url = BASE_URL + METHOD + tsetId;
+                response = await httpClient.GetAsync(url);
+                string content = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    JObject json = JObject.Parse(content);
+                    Console.WriteLine(json.ToString());
+                    string message = json["result"].ToString();
+                    if (message == "success")
+                    {
+                        return "刪除測試成功";
+                    }
+                    else
+                    {
+                        return "刪除測試失敗";
+                    }
+                }
+                else
+                {
+                    return "刪除測試失敗";
+                }
+            }
+            catch (HttpRequestException)
+            {
+                throw new Exception("伺服器無回應");
             }
         }
 
