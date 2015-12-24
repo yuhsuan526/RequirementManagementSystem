@@ -63,10 +63,10 @@ namespace RMS_Project
             temp = temp.Substring(0, temp.Length - 1);
             jObject["rid_list"] = temp;
             jObject["name"] = testNameTextBox.Text;
-            jObject["description"] = DescriptionRichTextBox.Text;
+            jObject["description"] = descriptionRichTextBox.Text;
             jObject["asigned_as"] = _selectedUserId;
-            jObject["input_data"] = AssignmentRichTextBox.Text;
-            jObject["expected_result"] = DescriptionRichTextBox.Text;
+            jObject["input_data"] = inputDataTextBox.Text;
+            jObject["expected_result"] = expectedResultTextBox.Text;
 
             Console.WriteLine(jObject);
 
