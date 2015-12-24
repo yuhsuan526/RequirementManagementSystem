@@ -381,6 +381,11 @@ namespace RMS_Project
             return await _model.GetTestCaseListByProjectId(projectId);
         }
 
+        public async Task<JArray> GetRequirementToRequirementRelationByProjectId(int projectId)
+        {
+            return await _model.GetRequirementToRequirementRelationByProjectId(projectId);
+        }
+
         public void ClickFunctionalButton()
         {
             Control control = GetCurrentFormInPanel();

@@ -18,7 +18,16 @@ namespace RMS_Project
         {
             InitializeComponent();
             this._requirement = requirement;
-            
+            idLabel.Text = _requirement.ID.ToString();
+            nameLabel.Text = _requirement.Name;
+            versionLabel.Text = _requirement.Version;
+            typeLabel.Text = _requirement.Type.ToString();
+            priorityLabel.Text = _requirement.Priority.ToString();
+            statusLabel.Text = _requirement.Status.ToString();
+            requirementOwnerLabel.Text = "Error";//_requirement.Owner.ToString();
+            handlerLabel.Text = "Not implement";
+            descriptionTextBox.Text = _requirement.Description;
+            memoTextBox.Text = _requirement.Memo;
         }
 
         public void RefreshRequirementDetail(Requirement requirement)

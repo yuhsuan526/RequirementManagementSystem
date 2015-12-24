@@ -634,5 +634,39 @@ namespace RMS_Project
                 return response;
             }
         } 
+
+        public async Task<JArray> GetRequirementToRequirementRelationByProjectId(int projectId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "test_case/getRtoRRelationByProjectId/";
+                string url = BASE_URL + METHOD + projectId.ToString();
+                response = await httpClient.GetAsync(url);
+                 string content = await response.Content.ReadAsStringAsync();
+                 if (response.StatusCode == HttpStatusCode.OK)
+                 {
+                     JObject json = JObject.Parse(content);
+                     if (json["result"].Equals("success"))
+                     {
+                         return (JArray)json["rr_relations"];
+                     }
+                     else
+                     {
+                         throw new Exception("資料取得失敗");
+                     }
+                 }
+                 else
+                 {
+                     throw new Exception("資料取得失敗");
+                 }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

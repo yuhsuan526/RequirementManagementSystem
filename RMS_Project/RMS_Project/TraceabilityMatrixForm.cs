@@ -105,6 +105,27 @@ namespace RMS_Project
             }
         }
 
+        private async void GetRequirementToRequirementRelationByProjectId()
+        {
+            try
+            {
+                JArray jsonArray = await _presentationModel.GetRequirementToRequirementRelationByProjectId(_project.ID);
+                requirementList = new Requirement[jsonArray.Count];
+                for (int i = 0; i < jsonArray.Count; i++)
+                {
+                    JObject jObject = (JObject)jsonArray[i];
+                    requirementList[i] = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(),
+                        jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(),
+                        (int)jObject["requirement_type_id"], (int)jObject["priority_type_id"], (int)jObject["status_type_id"]);
+                }
+                RefreshTestList();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+            }
+        }
+
         private async void GetRequirementByProject()
         {
             HttpResponseMessage response = await _presentationModel.GetRequirementByProject(_project.ID.ToString());
@@ -120,9 +141,17 @@ namespace RMS_Project
                     for (int i = 0; i < jsonArray.Count; i++ )
                     {
                         JObject jObject = (JObject)jsonArray[i];
-                        requirementList[i] = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(),
-                            jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(),
-                            (int)jObject["requirement_type_id"], (int)jObject["priority_type_id"], (int)jObject["status_type_id"]);
+                        requirementList[i] = 
+                            new Requirement(
+                            int.Parse(jObject["id"].ToString()), 
+                            _project.ID, 
+                            jObject["name"].ToString(),
+                            jObject["description"].ToString(), 
+                            jObject["version"].ToString(), 
+                            jObject["memo"].ToString(),
+                            int.Parse(jObject["requirement_type_id"].ToString()), 
+                            int.Parse(jObject["priority_type_id"].ToString()), 
+                            int.Parse(jObject["status_type_id"].ToString()));
                     }
                     RefreshTestList();
                 }
