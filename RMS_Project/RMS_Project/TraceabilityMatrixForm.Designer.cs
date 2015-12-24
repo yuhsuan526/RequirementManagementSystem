@@ -64,7 +64,7 @@
             this.matrixDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.matrixDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.matrixDataGridView.EnableHeadersVisualStyles = false;
-            this.matrixDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.matrixDataGridView.Location = new System.Drawing.Point(50, 15);
             this.matrixDataGridView.Name = "matrixDataGridView";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -76,7 +76,7 @@
             this.matrixDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.matrixDataGridView.RowHeadersVisible = false;
             this.matrixDataGridView.RowTemplate.Height = 24;
-            this.matrixDataGridView.Size = new System.Drawing.Size(469, 279);
+            this.matrixDataGridView.Size = new System.Drawing.Size(369, 264);
             this.matrixDataGridView.TabIndex = 0;
             // 
             // TraceabilityMatrixForm
@@ -86,6 +86,7 @@
             this.ClientSize = new System.Drawing.Size(469, 279);
             this.Controls.Add(this.matrixDataGridView);
             this.Name = "TraceabilityMatrixForm";
+            this.Padding = new System.Windows.Forms.Padding(50, 15, 50, 0);
             this.Text = "TraceabilityMatrixForm";
             ((System.ComponentModel.ISupportInitialize)(this.matrixDataGridView)).EndInit();
             this.ResumeLayout(false);

@@ -17,62 +17,23 @@ namespace RMS_Project
     {
         private Project _project;
         private PresentationModel _presentationModel;
-        Requirement[] requirementList;
-        Test[] testList;
-
+        private Requirement[] requirementList;
+        private Test[] testList;
+        private int _counter;
+        private int _maxCount;
 
         public TraceabilityMatrixForm(PresentationModel presentationModel, Project project)
         {
             InitializeComponent();
             _project = project;
             _presentationModel = presentationModel;
-            /*
-            DataGridViewColumnCollection columns = matrixDataGridView.Columns;
-            columns.Add("nullColumn", "Traceability Matrix");
-            columns.Add("testColumn1", "Test 1");
-            columns.Add("testColumn2", "Test 2");
-            columns.Add("testColumn3", "Test 3");
-            columns.Add("testColumn4", "Test 4");
-            columns.Add("testColumn5", "Test 5");
-            columns.Add("testColumn6", "Test 6");
-            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
-            checkColumn.Name = "testColumn7";
-            checkColumn.HeaderText = "Test 7";
-            checkColumn.TrueValue = true;
-            checkColumn.FalseValue = false;
-            checkColumn.FillWeight = 10; //if the datagridview is resized (on form resize) the checkbox won't take up too much; value is relative to the other columns' fill values
-            matrixDataGridView.Columns.Add(checkColumn);
-
-            columns.Cast<DataGridViewColumn>().ToList().ForEach(f => f.SortMode = DataGridViewColumnSortMode.NotSortable);
-
-            DataGridViewRowCollection rows = matrixDataGridView.Rows;
-            rows.Add("Requirement 1");
-            rows.Add("Requirement 2");
-            rows.Add("Requirement 3");
-            rows.Add("Requirement 4");
-            rows.Add("Requirement 5");
-            rows.Add("Requirement 6");
-            rows.Add("Requirement 7");
-            rows.Add("Requirement 8");
-            rows.Add("Requirement 9");
-            rows.Add("Requirement 10");
-            rows.Add("Requirement 11");
-            rows.Add("Requirement 12");
-            matrixDataGridView.Columns[0].Frozen = true;
-            bool flag = false;
-            foreach (DataGridViewRow row in matrixDataGridView.Rows)
-            {
-                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[7];
-                chk.Selected = flag;
-                flag = !flag;
-            }*/
-
-            //CreateCell(new string[]{"1", "2"}, new string[]{"1", "2"});
             GetRequirementByProject();
         }
 
         private void CreateCell(string[] rows, string[] columns)
         {
+            matrixDataGridView.Columns.Clear();
+            matrixDataGridView.Rows.Clear();
             DataGridViewColumnCollection matrixColumns = matrixDataGridView.Columns;
             matrixColumns.Add("nullColumn", "Traceability Matrix");
             for (int j = 0; j < columns.Length; j++)
@@ -92,16 +53,70 @@ namespace RMS_Project
             }
             matrixDataGridView.Columns[0].Frozen = true;
             matrixDataGridView.Columns[0].ReadOnly = true;
-            bool flag = false;
-            
-            for (int i = 0; i < rows.Length; i++)
+            GetRequirementToRequirementRelationByProjectId();
+        }
+
+        private void SetCellValue(string rowID, string columnID)
+        {
+            int rowIndex = -1;
+            int columnIndex = -1;
+            for (int i = 0; i < requirementList.Length; i++)
             {
-                for (int j = 0; j < columns.Length; j++)
+                if (requirementList[i].ID.ToString().Equals(rowID))
                 {
-                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)matrixDataGridView.Rows[i].Cells[1 + j];
-                    chk.Selected = flag;
-                    flag = !flag;
+                    rowIndex = i;
+                    if (columnIndex >= 0)
+                        break;
                 }
+                if (requirementList[i].ID.ToString().Equals(columnID))
+                {
+                    columnIndex = i;
+                    if (rowIndex >= 0)
+                        break;
+                }
+            }
+            DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)matrixDataGridView.Rows[rowIndex].Cells[1 + columnIndex];
+            chk.Value = chk.TrueValue;
+
+        }
+
+        public async void AddRelation()
+        {
+            try
+            {
+                string msg = await _presentationModel.DeleteRequirementToRequirementRelationByProject(_project.ID);
+                _maxCount = 0;
+                _counter = 0;
+                for (int i = 0; i < matrixDataGridView.Rows.Count; i++)
+                {
+                    for (int j = 0; j < matrixDataGridView.Columns.Count - 1; j++)
+                    {
+                        DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)matrixDataGridView.Rows[i].Cells[1 + j];
+                        if (chk.Value == chk.TrueValue)
+                        {
+                            _maxCount++;
+                            JObject jObject = new JObject();
+                            jObject["r1id"] = requirementList[i].ID;
+                            jObject["r2id"] = requirementList[j].ID;
+                            jObject["pid"] = _project.ID;
+                            CreateRequirementToRequirementRelation(jObject);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        public async void CreateRequirementToRequirementRelation(JObject jObject)
+        {
+            string msg = await _presentationModel.CreateRequirementToRequirementRelation(jObject);
+            _counter++;
+            if (_maxCount <= _counter)
+            {
+                MessageBox.Show("修改成功", "Success", MessageBoxButtons.OK);
             }
         }
 
@@ -110,15 +125,11 @@ namespace RMS_Project
             try
             {
                 JArray jsonArray = await _presentationModel.GetRequirementToRequirementRelationByProjectId(_project.ID);
-                requirementList = new Requirement[jsonArray.Count];
                 for (int i = 0; i < jsonArray.Count; i++)
                 {
                     JObject jObject = (JObject)jsonArray[i];
-                    requirementList[i] = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(),
-                        jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(),
-                        (int)jObject["requirement_type_id"], (int)jObject["priority_type_id"], (int)jObject["status_type_id"]);
+                    SetCellValue(jObject["requirement1_id"].ToString(), jObject["requirement2_id"].ToString());
                 }
-                RefreshTestList();
             }
             catch (Exception e)
             {
@@ -153,7 +164,13 @@ namespace RMS_Project
                             int.Parse(jObject["priority_type_id"].ToString()), 
                             int.Parse(jObject["status_type_id"].ToString()));
                     }
-                    RefreshTestList();
+                    string[] rList = new string[requirementList.Length];
+                    for (int i = 0; i < requirementList.Length; i++)
+                    {
+                        rList[i] = requirementList[i].Name;
+                    }
+                    CreateCell(rList, rList);
+                    //RefreshTestList();
                 }
             }
             else if (response.StatusCode == HttpStatusCode.RequestTimeout)
@@ -209,7 +226,7 @@ namespace RMS_Project
 
         public UserInterfaceForm.FunctionalType GetFunctionalType()
         {
-            return UserInterfaceForm.FunctionalType.Hide;
+            return UserInterfaceForm.FunctionalType.New;
         }
     }
 }

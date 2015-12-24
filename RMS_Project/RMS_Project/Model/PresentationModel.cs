@@ -386,6 +386,16 @@ namespace RMS_Project
             return await _model.GetRequirementToRequirementRelationByProjectId(projectId);
         }
 
+        public async Task<string> CreateRequirementToRequirementRelation(JObject jObject)
+        {
+            return await _model.CreateRequirementToRequirementRelation(jObject);
+        }
+
+        public async Task<string> DeleteRequirementToRequirementRelationByProject(int projectId)
+        {
+            return await _model.DeleteRequirementToRequirementRelationByProject(projectId);
+        }
+
         public void ClickFunctionalButton()
         {
             Control control = GetCurrentFormInPanel();
@@ -422,6 +432,11 @@ namespace RMS_Project
                 TestDetailForm form = control as TestDetailForm;
                 TestEditorForm requirementEditorForm = new TestEditorForm(this, form.Test);
                 AddFormToPanel(requirementEditorForm);
+            }
+            else if (control.GetType().Equals(typeof(TraceabilityMatrixForm)))
+            {
+                TraceabilityMatrixForm form = control as TraceabilityMatrixForm;
+                form.AddRelation();
             }
 
         }
