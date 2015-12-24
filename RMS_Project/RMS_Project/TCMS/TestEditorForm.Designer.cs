@@ -64,6 +64,7 @@
             this.testEditorTableLayoutPanel.Controls.Add(this.confirmButton, 2, 6);
             this.testEditorTableLayoutPanel.Controls.Add(this.checkedListBox, 2, 1);
             this.testEditorTableLayoutPanel.Controls.Add(this.label3, 2, 0);
+            this.testEditorTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.testEditorTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.testEditorTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
             this.testEditorTableLayoutPanel.Name = "testEditorTableLayoutPanel";
@@ -84,7 +85,7 @@
             this.testEditorTableLayoutPanel.SetColumnSpan(this.descriptionRichTextBox, 3);
             this.descriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.descriptionRichTextBox.Location = new System.Drawing.Point(52, 152);
-            this.descriptionRichTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.descriptionRichTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.descriptionRichTextBox.Name = "descriptionRichTextBox";
             this.descriptionRichTextBox.Size = new System.Drawing.Size(495, 254);
             this.descriptionRichTextBox.TabIndex = 25;
@@ -94,7 +95,7 @@
             // 
             this.expectedResultTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expectedResultTextBox.Location = new System.Drawing.Point(152, 74);
-            this.expectedResultTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.expectedResultTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.expectedResultTextBox.Name = "expectedResultTextBox";
             this.expectedResultTextBox.Size = new System.Drawing.Size(195, 22);
             this.expectedResultTextBox.TabIndex = 23;
@@ -105,7 +106,7 @@
             this.ownerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ownerComboBox.FormattingEnabled = true;
             this.ownerComboBox.Location = new System.Drawing.Point(152, 100);
-            this.ownerComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ownerComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.ownerComboBox.Name = "ownerComboBox";
             this.ownerComboBox.Size = new System.Drawing.Size(195, 20);
             this.ownerComboBox.TabIndex = 21;
@@ -138,7 +139,7 @@
             // 
             this.testNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.testNameTextBox.Location = new System.Drawing.Point(152, 22);
-            this.testNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.testNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.testNameTextBox.Name = "testNameTextBox";
             this.testNameTextBox.Size = new System.Drawing.Size(195, 22);
             this.testNameTextBox.TabIndex = 1;
@@ -159,7 +160,7 @@
             // 
             this.inputDataTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inputDataTextBox.Location = new System.Drawing.Point(152, 48);
-            this.inputDataTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.inputDataTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.inputDataTextBox.Name = "inputDataTextBox";
             this.inputDataTextBox.Size = new System.Drawing.Size(195, 22);
             this.inputDataTextBox.TabIndex = 17;
@@ -193,7 +194,7 @@
             // 
             this.confirmButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.confirmButton.Location = new System.Drawing.Point(351, 410);
-            this.confirmButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.confirmButton.Margin = new System.Windows.Forms.Padding(2);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(196, 36);
             this.confirmButton.TabIndex = 5;
@@ -206,7 +207,7 @@
             this.checkedListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkedListBox.FormattingEnabled = true;
             this.checkedListBox.Location = new System.Drawing.Point(351, 48);
-            this.checkedListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkedListBox.Margin = new System.Windows.Forms.Padding(2);
             this.checkedListBox.Name = "checkedListBox";
             this.testEditorTableLayoutPanel.SetRowSpan(this.checkedListBox, 3);
             this.checkedListBox.Size = new System.Drawing.Size(196, 74);
