@@ -376,6 +376,11 @@ namespace RMS_Project
             return await _model.GetTestCaseListByRequirementId(requirementId);
         }
 
+        public async Task<HttpResponseMessage> GetTestCaseListByProjectId(int projectId)
+        {
+            return await _model.GetTestCaseListByProjectId(projectId);
+        }
+
         public void ClickFunctionalButton()
         {
             Control control = GetCurrentFormInPanel();

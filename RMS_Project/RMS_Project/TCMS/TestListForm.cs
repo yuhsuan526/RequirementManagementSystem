@@ -31,7 +31,7 @@ namespace RMS_Project
 
         public async void RefreshTestList()
         {
-            HttpResponseMessage response = await _presentationModel.GetTestCaseListByRequirementId(_project.ID);
+            HttpResponseMessage response = await _presentationModel.GetTestCaseListByProjectId(_project.ID);
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
             {

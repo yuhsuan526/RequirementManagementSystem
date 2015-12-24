@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +17,9 @@ namespace RMS_Project
     {
         private Project _project;
         private PresentationModel _presentationModel;
+        Requirement[] requirementList;
+        Test[] testList;
+
 
         public TraceabilityMatrixForm(PresentationModel presentationModel, Project project)
         {
@@ -61,7 +67,8 @@ namespace RMS_Project
                 flag = !flag;
             }*/
 
-            CreateCell(new string[]{"1", "2"}, new string[]{"1", "2"});
+            //CreateCell(new string[]{"1", "2"}, new string[]{"1", "2"});
+            GetRequirementByProject();
         }
 
         private void CreateCell(string[] rows, string[] columns)
@@ -86,16 +93,89 @@ namespace RMS_Project
             matrixDataGridView.Columns[0].Frozen = true;
             matrixDataGridView.Columns[0].ReadOnly = true;
             bool flag = false;
-            /*
+            
             for (int i = 0; i < rows.Length; i++)
             {
                 for (int j = 0; j < columns.Length; j++)
                 {
-                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)matrixDataGridView.Rows[i].Cells[j];
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)matrixDataGridView.Rows[i].Cells[1 + j];
                     chk.Selected = flag;
                     flag = !flag;
                 }
-            }*/
+            }
+        }
+
+        private async void GetRequirementByProject()
+        {
+            HttpResponseMessage response = await _presentationModel.GetRequirementByProject(_project.ID.ToString());
+            string content = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                JObject json = JObject.Parse(content);
+                string message = json["result"].ToString();
+                JArray jsonArray = JArray.Parse(json["requirements"].ToString());
+                if (message == "success")
+                {
+                    requirementList = new Requirement[jsonArray.Count];
+                    for (int i = 0; i < jsonArray.Count; i++ )
+                    {
+                        JObject jObject = (JObject)jsonArray[i];
+                        requirementList[i] = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(),
+                            jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(),
+                            (int)jObject["requirement_type_id"], (int)jObject["priority_type_id"], (int)jObject["status_type_id"]);
+                    }
+                    RefreshTestList();
+                }
+            }
+            else if (response.StatusCode == HttpStatusCode.RequestTimeout)
+            {
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        public async void RefreshTestList()
+        {
+            HttpResponseMessage response = await _presentationModel.GetTestCaseListByRequirementId(_project.ID);
+            string content = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                JObject json = JObject.Parse(content);
+                string message = json["result"].ToString();
+                JArray jsonArray = JArray.Parse(json["test_case_list"].ToString());
+                if (message == "success")
+                {
+                    testList = new Test[jsonArray.Count];
+                    for (int i = 0; i < jsonArray.Count; i++)
+                    {
+                        JObject jObject = (JObject)jsonArray[i];
+                        testList[i] = new Test(int.Parse(jObject["id"].ToString()), _project.ID, 
+                            jObject["name"].ToString(), jObject["description"].ToString());
+                    }
+                    string[] rList = new string[requirementList.Length];
+                    for (int i = 0; i < requirementList.Length; i++)
+                    {
+                        rList[i] = requirementList[i].Name;
+                    }
+                    string[] tList = new string[testList.Length];
+                    for (int i = 0; i < testList.Length; i++)
+                    {
+                        tList[i] = testList[i].NAME;
+                    }
+                    CreateCell(rList, rList);
+                }
+            }
+            else if (response.StatusCode == HttpStatusCode.RequestTimeout)
+            {
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
+            }
         }
 
         public UserInterfaceForm.FunctionalType GetFunctionalType()

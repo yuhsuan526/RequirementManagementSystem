@@ -228,7 +228,7 @@ namespace RMS_Project
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     JObject json = JObject.Parse(content);
-                    Console.WriteLine(json.ToString());
+                    //Console.WriteLine(json.ToString());
                     string message = json["result"].ToString();
                     if (message == "success")
                     {
@@ -473,10 +473,12 @@ namespace RMS_Project
                 string url = BASE_URL + METHOD;
                 response = await httpClient.PostAsync(url, new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
                 string content = await response.Content.ReadAsStringAsync();
+
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     JObject json = JObject.Parse(content);
                     string message = json["result"].ToString();
+
                     if (message == "success")
                     {
                         return message;
@@ -571,7 +573,7 @@ namespace RMS_Project
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     JObject json = JObject.Parse(content);
-                    Console.WriteLine(json.ToString());
+                    //Console.WriteLine(json.ToString());
                     string message = json["result"].ToString();
                     if (message == "success")
                     {
@@ -612,5 +614,25 @@ namespace RMS_Project
                 return response;
             }
         }
+
+        public async Task<HttpResponseMessage> GetTestCaseListByProjectId(int projectId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "test_case/getTestCaseListByProjectId/";
+                string url = BASE_URL + METHOD + projectId.ToString();
+                response = await httpClient.GetAsync(url);
+                return response;
+            }
+            catch (HttpRequestException)
+            {
+                response = new HttpResponseMessage();
+                response.StatusCode = HttpStatusCode.RequestTimeout;
+                return response;
+            }
+        } 
     }
 }
