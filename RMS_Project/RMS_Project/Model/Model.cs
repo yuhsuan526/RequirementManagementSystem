@@ -257,7 +257,38 @@ namespace RMS_Project
 
         public async Task<string> DeleteRequirement(int RequirementId)
         {
-            return null;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "requirement/delete/";
+                string url = BASE_URL + METHOD + RequirementId;
+                response = await httpClient.GetAsync(url);
+                string content = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    JObject json = JObject.Parse(content);
+                    Console.WriteLine(json.ToString());
+                    string message = json["result"].ToString();
+                    if (message == "success")
+                    {
+                        return "刪除需求成功";
+                    }
+                    else
+                    {
+                        return "刪除需求失敗";
+                    }
+                }
+                else
+                {
+                    return "刪除需求失敗";
+                }
+            }
+            catch (HttpRequestException)
+            {
+                throw new Exception("伺服器無回應");
+            }
         }
 
         public async Task<string> AddProject(JObject jObject)
