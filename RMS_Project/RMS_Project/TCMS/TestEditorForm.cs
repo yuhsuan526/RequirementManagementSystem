@@ -101,7 +101,7 @@ namespace RMS_Project
                 JArray jsonArray = JArray.Parse(json["requirements"].ToString());
                 if (message == "success")
                 {
-                    this.checkedListBox.Items.Clear();
+                    //this.checkedListBox.Items.Clear();
                     foreach (JObject jObject in jsonArray)
                     {
                         this.checkedListBox.Items.Add(new Item((int)jObject["id"], jObject["name"].ToString()));
@@ -134,6 +134,7 @@ namespace RMS_Project
                 JArray jsonArray = JArray.Parse(json["users"].ToString());
                 if (message == "success")
                 {
+                    ownerComboBox.Items.Clear();
                     for (int i = 0; i < jsonArray.Count; i++)
                     {
                         JObject jObject = jsonArray[i] as JObject;

@@ -79,12 +79,13 @@
             this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.testEditorTableLayoutPanel.Size = new System.Drawing.Size(599, 468);
             this.testEditorTableLayoutPanel.TabIndex = 2;
             // 
@@ -112,9 +113,9 @@
             this.label7.AutoSize = true;
             this.testEditorTableLayoutPanel.SetColumnSpan(this.label7, 4);
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(53, 150);
+            this.label7.Location = new System.Drawing.Point(53, 151);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(493, 26);
+            this.label7.Size = new System.Drawing.Size(493, 25);
             this.label7.TabIndex = 22;
             this.label7.Text = "Assignment";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -186,7 +187,7 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Location = new System.Drawing.Point(276, 124);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 26);
+            this.label3.Size = new System.Drawing.Size(143, 27);
             this.label3.TabIndex = 11;
             this.label3.Text = "Associated Requirements";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -197,7 +198,7 @@
             this.ownerLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ownerLabel.Location = new System.Drawing.Point(53, 124);
             this.ownerLabel.Name = "ownerLabel";
-            this.ownerLabel.Size = new System.Drawing.Size(93, 26);
+            this.ownerLabel.Size = new System.Drawing.Size(93, 27);
             this.ownerLabel.TabIndex = 12;
             this.ownerLabel.Text = "Owner";
             this.ownerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -241,8 +242,8 @@
             this.checkedListBox.FormattingEnabled = true;
             this.checkedListBox.Location = new System.Drawing.Point(425, 127);
             this.checkedListBox.Name = "checkedListBox";
-            this.checkedListBox.Size = new System.Drawing.Size(121, 20);
-            this.checkedListBox.TabIndex = 24;
+            this.checkedListBox.Size = new System.Drawing.Size(121, 21);
+            this.checkedListBox.TabIndex = 26;
             // 
             // TestEditorForm
             // 
@@ -274,7 +275,7 @@
         private System.Windows.Forms.TextBox expectedResultTextBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RichTextBox DescriptionRichTextBox;
-        private System.Windows.Forms.CheckedListBox checkedListBox;
         private System.Windows.Forms.Label expectedResultLabel;
+        private System.Windows.Forms.CheckedListBox checkedListBox;
     }
 }
