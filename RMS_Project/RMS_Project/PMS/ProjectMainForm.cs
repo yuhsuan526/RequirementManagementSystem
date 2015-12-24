@@ -100,5 +100,14 @@ namespace RMS_Project
         {
             return UserInterfaceForm.FunctionalType.Edit;
         }
+
+        private void othersButton_Click(object sender, EventArgs e)
+        {
+            TraceabilityMatrixForm traceabilityMatrixForm = new TraceabilityMatrixForm(_presentationModel, _project);
+            if (_presentationModel.AddFormToPanel(traceabilityMatrixForm))
+            {
+                _presentationModel.AddFormButtonToUserInterface(traceabilityMatrixForm, "Others", Properties.Resources.ios7_gear_outline);
+            }
+        }
     }
 }

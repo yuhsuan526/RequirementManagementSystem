@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class TraceabilityMatrixForm : Form
+    public partial class TraceabilityMatrixForm : Form, FunctionalTypeInterface
     {
-        public TraceabilityMatrixForm()
+        private Project _project;
+        private PresentationModel _presentationModel;
+
+        public TraceabilityMatrixForm(PresentationModel presentationModel, Project project)
         {
             InitializeComponent();
+            _project = project;
+            _presentationModel = presentationModel;
+            /*
             DataGridViewColumnCollection columns = matrixDataGridView.Columns;
             columns.Add("nullColumn", "Traceability Matrix");
             columns.Add("testColumn1", "Test 1");
@@ -28,7 +34,6 @@ namespace RMS_Project
             checkColumn.HeaderText = "Test 7";
             checkColumn.TrueValue = true;
             checkColumn.FalseValue = false;
-            checkColumn.ReadOnly = true;
             checkColumn.FillWeight = 10; //if the datagridview is resized (on form resize) the checkbox won't take up too much; value is relative to the other columns' fill values
             matrixDataGridView.Columns.Add(checkColumn);
 
@@ -48,11 +53,54 @@ namespace RMS_Project
             rows.Add("Requirement 11");
             rows.Add("Requirement 12");
             matrixDataGridView.Columns[0].Frozen = true;
+            bool flag = false;
             foreach (DataGridViewRow row in matrixDataGridView.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[7];
-                chk.Value = chk.TrueValue;
+                chk.Selected = flag;
+                flag = !flag;
+            }*/
+
+            CreateCell(new string[]{"1", "2"}, new string[]{"1", "2"});
+        }
+
+        private void CreateCell(string[] rows, string[] columns)
+        {
+            DataGridViewColumnCollection matrixColumns = matrixDataGridView.Columns;
+            matrixColumns.Add("nullColumn", "Traceability Matrix");
+            for (int j = 0; j < columns.Length; j++)
+            {
+                DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
+                checkColumn.Name = "testColumn";
+                checkColumn.HeaderText = columns[j];
+                checkColumn.TrueValue = true;
+                checkColumn.FalseValue = false;
+                checkColumn.FillWeight = 10;
+                matrixColumns.Add(checkColumn);
             }
+            DataGridViewRowCollection matrixRows = matrixDataGridView.Rows;
+            for (int i = 0; i < rows.Length; i++)
+            {
+                matrixRows.Add(rows[i]);
+            }
+            matrixDataGridView.Columns[0].Frozen = true;
+            matrixDataGridView.Columns[0].ReadOnly = true;
+            bool flag = false;
+            /*
+            for (int i = 0; i < rows.Length; i++)
+            {
+                for (int j = 0; j < columns.Length; j++)
+                {
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)matrixDataGridView.Rows[i].Cells[j];
+                    chk.Selected = flag;
+                    flag = !flag;
+                }
+            }*/
+        }
+
+        public UserInterfaceForm.FunctionalType GetFunctionalType()
+        {
+            return UserInterfaceForm.FunctionalType.Hide;
         }
     }
 }
