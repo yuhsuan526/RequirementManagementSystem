@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class RequirementDetailForm : Form
+    public partial class RequirementDetailForm : Form, FunctionalTypeInterface
     {
         private Requirement _requirement;
 
@@ -37,5 +37,9 @@ namespace RMS_Project
             }
         }
 
+        public UserInterfaceForm.FunctionalType GetFunctionalType()
+        {
+            return UserInterfaceForm.FunctionalType.Edit;
+        }
     }
 }

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class UserListForm : Form
+    public partial class UserListForm : Form, FunctionalTypeInterface
     {
         private Project _project;
         private PresentationModel _presentationModel;
@@ -103,6 +103,11 @@ namespace RMS_Project
             {
                 MessageBox.Show("加入失敗", "Error", MessageBoxButtons.OK);
             }
+        }
+
+        public UserInterfaceForm.FunctionalType GetFunctionalType()
+        {
+            return UserInterfaceForm.FunctionalType.Hide;
         }
     }
 }

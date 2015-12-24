@@ -31,9 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ProjectListDataGridView = new System.Windows.Forms.DataGridView();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ProjectListDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,8 @@
             this.ProjectListDataGridView.ColumnHeadersVisible = false;
             this.ProjectListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column2});
+            this.Column2,
+            this.Column3});
             this.ProjectListDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -79,6 +81,7 @@
             this.ProjectListDataGridView.Size = new System.Drawing.Size(468, 440);
             this.ProjectListDataGridView.TabIndex = 1;
             this.ProjectListDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProjectListDataGridView_CellClick);
+            this.ProjectListDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProjectListDataGridView_CellContentClick);
             // 
             // Column1
             // 
@@ -99,8 +102,16 @@
             this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Column2.Width = 5;
             // 
-            // backgroundWorker1
+            // Column3
             // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column3.HeaderText = "Column3";
+            this.Column3.Image = global::RMS_Project.Properties.Resources.ios7_close_empty;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column3.Width = 5;
             // 
             // ProjectListForm
             // 
@@ -121,7 +132,10 @@
 
         private System.Windows.Forms.DataGridView ProjectListDataGridView;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewImageColumn Column3;
     }
 }

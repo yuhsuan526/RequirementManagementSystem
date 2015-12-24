@@ -247,7 +247,7 @@ namespace ezLogUITest
 
         public static void ClickDataGridView(string formName,string dataGridViewName, int rowIndex, int columnIndex)
         {
-            const int HALF_BUTTON_WIDTH = 8;
+            const int HALF_BUTTON_WIDTH = 550;
             const int SPINBUTTON_HEIGHT_FINE_TUNE = 3;
             //Win window
             WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
@@ -260,6 +260,7 @@ namespace ezLogUITest
             int halfHeightOfCell = cell.BoundingRectangle.Height / 2;
             int upperPartYOffset = halfHeightOfCell - SPINBUTTON_HEIGHT_FINE_TUNE;
             int lowerPartYOffset = halfHeightOfCell + SPINBUTTON_HEIGHT_FINE_TUNE;
+            Robot.SetDelayBetweenActions(5000);
             Mouse.Click(new Point(boundingRectangle.X + boundingRectangle.Width - HALF_BUTTON_WIDTH, boundingRectangle.Y + upperPartYOffset));
         }
 

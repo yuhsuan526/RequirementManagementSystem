@@ -202,7 +202,7 @@ namespace RMS_Project
             }
         }
 
-        public async Task<HttpResponseMessage> PostAddUserToProject(JObject jObject)
+        public async Task<HttpResponseMessage> AddUserToProject(JObject jObject)
         {
             HttpClient client = new HttpClient();
 

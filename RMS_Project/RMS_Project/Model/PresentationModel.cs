@@ -44,6 +44,8 @@ namespace RMS_Project
             {
                 Util.Animate(_mainFormPanel.Controls[_mainFormPanel.Controls.Count - 2], Util.Effect.Slide, 500, 180);
                 waitForAnimation(500);
+                if (_userInterface != null)
+                    _userInterface.SetFunctionalButton(((FunctionalTypeInterface)form).GetFunctionalType());
                 return true;
             }
             return false;
@@ -83,6 +85,7 @@ namespace RMS_Project
                 _userInterface.AddFormButtonToBar(form, name, image);
         }
 
+        
         public UserInterfaceForm UserInterface
         {
             get
@@ -164,6 +167,8 @@ namespace RMS_Project
                     _mainForm.BeginInvoke(mi, null);
                 });
             }
+            if (_userInterface != null)
+                _userInterface.SetFunctionalButton(((FunctionalTypeInterface)control).GetFunctionalType());
             return true;
         }
 
@@ -314,7 +319,7 @@ namespace RMS_Project
 
         public async Task<HttpResponseMessage> AddUserToProject(JObject jObject)
         {
-            return await _model.PostAddUserToProject(jObject);
+            return await _model.AddUserToProject(jObject);
         }
 
         public async Task<string> EditRequirement(Requirement requirement)
@@ -347,7 +352,8 @@ namespace RMS_Project
             Control control = GetCurrentFormInPanel();
             if (control.GetType().Equals(typeof(ProjectListForm)))
             {
-                AddFormToPanel(new ProjectEditorForm(this));
+                ProjectEditorForm form = new ProjectEditorForm(this);
+                AddFormToPanel(form);
             }
             else if (control.GetType().Equals(typeof(ProjectMainForm)))
             {

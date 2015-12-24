@@ -14,7 +14,7 @@ using Newtonsoft.Json.Linq;
 
 namespace RMS_Project
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : Form, FunctionalTypeInterface
     {
         private PresentationModel _presentationModel;
 
@@ -70,6 +70,10 @@ namespace RMS_Project
         private void signInButton_Click(object sender, EventArgs e)
         {
             SignIn();
+        }
+        public UserInterfaceForm.FunctionalType GetFunctionalType()
+        {
+            return UserInterfaceForm.FunctionalType.None;
         }
     }
 }

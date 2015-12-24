@@ -19,7 +19,7 @@ namespace RMS_Project
         private ProjectListForm _projectListForm;
         private ContextMenuStrip _contextMenuStrip;
 
-        public enum FeatureType { New, Edit, Hide };
+        public enum FunctionalType { New, Edit, Hide, None };
 
         public UserInterfaceForm(PresentationModel presentationModel)
         {
@@ -78,26 +78,26 @@ namespace RMS_Project
                     flowLayoutPanel.Controls.Remove(model.PictureBox);
                     flowLayoutPanel.Controls.Remove(model.Button);
                 }
-                SetFeatureButton(FeatureType.New);
+                SetFunctionalButton(FunctionalType.New);
                 _buttonArrayList.Clear();
             }
         }
 
-        public void SetFeatureButton(FeatureType type)
+        public void SetFunctionalButton(FunctionalType type)
         {
             switch(type)
             {
-                case FeatureType.New:
+                case FunctionalType.New:
                     _functionalButton.Text = "New";
                     _functionalButton.Image = Properties.Resources.ios7_plus_outline;
                     _functionalButton.Visible = true;
                     break;
-                case FeatureType.Edit:
+                case FunctionalType.Edit:
                     _functionalButton.Text = "Edit";
                     _functionalButton.Image = Properties.Resources.edit;
                     _functionalButton.Visible = true;
                     break;
-                case FeatureType.Hide:
+                case FunctionalType.Hide:
                     _functionalButton.Visible = false;
                     break;
             }

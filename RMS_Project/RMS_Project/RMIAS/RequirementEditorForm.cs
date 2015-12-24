@@ -13,7 +13,7 @@ using System.Net.Http;
 
 namespace RMS_Project
 {
-    public partial class RequirementEditorForm : Form
+    public partial class RequirementEditorForm : Form, FunctionalTypeInterface
     {
         private const string PRIORITY = "getPriorityType";
         private const string REQUIREMENT = "getRequirementType";
@@ -63,10 +63,10 @@ namespace RMS_Project
         private async void AddRequirementToProject()
         {
             JObject jObject = new JObject();
-            jObject["name"] = textBox1.Text;
-            jObject["description"] = richTextBox2.Text;
-            jObject["version"] = textBox3.Text;
-            jObject["memo"] = richTextBox1.Text;
+            jObject["name"] = nameTextBox.Text;
+            jObject["description"] = DescriptionRichTextBox.Text;
+            jObject["version"] = versionTextBox.Text;
+            jObject["memo"] = MemoRichTextBox.Text;
             jObject["uid"] = _presentationModel.GetUID();
             jObject["pid"] = _project.ID;
             jObject["type"] = _selectedType;
@@ -199,6 +199,11 @@ namespace RMS_Project
         private void RefreshRequirementList()
         {
 
-        }        
+        }
+
+        public UserInterfaceForm.FunctionalType GetFunctionalType()
+        {
+            return UserInterfaceForm.FunctionalType.Hide;
+        }
     }
 }

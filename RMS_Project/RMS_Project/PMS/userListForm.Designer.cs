@@ -30,7 +30,7 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.userListView = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.userTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -41,7 +41,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Controls.Add(this.userListView, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.addButton, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.userTextBox, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -72,18 +72,18 @@
             this.userListView.View = System.Windows.Forms.View.Tile;
             this.userListView.ClientSizeChanged += new System.EventHandler(this.userListView_ClientSizeChanged);
             // 
-            // button1
+            // addButton
             // 
-            this.button1.AccessibleName = "userButton";
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(204, 211);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.addUserButton_Click);
+            this.addButton.AccessibleName = "userButton";
+            this.addButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addButton.Location = new System.Drawing.Point(204, 211);
+            this.addButton.Margin = new System.Windows.Forms.Padding(0);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(30, 30);
+            this.addButton.TabIndex = 1;
+            this.addButton.Text = "+";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addUserButton_Click);
             // 
             // userTextBox
             // 
@@ -113,7 +113,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ListView userListView;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.TextBox userTextBox;
     }
 }

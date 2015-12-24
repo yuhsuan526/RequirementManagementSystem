@@ -33,15 +33,15 @@
             this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.versionTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.DescriptionRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.MemoRichTextBox = new System.Windows.Forms.RichTextBox();
             this.confirmButton = new System.Windows.Forms.Button();
             this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
@@ -58,15 +58,15 @@
             this.tableLayoutPanel1.Controls.Add(this.statusComboBox, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.nameTextBox, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label5, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox3, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.versionTextBox, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.label6, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.richTextBox2, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.richTextBox1, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.DescriptionRichTextBox, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.MemoRichTextBox, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.confirmButton, 3, 8);
             this.tableLayoutPanel1.Controls.Add(this.typeComboBox, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -132,15 +132,15 @@
             this.label1.Text = "Name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox1
+            // nameTextBox
             // 
-            this.textBox1.AccessibleName = "requirementName";
-            this.tableLayoutPanel1.SetColumnSpan(this.textBox1, 4);
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(53, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(496, 22);
-            this.textBox1.TabIndex = 1;
+            this.nameTextBox.AccessibleName = "requirementName";
+            this.tableLayoutPanel1.SetColumnSpan(this.nameTextBox, 4);
+            this.nameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nameTextBox.Location = new System.Drawing.Point(53, 49);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(496, 22);
+            this.nameTextBox.TabIndex = 1;
             // 
             // label5
             // 
@@ -153,14 +153,14 @@
             this.label5.Text = "Version";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox3
+            // versionTextBox
             // 
-            this.textBox3.AccessibleName = "versionLabel";
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Location = new System.Drawing.Point(178, 101);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(119, 22);
-            this.textBox3.TabIndex = 17;
+            this.versionTextBox.AccessibleName = "versionLabel";
+            this.versionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.versionTextBox.Location = new System.Drawing.Point(178, 101);
+            this.versionTextBox.Name = "versionTextBox";
+            this.versionTextBox.Size = new System.Drawing.Size(119, 22);
+            this.versionTextBox.TabIndex = 17;
             // 
             // label3
             // 
@@ -208,27 +208,27 @@
             this.label7.Text = "Memo";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // richTextBox2
+            // DescriptionRichTextBox
             // 
-            this.richTextBox2.AccessibleName = "descriptionLabel";
-            this.tableLayoutPanel1.SetColumnSpan(this.richTextBox2, 4);
-            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox2.Location = new System.Drawing.Point(53, 153);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(496, 97);
-            this.richTextBox2.TabIndex = 19;
-            this.richTextBox2.Text = "";
+            this.DescriptionRichTextBox.AccessibleName = "descriptionLabel";
+            this.tableLayoutPanel1.SetColumnSpan(this.DescriptionRichTextBox, 4);
+            this.DescriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DescriptionRichTextBox.Location = new System.Drawing.Point(53, 153);
+            this.DescriptionRichTextBox.Name = "DescriptionRichTextBox";
+            this.DescriptionRichTextBox.Size = new System.Drawing.Size(496, 97);
+            this.DescriptionRichTextBox.TabIndex = 19;
+            this.DescriptionRichTextBox.Text = "";
             // 
-            // richTextBox1
+            // MemoRichTextBox
             // 
-            this.richTextBox1.AccessibleName = "memoLabel";
-            this.tableLayoutPanel1.SetColumnSpan(this.richTextBox1, 4);
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(53, 282);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(496, 97);
-            this.richTextBox1.TabIndex = 18;
-            this.richTextBox1.Text = "";
+            this.MemoRichTextBox.AccessibleName = "memoLabel";
+            this.tableLayoutPanel1.SetColumnSpan(this.MemoRichTextBox, 4);
+            this.MemoRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MemoRichTextBox.Location = new System.Drawing.Point(53, 282);
+            this.MemoRichTextBox.Name = "MemoRichTextBox";
+            this.MemoRichTextBox.Size = new System.Drawing.Size(496, 97);
+            this.MemoRichTextBox.TabIndex = 18;
+            this.MemoRichTextBox.Text = "";
             // 
             // confirmButton
             // 
@@ -273,15 +273,15 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.TextBox versionTextBox;
+        private System.Windows.Forms.RichTextBox DescriptionRichTextBox;
+        private System.Windows.Forms.RichTextBox MemoRichTextBox;
         private System.Windows.Forms.Button confirmButton;
         private System.Windows.Forms.ComboBox statusComboBox;
         private System.Windows.Forms.ComboBox priorityComboBox;

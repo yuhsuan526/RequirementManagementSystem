@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class TestListForm : Form
+    public partial class TestListForm : Form, FunctionalTypeInterface
     {
         private PresentationModel _presentationModel;
         private Project _project;
@@ -44,6 +44,11 @@ namespace RMS_Project
             {
                 return _project;
             }
+        }
+
+        public UserInterfaceForm.FunctionalType GetFunctionalType()
+        {
+            return UserInterfaceForm.FunctionalType.New;
         }
     }
 }

@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectMainForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.projectButton = new RMS_Project.NoFocusCueButton();
             this._mainPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this._nameLabel = new System.Windows.Forms.Label();
             this._descriptionText = new System.Windows.Forms.RichTextBox();
+            this.projectButton = new RMS_Project.NoFocusCueButton();
             this.memberButton = new RMS_Project.NoFocusCueButton();
             this.requirementButton = new RMS_Project.NoFocusCueButton();
             this.testButton = new RMS_Project.NoFocusCueButton();
@@ -47,7 +47,7 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -67,29 +67,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 361);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // projectButton
-            // 
-            this.projectButton.AccessibleName = "projectButton";
-            this.projectButton.BackColor = System.Drawing.Color.Transparent;
-            this.projectButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectButton.FlatAppearance.BorderSize = 0;
-            this.projectButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.projectButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.projectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.projectButton.Image = global::RMS_Project.Properties.Resources.ios7_folder;
-            this.projectButton.Location = new System.Drawing.Point(5, 304);
-            this.projectButton.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.projectButton.Name = "projectButton";
-            this.projectButton.Size = new System.Drawing.Size(186, 54);
-            this.projectButton.TabIndex = 3;
-            this.projectButton.Text = " 0 / 0";
-            this.projectButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.projectButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.projectButton.UseVisualStyleBackColor = false;
-            this.projectButton.Click += new System.EventHandler(this.projectButton_Click);
-            this.projectButton.MouseLeave += new System.EventHandler(this.noFocusCueButton1_MouseLeave);
-            this.projectButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.noFocusCueButton1_MouseMove);
-            // 
             // _mainPanel
             // 
             this.tableLayoutPanel1.SetColumnSpan(this._mainPanel, 4);
@@ -103,7 +80,7 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(34)))), ((int)(((byte)(42)))));
+            this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 280F));
@@ -151,17 +128,40 @@
             // 
             // _descriptionText
             // 
-            this._descriptionText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(34)))), ((int)(((byte)(42)))));
+            this._descriptionText.BackColor = System.Drawing.SystemColors.Control;
             this._descriptionText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._descriptionText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._descriptionText.Font = new System.Drawing.Font("新細明體", 14F);
-            this._descriptionText.ForeColor = System.Drawing.Color.White;
+            this._descriptionText.Font = new System.Drawing.Font("新細明體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._descriptionText.ForeColor = System.Drawing.Color.Black;
             this._descriptionText.Location = new System.Drawing.Point(358, 83);
             this._descriptionText.Name = "_descriptionText";
             this._descriptionText.ReadOnly = true;
             this._descriptionText.Size = new System.Drawing.Size(346, 175);
             this._descriptionText.TabIndex = 2;
-            this._descriptionText.Text = "";
+            this._descriptionText.Text = "123";
+            // 
+            // projectButton
+            // 
+            this.projectButton.AccessibleName = "projectButton";
+            this.projectButton.BackColor = System.Drawing.Color.Transparent;
+            this.projectButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.projectButton.FlatAppearance.BorderSize = 0;
+            this.projectButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.projectButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.projectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.projectButton.Image = global::RMS_Project.Properties.Resources.ios7_folder;
+            this.projectButton.Location = new System.Drawing.Point(5, 304);
+            this.projectButton.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.projectButton.Name = "projectButton";
+            this.projectButton.Size = new System.Drawing.Size(186, 54);
+            this.projectButton.TabIndex = 3;
+            this.projectButton.Text = " 0 / 0";
+            this.projectButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.projectButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.projectButton.UseVisualStyleBackColor = false;
+            this.projectButton.Click += new System.EventHandler(this.projectButton_Click);
+            this.projectButton.MouseLeave += new System.EventHandler(this.noFocusCueButton1_MouseLeave);
+            this.projectButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.noFocusCueButton1_MouseMove);
             // 
             // memberButton
             // 
