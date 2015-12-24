@@ -31,8 +31,8 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this._nameLabel = new System.Windows.Forms.Label();
-            this._descriptionRichTextBox = new System.Windows.Forms.RichTextBox();
-            this._memoRichTextBox = new System.Windows.Forms.RichTextBox();
+            this._descriptionTextBox = new System.Windows.Forms.TextBox();
+            this._memoTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -47,8 +47,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this._nameLabel, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this._descriptionRichTextBox, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this._memoRichTextBox, 2, 3);
+            this.tableLayoutPanel2.Controls.Add(this._descriptionTextBox, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this._memoTextBox, 2, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
@@ -87,33 +87,27 @@
             this._nameLabel.Text = "label1";
             this._nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // _descriptionRichTextBox
+            // _descriptionTextBox
             // 
-            this._descriptionRichTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this._descriptionRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this._descriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._descriptionRichTextBox.Font = new System.Drawing.Font("新細明體", 14F);
-            this._descriptionRichTextBox.ForeColor = System.Drawing.Color.Black;
-            this._descriptionRichTextBox.Location = new System.Drawing.Point(363, 83);
-            this._descriptionRichTextBox.Name = "_descriptionRichTextBox";
-            this._descriptionRichTextBox.ReadOnly = true;
-            this._descriptionRichTextBox.Size = new System.Drawing.Size(371, 194);
-            this._descriptionRichTextBox.TabIndex = 2;
-            this._descriptionRichTextBox.Text = "";
+            this._descriptionTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this._descriptionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._descriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._descriptionTextBox.Location = new System.Drawing.Point(363, 83);
+            this._descriptionTextBox.Multiline = true;
+            this._descriptionTextBox.Name = "_descriptionTextBox";
+            this._descriptionTextBox.Size = new System.Drawing.Size(371, 194);
+            this._descriptionTextBox.TabIndex = 4;
             // 
-            // _memoRichTextBox
+            // _memoTextBox
             // 
-            this._memoRichTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this._memoRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this._memoRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._memoRichTextBox.Font = new System.Drawing.Font("新細明體", 14F);
-            this._memoRichTextBox.ForeColor = System.Drawing.Color.Black;
-            this._memoRichTextBox.Location = new System.Drawing.Point(363, 283);
-            this._memoRichTextBox.Name = "_memoRichTextBox";
-            this._memoRichTextBox.ReadOnly = true;
-            this._memoRichTextBox.Size = new System.Drawing.Size(371, 194);
-            this._memoRichTextBox.TabIndex = 3;
-            this._memoRichTextBox.Text = "";
+            this._memoTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this._memoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._memoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._memoTextBox.Location = new System.Drawing.Point(363, 283);
+            this._memoTextBox.Multiline = true;
+            this._memoTextBox.Name = "_memoTextBox";
+            this._memoTextBox.Size = new System.Drawing.Size(371, 194);
+            this._memoTextBox.TabIndex = 5;
             // 
             // RequirementDetailForm
             // 
@@ -135,8 +129,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label _nameLabel;
-        private System.Windows.Forms.RichTextBox _descriptionRichTextBox;
-        private System.Windows.Forms.RichTextBox _memoRichTextBox;
+        private System.Windows.Forms.TextBox _descriptionTextBox;
+        private System.Windows.Forms.TextBox _memoTextBox;
 
 
     }

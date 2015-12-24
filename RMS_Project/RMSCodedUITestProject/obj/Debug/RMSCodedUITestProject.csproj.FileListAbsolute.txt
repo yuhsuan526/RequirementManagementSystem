@@ -1,5 +1,0 @@
-C:\Users\Lab\Documents\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.dll
-C:\Users\Lab\Documents\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\bin\Debug\RMSCodedUITestProject.pdb
-C:\Users\Lab\Documents\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.csprojResolveAssemblyReference.cache
-C:\Users\Lab\Documents\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.dll
-C:\Users\Lab\Documents\RequirementManagementSystem\RMS_Project\RMSCodedUITestProject\obj\Debug\RMSCodedUITestProject.pdb

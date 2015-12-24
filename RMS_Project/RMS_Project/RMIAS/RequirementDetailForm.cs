@@ -19,9 +19,9 @@ namespace RMS_Project
             InitializeComponent();
             _requirement = requirement;
  
-            _nameLabel.Text = requirement.ID.ToString() + ": " + requirement.NAME;
-            _descriptionRichTextBox.Text = requirement.DESC;
-            _memoRichTextBox.Text = requirement.MEMO;
+            _nameLabel.Text = requirement.ID.ToString() + ": " + requirement.Name;
+            _descriptionTextBox.Text = requirement.Description;
+            _memoTextBox.Text = requirement.Memo;
         }
 
         public void RefreshRequirementDetail(Requirement requirement)

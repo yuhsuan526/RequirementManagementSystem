@@ -81,6 +81,7 @@
     <Compile Include="Model\Project.cs" />
     <Compile Include="Model\Requirement.cs" />
     <Compile Include="Model\Test.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="UGMS\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
