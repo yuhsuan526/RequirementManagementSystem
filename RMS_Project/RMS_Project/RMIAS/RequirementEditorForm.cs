@@ -21,6 +21,7 @@ namespace RMS_Project
 
         private PresentationModel _presentationModel;
         private Project _project;
+        private Requirement _requirement;
         private int _selectedType;
         private int _selectedStatus;
         private int _selectedPriority;
@@ -53,11 +54,30 @@ namespace RMS_Project
         public RequirementEditorForm(PresentationModel presentationModel, Requirement requirement)
         {
             InitializeComponent();
+            this._presentationModel = presentationModel;
+            this._requirement = requirement;
+            nameTextBox.Text = _requirement.Name;
+            typeComboBox.Text = _requireNames.ElementAt(_requirement.Type - 1);
+            versionLabel.Text = (Int32.Parse(_requirement.Version) + 1).ToString();
+            priorityComboBox.Text = _projectNames.ElementAt(_requirement.Priority - 1);
+            statusComboBox.Text = _statusNames.ElementAt(_requirement.Status - 1);
+            DescriptionRichTextBox.Text = _requirement.Description;
+            MemoRichTextBox.Text = _requirement.Memo;
         }
 
         private void confirm_Click(object sender, EventArgs e)
         {
-            AddRequirementToProject();
+            if (_requirement == null)
+                AddRequirementToProject();
+            else {
+                _requirement.Name = nameTextBox.Text;
+                _requirement.Type = _selectedType;
+                _requirement.Version = (Int32.Parse(versionLabel.Text)).ToString();
+                _requirement.Priority = _selectedPriority;
+                _requirement.Status = _selectedStatus;
+                _requirement.Description = DescriptionRichTextBox.Text;
+                _requirement.Memo = MemoRichTextBox.Text;
+            }
         }
 
         private async void AddRequirementToProject()
@@ -65,7 +85,7 @@ namespace RMS_Project
             JObject jObject = new JObject();
             jObject["name"] = nameTextBox.Text;
             jObject["description"] = DescriptionRichTextBox.Text;
-            jObject["version"] = versionTextBox.Text;
+            jObject["version"] = 1;
             jObject["memo"] = MemoRichTextBox.Text;
             jObject["uid"] = _presentationModel.GetUID();
             jObject["pid"] = _project.ID;
@@ -88,6 +108,21 @@ namespace RMS_Project
             else if (status == "伺服器無回應")
             {
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private async void EditRequirement() {
+            string message = await _presentationModel.EditRequirement(_requirement);
+            try
+            {
+                RequirementDetailForm form = _presentationModel.GetFormByType(typeof(RequirementDetailForm)) as RequirementDetailForm;
+                form.RefreshRequirementDetail(_requirement);
+                _presentationModel.PopFormFromPanel();
+                MessageBox.Show(message, "Success", MessageBoxButtons.OK);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
             }
         }
 
