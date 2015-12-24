@@ -45,7 +45,7 @@ namespace RMS_Project
                     foreach (JObject jObject in jsonArray)
                     {
                         this.requirementListDataGridView.Rows.Add(jObject["name"], jObject["updated_at"]);
-                        Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString());
+                        Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(), (int)jObject["requirement_type_id"], (int)jObject["priority_type_id"], (int)jObject["status_type_id"]);
                         _arrayList.Add(requirement);
                     }
                 }
@@ -117,7 +117,7 @@ namespace RMS_Project
                         foreach (JObject jObject in jsonArray)
                         {
                             this.requirementListDataGridView.Rows.Add(jObject["name"]);
-                            Requirement requirement = new Requirement(int.Parse(jObject["id"].ToString()), int.Parse(jObject["project_id"].ToString()), jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["description"].ToString());
+                            Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(), (int)jObject["requirement_type_id"], (int)jObject["priority_type_id"], (int)jObject["status_type_id"]);
                             _arrayList.Add(requirement);
                         }
                     }
