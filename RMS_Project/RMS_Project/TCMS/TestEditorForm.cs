@@ -107,14 +107,10 @@ namespace RMS_Project
                     foreach (JObject jObject in jsonArray)
                     {
                         this.checkedListBox.Items.Add(new Item((int)jObject["id"], jObject["name"].ToString()));
-<<<<<<< HEAD
 
                         Console.WriteLine(jObject["name"]);
 
                         Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(), (int)jObject["requirement_type_id"], (int)jObject["priority_type_id"], (int)jObject["status_type_id"]);
-=======
-                        Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString());
->>>>>>> d550e652defda5e448cda9cf974dbddf0c1b04e7
                         _requirementArrayList.Add(requirement);
                     }
                 }

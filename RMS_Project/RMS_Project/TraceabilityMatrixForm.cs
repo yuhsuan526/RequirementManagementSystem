@@ -121,12 +121,8 @@ namespace RMS_Project
                     {
                         JObject jObject = (JObject)jsonArray[i];
                         requirementList[i] = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(),
-<<<<<<< HEAD
                             jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(),
                             (int)jObject["requirement_type_id"], (int)jObject["priority_type_id"], (int)jObject["status_type_id"]);
-=======
-                            jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString());
->>>>>>> d550e652defda5e448cda9cf974dbddf0c1b04e7
                     }
                     RefreshTestList();
                 }
