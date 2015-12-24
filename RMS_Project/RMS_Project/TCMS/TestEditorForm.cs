@@ -47,33 +47,34 @@ namespace RMS_Project
 
         void confirm_Click(object sender, EventArgs e)
         {
+            SetSelectedRequirementId();
             AddTestToProject();
         }
 
         async void AddTestToProject()
         {
             JObject jObject = new JObject();
-            JArray ridList = new JArray();
+            string temp = "";
             foreach (int rid in _selectedRequirementId)
             {
-                JObject ridObject = new JObject();
-                ridObject["id"] = rid;
-                ridList.Add(ridObject);
+                temp += rid;
+                temp += ",";
             }
-            jObject["rid_list"] = ridList;
+            temp = temp.Substring(0, temp.Length - 1);
+            jObject["rid_list"] = temp;
             jObject["name"] = testNameTextBox.Text;
-            jObject["description"] = DescriptionRichTextBox.Text;
+            jObject["description"] = descriptionRichTextBox.Text;
             jObject["asigned_as"] = _selectedUserId;
-            jObject["input_data"] = AssignmentRichTextBox.Text;
-            jObject["expected_result"] = DescriptionRichTextBox.Text;
+            jObject["input_data"] = inputDataTextBox.Text;
+            jObject["expected_result"] = expectedResultTextBox.Text;
 
-            //Console.WriteLine(jObject);
+            Console.WriteLine(jObject);
 
             string status = await _presentationModel.AddTestCase(jObject);
             if (status == "success")
             {
-                //_presentationModel.AddFormToPanel(new RequirementListForm(_presentationModel, _project));
                 MessageBox.Show("測試案例建立成功", "Success", MessageBoxButtons.OK);
+                _presentationModel.AddFormToPanel(new TestListForm(_presentationModel, _project));
             }
             else if (status == "測試案例建立失敗")
             {
@@ -101,14 +102,19 @@ namespace RMS_Project
                 JArray jsonArray = JArray.Parse(json["requirements"].ToString());
                 if (message == "success")
                 {
-                    //this.checkedListBox.Items.Clear();
+                    this.checkedListBox.Items.Clear();
+                    _requirementArrayList.Clear();
                     foreach (JObject jObject in jsonArray)
                     {
                         this.checkedListBox.Items.Add(new Item((int)jObject["id"], jObject["name"].ToString()));
+<<<<<<< HEAD
 
                         Console.WriteLine(jObject["name"]);
 
                         Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(), (int)jObject["requirement_type_id"], (int)jObject["priority_type_id"], (int)jObject["status_type_id"]);
+=======
+                        Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString());
+>>>>>>> d550e652defda5e448cda9cf974dbddf0c1b04e7
                         _requirementArrayList.Add(requirement);
                     }
                 }
@@ -135,10 +141,12 @@ namespace RMS_Project
                 if (message == "success")
                 {
                     ownerComboBox.Items.Clear();
+                    _projectMemberArrayList.Clear();
                     for (int i = 0; i < jsonArray.Count; i++)
                     {
                         JObject jObject = jsonArray[i] as JObject;
                         ownerComboBox.Items.Add(new Item(Int32.Parse(jObject["id"].ToString()),jObject["name"].ToString()));
+                        _projectMemberArrayList.Add(Int32.Parse(jObject["id"].ToString()));
                     }
                 }
             }
@@ -154,18 +162,12 @@ namespace RMS_Project
 
         private void ownerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < _projectMemberArrayList.Count; i++)
-            {
-                if (_projectMemberArrayList.ElementAt(i).CompareTo(ownerComboBox.SelectedValue) == 0)
-                {
-                    _selectedUserId = _projectMemberArrayList.ElementAt(i);
-                    break;
-                }
-            }
+            _selectedUserId = _projectMemberArrayList[ownerComboBox.SelectedIndex];
         }
 
         private void SetSelectedRequirementId()
         {
+            _selectedRequirementId.Clear();
             for (int i = 0; i < checkedListBox.SelectedIndices.Count; i++)
             {
                 _selectedRequirementId.Add(_requirementArrayList[checkedListBox.SelectedIndices[i]].ID);
