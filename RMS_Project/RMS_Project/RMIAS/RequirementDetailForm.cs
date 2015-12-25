@@ -58,7 +58,8 @@ namespace RMS_Project
             return UserInterfaceForm.FunctionalType.Edit;
         }
 
-        private async void getTestcaseByRequirementId(){
+        private async void getTestcaseByRequirementId()
+        {
             HttpResponseMessage response = await _presentationModel.GetTestCaseListByRequirementId(_requirement.ID);
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
@@ -100,7 +101,9 @@ namespace RMS_Project
                     this._commentDataGridView.Rows.Clear();
                     foreach (JObject jObject in jsonArray)
                     {
-                        this._commentDataGridView.Rows.Add(jObject["comment"], jObject["decision"]);
+                        JObject jOwner = jObject["user"] as JObject;
+                        User owner = _presentationModel.getUser((int)jOwner["id"], jOwner["name"].ToString());
+                        this._commentDataGridView.Rows.Add(owner.Name, jObject["comment"]);
                     }
                 }
             }
