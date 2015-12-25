@@ -142,11 +142,11 @@ namespace RMS_Project
             foreach(Requirement requirement in _requirements)
             {
                 Console.WriteLine(requirement.Status.ToString());
-                if (requirement.Status == 3)
+                if (requirement.Status.ID == 3)
                 {
                     _approvedRequirementDataGridView.Rows.Add(requirement.Name);
                 }
-                else if (requirement.Status == 4)
+                else if (requirement.Status.ID == 4)
                 {
                     _notApprovedRequirementDataGridView.Rows.Add(requirement.Name);
                 }
@@ -184,9 +184,9 @@ namespace RMS_Project
                             jObject["description"].ToString(), 
                             jObject["version"].ToString(), 
                             jObject["memo"].ToString(),
-                            int.Parse(jObject["requirement_type_id"].ToString()), 
-                            int.Parse(jObject["priority_type_id"].ToString()), 
-                            int.Parse(jObject["status_type_id"].ToString()));
+                            null, 
+                            null, 
+                            null);
                     }
                     string[] rList = new string[_requirements.Length];
                     for (int i = 0; i < _requirements.Length; i++)

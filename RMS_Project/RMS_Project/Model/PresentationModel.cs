@@ -51,7 +51,7 @@ namespace RMS_Project
             return true;
         }
 
-        public async Task<string> SignIn(JObject jObject)        
+        public async Task<string> SignIn(JObject jObject)
         {
             string status = await _model.SignIn(jObject);
             if (status == "success")
@@ -85,7 +85,7 @@ namespace RMS_Project
                 _userInterface.AddFormButtonToBar(form, name, image);
         }
 
-        
+
         public UserInterfaceForm UserInterface
         {
             get
@@ -363,7 +363,7 @@ namespace RMS_Project
 
         public async Task<string> DeleteTestCase(int tsetId)
         {
-            return await  _model.DeleteTestCase(tsetId);
+            return await _model.DeleteTestCase(tsetId);
         }
 
         public async Task<string> AddTestCase(JObject jObject)
@@ -443,6 +443,22 @@ namespace RMS_Project
                 UserListForm form = control as UserListForm;
                 form.AddUser();
             }
+        }
+
+        public User getUser(int id, string name)
+        {
+            User user = new User();
+            user.ID = id;
+            user.Name = name;
+            return user;
+        }
+
+        public NormalAttribute getRequirementAttribute(int id, string name)
+        {
+            NormalAttribute attribute = new NormalAttribute();
+            attribute.ID = id;
+            attribute.Name = name;
+            return attribute;
         }
     }
 }

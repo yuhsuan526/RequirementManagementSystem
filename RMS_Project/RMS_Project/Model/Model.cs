@@ -266,9 +266,9 @@ namespace RMS_Project
                 jObject["handler"] = requirement.Handler.ID;
                 jObject["uid"] = requirement.Owner.ID;
                 jObject["pid"] = requirement.ProjectID;
-                jObject["requirement_type_id"] = requirement.Type;
-                jObject["priority_type_id"] = requirement.Priority;
-                jObject["status_type_id"] = requirement.Status;
+                jObject["requirement_type_id"] = requirement.Type.ID;
+                jObject["priority_type_id"] = requirement.Priority.ID;
+                jObject["status_type_id"] = requirement.Status.ID;
                 const string METHOD = "requirement/update";
                 string url = BASE_URL + METHOD;
                 response = await httpClient.PostAsync(url, new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));

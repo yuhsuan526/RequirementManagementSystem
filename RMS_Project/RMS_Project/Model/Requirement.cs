@@ -16,13 +16,13 @@ namespace RMS_Project
         private string _version;
         private string _memo;
         private int _projectId;
-        private int _type;
-        private int _priority;
-        private int _status;
+        private NormalAttribute _type;
+        private NormalAttribute _priority;
+        private NormalAttribute _status;
         private int _createdAt;
         private int _updatedAt;
 
-        public Requirement(int id, int projectId, string name, User owner, User handler, string description, string version, string memo, int type, int priority, int status)
+        public Requirement(int id, int projectId, string name, User owner, User handler, string description, string version, string memo, NormalAttribute type, NormalAttribute priority, NormalAttribute status)
         {
             this._id = id;
             this._projectId = projectId;
@@ -130,7 +130,7 @@ namespace RMS_Project
                 _projectId = value;
             }
         }
-        public int Type
+        public NormalAttribute Type
         {
             get
             {
@@ -142,7 +142,7 @@ namespace RMS_Project
             }
         }
 
-        public int Priority
+        public NormalAttribute Priority
         {
             get
             {
@@ -153,7 +153,7 @@ namespace RMS_Project
                 _priority = value;
             }
         }
-        public int Status
+        public NormalAttribute Status
         {
             get
             {
