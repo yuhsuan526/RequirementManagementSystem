@@ -100,8 +100,7 @@ namespace RMS_Project
             {
                 Requirement requirement = _arrayList[e.RowIndex] as Requirement;
                 CommentEditorForm form = new CommentEditorForm(_presentationModel, requirement);
-                if (_presentationModel.AddFormToPanel(form))
-                    _presentationModel.AddFormButtonToUserInterface(form, "Add Comment", Properties.Resources.ios7_compose_outline);
+                _presentationModel.AddFormToPanel(form);
             }
             else
             {
