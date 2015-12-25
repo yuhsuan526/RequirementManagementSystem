@@ -59,6 +59,7 @@ namespace RMS_Project
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
             {
+                _associatedTestListDataGridView.Rows.Clear();
                 JObject json = JObject.Parse(content);
                 string message = json["result"].ToString();
                 JArray jsonArray = JArray.Parse(json["test_case_list"].ToString());

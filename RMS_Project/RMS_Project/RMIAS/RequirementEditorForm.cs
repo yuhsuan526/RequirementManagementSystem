@@ -130,10 +130,10 @@ namespace RMS_Project
             string status = await _presentationModel.AddRequirement(jObject);
             if (status == "success")
             {
+                MessageBox.Show("需求建立成功", "Success", MessageBoxButtons.OK);
                 RequirementListForm form = _presentationModel.GetFormByType(typeof(RequirementListForm)) as RequirementListForm;
                 form.RefreshRequirementList();
                 _presentationModel.PopFormFromPanel();
-                MessageBox.Show("需求建立成功", "Success", MessageBoxButtons.OK);
             }
             else if (status == "需求建立失敗")
             {
@@ -150,10 +150,10 @@ namespace RMS_Project
             string message = await _presentationModel.EditRequirement(_requirement);
             try
             {
+                MessageBox.Show(message, "Success", MessageBoxButtons.OK);
                 RequirementDetailForm form = _presentationModel.GetFormByType(typeof(RequirementDetailForm)) as RequirementDetailForm;
                 form.RefreshRequirementDetail(_requirement);
                 _presentationModel.PopFormFromPanel();
-                MessageBox.Show(message, "Success", MessageBoxButtons.OK);
             }
             catch (Exception e)
             {

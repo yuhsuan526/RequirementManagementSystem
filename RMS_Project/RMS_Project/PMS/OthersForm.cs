@@ -248,9 +248,10 @@ namespace RMS_Project
                         NormalAttribute type = _presentationModel.getRequirementAttribute((int)jType["id"], jType["name"].ToString());
                         NormalAttribute priority = _presentationModel.getRequirementAttribute((int)jPriority["id"], jPriority["name"].ToString());
                         NormalAttribute status = _presentationModel.getRequirementAttribute((int)jStatus["id"], jStatus["name"].ToString());
-                        Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), owner, handler,
+                        _requirements[i] = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), owner, handler,
                             jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(),
                             type, priority, status);
+
                     }
                     string[] rList = new string[_requirements.Length];
                     for (int i = 0; i < _requirements.Length; i++)
