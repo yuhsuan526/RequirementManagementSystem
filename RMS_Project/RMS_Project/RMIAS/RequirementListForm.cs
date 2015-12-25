@@ -142,5 +142,10 @@ namespace RMS_Project
                 _presentationModel.SetFunctionalButton(type);
             }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

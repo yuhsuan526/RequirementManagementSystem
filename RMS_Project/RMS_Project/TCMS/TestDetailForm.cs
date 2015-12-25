@@ -33,8 +33,7 @@ namespace RMS_Project
         }
 
         public void RefreshTestDetail(Test test)
-        {
-            
+        {  
             _test = test;
             GetTestCaseDetailInformation();
             GetRequirementByTestCaseId();
