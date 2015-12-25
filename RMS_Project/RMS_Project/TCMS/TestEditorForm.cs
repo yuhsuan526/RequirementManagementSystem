@@ -109,8 +109,17 @@ namespace RMS_Project
                         this.checkedListBox.Items.Add(new Item((int)jObject["id"], jObject["name"].ToString()));
 
                         Console.WriteLine(jObject["name"]);
-
-                        Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(), (int)jObject["requirement_type_id"], (int)jObject["priority_type_id"], (int)jObject["status_type_id"]);
+                        User owner = new User();
+                        User handler = new User();
+                        JObject jOwner = jObject["owner"] as JObject;
+                        owner.ID = (int)jOwner["id"];
+                        owner.Name = jOwner["name"].ToString();
+                        JObject jHandler = jObject["handler"] as JObject;
+                        handler.ID = (int)jHandler["id"];
+                        handler.Name = jHandler["name"].ToString();
+                        Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), owner, handler,
+                            jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(),
+                            (int)jObject["requirement_type_id"], (int)jObject["priority_type_id"], (int)jObject["status_type_id"]);
                         _requirementArrayList.Add(requirement);
                     }
                 }

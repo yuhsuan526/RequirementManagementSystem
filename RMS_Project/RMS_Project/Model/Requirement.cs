@@ -12,6 +12,7 @@ namespace RMS_Project
         private string _name;
         private string _description;
         private User _owner;
+        private User _handler;
         private string _version;
         private string _memo;
         private int _projectId;
@@ -21,11 +22,13 @@ namespace RMS_Project
         private int _createdAt;
         private int _updatedAt;
 
-        public Requirement(int id, int projectId, string name, string description, string version, string memo, int type, int priority, int status)
+        public Requirement(int id, int projectId, string name, User owner, User handler, string description, string version, string memo, int type, int priority, int status)
         {
             this._id = id;
             this._projectId = projectId;
             this._name = name;
+            this._owner = owner;
+            this._handler = handler;
             this._description = description;
             this._version = version;
             this._memo = memo;
@@ -48,7 +51,8 @@ namespace RMS_Project
             {
                 return _name;
             }
-            set{
+            set
+            {
 
                 _name = value;
             }
@@ -76,6 +80,18 @@ namespace RMS_Project
             set
             {
                 _owner = value;
+            }
+        }
+
+        public User Handler
+        {
+            get
+            {
+                return _handler;
+            }
+            set
+            {
+                _handler = value;
             }
         }
 
@@ -149,7 +165,7 @@ namespace RMS_Project
             }
         }
         private int CreatedAt
-        { 
+        {
             get
             {
                 return _createdAt;

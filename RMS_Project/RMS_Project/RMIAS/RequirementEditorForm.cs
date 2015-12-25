@@ -22,9 +22,11 @@ namespace RMS_Project
         private PresentationModel _presentationModel;
         private Project _project;
         private Requirement _requirement;
+        private List<int> _projectMemberArrayList;
         private int _selectedType;
         private int _selectedStatus;
         private int _selectedPriority;
+        private int _selectedHandler;
 
         private List<int> _projectIds;
         private List<string> _projectNames;
@@ -39,6 +41,7 @@ namespace RMS_Project
             this._presentationModel = presentationModel;
             this._project = project;
             versionLabel.Text = "1";
+            GetUserListByProject();
 
             _projectIds = new List<int>();
             _projectNames = new List<string>();
@@ -46,6 +49,7 @@ namespace RMS_Project
             _requireNames = new List<string>();
             _statusIds = new List<int>();
             _statusNames = new List<string>();
+            _projectMemberArrayList = new List<int>();
 
             GetRequirementMethod(PRIORITY);
             GetRequirementMethod(REQUIREMENT);
@@ -57,6 +61,7 @@ namespace RMS_Project
             InitializeComponent();
             this._presentationModel = presentationModel;
             this._requirement = requirement;
+            GetUserListByProject();
 
             _projectIds = new List<int>();
             _projectNames = new List<string>();
@@ -64,6 +69,7 @@ namespace RMS_Project
             _requireNames = new List<string>();
             _statusIds = new List<int>();
             _statusNames = new List<string>();
+            _projectMemberArrayList = new List<int>();
 
             GetRequirementMethod(PRIORITY);
             GetRequirementMethod(REQUIREMENT);
@@ -101,6 +107,7 @@ namespace RMS_Project
             jObject["description"] = DescriptionRichTextBox.Text;
             jObject["version"] = 1;
             jObject["memo"] = MemoRichTextBox.Text;
+            jObject["handler"] = _selectedHandler;
             jObject["uid"] = _presentationModel.GetUID();
             jObject["pid"] = _project.ID;
             jObject["requirement_type_id"] = _selectedType;
@@ -250,9 +257,46 @@ namespace RMS_Project
             _selectedPriority = priorityComboBox.SelectedIndex + 1;
         }
 
+        private void handlerComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _selectedHandler = _projectMemberArrayList[handlerComboBox.SelectedIndex];
+        }
+
         private void RefreshRequirementList()
         {
 
+        }
+
+        private async void GetUserListByProject()
+        {
+            //HttpResponseMessage response = await _presentationModel.GetUserListByProject(_project.ID.ToString());
+            HttpResponseMessage response = await _presentationModel.GetUserListByProject(_requirement.ProjectID.ToString());
+            string content = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                JObject json = JObject.Parse(content);
+                string message = json["result"].ToString();
+                JArray jsonArray = JArray.Parse(json["users"].ToString());
+                if (message == "success")
+                {
+                    handlerComboBox.Items.Clear();
+                    _projectMemberArrayList.Clear();
+                    for (int i = 0; i < jsonArray.Count; i++)
+                    {
+                        JObject jObject = jsonArray[i] as JObject;
+                        handlerComboBox.Items.Add(new Item(Int32.Parse(jObject["id"].ToString()), jObject["name"].ToString()));
+                        _projectMemberArrayList.Add(Int32.Parse(jObject["id"].ToString()));
+                    }
+                }
+            }
+            else if (response.StatusCode == HttpStatusCode.RequestTimeout)
+            {
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
+            }
         }
 
         public UserInterfaceForm.FunctionalType GetFunctionalType()

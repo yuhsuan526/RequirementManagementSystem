@@ -252,7 +252,49 @@ namespace RMS_Project
 
         public async Task<string> EditRequirement(Requirement requirement)
         {
-            return null;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                JObject jObject = new JObject();
+                jObject["id"] = requirement.ID;
+                jObject["name"] = requirement.Name;
+                jObject["description"] = requirement.Description;
+                jObject["version"] = requirement.Version;
+                jObject["memo"] = requirement.Memo;
+                jObject["handler"] = requirement.Handler.ID;
+                jObject["uid"] = requirement.Owner.ID;
+                jObject["pid"] = requirement.ProjectID;
+                jObject["requirement_type_id"] = requirement.Type;
+                jObject["priority_type_id"] = requirement.Priority;
+                jObject["status_type_id"] = requirement.Status;
+                const string METHOD = "requirement/update";
+                string url = BASE_URL + METHOD;
+                response = await httpClient.PostAsync(url, new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
+                string content = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    JObject json = JObject.Parse(content);
+                    string message = json["result"].ToString();
+                    if (message == "success")
+                    {
+                        return "需求修改成功";
+                    }
+                    else
+                    {
+                        return "需求修改失敗";
+                    }
+                }
+                else
+                {
+                    return "需求修改失敗";
+                }
+            }
+            catch (HttpRequestException)
+            {
+                return "伺服器無回應";
+            }
         }
 
         public async Task<string> DeleteRequirement(int RequirementId)
