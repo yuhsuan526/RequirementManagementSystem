@@ -84,11 +84,8 @@ namespace RMS_Project
             GetRequirementMethod(STATUS);
 
             nameTextBox.Text = _requirement.Name;
-            //typeComboBox.SelectedIndex = _requirement.Type.ID - 1;
             typeComboBox.SelectedItem = _requirement.Type.Name;
             versionLabel.Text = (Int32.Parse(_requirement.Version) + 1).ToString();
-            //priorityComboBox.SelectedIndex = _requirement.Priority.ID - 1;
-            //statusComboBox.SelectedIndex = _requirement.Status.ID - 1;
             priorityComboBox.SelectedItem = _requirement.Priority.Name;
             statusComboBox.SelectedItem = _requirement.Status.Name;
             handlerComboBox.Text = _requirement.Handler.Name;
@@ -277,42 +274,18 @@ namespace RMS_Project
 
         private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //for (int i = 0; i < _requireNames.Count; i++)
-            //{
-            //    if (_requireNames.ElementAt(i).CompareTo(typeComboBox.SelectedValue) == 0)
-            //    {
-            //        _selectedType = _requireIds.ElementAt(i);
-            //        break;
-            //    }
-            //}
             _selectedType.ID = typeComboBox.SelectedIndex + 1;
             _selectedType.Name = typeComboBox.SelectedItem.ToString();
         }
 
         private void statusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //for (int i = 0; i < _statusNames.Count; i++)
-            //{
-            //    if (_statusNames.ElementAt(i).CompareTo(statusComboBox.SelectedValue) == 0)
-            //    {
-            //        _selectedStatus = _statusIds.ElementAt(i);
-            //        break;
-            //    }
-            //}
             _selectedStatus.ID = statusComboBox.SelectedIndex + 1;
             _selectedStatus.Name = statusComboBox.SelectedItem.ToString();
         }
 
         private void priorityComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //for (int i = 0; i < _projectNames.Count; i++)
-            //{
-            //    if (_projectNames.ElementAt(i).CompareTo(priorityComboBox.SelectedValue) == 0)
-            //    {
-            //        _selectedPriority = _projectIds.ElementAt(i);
-            //        break;
-            //    }
-            //}
             _selectedPriority.ID = priorityComboBox.SelectedIndex + 1;
             _selectedPriority.Name = priorityComboBox.SelectedItem.ToString();
         }
@@ -320,11 +293,6 @@ namespace RMS_Project
         private void handlerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedHandler = _projectMemberArrayList[handlerComboBox.SelectedIndex];
-        }
-
-        private void RefreshRequirementList()
-        {
-
         }
 
         private async void GetUserListByProject()

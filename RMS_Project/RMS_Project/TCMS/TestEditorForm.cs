@@ -43,6 +43,9 @@ namespace RMS_Project
             _presentationModel = presentationModel;
             GetRequirementByTest();
             GetUserListByTest();
+
+            testNameTextBox.Text = test.NAME;
+            descriptionRichTextBox.Text = test.DESC;
         }
 
         void confirm_Click(object sender, EventArgs e)
@@ -241,9 +244,9 @@ namespace RMS_Project
         private void SetSelectedRequirementId()
         {
             _selectedRequirementId.Clear();
-            for (int i = 0; i < checkedListBox.SelectedIndices.Count; i++)
+            for (int i = 0; i < checkedListBox.CheckedItems.Count; i++)
             {
-                _selectedRequirementId.Add(_requirementArrayList[checkedListBox.SelectedIndices[i]].ID);
+                _selectedRequirementId.Add(_requirementArrayList[i].ID);
             }
         }
     }
