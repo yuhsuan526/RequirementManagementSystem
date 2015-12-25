@@ -56,6 +56,9 @@ namespace RMS_Project
                     JObject temp = JObject.Parse(jsonObject["owner"].ToString());
                     string owner = temp["name"].ToString();
                     ownerLabel.Text = owner;
+                    JObject jHandler = JObject.Parse(jsonObject["asigned_as"].ToString());
+                    string handler = jHandler["name"].ToString();
+                    handlerLabel.Text = handler;
                     inputDataLabel.Text = jsonObject["input_data"].ToString();
                     expectedResultLabel.Text = jsonObject["expected_result"].ToString();
                     descriptionTextBox.Text = jsonObject["description"].ToString();
