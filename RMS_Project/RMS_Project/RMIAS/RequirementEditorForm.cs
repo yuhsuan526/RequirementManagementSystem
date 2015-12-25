@@ -171,6 +171,7 @@ namespace RMS_Project
                 JObject json = JObject.Parse(content);
                 string message = json["result"].ToString();
                 JArray jsonArray = null;
+                int tempIndex = 0;
                 switch (method)
                 {
                     case PRIORITY:
@@ -186,7 +187,21 @@ namespace RMS_Project
                             }
                         }
                         for (int i = 0; i < _projectIds.Count; i++)
+                        {
                             priorityComboBox.Items.Add(new Item(_projectIds.ElementAt(i), _projectNames.ElementAt(i)));
+                            if (_requirement != null)
+                            {
+                                if (_projectIds.ElementAt(i) == _requirement.Priority.ID)
+                                    tempIndex = i;
+                            }
+                        }
+                        if (priorityComboBox.Items.Count > 0)
+                        {
+                            if (_requirement != null)
+                                priorityComboBox.SelectedItem = priorityComboBox.Items[tempIndex];
+                            else
+                                priorityComboBox.SelectedItem = priorityComboBox.Items[0];
+                        }
                         break;
                     case REQUIREMENT:
                         jsonArray = JArray.Parse(json["type"].ToString());
@@ -201,7 +216,21 @@ namespace RMS_Project
                             }
                         }
                         for (int i = 0; i < _requireIds.Count; i++)
+                        {
                             typeComboBox.Items.Add(new Item(_requireIds.ElementAt(i), _requireNames.ElementAt(i)));
+                            if (_requirement != null)
+                            {
+                                if (_requireIds.ElementAt(i) == _requirement.Type.ID)
+                                    tempIndex = i;
+                            }
+                        }
+                        if (typeComboBox.Items.Count > 0)
+                        {
+                            if (_requirement != null)
+                                typeComboBox.SelectedItem = typeComboBox.Items[tempIndex];
+                            else
+                                typeComboBox.SelectedItem = typeComboBox.Items[0];
+                        }
                         break;
                     case STATUS:
                         jsonArray = JArray.Parse(json["statuses"].ToString());
@@ -216,7 +245,21 @@ namespace RMS_Project
                             }
                         }
                         for (int i = 0; i < _statusIds.Count; i++)
+                        {
                             statusComboBox.Items.Add(new Item(_statusIds.ElementAt(i), _statusNames.ElementAt(i)));
+                            if (_requirement != null)
+                            {
+                                if (_statusIds.ElementAt(i) == _requirement.Status.ID)
+                                    tempIndex = i;
+                            }
+                        }
+                        if (statusComboBox.Items.Count > 0)
+                        {
+                            if (_requirement != null)
+                                statusComboBox.SelectedItem = statusComboBox.Items[tempIndex];
+                            else
+                                statusComboBox.SelectedItem = statusComboBox.Items[0];
+                        }
                         break;
                     default:
                         break;
@@ -303,11 +346,24 @@ namespace RMS_Project
                 {
                     handlerComboBox.Items.Clear();
                     _projectMemberArrayList.Clear();
+                    int tempIndex = 0;
                     for (int i = 0; i < jsonArray.Count; i++)
                     {
                         JObject jObject = jsonArray[i] as JObject;
                         handlerComboBox.Items.Add(new Item(Int32.Parse(jObject["id"].ToString()), jObject["name"].ToString()));
                         _projectMemberArrayList.Add(Int32.Parse(jObject["id"].ToString()));
+                        if (_requirement != null)
+                        {
+                            if (Int32.Parse(jObject["id"].ToString()) == _requirement.Handler.ID)
+                                tempIndex = i;
+                        }
+                    }
+                    if (handlerComboBox.Items.Count > 0)
+                    {
+                        if (_requirement != null)
+                            handlerComboBox.SelectedItem = handlerComboBox.Items[tempIndex];
+                        else
+                            handlerComboBox.SelectedItem = handlerComboBox.Items[0];
                     }
                 }
             }
