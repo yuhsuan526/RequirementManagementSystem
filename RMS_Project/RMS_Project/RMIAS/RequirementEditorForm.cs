@@ -269,8 +269,13 @@ namespace RMS_Project
 
         private async void GetUserListByProject()
         {
-            //HttpResponseMessage response = await _presentationModel.GetUserListByProject(_project.ID.ToString());
-            HttpResponseMessage response = await _presentationModel.GetUserListByProject(_requirement.ProjectID.ToString());
+            HttpResponseMessage response;
+            if (_project != null)
+                response = await _presentationModel.GetUserListByProject(_project.ID.ToString());
+            else if (_requirement != null)
+                response = await _presentationModel.GetUserListByProject(_requirement.ProjectID.ToString());
+            else
+                throw new Exception("需求不可以為null");
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
             {

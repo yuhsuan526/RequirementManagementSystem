@@ -17,17 +17,7 @@ namespace RMS_Project
         public RequirementDetailForm(Requirement requirement)
         {
             InitializeComponent();
-            this._requirement = requirement;
-            idLabel.Text = _requirement.ID.ToString();
-            nameLabel.Text = _requirement.Name;
-            versionLabel.Text = _requirement.Version;
-            typeLabel.Text = _requirement.Type.ToString();
-            priorityLabel.Text = _requirement.Priority.ToString();
-            statusLabel.Text = _requirement.Status.ToString();
-            requirementOwnerLabel.Text = _requirement.Owner.Name;
-            handlerLabel.Text = "Not implement";
-            descriptionTextBox.Text = _requirement.Description;
-            memoTextBox.Text = _requirement.Memo;
+            RefreshRequirementDetail(requirement);
         }
 
         public void RefreshRequirementDetail(Requirement requirement)
@@ -40,7 +30,7 @@ namespace RMS_Project
             priorityLabel.Text = _requirement.Priority.ToString();
             statusLabel.Text = _requirement.Status.ToString();
             requirementOwnerLabel.Text = _requirement.Owner.Name;
-            handlerLabel.Text = "Not implement";
+            handlerLabel.Text = _requirement.Handler.Name;
             descriptionTextBox.Text = _requirement.Description;
             memoTextBox.Text = _requirement.Memo;
 
