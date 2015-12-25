@@ -271,6 +271,11 @@ namespace RMS_Project
                                 ownerComboBox.SelectedItem = ownerComboBox.Items[i];
                         }
                     }
+                    if (_test == null)
+                    {
+                        if (jsonArray.Count > 0)
+                            ownerComboBox.SelectedItem = ownerComboBox.Items[0];
+                    }
                 }
             }
             else if (response.StatusCode == HttpStatusCode.RequestTimeout)
@@ -303,6 +308,11 @@ namespace RMS_Project
                     {
                         for (int i = 0; i < ownerComboBox.Items.Count; i++)
                         {
+                            if (_test == null)
+                            {
+                                ownerComboBox.SelectedItem = ownerComboBox.Items[0];
+                                break;
+                            }
                             if (jsonObject != null)
                             {
                                 JObject temp = JObject.Parse(jsonObject["owner"].ToString());
