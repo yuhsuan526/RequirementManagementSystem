@@ -49,9 +49,9 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this._notApprovedRequirementDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.RtoTTabPage = new System.Windows.Forms.TabPage();
             this._RtoTDataGridView = new System.Windows.Forms.DataGridView();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.RtoRTabPage = new System.Windows.Forms.TabPage();
             this._RtoRDataGridView = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this._noAssociatedTestCaseDataGridView = new System.Windows.Forms.DataGridView();
@@ -64,9 +64,9 @@
             ((System.ComponentModel.ISupportInitialize)(this._approvedRequirementDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._notApprovedRequirementDataGridView)).BeginInit();
-            this.tabPage3.SuspendLayout();
+            this.RtoTTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._RtoTDataGridView)).BeginInit();
-            this.tabPage4.SuspendLayout();
+            this.RtoRTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._RtoRDataGridView)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._noAssociatedTestCaseDataGridView)).BeginInit();
@@ -79,8 +79,8 @@
             this._othersTabControl.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this._othersTabControl.Controls.Add(this.tabPage1);
             this._othersTabControl.Controls.Add(this.tabPage2);
-            this._othersTabControl.Controls.Add(this.tabPage3);
-            this._othersTabControl.Controls.Add(this.tabPage4);
+            this._othersTabControl.Controls.Add(this.RtoTTabPage);
+            this._othersTabControl.Controls.Add(this.RtoRTabPage);
             this._othersTabControl.Controls.Add(this.tabPage5);
             this._othersTabControl.Controls.Add(this.tabPage6);
             this._othersTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -157,10 +157,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this._notApprovedRequirementDataGridView);
-            this.tabPage2.Location = new System.Drawing.Point(4, 65);
+            this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(676, 377);
+            this.tabPage2.Size = new System.Drawing.Size(676, 409);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Not Approved Requirements";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -203,7 +203,7 @@
             this._notApprovedRequirementDataGridView.RowTemplate.DividerHeight = 1;
             this._notApprovedRequirementDataGridView.RowTemplate.Height = 50;
             this._notApprovedRequirementDataGridView.RowTemplate.ReadOnly = true;
-            this._notApprovedRequirementDataGridView.Size = new System.Drawing.Size(670, 371);
+            this._notApprovedRequirementDataGridView.Size = new System.Drawing.Size(670, 403);
             this._notApprovedRequirementDataGridView.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn1
@@ -215,15 +215,15 @@
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // tabPage3
+            // RtoTTabPage
             // 
-            this.tabPage3.Controls.Add(this._RtoTDataGridView);
-            this.tabPage3.Location = new System.Drawing.Point(4, 65);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(676, 377);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Traceability Matrix (R-T)";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.RtoTTabPage.Controls.Add(this._RtoTDataGridView);
+            this.RtoTTabPage.Location = new System.Drawing.Point(4, 65);
+            this.RtoTTabPage.Name = "RtoTTabPage";
+            this.RtoTTabPage.Size = new System.Drawing.Size(676, 377);
+            this.RtoTTabPage.TabIndex = 2;
+            this.RtoTTabPage.Text = "Traceability Matrix (R-T)";
+            this.RtoTTabPage.UseVisualStyleBackColor = true;
             // 
             // _RtoTDataGridView
             // 
@@ -269,15 +269,15 @@
             this._RtoTDataGridView.Size = new System.Drawing.Size(676, 377);
             this._RtoTDataGridView.TabIndex = 2;
             // 
-            // tabPage4
+            // RtoRTabPage
             // 
-            this.tabPage4.Controls.Add(this._RtoRDataGridView);
-            this.tabPage4.Location = new System.Drawing.Point(4, 65);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(676, 377);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Traceability Matrix (R-R)";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.RtoRTabPage.Controls.Add(this._RtoRDataGridView);
+            this.RtoRTabPage.Location = new System.Drawing.Point(4, 65);
+            this.RtoRTabPage.Name = "RtoRTabPage";
+            this.RtoRTabPage.Size = new System.Drawing.Size(676, 377);
+            this.RtoRTabPage.TabIndex = 3;
+            this.RtoRTabPage.Text = "Traceability Matrix (R-R)";
+            this.RtoRTabPage.UseVisualStyleBackColor = true;
             // 
             // _RtoRDataGridView
             // 
@@ -457,9 +457,9 @@
             ((System.ComponentModel.ISupportInitialize)(this._approvedRequirementDataGridView)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._notApprovedRequirementDataGridView)).EndInit();
-            this.tabPage3.ResumeLayout(false);
+            this.RtoTTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._RtoTDataGridView)).EndInit();
-            this.tabPage4.ResumeLayout(false);
+            this.RtoRTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._RtoRDataGridView)).EndInit();
             this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._noAssociatedTestCaseDataGridView)).EndInit();
@@ -474,8 +474,8 @@
         private System.Windows.Forms.TabControl _othersTabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage RtoTTabPage;
+        private System.Windows.Forms.TabPage RtoRTabPage;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.DataGridView _RtoTDataGridView;

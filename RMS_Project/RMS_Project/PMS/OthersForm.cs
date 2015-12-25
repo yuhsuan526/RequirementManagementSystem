@@ -37,7 +37,7 @@ namespace RMS_Project
             dataGridView.Columns.Clear();
             dataGridView.Rows.Clear();
             DataGridViewColumnCollection matrixColumns = dataGridView.Columns;
-            matrixColumns.Add("nullColumn", "Traceability Matrix");
+            matrixColumns.Add("nullColumn", "");
             for (int j = 0; j < columns.Length; j++)
             {
                 DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
@@ -57,7 +57,7 @@ namespace RMS_Project
             dataGridView.Columns[0].ReadOnly = true;
         }
 
-        private void SetDataGridViewCheckBoxCellValue(string rowID, string columnID)
+        private void SetRtoRDataGridViewCheckBoxCellValue(string rowID, string columnID)
         {
             int rowIndex = -1;
             int columnIndex = -1;
@@ -81,15 +81,39 @@ namespace RMS_Project
 
         }
 
+        private void SetRtoTDataGridViewCheckBoxCellValue(string rowID, string columnID)
+        {
+            int rowIndex = -1;
+            int columnIndex = -1;
+            for (int i = 0; i < _requirements.Length; i++)
+            {
+                if (_requirements[i].ID.ToString().Equals(rowID))
+                {
+                    rowIndex = i;
+                    break;
+                }
+            }
+            for (int i = 0; i < _tests.Length; i++)
+            {
+                if (_tests[i].ID.ToString().Equals(columnID))
+                {
+                    columnIndex = i;
+                    break;
+                }
+            }
+            DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)_RtoTDataGridView.Rows[rowIndex].Cells[1 + columnIndex];
+            chk.Value = chk.TrueValue;
+        }
+
         public void ClickFunctionalButton()
         {
-            if (_othersTabControl.SelectedTab == tabPage3)
+            if (_othersTabControl.SelectedTab == RtoTTabPage)
             {
-
+                AddRtoTRelation();
             }
-            else if (_othersTabControl.SelectedTab == tabPage4)
+            else if (_othersTabControl.SelectedTab == RtoRTabPage)
             {
-
+                AddRtoRRelation();
             }
         }
 
@@ -181,7 +205,7 @@ namespace RMS_Project
                 for (int i = 0; i < jsonArray.Count; i++)
                 {
                     JObject jObject = (JObject)jsonArray[i];
-                    SetDataGridViewCheckBoxCellValue(jObject["requirement1_id"].ToString(), jObject["requirement2_id"].ToString());
+                    SetRtoRDataGridViewCheckBoxCellValue(jObject["requirement1_id"].ToString(), jObject["requirement2_id"].ToString());
                 }
             }
             catch (Exception e)
@@ -198,7 +222,7 @@ namespace RMS_Project
                 for (int i = 0; i < jsonArray.Count; i++)
                 {
                     JObject jObject = (JObject)jsonArray[i];
-                    SetDataGridViewCheckBoxCellValue(jObject["requirement1_id"].ToString(), jObject["requirement2_id"].ToString());
+                    SetRtoTDataGridViewCheckBoxCellValue(jObject["requirement_id"].ToString(), jObject["test_case_id"].ToString());
                 }
             }
             catch (Exception e)
@@ -211,7 +235,6 @@ namespace RMS_Project
         {
             foreach(Requirement requirement in _requirements)
             {
-                Console.WriteLine(requirement.Status.Name);
                 if (requirement.Status.ID == 3)
                 {
                     _approvedRequirementDataGridView.Rows.Add(requirement.Name);
@@ -276,7 +299,7 @@ namespace RMS_Project
 
         public async void GetTestListByProject()
         {
-            HttpResponseMessage response = await _presentationModel.GetTestCaseListByRequirementId(_project.ID);
+            HttpResponseMessage response = await _presentationModel.GetTestCaseListByProjectId(_project.ID);
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -303,6 +326,7 @@ namespace RMS_Project
                         tList[i] = _tests[i].NAME;
                     }
                     CreateDataGridViewCell(_RtoTDataGridView, rList, tList);
+                    GetRequirementToTestRelationByProjectId();
                 }
             }
             else if (response.StatusCode == HttpStatusCode.RequestTimeout)
@@ -322,11 +346,11 @@ namespace RMS_Project
 
         private void _othersTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_othersTabControl.SelectedTab == tabPage3)
+            if (_othersTabControl.SelectedTab == RtoTTabPage)
             {
                 _functionalType = UserInterfaceForm.FunctionalType.Edit;
             }
-            else if (_othersTabControl.SelectedTab == tabPage4)
+            else if (_othersTabControl.SelectedTab == RtoRTabPage)
             {
                 _functionalType = UserInterfaceForm.FunctionalType.Edit;
             }

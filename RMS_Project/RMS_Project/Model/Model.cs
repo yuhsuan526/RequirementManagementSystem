@@ -727,7 +727,7 @@ namespace RMS_Project
                     JObject json = JObject.Parse(content);
                     if (json["result"].ToString() == "success")
                     {
-                        return (JArray)json["rr_relations"];
+                        return (JArray)json["rt_relations"];
                     }
                     else
                     {
