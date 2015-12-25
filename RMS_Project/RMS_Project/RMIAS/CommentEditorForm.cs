@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,7 @@ namespace RMS_Project
         private Requirement _requirement;
         private PresentationModel _presentationModel;
 
-        public CommentEditorForm( PresentationModel presentationModel, Requirement requirement)
+        public CommentEditorForm(PresentationModel presentationModel, Requirement requirement)
         {
             InitializeComponent();
             _requirement = requirement;
@@ -27,6 +28,37 @@ namespace RMS_Project
         public UserInterfaceForm.FunctionalType GetFunctionalType()
         {
             return UserInterfaceForm.FunctionalType.Hide;
+        }
+
+        private void confirmButton_Click(object sender, EventArgs e)
+        {
+
+            AddComment();
+        }
+
+        private async void AddComment()
+        {
+            JObject jObject = new JObject();
+            jObject["name"] = _presentationModel.GetUserName();//_presentationModel.GetUID();
+            jObject["comment"] = _commentRichTextBox.Text;
+            jObject["decision"] = _decisionRichTextBox.Text;
+
+            string status = await _presentationModel.AddCommentToRequirement(jObject);
+            if (status == "success")
+            {
+                MessageBox.Show("評論成功", "Success", MessageBoxButtons.OK);
+                RequirementDetailForm form = _presentationModel.GetFormByType(typeof(RequirementDetailForm)) as RequirementDetailForm;
+                form.RefreshRequirementDetail(_requirement);
+                _presentationModel.PopFormFromPanel();
+            }
+            else if (status == "評論失敗")
+            {
+                MessageBox.Show("評論失敗", "Error", MessageBoxButtons.OK);
+            }
+            else if (status == "伺服器無回應")
+            {
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
         }
     }
 }

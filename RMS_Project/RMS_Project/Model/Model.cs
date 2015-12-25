@@ -953,5 +953,65 @@ namespace RMS_Project
                 return response;
             }
         }
+
+        /*********************** Comment ***************************/
+
+        public async Task<string> AddCommentToRequirement(JObject jObject)
+        {
+            HttpClient client = new HttpClient();
+
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "comment/new";
+                string url = BASE_URL + METHOD;
+                response = await httpClient.PostAsync(url, new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
+                string content = await response.Content.ReadAsStringAsync();
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    JObject json = JObject.Parse(content);
+                    string message = json["result"].ToString();
+
+                    if (message == "success")
+                    {
+                        return message;
+                    }
+                    else
+                    {
+                        return "評論失敗";
+                    }
+                }
+                else
+                {
+                    return "評論失敗";
+                }
+            }
+            catch (HttpRequestException)
+            {
+                return "伺服器無回應";
+            }
+        }
+
+        public async Task<HttpResponseMessage> GetCommentByRequirement(int requirementId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "comment/getCommentListByRequirementId/";
+                string url = BASE_URL + METHOD + requirementId.ToString();
+                response = await httpClient.GetAsync(url);
+                return response;
+            }
+            catch (HttpRequestException)
+            {
+                response = new HttpResponseMessage();
+                response.StatusCode = HttpStatusCode.RequestTimeout;
+                return response;
+            }
+        }
     }
 }

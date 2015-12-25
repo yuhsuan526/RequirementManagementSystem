@@ -81,5 +81,33 @@ namespace RMS_Project
                 MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
             }
         }
+
+        private async void getComment()
+        {
+            HttpResponseMessage response = await _presentationModel.GetCommentByRequirement(_requirement.ID);
+            string content = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                JObject json = JObject.Parse(content);
+                string message = json["result"].ToString();
+                JArray jsonArray = JArray.Parse(json["comment_list"].ToString());
+                if (message == "success")
+                {
+                    this._commentDataGridView.Rows.Clear();
+                    foreach (JObject jObject in jsonArray)
+                    {
+                        this._commentDataGridView.Rows.Add(jObject["comment"], jObject["decision"]);
+                    }
+                }
+            }
+            else if (response.StatusCode == HttpStatusCode.RequestTimeout)
+            {
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
+            }
+        }
     }
 }
