@@ -26,6 +26,7 @@ namespace RMS_Project
             type = UserInterfaceForm.FunctionalType.Hide;
             RefreshRequirementDetail(requirement);
             _commentDataGridView.Columns[3].Visible = false;
+            CheckPriority();
         }
 
         public void RefreshRequirementDetail(Requirement requirement)
