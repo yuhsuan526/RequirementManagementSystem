@@ -51,7 +51,7 @@ namespace RMS_Project
             return true;
         }
 
-        public async Task<string> SignIn(JObject jObject)        
+        public async Task<string> SignIn(JObject jObject)
         {
             string status = await _model.SignIn(jObject);
             if (status == "success")
@@ -85,7 +85,7 @@ namespace RMS_Project
                 _userInterface.AddFormButtonToBar(form, name, image);
         }
 
-        
+
         public UserInterfaceForm UserInterface
         {
             get
@@ -291,7 +291,7 @@ namespace RMS_Project
             return _model.UID;
         }
 
-        public async Task<Priority[]> GetProjectPriorityType()
+        public async Task<NormalAttribute[]> GetProjectPriorityType()
         {
             return await _model.GetProjectPriorityType();
         }
@@ -363,7 +363,7 @@ namespace RMS_Project
 
         public async Task<string> DeleteTestCase(int tsetId)
         {
-            return await  _model.DeleteTestCase(tsetId);
+            return await _model.DeleteTestCase(tsetId);
         }
 
         public async Task<string> AddTestCase(JObject jObject)
@@ -379,6 +379,36 @@ namespace RMS_Project
         public async Task<HttpResponseMessage> GetTestCaseListByProjectId(int projectId)
         {
             return await _model.GetTestCaseListByProjectId(projectId);
+        }
+
+        public async Task<JArray> GetRequirementToRequirementRelationByProjectId(int projectId)
+        {
+            return await _model.GetRequirementToRequirementRelationByProjectId(projectId);
+        }
+
+        public async Task<JArray> GetRequirementToTestRelationByProjectId(int projectId)
+        {
+            return await _model.GetRequirementToTestRelationByProjectId(projectId);
+        }
+
+        public async Task<string> CreateRequirementToRequirementRelation(JObject jObject)
+        {
+            return await _model.CreateRequirementToRequirementRelation(jObject);
+        }
+
+        public async Task<string> CreateRequirementToTestRelation(JObject jObject)
+        {
+            return await _model.CreateRequirementToTestRelation(jObject);
+        }
+
+        public async Task<string> DeleteRequirementToRequirementRelationByProject(int projectId)
+        {
+            return await _model.DeleteRequirementToRequirementRelationByProject(projectId);
+        }
+
+        public async Task<string> DeleteRequirementToTestRelationByProject(int projectId)
+        {
+            return await _model.DeleteRequirementToTestRelationByProject(projectId);
         }
 
         public void ClickFunctionalButton()
@@ -418,7 +448,37 @@ namespace RMS_Project
                 TestEditorForm requirementEditorForm = new TestEditorForm(this, form.Test);
                 AddFormToPanel(requirementEditorForm);
             }
+            else if (control.GetType().Equals(typeof(OthersForm)))
+            {
+                OthersForm form = control as OthersForm;
+                form.ClickFunctionalButton();
+            }
+            else if (control.GetType().Equals(typeof(UserListForm)))
+            {
+                UserListForm form = control as UserListForm;
+                form.AddUser();
+            }
+        }
 
+        public User getUser(int id, string name)
+        {
+            User user = new User();
+            user.ID = id;
+            user.Name = name;
+            return user;
+        }
+
+        public NormalAttribute getRequirementAttribute(int id, string name)
+        {
+            NormalAttribute attribute = new NormalAttribute();
+            attribute.ID = id;
+            attribute.Name = name;
+            return attribute;
+        }
+
+        public void SetFunctionalButton(UserInterfaceForm.FunctionalType type)
+        {
+            _userInterface.SetFunctionalButton(type);
         }
     }
 }

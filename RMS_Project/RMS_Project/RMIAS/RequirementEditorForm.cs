@@ -21,9 +21,12 @@ namespace RMS_Project
 
         private PresentationModel _presentationModel;
         private Project _project;
-        private int _selectedType;
-        private int _selectedStatus;
-        private int _selectedPriority;
+        private Requirement _requirement;
+        private List<int> _projectMemberArrayList;
+        private NormalAttribute _selectedType;
+        private NormalAttribute _selectedStatus;
+        private NormalAttribute _selectedPriority;
+        private int _selectedHandler;
 
         private List<int> _projectIds;
         private List<string> _projectNames;
@@ -37,6 +40,12 @@ namespace RMS_Project
             InitializeComponent();
             this._presentationModel = presentationModel;
             this._project = project;
+            versionLabel.Text = "1";
+            GetUserListByProject();
+
+            _selectedType = new NormalAttribute();
+            _selectedPriority = new NormalAttribute();
+            _selectedStatus = new NormalAttribute();
 
             _projectIds = new List<int>();
             _projectNames = new List<string>();
@@ -44,6 +53,7 @@ namespace RMS_Project
             _requireNames = new List<string>();
             _statusIds = new List<int>();
             _statusNames = new List<string>();
+            _projectMemberArrayList = new List<int>();
 
             GetRequirementMethod(PRIORITY);
             GetRequirementMethod(REQUIREMENT);
@@ -53,11 +63,54 @@ namespace RMS_Project
         public RequirementEditorForm(PresentationModel presentationModel, Requirement requirement)
         {
             InitializeComponent();
+            this._presentationModel = presentationModel;
+            this._requirement = requirement;
+            GetUserListByProject();
+
+            _selectedType = new NormalAttribute();
+            _selectedPriority = new NormalAttribute();
+            _selectedStatus = new NormalAttribute();
+
+            _projectIds = new List<int>();
+            _projectNames = new List<string>();
+            _requireIds = new List<int>();
+            _requireNames = new List<string>();
+            _statusIds = new List<int>();
+            _statusNames = new List<string>();
+            _projectMemberArrayList = new List<int>();
+
+            GetRequirementMethod(PRIORITY);
+            GetRequirementMethod(REQUIREMENT);
+            GetRequirementMethod(STATUS);
+
+            nameTextBox.Text = _requirement.Name;
+            //typeComboBox.SelectedIndex = _requirement.Type.ID - 1;
+            typeComboBox.SelectedItem = _requirement.Type.Name;
+            versionLabel.Text = (Int32.Parse(_requirement.Version) + 1).ToString();
+            //priorityComboBox.SelectedIndex = _requirement.Priority.ID - 1;
+            //statusComboBox.SelectedIndex = _requirement.Status.ID - 1;
+            priorityComboBox.SelectedItem = _requirement.Priority.Name;
+            statusComboBox.SelectedItem = _requirement.Status.Name;
+            handlerComboBox.Text = _requirement.Handler.Name;
+            DescriptionRichTextBox.Text = _requirement.Description;
+            MemoRichTextBox.Text = _requirement.Memo;
         }
 
         private void confirm_Click(object sender, EventArgs e)
         {
-            AddRequirementToProject();
+            if (_requirement == null)
+                AddRequirementToProject();
+            else
+            {
+                _requirement.Name = nameTextBox.Text;
+                _requirement.Type = _selectedType;
+                _requirement.Version = (Int32.Parse(versionLabel.Text)).ToString();
+                _requirement.Priority = _selectedPriority;
+                _requirement.Status = _selectedStatus;
+                _requirement.Description = DescriptionRichTextBox.Text;
+                _requirement.Memo = MemoRichTextBox.Text;
+                EditRequirement();
+            }
         }
 
         private async void AddRequirementToProject()
@@ -65,21 +118,22 @@ namespace RMS_Project
             JObject jObject = new JObject();
             jObject["name"] = nameTextBox.Text;
             jObject["description"] = DescriptionRichTextBox.Text;
-            jObject["version"] = versionTextBox.Text;
+            jObject["version"] = 1;
             jObject["memo"] = MemoRichTextBox.Text;
+            jObject["handler"] = _selectedHandler;
             jObject["uid"] = _presentationModel.GetUID();
             jObject["pid"] = _project.ID;
-            jObject["type"] = _selectedType;
-            jObject["priority"] = _selectedPriority;
-            jObject["status"] = _selectedStatus;
+            jObject["requirement_type_id"] = _selectedType.ID;
+            jObject["priority_type_id"] = _selectedPriority.ID;
+            jObject["status_type_id"] = _selectedStatus.ID;
 
             string status = await _presentationModel.AddRequirement(jObject);
             if (status == "success")
             {
+                MessageBox.Show("需求建立成功", "Success", MessageBoxButtons.OK);
                 RequirementListForm form = _presentationModel.GetFormByType(typeof(RequirementListForm)) as RequirementListForm;
                 form.RefreshRequirementList();
                 _presentationModel.PopFormFromPanel();
-                MessageBox.Show("需求建立成功", "Success", MessageBoxButtons.OK);
             }
             else if (status == "需求建立失敗")
             {
@@ -88,6 +142,22 @@ namespace RMS_Project
             else if (status == "伺服器無回應")
             {
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private async void EditRequirement()
+        {
+            string message = await _presentationModel.EditRequirement(_requirement);
+            try
+            {
+                MessageBox.Show(message, "Success", MessageBoxButtons.OK);
+                RequirementDetailForm form = _presentationModel.GetFormByType(typeof(RequirementDetailForm)) as RequirementDetailForm;
+                form.RefreshRequirementDetail(_requirement);
+                _presentationModel.PopFormFromPanel();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
             }
         }
 
@@ -101,6 +171,7 @@ namespace RMS_Project
                 JObject json = JObject.Parse(content);
                 string message = json["result"].ToString();
                 JArray jsonArray = null;
+                int tempIndex = 0;
                 switch (method)
                 {
                     case PRIORITY:
@@ -116,7 +187,21 @@ namespace RMS_Project
                             }
                         }
                         for (int i = 0; i < _projectIds.Count; i++)
+                        {
                             priorityComboBox.Items.Add(new Item(_projectIds.ElementAt(i), _projectNames.ElementAt(i)));
+                            if (_requirement != null)
+                            {
+                                if (_projectIds.ElementAt(i) == _requirement.Priority.ID)
+                                    tempIndex = i;
+                            }
+                        }
+                        if (priorityComboBox.Items.Count > 0)
+                        {
+                            if (_requirement != null)
+                                priorityComboBox.SelectedItem = priorityComboBox.Items[tempIndex];
+                            else
+                                priorityComboBox.SelectedItem = priorityComboBox.Items[0];
+                        }
                         break;
                     case REQUIREMENT:
                         jsonArray = JArray.Parse(json["type"].ToString());
@@ -131,7 +216,21 @@ namespace RMS_Project
                             }
                         }
                         for (int i = 0; i < _requireIds.Count; i++)
+                        {
                             typeComboBox.Items.Add(new Item(_requireIds.ElementAt(i), _requireNames.ElementAt(i)));
+                            if (_requirement != null)
+                            {
+                                if (_requireIds.ElementAt(i) == _requirement.Type.ID)
+                                    tempIndex = i;
+                            }
+                        }
+                        if (typeComboBox.Items.Count > 0)
+                        {
+                            if (_requirement != null)
+                                typeComboBox.SelectedItem = typeComboBox.Items[tempIndex];
+                            else
+                                typeComboBox.SelectedItem = typeComboBox.Items[0];
+                        }
                         break;
                     case STATUS:
                         jsonArray = JArray.Parse(json["statuses"].ToString());
@@ -146,7 +245,21 @@ namespace RMS_Project
                             }
                         }
                         for (int i = 0; i < _statusIds.Count; i++)
+                        {
                             statusComboBox.Items.Add(new Item(_statusIds.ElementAt(i), _statusNames.ElementAt(i)));
+                            if (_requirement != null)
+                            {
+                                if (_statusIds.ElementAt(i) == _requirement.Status.ID)
+                                    tempIndex = i;
+                            }
+                        }
+                        if (statusComboBox.Items.Count > 0)
+                        {
+                            if (_requirement != null)
+                                statusComboBox.SelectedItem = statusComboBox.Items[tempIndex];
+                            else
+                                statusComboBox.SelectedItem = statusComboBox.Items[0];
+                        }
                         break;
                     default:
                         break;
@@ -164,43 +277,104 @@ namespace RMS_Project
 
         private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < _requireNames.Count; i++)
-            {
-                if (_requireNames.ElementAt(i).CompareTo(typeComboBox.SelectedValue) == 0)
-                {
-                    _selectedType = _requireIds.ElementAt(i);
-                    break;
-                }
-            }
+            //for (int i = 0; i < _requireNames.Count; i++)
+            //{
+            //    if (_requireNames.ElementAt(i).CompareTo(typeComboBox.SelectedValue) == 0)
+            //    {
+            //        _selectedType = _requireIds.ElementAt(i);
+            //        break;
+            //    }
+            //}
+            _selectedType.ID = typeComboBox.SelectedIndex + 1;
+            _selectedType.Name = typeComboBox.SelectedItem.ToString();
         }
 
         private void statusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < _statusNames.Count; i++)
-            {
-                if (_statusNames.ElementAt(i).CompareTo(statusComboBox.SelectedValue) == 0)
-                {
-                    _selectedStatus = _statusIds.ElementAt(i);
-                    break;
-                }
-            }
+            //for (int i = 0; i < _statusNames.Count; i++)
+            //{
+            //    if (_statusNames.ElementAt(i).CompareTo(statusComboBox.SelectedValue) == 0)
+            //    {
+            //        _selectedStatus = _statusIds.ElementAt(i);
+            //        break;
+            //    }
+            //}
+            _selectedStatus.ID = statusComboBox.SelectedIndex + 1;
+            _selectedStatus.Name = statusComboBox.SelectedItem.ToString();
         }
 
         private void priorityComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < _projectNames.Count; i++)
-            {
-                if (_projectNames.ElementAt(i).CompareTo(priorityComboBox.SelectedValue) == 0)
-                {
-                    _selectedPriority = _projectIds.ElementAt(i);
-                    break;
-                }
-            }
+            //for (int i = 0; i < _projectNames.Count; i++)
+            //{
+            //    if (_projectNames.ElementAt(i).CompareTo(priorityComboBox.SelectedValue) == 0)
+            //    {
+            //        _selectedPriority = _projectIds.ElementAt(i);
+            //        break;
+            //    }
+            //}
+            _selectedPriority.ID = priorityComboBox.SelectedIndex + 1;
+            _selectedPriority.Name = priorityComboBox.SelectedItem.ToString();
+        }
+
+        private void handlerComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _selectedHandler = _projectMemberArrayList[handlerComboBox.SelectedIndex];
         }
 
         private void RefreshRequirementList()
         {
 
+        }
+
+        private async void GetUserListByProject()
+        {
+            HttpResponseMessage response;
+            if (_project != null)
+                response = await _presentationModel.GetUserListByProject(_project.ID.ToString());
+            else if (_requirement != null)
+                response = await _presentationModel.GetUserListByProject(_requirement.ProjectID.ToString());
+            else
+                throw new Exception("需求不可以為null");
+            string content = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                JObject json = JObject.Parse(content);
+                string message = json["result"].ToString();
+                JArray jsonArray = JArray.Parse(json["users"].ToString());
+                if (message == "success")
+                {
+                    handlerComboBox.Items.Clear();
+                    _projectMemberArrayList.Clear();
+                    int tempIndex = 0;
+                    for (int i = 0; i < jsonArray.Count; i++)
+                    {
+                        JObject jObject = jsonArray[i] as JObject;
+                        handlerComboBox.Items.Add(new Item(Int32.Parse(jObject["id"].ToString()), jObject["name"].ToString()));
+                        _projectMemberArrayList.Add(Int32.Parse(jObject["id"].ToString()));
+                        if (_requirement != null)
+                        {
+                            if (Int32.Parse(jObject["id"].ToString()) == _requirement.Handler.ID)
+                                tempIndex = i;
+                        }
+                    }
+                    if (handlerComboBox.Items.Count > 0)
+                    {
+                        if (_requirement != null)
+                            handlerComboBox.SelectedItem = handlerComboBox.Items[tempIndex];
+                        else
+                            handlerComboBox.SelectedItem = handlerComboBox.Items[0];
+                    }
+                }
+            }
+            else if (response.StatusCode == HttpStatusCode.RequestTimeout)
+            {
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
+            }
         }
 
         public UserInterfaceForm.FunctionalType GetFunctionalType()
