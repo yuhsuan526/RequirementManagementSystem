@@ -45,6 +45,7 @@ namespace RMS_Project
             {
                 JObject json = JObject.Parse(content);
                 string message = json["result"].ToString();
+                _arrayList = new ArrayList();
                 JArray jsonArray = JArray.Parse(json["test_case_list"].ToString());
                 if (message == "success")
                 {
@@ -127,6 +128,18 @@ namespace RMS_Project
                 type = UserInterfaceForm.FunctionalType.New;
                 testListDataGridView.Columns[2].Visible = true;
                 _presentationModel.SetFunctionalButton(type);
+            }
+        }
+
+        private void testSearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            testListDataGridView.Rows.Clear();
+            foreach (Test test in _arrayList)
+            {
+                if (test.NAME.Contains(testSearchTextBox.Text.ToString()))
+                {
+                    this.testListDataGridView.Rows.Add(test.NAME, test.ID);
+                }
             }
         }
     }
