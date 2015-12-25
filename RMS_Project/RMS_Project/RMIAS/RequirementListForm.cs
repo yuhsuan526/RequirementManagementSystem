@@ -20,6 +20,7 @@ namespace RMS_Project
         private PresentationModel _presentationModel;
         private Project _project;
         private ArrayList _arrayList;
+        private UserInterfaceForm.FunctionalType type;
 
         public RequirementListForm(PresentationModel presentationModel, Project project)
         {
@@ -27,11 +28,15 @@ namespace RMS_Project
             this._presentationModel = presentationModel;
             this._project = project;
             this.requirementListDataGridView.ClearSelection();
+            type = UserInterfaceForm.FunctionalType.Hide;
             _arrayList = new ArrayList();
+            requirementListDataGridView.Columns[2].Visible = false;
+            requirementListDataGridView.Columns[3].Visible = false;
             GetRequirementByProject();
+            CheckPriority();
         }
 
-        private async void GetRequirementByProject()
+        public async void GetRequirementByProject()
         {
             HttpResponseMessage response = await _presentationModel.GetRequirementByProject(_project.ID.ToString());
             string content = await response.Content.ReadAsStringAsync();
@@ -45,7 +50,6 @@ namespace RMS_Project
                     this.requirementListDataGridView.Rows.Clear();
                     foreach (JObject jObject in jsonArray)
                     {
-                        this.requirementListDataGridView.Rows.Add(jObject["name"], jObject["updated_at"]);
                         JObject jOwner = jObject["owner"] as JObject;
                         JObject jHandler = jObject["handler"] as JObject;
                         JObject jType = jObject["requirement_type"] as JObject;
@@ -59,6 +63,7 @@ namespace RMS_Project
                         Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), owner, handler,
                             jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(),
                             type, priority, status);
+                        this.requirementListDataGridView.Rows.Add(jObject["name"], status.Name);
                         _arrayList.Add(requirement);
                     }
                 }
@@ -78,7 +83,7 @@ namespace RMS_Project
             try
             {
                 string message = await _presentationModel.DeleteRequirement(requirementId);
-                RefreshRequirementList();
+                GetRequirementByProject();
                 MessageBox.Show(message, "Success", MessageBoxButtons.OK);
             }
             catch (Exception e)
@@ -100,8 +105,7 @@ namespace RMS_Project
             {
                 Requirement requirement = _arrayList[e.RowIndex] as Requirement;
                 CommentEditorForm form = new CommentEditorForm(_presentationModel, requirement);
-                if (_presentationModel.AddFormToPanel(form))
-                    _presentationModel.AddFormButtonToUserInterface(form, "Add Comment", Properties.Resources.ios7_compose_outline);
+                _presentationModel.AddFormToPanel(form);
             }
             else
             {
@@ -110,61 +114,6 @@ namespace RMS_Project
                 Form form = new RequirementDetailForm(_presentationModel, requirement);
                 if (_presentationModel.AddFormToPanel(form))
                     _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_paper_outline);
-            }
-        }
-
-        void deleteButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        public async void RefreshRequirementList()
-        {
-            try
-            {
-                HttpResponseMessage response = await _presentationModel.GetRequirementByProject(_project.ID.ToString());
-                string content = await response.Content.ReadAsStringAsync();
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    JObject json = JObject.Parse(content);
-                    string message = json["result"].ToString();
-                    JArray jsonArray = JArray.Parse(json["requirements"].ToString());
-                    if (message == "success")
-                    {
-                        this.requirementListDataGridView.Rows.Clear();
-                        _arrayList = new ArrayList();
-                        foreach (JObject jObject in jsonArray)
-                        {
-                            this.requirementListDataGridView.Rows.Add(jObject["name"]);
-                            JObject jOwner = jObject["owner"] as JObject;
-                            JObject jHandler = jObject["handler"] as JObject;
-                            JObject jType = jObject["requirement_type"] as JObject;
-                            JObject jPriority = jObject["priority_type"] as JObject;
-                            JObject jStatus = jObject["status_type"] as JObject;
-                            User owner = _presentationModel.getUser((int)jOwner["id"], jOwner["name"].ToString());
-                            User handler = _presentationModel.getUser((int)jHandler["id"], jHandler["name"].ToString());
-                            NormalAttribute type = _presentationModel.getRequirementAttribute((int)jType["id"], jType["name"].ToString());
-                            NormalAttribute priority = _presentationModel.getRequirementAttribute((int)jPriority["id"],jPriority["name"].ToString());
-                            NormalAttribute status = _presentationModel.getRequirementAttribute((int)jStatus["id"], jStatus["name"].ToString());
-                            Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), owner, handler,
-                                jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(),
-                                type, priority, status);
-                            _arrayList.Add(requirement);
-                        }
-                    }
-                }
-                else if (response.StatusCode == HttpStatusCode.RequestTimeout)
-                {
-                    MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
             }
         }
 
@@ -178,7 +127,20 @@ namespace RMS_Project
 
         public UserInterfaceForm.FunctionalType GetFunctionalType()
         {
-            return UserInterfaceForm.FunctionalType.New;
+            return type;
+        }
+
+        private async void CheckPriority()
+        {
+            JObject jObject = await _presentationModel.GetPriority(_project.ID);
+            if (jObject["priority_type_name"].ToString().Equals("Owner") ||
+                jObject["priority_type_name"].ToString().Equals("Manager"))
+            {
+                type = UserInterfaceForm.FunctionalType.New;
+                requirementListDataGridView.Columns[2].Visible = true;
+                requirementListDataGridView.Columns[3].Visible = true;
+                _presentationModel.SetFunctionalButton(type);
+            }
         }
     }
 }

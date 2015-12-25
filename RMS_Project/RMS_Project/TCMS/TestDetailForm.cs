@@ -51,14 +51,17 @@ namespace RMS_Project
                 JObject jsonObject = JObject.Parse(json["test_case"].ToString());
                 if (message == "success")
                 {
-                    TestName.Text = jsonObject["name"].ToString();
-                    idLabel.Text = "ID: "+jsonObject["id"].ToString();
+                    testName.Text = jsonObject["name"].ToString();
+                    idLabel.Text = jsonObject["id"].ToString();
                     JObject temp = JObject.Parse(jsonObject["owner"].ToString());
                     string owner = temp["name"].ToString();
                     ownerLabel.Text = owner;
+                    JObject jHandler = JObject.Parse(jsonObject["asigned_as"].ToString());
+                    string handler = jHandler["name"].ToString();
+                    handlerLabel.Text = handler;
                     inputDataLabel.Text = jsonObject["input_data"].ToString();
                     expectedResultLabel.Text = jsonObject["expected_result"].ToString();
-                    descriptionRichTextBox.Text = jsonObject["description"].ToString();
+                    descriptionTextBox.Text = jsonObject["description"].ToString();
                 }
             }
             else if (response.StatusCode == HttpStatusCode.RequestTimeout)

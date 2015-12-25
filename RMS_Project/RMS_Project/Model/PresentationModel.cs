@@ -426,6 +426,11 @@ namespace RMS_Project
             return await _model.GetRequirementByTestCaseId(testId);
         }
 
+        public async Task<JObject> GetPriority(int projectId)
+        {
+            return await _model.GetPriority(projectId);
+        }
+
         public void ClickFunctionalButton()
         {
             Control control = GetCurrentFormInPanel();
@@ -491,9 +496,37 @@ namespace RMS_Project
             return attribute;
         }
 
+        public Requirement getRequirementByJasonObject(JObject jObject)
+        {
+            JObject jOwner = jObject["owner"] as JObject;
+            JObject jHandler = jObject["handler"] as JObject;
+            JObject jType = jObject["requirement_type"] as JObject;
+            JObject jPriority = jObject["priority_type"] as JObject;
+            JObject jStatus = jObject["status_type"] as JObject;
+            User owner = getUser((int)jOwner["id"], jOwner["name"].ToString());
+            User handler = getUser((int)jHandler["id"], jHandler["name"].ToString());
+            NormalAttribute type = getRequirementAttribute((int)jType["id"], jType["name"].ToString());
+            NormalAttribute priority = getRequirementAttribute((int)jPriority["id"], jPriority["name"].ToString());
+            NormalAttribute status = getRequirementAttribute((int)jStatus["id"], jStatus["name"].ToString());
+            return new Requirement((int)jObject["id"], (int)jObject["project_id"], jObject["name"].ToString(), owner, handler,
+                jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(),
+                type, priority, status);
+        }
+
         public void SetFunctionalButton(UserInterfaceForm.FunctionalType type)
         {
             _userInterface.SetFunctionalButton(type);
+        }
+
+        /********************** Comment *************************/
+        public async Task<string> AddCommentToRequirement(JObject jObject)
+        {
+            return await _model.AddCommentToRequirement(jObject);
+        }
+
+        public async Task<HttpResponseMessage> GetCommentByRequirement(int requirementId)
+        {
+            return await _model.GetCommentByRequirement(requirementId);
         }
     }
 }

@@ -57,8 +57,8 @@ namespace RMS_Project
                     foreach (JObject jObject in jsonArray)
                     {
                         this.testListDataGridView.Rows.Add(jObject["name"], jObject["id"]);
-                        Test project = new Test(int.Parse(jObject["id"].ToString()), _project.ID, jObject["name"].ToString(), jObject["description"].ToString());
-                        _arrayList.Add(project);
+                        Test test = new Test(int.Parse(jObject["id"].ToString()), _project.ID, jObject["name"].ToString(), jObject["description"].ToString());
+                        _arrayList.Add(test);
                     }
                 }
             }

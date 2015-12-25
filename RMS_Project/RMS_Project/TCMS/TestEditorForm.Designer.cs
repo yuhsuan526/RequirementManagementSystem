@@ -228,7 +228,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 585);
             this.Controls.Add(this.testEditorTableLayoutPanel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TestEditorForm";
             this.Text = "TestEditorForm";
             this.testEditorTableLayoutPanel.ResumeLayout(false);
