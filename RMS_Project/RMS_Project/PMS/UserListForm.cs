@@ -99,7 +99,7 @@ namespace RMS_Project
             }
         }
 
-        private void addUserButton_Click(object sender, EventArgs e)
+        public void AddUser()
         {
             if (!userTextBox.Text.Equals(""))
                 AddUserToProject();
@@ -143,7 +143,7 @@ namespace RMS_Project
 
         public UserInterfaceForm.FunctionalType GetFunctionalType()
         {
-            return UserInterfaceForm.FunctionalType.Hide;
+            return UserInterfaceForm.FunctionalType.New;
         }
 
         private void _userListDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

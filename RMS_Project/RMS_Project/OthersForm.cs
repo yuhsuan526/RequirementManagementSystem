@@ -13,16 +13,16 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class TraceabilityMatrixForm : Form, FunctionalTypeInterface
+    public partial class OthersForm : Form, FunctionalTypeInterface
     {
         private Project _project;
         private PresentationModel _presentationModel;
-        private Requirement[] requirementList;
+        private Requirement[] _requirements;
         private Test[] testList;
         private int _counter;
         private int _maxCount;
 
-        public TraceabilityMatrixForm(PresentationModel presentationModel, Project project)
+        public OthersForm(PresentationModel presentationModel, Project project)
         {
             InitializeComponent();
             _project = project;
@@ -32,9 +32,9 @@ namespace RMS_Project
 
         private void CreateCell(string[] rows, string[] columns)
         {
-            matrixDataGridView.Columns.Clear();
-            matrixDataGridView.Rows.Clear();
-            DataGridViewColumnCollection matrixColumns = matrixDataGridView.Columns;
+            _RtoRDataGridView.Columns.Clear();
+            _RtoRDataGridView.Rows.Clear();
+            DataGridViewColumnCollection matrixColumns = _RtoRDataGridView.Columns;
             matrixColumns.Add("nullColumn", "Traceability Matrix");
             for (int j = 0; j < columns.Length; j++)
             {
@@ -46,13 +46,13 @@ namespace RMS_Project
                 checkColumn.FillWeight = 10;
                 matrixColumns.Add(checkColumn);
             }
-            DataGridViewRowCollection matrixRows = matrixDataGridView.Rows;
+            DataGridViewRowCollection matrixRows = _RtoRDataGridView.Rows;
             for (int i = 0; i < rows.Length; i++)
             {
                 matrixRows.Add(rows[i]);
             }
-            matrixDataGridView.Columns[0].Frozen = true;
-            matrixDataGridView.Columns[0].ReadOnly = true;
+            _RtoRDataGridView.Columns[0].Frozen = true;
+            _RtoRDataGridView.Columns[0].ReadOnly = true;
             GetRequirementToRequirementRelationByProjectId();
         }
 
@@ -60,22 +60,22 @@ namespace RMS_Project
         {
             int rowIndex = -1;
             int columnIndex = -1;
-            for (int i = 0; i < requirementList.Length; i++)
+            for (int i = 0; i < _requirements.Length; i++)
             {
-                if (requirementList[i].ID.ToString().Equals(rowID))
+                if (_requirements[i].ID.ToString().Equals(rowID))
                 {
                     rowIndex = i;
                     if (columnIndex >= 0)
                         break;
                 }
-                if (requirementList[i].ID.ToString().Equals(columnID))
+                if (_requirements[i].ID.ToString().Equals(columnID))
                 {
                     columnIndex = i;
                     if (rowIndex >= 0)
                         break;
                 }
             }
-            DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)matrixDataGridView.Rows[rowIndex].Cells[1 + columnIndex];
+            DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)_RtoRDataGridView.Rows[rowIndex].Cells[1 + columnIndex];
             chk.Value = chk.TrueValue;
 
         }
@@ -87,17 +87,17 @@ namespace RMS_Project
                 string msg = await _presentationModel.DeleteRequirementToRequirementRelationByProject(_project.ID);
                 _maxCount = 0;
                 _counter = 0;
-                for (int i = 0; i < matrixDataGridView.Rows.Count; i++)
+                for (int i = 0; i < _RtoRDataGridView.Rows.Count; i++)
                 {
-                    for (int j = 0; j < matrixDataGridView.Columns.Count - 1; j++)
+                    for (int j = 0; j < _RtoRDataGridView.Columns.Count - 1; j++)
                     {
-                        DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)matrixDataGridView.Rows[i].Cells[1 + j];
+                        DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)_RtoRDataGridView.Rows[i].Cells[1 + j];
                         if (chk.Value == chk.TrueValue)
                         {
                             _maxCount++;
                             JObject jObject = new JObject();
-                            jObject["r1id"] = requirementList[i].ID;
-                            jObject["r2id"] = requirementList[j].ID;
+                            jObject["r1id"] = _requirements[i].ID;
+                            jObject["r2id"] = _requirements[j].ID;
                             jObject["pid"] = _project.ID;
                             CreateRequirementToRequirementRelation(jObject);
                         }
@@ -137,6 +137,22 @@ namespace RMS_Project
             }
         }
 
+        private void CreateAllDataGridView()
+        {
+            foreach(Requirement requirement in _requirements)
+            {
+                Console.WriteLine(requirement.Status.ToString());
+                if (requirement.Status == 3)
+                {
+                    _approvedRequirementDataGridView.Rows.Add(requirement.Name);
+                }
+                else if (requirement.Status == 4)
+                {
+                    _notApprovedRequirementDataGridView.Rows.Add(requirement.Name);
+                }
+            }
+        }
+
         private async void GetRequirementByProject()
         {
             HttpResponseMessage response = await _presentationModel.GetRequirementByProject(_project.ID.ToString());
@@ -148,11 +164,11 @@ namespace RMS_Project
                 JArray jsonArray = JArray.Parse(json["requirements"].ToString());
                 if (message == "success")
                 {
-                    requirementList = new Requirement[jsonArray.Count];
+                    _requirements = new Requirement[jsonArray.Count];
                     for (int i = 0; i < jsonArray.Count; i++ )
                     {
                         JObject jObject = (JObject)jsonArray[i];
-                        requirementList[i] = 
+                        _requirements[i] = 
                             new Requirement(
                             int.Parse(jObject["id"].ToString()), 
                             _project.ID, 
@@ -164,11 +180,12 @@ namespace RMS_Project
                             int.Parse(jObject["priority_type_id"].ToString()), 
                             int.Parse(jObject["status_type_id"].ToString()));
                     }
-                    string[] rList = new string[requirementList.Length];
-                    for (int i = 0; i < requirementList.Length; i++)
+                    string[] rList = new string[_requirements.Length];
+                    for (int i = 0; i < _requirements.Length; i++)
                     {
-                        rList[i] = requirementList[i].Name;
+                        rList[i] = _requirements[i].Name;
                     }
+                    CreateAllDataGridView();
                     CreateCell(rList, rList);
                     //RefreshTestList();
                 }
@@ -201,10 +218,10 @@ namespace RMS_Project
                         testList[i] = new Test(int.Parse(jObject["id"].ToString()), _project.ID, 
                             jObject["name"].ToString(), jObject["description"].ToString());
                     }
-                    string[] rList = new string[requirementList.Length];
-                    for (int i = 0; i < requirementList.Length; i++)
+                    string[] rList = new string[_requirements.Length];
+                    for (int i = 0; i < _requirements.Length; i++)
                     {
-                        rList[i] = requirementList[i].Name;
+                        rList[i] = _requirements[i].Name;
                     }
                     string[] tList = new string[testList.Length];
                     for (int i = 0; i < testList.Length; i++)

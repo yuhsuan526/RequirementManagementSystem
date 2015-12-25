@@ -433,12 +433,16 @@ namespace RMS_Project
                 TestEditorForm requirementEditorForm = new TestEditorForm(this, form.Test);
                 AddFormToPanel(requirementEditorForm);
             }
-            else if (control.GetType().Equals(typeof(TraceabilityMatrixForm)))
+            else if (control.GetType().Equals(typeof(OthersForm)))
             {
-                TraceabilityMatrixForm form = control as TraceabilityMatrixForm;
+                OthersForm form = control as OthersForm;
                 form.AddRelation();
             }
-
+            else if (control.GetType().Equals(typeof(UserListForm)))
+            {
+                UserListForm form = control as UserListForm;
+                form.AddUser();
+            }
         }
     }
 }
