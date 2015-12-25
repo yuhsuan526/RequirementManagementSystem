@@ -18,23 +18,25 @@ namespace RMS_Project
         private Project _project;
         private PresentationModel _presentationModel;
         private Requirement[] _requirements;
-        private Test[] testList;
+        private Test[] _tests;
         private int _counter;
         private int _maxCount;
+        private UserInterfaceForm.FunctionalType _functionalType;
 
         public OthersForm(PresentationModel presentationModel, Project project)
         {
             InitializeComponent();
             _project = project;
             _presentationModel = presentationModel;
+            _functionalType = UserInterfaceForm.FunctionalType.Hide;
             GetRequirementByProject();
         }
 
-        private void CreateCell(string[] rows, string[] columns)
+        private void CreateDataGridViewCell(DataGridView dataGridView, string[] rows, string[] columns)
         {
-            _RtoRDataGridView.Columns.Clear();
-            _RtoRDataGridView.Rows.Clear();
-            DataGridViewColumnCollection matrixColumns = _RtoRDataGridView.Columns;
+            dataGridView.Columns.Clear();
+            dataGridView.Rows.Clear();
+            DataGridViewColumnCollection matrixColumns = dataGridView.Columns;
             matrixColumns.Add("nullColumn", "Traceability Matrix");
             for (int j = 0; j < columns.Length; j++)
             {
@@ -46,17 +48,16 @@ namespace RMS_Project
                 checkColumn.FillWeight = 10;
                 matrixColumns.Add(checkColumn);
             }
-            DataGridViewRowCollection matrixRows = _RtoRDataGridView.Rows;
+            DataGridViewRowCollection matrixRows = dataGridView.Rows;
             for (int i = 0; i < rows.Length; i++)
             {
                 matrixRows.Add(rows[i]);
             }
-            _RtoRDataGridView.Columns[0].Frozen = true;
-            _RtoRDataGridView.Columns[0].ReadOnly = true;
-            GetRequirementToRequirementRelationByProjectId();
+            dataGridView.Columns[0].Frozen = true;
+            dataGridView.Columns[0].ReadOnly = true;
         }
 
-        private void SetCellValue(string rowID, string columnID)
+        private void SetDataGridViewCheckBoxCellValue(string rowID, string columnID)
         {
             int rowIndex = -1;
             int columnIndex = -1;
@@ -80,7 +81,19 @@ namespace RMS_Project
 
         }
 
-        public async void AddRelation()
+        public void ClickFunctionalButton()
+        {
+            if (_othersTabControl.SelectedTab == tabPage3)
+            {
+
+            }
+            else if (_othersTabControl.SelectedTab == tabPage4)
+            {
+
+            }
+        }
+
+        public async void AddRtoRRelation()
         {
             try
             {
@@ -110,9 +123,49 @@ namespace RMS_Project
             }
         }
 
+        public async void AddRtoTRelation()
+        {
+            try
+            {
+                string msg = await _presentationModel.DeleteRequirementToTestRelationByProject(_project.ID);
+                _maxCount = 0;
+                _counter = 0;
+                for (int i = 0; i < _RtoTDataGridView.Rows.Count; i++)
+                {
+                    for (int j = 0; j < _RtoTDataGridView.Columns.Count - 1; j++)
+                    {
+                        DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)_RtoTDataGridView.Rows[i].Cells[1 + j];
+                        if (chk.Value == chk.TrueValue)
+                        {
+                            _maxCount++;
+                            JObject jObject = new JObject();
+                            jObject["rid"] = _requirements[i].ID;
+                            jObject["tid"] = _tests[j].ID;
+                            jObject["pid"] = _project.ID;
+                            CreateRequirementToTestRelation(jObject);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+            }
+        }
+
         public async void CreateRequirementToRequirementRelation(JObject jObject)
         {
             string msg = await _presentationModel.CreateRequirementToRequirementRelation(jObject);
+            _counter++;
+            if (_maxCount <= _counter)
+            {
+                MessageBox.Show("修改成功", "Success", MessageBoxButtons.OK);
+            }
+        }
+
+        public async void CreateRequirementToTestRelation(JObject jObject)
+        {
+            string msg = await _presentationModel.CreateRequirementToTestRelation(jObject);
             _counter++;
             if (_maxCount <= _counter)
             {
@@ -128,7 +181,24 @@ namespace RMS_Project
                 for (int i = 0; i < jsonArray.Count; i++)
                 {
                     JObject jObject = (JObject)jsonArray[i];
-                    SetCellValue(jObject["requirement1_id"].ToString(), jObject["requirement2_id"].ToString());
+                    SetDataGridViewCheckBoxCellValue(jObject["requirement1_id"].ToString(), jObject["requirement2_id"].ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private async void GetRequirementToTestRelationByProjectId()
+        {
+            try
+            {
+                JArray jsonArray = await _presentationModel.GetRequirementToTestRelationByProjectId(_project.ID);
+                for (int i = 0; i < jsonArray.Count; i++)
+                {
+                    JObject jObject = (JObject)jsonArray[i];
+                    SetDataGridViewCheckBoxCellValue(jObject["requirement1_id"].ToString(), jObject["requirement2_id"].ToString());
                 }
             }
             catch (Exception e)
@@ -194,8 +264,9 @@ namespace RMS_Project
                         rList[i] = _requirements[i].Name;
                     }
                     CreateAllDataGridView();
-                    CreateCell(rList, rList);
-                    //RefreshTestList();
+                    CreateDataGridViewCell(_RtoRDataGridView, rList, rList);
+                    GetRequirementToRequirementRelationByProjectId();
+                    GetTestListByProject();
                 }
             }
             else if (response.StatusCode == HttpStatusCode.RequestTimeout)
@@ -208,7 +279,7 @@ namespace RMS_Project
             }
         }
 
-        public async void RefreshTestList()
+        public async void GetTestListByProject()
         {
             HttpResponseMessage response = await _presentationModel.GetTestCaseListByRequirementId(_project.ID);
             string content = await response.Content.ReadAsStringAsync();
@@ -219,11 +290,11 @@ namespace RMS_Project
                 JArray jsonArray = JArray.Parse(json["test_case_list"].ToString());
                 if (message == "success")
                 {
-                    testList = new Test[jsonArray.Count];
+                    _tests = new Test[jsonArray.Count];
                     for (int i = 0; i < jsonArray.Count; i++)
                     {
                         JObject jObject = (JObject)jsonArray[i];
-                        testList[i] = new Test(int.Parse(jObject["id"].ToString()), _project.ID, 
+                        _tests[i] = new Test(int.Parse(jObject["id"].ToString()), _project.ID, 
                             jObject["name"].ToString(), jObject["description"].ToString());
                     }
                     string[] rList = new string[_requirements.Length];
@@ -231,12 +302,12 @@ namespace RMS_Project
                     {
                         rList[i] = _requirements[i].Name;
                     }
-                    string[] tList = new string[testList.Length];
-                    for (int i = 0; i < testList.Length; i++)
+                    string[] tList = new string[_tests.Length];
+                    for (int i = 0; i < _tests.Length; i++)
                     {
-                        tList[i] = testList[i].NAME;
+                        tList[i] = _tests[i].NAME;
                     }
-                    CreateCell(rList, rList);
+                    CreateDataGridViewCell(_RtoTDataGridView, rList, tList);
                 }
             }
             else if (response.StatusCode == HttpStatusCode.RequestTimeout)
@@ -251,7 +322,24 @@ namespace RMS_Project
 
         public UserInterfaceForm.FunctionalType GetFunctionalType()
         {
-            return UserInterfaceForm.FunctionalType.New;
+            return _functionalType;
+        }
+
+        private void _othersTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_othersTabControl.SelectedTab == tabPage3)
+            {
+                _functionalType = UserInterfaceForm.FunctionalType.Edit;
+            }
+            else if (_othersTabControl.SelectedTab == tabPage4)
+            {
+                _functionalType = UserInterfaceForm.FunctionalType.Edit;
+            }
+            else
+            {
+                _functionalType = UserInterfaceForm.FunctionalType.Hide;
+            }
+            _presentationModel.SetFunctionalButton(this.GetFunctionalType());
         }
     }
 }

@@ -30,16 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectMainForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.othersButton = new RMS_Project.NoFocusCueButton();
             this._mainPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this._nameLabel = new System.Windows.Forms.Label();
             this._descriptionText = new System.Windows.Forms.TextBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.othersButton = new RMS_Project.NoFocusCueButton();
             this.memberButton = new RMS_Project.NoFocusCueButton();
             this.requirementButton = new RMS_Project.NoFocusCueButton();
             this.testButton = new RMS_Project.NoFocusCueButton();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             this._mainPanel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -67,6 +67,30 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 361);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // othersButton
+            // 
+            this.othersButton.AccessibleName = "projectButton";
+            this.othersButton.BackColor = System.Drawing.Color.Transparent;
+            this.othersButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.othersButton.FlatAppearance.BorderSize = 0;
+            this.othersButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.othersButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.othersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.othersButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.othersButton.Image = global::RMS_Project.Properties.Resources.ios7_gear;
+            this.othersButton.Location = new System.Drawing.Point(593, 304);
+            this.othersButton.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.othersButton.Name = "othersButton";
+            this.othersButton.Size = new System.Drawing.Size(186, 54);
+            this.othersButton.TabIndex = 4;
+            this.othersButton.Text = "Others";
+            this.othersButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.othersButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.othersButton.UseVisualStyleBackColor = false;
+            this.othersButton.Click += new System.EventHandler(this.othersButton_Click);
+            this.othersButton.MouseLeave += new System.EventHandler(this.noFocusCueButton1_MouseLeave);
+            this.othersButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.noFocusCueButton1_MouseMove);
             // 
             // _mainPanel
             // 
@@ -139,30 +163,6 @@
             this._descriptionText.Size = new System.Drawing.Size(346, 175);
             this._descriptionText.TabIndex = 2;
             // 
-            // othersButton
-            // 
-            this.othersButton.AccessibleName = "projectButton";
-            this.othersButton.BackColor = System.Drawing.Color.Transparent;
-            this.othersButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.othersButton.FlatAppearance.BorderSize = 0;
-            this.othersButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.othersButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.othersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.othersButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.othersButton.Image = global::RMS_Project.Properties.Resources.ios7_gear;
-            this.othersButton.Location = new System.Drawing.Point(593, 304);
-            this.othersButton.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.othersButton.Name = "othersButton";
-            this.othersButton.Size = new System.Drawing.Size(186, 54);
-            this.othersButton.TabIndex = 4;
-            this.othersButton.Text = "Others";
-            this.othersButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.othersButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.othersButton.UseVisualStyleBackColor = false;
-            this.othersButton.Click += new System.EventHandler(this.othersButton_Click);
-            this.othersButton.MouseLeave += new System.EventHandler(this.noFocusCueButton1_MouseLeave);
-            this.othersButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.noFocusCueButton1_MouseMove);
-            // 
             // memberButton
             // 
             this.memberButton.AccessibleName = "memberButton";
@@ -225,7 +225,7 @@
             this.testButton.Name = "testButton";
             this.testButton.Size = new System.Drawing.Size(186, 54);
             this.testButton.TabIndex = 2;
-            this.testButton.Text = "Tests";
+            this.testButton.Text = "Test Cases";
             this.testButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.testButton.UseVisualStyleBackColor = false;
             this.testButton.Click += new System.EventHandler(this.testButton_Click);

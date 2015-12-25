@@ -386,14 +386,29 @@ namespace RMS_Project
             return await _model.GetRequirementToRequirementRelationByProjectId(projectId);
         }
 
+        public async Task<JArray> GetRequirementToTestRelationByProjectId(int projectId)
+        {
+            return await _model.GetRequirementToTestRelationByProjectId(projectId);
+        }
+
         public async Task<string> CreateRequirementToRequirementRelation(JObject jObject)
         {
             return await _model.CreateRequirementToRequirementRelation(jObject);
         }
 
+        public async Task<string> CreateRequirementToTestRelation(JObject jObject)
+        {
+            return await _model.CreateRequirementToTestRelation(jObject);
+        }
+
         public async Task<string> DeleteRequirementToRequirementRelationByProject(int projectId)
         {
             return await _model.DeleteRequirementToRequirementRelationByProject(projectId);
+        }
+
+        public async Task<string> DeleteRequirementToTestRelationByProject(int projectId)
+        {
+            return await _model.DeleteRequirementToTestRelationByProject(projectId);
         }
 
         public void ClickFunctionalButton()
@@ -436,7 +451,7 @@ namespace RMS_Project
             else if (control.GetType().Equals(typeof(OthersForm)))
             {
                 OthersForm form = control as OthersForm;
-                form.AddRelation();
+                form.ClickFunctionalButton();
             }
             else if (control.GetType().Equals(typeof(UserListForm)))
             {
@@ -445,6 +460,7 @@ namespace RMS_Project
             }
         }
 
+<<<<<<< HEAD
         public User getUser(int id, string name)
         {
             User user = new User();
@@ -459,6 +475,11 @@ namespace RMS_Project
             attribute.ID = id;
             attribute.Name = name;
             return attribute;
+=======
+        public void SetFunctionalButton(UserInterfaceForm.FunctionalType type)
+        {
+            _userInterface.SetFunctionalButton(type);
+>>>>>>> 577b6c03d758fdd6f13351db675e8e2c1ca55d32
         }
     }
 }

@@ -77,7 +77,7 @@ namespace RMS_Project
             TestListForm testListForm = new TestListForm(_presentationModel, _project);
             if (_presentationModel.AddFormToPanel(testListForm))
             {
-                _presentationModel.AddFormButtonToUserInterface(testListForm, "Tests", Properties.Resources.ios7_browsers_outline);
+                _presentationModel.AddFormButtonToUserInterface(testListForm, "Test Cases", Properties.Resources.ios7_browsers_outline);
             }
         }
 
