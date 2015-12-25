@@ -43,9 +43,7 @@ namespace RMS_Project
             _presentationModel = presentationModel;
             GetRequirementByTest();
             GetUserListByTest();
-
-            testNameTextBox.Text = test.NAME;
-            descriptionRichTextBox.Text = test.DESC;
+            GetTestCaseDetailInformation();
         }
 
         void confirm_Click(object sender, EventArgs e)
@@ -108,9 +106,15 @@ namespace RMS_Project
             jObject["asigned_as"] = _selectedUserId;
             jObject["input_data"] = inputDataTextBox.Text;
             jObject["expected_result"] = expectedResultTextBox.Text;
-            //..................................................................
-            //要修改-------------------------------------------------------------
-            //..................................................................
+            string temp = "";
+            foreach (int rid in _selectedRequirementId)
+            {
+                temp += rid;
+                temp += ",";
+            }
+            if (temp != "")
+                temp = temp.Substring(0, temp.Length - 1);
+            jObject["rid_list"] = temp;
             jObject["finished"] = 0;
 
             //Console.WriteLine(jObject);
@@ -236,6 +240,38 @@ namespace RMS_Project
             }
         }
 
+        public async void GetTestCaseDetailInformation()
+        {
+            HttpResponseMessage response = await _presentationModel.GetTestCaseDetailInformationByTestCaseId(_test.ID);
+            string content = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                JObject json = JObject.Parse(content);
+
+                string message = json["result"].ToString();
+                JObject jsonObject = JObject.Parse(json["test_case"].ToString());
+                if (message == "success")
+                {
+                    testNameTextBox.Text = jsonObject["name"].ToString();
+                    inputDataTextBox.Text = jsonObject["input_data"].ToString();
+                    expectedResultTextBox.Text = jsonObject["expected_result"].ToString();
+                    descriptionRichTextBox.Text = jsonObject["description"].ToString();
+                    JObject temp = JObject.Parse(jsonObject["owner"].ToString());
+                    string owner = temp["name"].ToString();
+                    ownerComboBox.SelectedItem = owner;
+
+                }
+            }
+            else if (response.StatusCode == HttpStatusCode.RequestTimeout)
+            {
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
+            }
+        }
+
         private void ownerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedUserId = _projectMemberArrayList[ownerComboBox.SelectedIndex];
@@ -246,7 +282,7 @@ namespace RMS_Project
             _selectedRequirementId.Clear();
             for (int i = 0; i < checkedListBox.CheckedItems.Count; i++)
             {
-                _selectedRequirementId.Add(_requirementArrayList[i].ID);
+                _selectedRequirementId.Add(_requirementArrayList[checkedListBox.CheckedIndices[i]].ID);
             }
         }
     }

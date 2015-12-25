@@ -26,7 +26,7 @@ namespace RMS_Project
         private NormalAttribute _selectedType;
         private NormalAttribute _selectedStatus;
         private NormalAttribute _selectedPriority;
-        private int _selectedHandler;
+        private User _selectedHandler;
 
         private List<int> _projectIds;
         private List<string> _projectNames;
@@ -43,6 +43,7 @@ namespace RMS_Project
             versionLabel.Text = "1";
             GetUserListByProject();
 
+            _selectedHandler = new User();
             _selectedType = new NormalAttribute();
             _selectedPriority = new NormalAttribute();
             _selectedStatus = new NormalAttribute();
@@ -67,6 +68,7 @@ namespace RMS_Project
             this._requirement = requirement;
             GetUserListByProject();
 
+            _selectedHandler = new User();
             _selectedType = new NormalAttribute();
             _selectedPriority = new NormalAttribute();
             _selectedStatus = new NormalAttribute();
@@ -100,6 +102,7 @@ namespace RMS_Project
             else
             {
                 _requirement.Name = nameTextBox.Text;
+                _requirement.Handler = _selectedHandler;
                 _requirement.Type = _selectedType;
                 _requirement.Version = (Int32.Parse(versionLabel.Text)).ToString();
                 _requirement.Priority = _selectedPriority;
@@ -117,7 +120,7 @@ namespace RMS_Project
             jObject["description"] = DescriptionRichTextBox.Text;
             jObject["version"] = 1;
             jObject["memo"] = MemoRichTextBox.Text;
-            jObject["handler"] = _selectedHandler;
+            jObject["handler"] = _selectedHandler.ID;
             jObject["uid"] = _presentationModel.GetUID();
             jObject["pid"] = _project.ID;
             jObject["requirement_type_id"] = _selectedType.ID;
@@ -292,7 +295,8 @@ namespace RMS_Project
 
         private void handlerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _selectedHandler = _projectMemberArrayList[handlerComboBox.SelectedIndex];
+            _selectedHandler.ID = _projectMemberArrayList[handlerComboBox.SelectedIndex];
+            _selectedHandler.Name = handlerComboBox.SelectedItem.ToString();
         }
 
         private async void GetUserListByProject()
