@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.testEditorTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this._commentDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inputDataLabel = new System.Windows.Forms.Label();
             this.testNameLabel = new System.Windows.Forms.Label();
             this.expectedResultLabel = new System.Windows.Forms.Label();
@@ -40,6 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this._associatedTestListDataGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,12 +59,9 @@
             this.memoTextBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this._commentDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testEditorTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._associatedTestListDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._commentDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._associatedTestListDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // testEditorTableLayoutPanel
@@ -114,6 +114,57 @@
             this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.testEditorTableLayoutPanel.Size = new System.Drawing.Size(819, 521);
             this.testEditorTableLayoutPanel.TabIndex = 3;
+            // 
+            // _commentDataGridView
+            // 
+            this._commentDataGridView.AccessibleName = "projectDataGridView";
+            this._commentDataGridView.AllowUserToAddRows = false;
+            this._commentDataGridView.AllowUserToDeleteRows = false;
+            this._commentDataGridView.AllowUserToResizeColumns = false;
+            this._commentDataGridView.AllowUserToResizeRows = false;
+            this._commentDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this._commentDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._commentDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this._commentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._commentDataGridView.ColumnHeadersVisible = false;
+            this._commentDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1});
+            this.testEditorTableLayoutPanel.SetColumnSpan(this._commentDataGridView, 3);
+            this._commentDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._commentDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            this._commentDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._commentDataGridView.Location = new System.Drawing.Point(120, 400);
+            this._commentDataGridView.Margin = new System.Windows.Forms.Padding(0);
+            this._commentDataGridView.MultiSelect = false;
+            this._commentDataGridView.Name = "_commentDataGridView";
+            this._commentDataGridView.ReadOnly = true;
+            this._commentDataGridView.RowHeadersVisible = false;
+            this._commentDataGridView.RowHeadersWidth = 50;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._commentDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this._commentDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
+            this._commentDataGridView.RowTemplate.DividerHeight = 1;
+            this._commentDataGridView.RowTemplate.Height = 50;
+            this._commentDataGridView.RowTemplate.ReadOnly = true;
+            this._commentDataGridView.Size = new System.Drawing.Size(468, 101);
+            this._commentDataGridView.TabIndex = 43;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.FillWeight = 179.6954F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Column1";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // inputDataLabel
             // 
@@ -232,6 +283,15 @@
             this._associatedTestListDataGridView.RowTemplate.ReadOnly = true;
             this._associatedTestListDataGridView.Size = new System.Drawing.Size(181, 455);
             this._associatedTestListDataGridView.TabIndex = 26;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.FillWeight = 179.6954F;
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // descriptionTextBox
             // 
@@ -409,66 +469,6 @@
             this.label7.Text = "Comment";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // _commentDataGridView
-            // 
-            this._commentDataGridView.AccessibleName = "projectDataGridView";
-            this._commentDataGridView.AllowUserToAddRows = false;
-            this._commentDataGridView.AllowUserToDeleteRows = false;
-            this._commentDataGridView.AllowUserToResizeColumns = false;
-            this._commentDataGridView.AllowUserToResizeRows = false;
-            this._commentDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-            this._commentDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this._commentDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this._commentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._commentDataGridView.ColumnHeadersVisible = false;
-            this._commentDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1});
-            this.testEditorTableLayoutPanel.SetColumnSpan(this._commentDataGridView, 3);
-            this._commentDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._commentDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
-            this._commentDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._commentDataGridView.Location = new System.Drawing.Point(120, 400);
-            this._commentDataGridView.Margin = new System.Windows.Forms.Padding(0);
-            this._commentDataGridView.MultiSelect = false;
-            this._commentDataGridView.Name = "_commentDataGridView";
-            this._commentDataGridView.ReadOnly = true;
-            this._commentDataGridView.RowHeadersVisible = false;
-            this._commentDataGridView.RowHeadersWidth = 50;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._commentDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this._commentDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
-            this._commentDataGridView.RowTemplate.DividerHeight = 1;
-            this._commentDataGridView.RowTemplate.Height = 50;
-            this._commentDataGridView.RowTemplate.ReadOnly = true;
-            this._commentDataGridView.Size = new System.Drawing.Size(468, 101);
-            this._commentDataGridView.TabIndex = 43;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.FillWeight = 179.6954F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Column1";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.FillWeight = 179.6954F;
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
             // RequirementDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -479,8 +479,8 @@
             this.Text = "RequirementDetailForm";
             this.testEditorTableLayoutPanel.ResumeLayout(false);
             this.testEditorTableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._associatedTestListDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._commentDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._associatedTestListDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
