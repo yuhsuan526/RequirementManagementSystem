@@ -426,6 +426,11 @@ namespace RMS_Project
             return await _model.GetRequirementByTestCaseId(testId);
         }
 
+        public async Task<JObject> GetPriority(int projectId)
+        {
+            return await _model.GetPriority(projectId);
+        }
+
         public void ClickFunctionalButton()
         {
             Control control = GetCurrentFormInPanel();

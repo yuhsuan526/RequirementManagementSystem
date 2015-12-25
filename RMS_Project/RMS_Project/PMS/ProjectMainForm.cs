@@ -18,12 +18,15 @@ namespace RMS_Project
     {
         private PresentationModel _presentationModel;
         private Project _project;
+        private UserInterfaceForm.FunctionalType type;
 
         public ProjectMainForm(PresentationModel presentationModel, Project project)
         {
             InitializeComponent();
             this._presentationModel = presentationModel;
             RefreshProjectDetail(project);
+            type = UserInterfaceForm.FunctionalType.Hide;
+            CheckPriority();
         }
         
         private void noFocusCueButton1_MouseMove(object sender, MouseEventArgs e)
@@ -38,20 +41,6 @@ namespace RMS_Project
             Button button = sender as Button;
             button.Image = _presentationModel.ChangeColor(new Bitmap(button.Image), Color.Black);
             button.ForeColor = Color.Black;
-        }
-
-        private void projectButton_Click(object sender, EventArgs e)
-        {
-            /*
-            UserInterfaceForm form = _presentationModel.UserInterface;
-            if (_projectDetailForm.AddFormToPanel(_projectDetailForm))
-            {
-                if (form != null)
-                {
-                    form.SetFeatureButton(UserInterfaceForm.FeatureType.Edit);
-                }
-                ChangeTabType(projectButton);
-            }*/
         }
 
         private void memberButton_Click(object sender, EventArgs e)
@@ -98,7 +87,7 @@ namespace RMS_Project
 
         public UserInterfaceForm.FunctionalType GetFunctionalType()
         {
-            return UserInterfaceForm.FunctionalType.Edit;
+            return type;
         }
 
         private void othersButton_Click(object sender, EventArgs e)
@@ -107,6 +96,16 @@ namespace RMS_Project
             if (_presentationModel.AddFormToPanel(traceabilityMatrixForm))
             {
                 _presentationModel.AddFormButtonToUserInterface(traceabilityMatrixForm, "Others", Properties.Resources.ios7_gear_outline);
+            }
+        }
+
+        private async void CheckPriority()
+        {
+            JObject jObject = await _presentationModel.GetPriority(_project.ID);
+            if (jObject["priority_type_name"].ToString().Equals("Owner"))
+            {
+                type = UserInterfaceForm.FunctionalType.Edit;
+                _presentationModel.SetFunctionalButton(type);
             }
         }
     }

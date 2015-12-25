@@ -1013,5 +1013,41 @@ namespace RMS_Project
                 return response;
             }
         }
+
+        public async Task<JObject> GetPriority(int projectId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "project/getUserListByProject/";
+                string url = BASE_URL + METHOD + projectId;
+                response = await httpClient.GetAsync(url);
+                string content = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    JObject json = JObject.Parse(content);
+                    string message = json["result"].ToString();
+                    JArray jsonArray = JArray.Parse(json["users"].ToString());
+                    if (message == "success")
+                    {
+                        for (int i = 0; i < jsonArray.Count; i++)
+                        {
+                            JObject jObject = jsonArray[i] as JObject;
+                            if (jObject["id"].ToString().Equals(_accountId.ToString()))
+                            {
+                                return jObject;
+                            }
+                        }
+                    }
+                }
+                throw new Exception("未找到使用者");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }
