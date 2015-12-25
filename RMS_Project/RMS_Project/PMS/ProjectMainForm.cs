@@ -29,6 +29,7 @@ namespace RMS_Project
         private void noFocusCueButton1_MouseMove(object sender, MouseEventArgs e)
         {
             Button button = sender as Button;
+            button.ForeColor = Color.CornflowerBlue;
             button.Image = _presentationModel.ChangeColor(new Bitmap(button.Image), Color.CornflowerBlue);
         }
 
@@ -36,6 +37,7 @@ namespace RMS_Project
         {
             Button button = sender as Button;
             button.Image = _presentationModel.ChangeColor(new Bitmap(button.Image), Color.Black);
+            button.ForeColor = Color.Black;
         }
 
         private void projectButton_Click(object sender, EventArgs e)
@@ -75,13 +77,8 @@ namespace RMS_Project
             TestListForm testListForm = new TestListForm(_presentationModel, _project);
             if (_presentationModel.AddFormToPanel(testListForm))
             {
-                _presentationModel.AddFormButtonToUserInterface(testListForm, "Tests", Properties.Resources.ios7_browsers_outline);
+                _presentationModel.AddFormButtonToUserInterface(testListForm, "Test Cases", Properties.Resources.ios7_browsers_outline);
             }
-        }
-
-        private void SetButtonColor(Button button)
-        {
-            button.Image = _presentationModel.ChangeColor(new Bitmap(button.Image), Color.CornflowerBlue);
         }
 
         public void RefreshProjectDetail(Project project)
@@ -102,6 +99,15 @@ namespace RMS_Project
         public UserInterfaceForm.FunctionalType GetFunctionalType()
         {
             return UserInterfaceForm.FunctionalType.Edit;
+        }
+
+        private void othersButton_Click(object sender, EventArgs e)
+        {
+            OthersForm traceabilityMatrixForm = new OthersForm(_presentationModel, _project);
+            if (_presentationModel.AddFormToPanel(traceabilityMatrixForm))
+            {
+                _presentationModel.AddFormButtonToUserInterface(traceabilityMatrixForm, "Others", Properties.Resources.ios7_gear_outline);
+            }
         }
     }
 }

@@ -48,10 +48,10 @@ namespace RMS_Project
                     _userInterface.SetFunctionalButton(((FunctionalTypeInterface)form).GetFunctionalType());
                 return true;
             }
-            return false;
+            return true;
         }
 
-        public async Task<string> SignIn(JObject jObject)        
+        public async Task<string> SignIn(JObject jObject)
         {
             string status = await _model.SignIn(jObject);
             if (status == "success")
@@ -85,7 +85,7 @@ namespace RMS_Project
                 _userInterface.AddFormButtonToBar(form, name, image);
         }
 
-        
+
         public UserInterfaceForm UserInterface
         {
             get
@@ -188,6 +188,7 @@ namespace RMS_Project
                 return false;
             }
             Control topControl = null;
+            Control targetControl = null;
             if (_mainFormPanel.Controls.Count > 0)
             {
                 topControl = _mainFormPanel.Controls[_mainFormPanel.Controls.Count - 1];
@@ -198,7 +199,8 @@ namespace RMS_Project
             }
             if (_mainFormPanel.Controls.Count > 1)
             {
-                Util.Animate(_mainFormPanel.Controls[_mainFormPanel.Controls.Count - 2], Util.Effect.Slide, 500, 180);
+                targetControl = _mainFormPanel.Controls[_mainFormPanel.Controls.Count - 2];
+                Util.Animate(targetControl, Util.Effect.Slide, 500, 180);
                 waitForAnimation(500);
             }
             if (topControl != null)
@@ -209,6 +211,8 @@ namespace RMS_Project
                     _mainForm.BeginInvoke(mi, null);
                 });
             }
+            if (_userInterface != null && targetControl != null)
+                _userInterface.SetFunctionalButton(((FunctionalTypeInterface)targetControl).GetFunctionalType());
             return true;
         }
 
@@ -287,6 +291,16 @@ namespace RMS_Project
             return _model.UID;
         }
 
+        public async Task<NormalAttribute[]> GetProjectPriorityType()
+        {
+            return await _model.GetProjectPriorityType();
+        }
+
+        public async Task<string> DeleteUserFromProject(int projectId, int userId)
+        {
+            return await _model.DeleteUserFromProject(projectId, userId);
+        }
+
         public async Task<string> AddRequirement(JObject jObject)
         {
             return await _model.AddRequirement(jObject);
@@ -307,14 +321,24 @@ namespace RMS_Project
             return await _model.DeleteProject(projectId);
         }
 
+        public async Task<Project[]> GetManagedProjectListByUserId()
+        {
+            return await _model.GetManagedProjectListByUserId();
+        }
+
+        public async Task<Project[]> GetOwnedProjectListByUserId()
+        {
+            return await _model.GetOwnedProjectListByUserId();
+        }
+
         public async Task<HttpResponseMessage> GetProjectList()
         {
             return await _model.GetProjectList();
         }
 
-        public async Task<HttpResponseMessage> GetMethod(String method)
+        public async Task<HttpResponseMessage> GetRequirementMethod(String method)
         {
-            return await _model.GetMethod(method);
+            return await _model.GetRequirementMethod(method);
         }
 
         public async Task<HttpResponseMessage> AddUserToProject(JObject jObject)
@@ -332,19 +356,14 @@ namespace RMS_Project
             return await _model.DeleteRequirement(RequirementId);
         }
 
-        public async Task<string> AddTest(JObject jObject)
+        public async Task<string> EditTestCase(Test test)
         {
-            return null;
+            return await _model.EditTestCase(test);
         }
 
-        public async Task<string> EditTest(Test test)
+        public async Task<string> DeleteTestCase(int tsetId)
         {
-            return null;
-        }
-
-        public async Task<string> DeleteTest(int RTestId)
-        {
-            return null;
+            return await _model.DeleteTestCase(tsetId);
         }
 
         public async Task<string> AddTestCase(JObject jObject)
@@ -355,6 +374,41 @@ namespace RMS_Project
         public async Task<HttpResponseMessage> GetTestCaseListByRequirementId(int requirementId)
         {
             return await _model.GetTestCaseListByRequirementId(requirementId);
+        }
+
+        public async Task<HttpResponseMessage> GetTestCaseListByProjectId(int projectId)
+        {
+            return await _model.GetTestCaseListByProjectId(projectId);
+        }
+
+        public async Task<JArray> GetRequirementToRequirementRelationByProjectId(int projectId)
+        {
+            return await _model.GetRequirementToRequirementRelationByProjectId(projectId);
+        }
+
+        public async Task<JArray> GetRequirementToTestRelationByProjectId(int projectId)
+        {
+            return await _model.GetRequirementToTestRelationByProjectId(projectId);
+        }
+
+        public async Task<string> CreateRequirementToRequirementRelation(JObject jObject)
+        {
+            return await _model.CreateRequirementToRequirementRelation(jObject);
+        }
+
+        public async Task<string> CreateRequirementToTestRelation(JObject jObject)
+        {
+            return await _model.CreateRequirementToTestRelation(jObject);
+        }
+
+        public async Task<string> DeleteRequirementToRequirementRelationByProject(int projectId)
+        {
+            return await _model.DeleteRequirementToRequirementRelationByProject(projectId);
+        }
+
+        public async Task<string> DeleteRequirementToTestRelationByProject(int projectId)
+        {
+            return await _model.DeleteRequirementToTestRelationByProject(projectId);
         }
 
         public void ClickFunctionalButton()
@@ -394,7 +448,37 @@ namespace RMS_Project
                 TestEditorForm requirementEditorForm = new TestEditorForm(this, form.Test);
                 AddFormToPanel(requirementEditorForm);
             }
+            else if (control.GetType().Equals(typeof(OthersForm)))
+            {
+                OthersForm form = control as OthersForm;
+                form.ClickFunctionalButton();
+            }
+            else if (control.GetType().Equals(typeof(UserListForm)))
+            {
+                UserListForm form = control as UserListForm;
+                form.AddUser();
+            }
+        }
 
+        public User getUser(int id, string name)
+        {
+            User user = new User();
+            user.ID = id;
+            user.Name = name;
+            return user;
+        }
+
+        public NormalAttribute getRequirementAttribute(int id, string name)
+        {
+            NormalAttribute attribute = new NormalAttribute();
+            attribute.ID = id;
+            attribute.Name = name;
+            return attribute;
+        }
+
+        public void SetFunctionalButton(UserInterfaceForm.FunctionalType type)
+        {
+            _userInterface.SetFunctionalButton(type);
         }
     }
 }
