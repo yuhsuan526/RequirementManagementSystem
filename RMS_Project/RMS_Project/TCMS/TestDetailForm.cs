@@ -31,6 +31,8 @@ namespace RMS_Project
 
         public void RefreshTestDetail(Test test)
         {
+            
+            _test = test;
             GetTestCaseDetailInformation();
             GetRequirementByTestCaseId();
         }
@@ -42,6 +44,9 @@ namespace RMS_Project
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 JObject json = JObject.Parse(content);
+
+                //Console.WriteLine(json.ToString());
+
                 string message = json["result"].ToString();
                 JObject jsonObject = JObject.Parse(json["test_case"].ToString());
                 if (message == "success")
