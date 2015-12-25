@@ -118,7 +118,7 @@
             // 
             this._deleteColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this._deleteColumn.HeaderText = "Column3";
-            this._deleteColumn.Image = global::RMS_Project.Properties.Resources.ios7_close_empty;
+            this._deleteColumn.Image = global::RMS_Project.Properties.Resources.ios7_trash;
             this._deleteColumn.Name = "_deleteColumn";
             this._deleteColumn.ReadOnly = true;
             this._deleteColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
