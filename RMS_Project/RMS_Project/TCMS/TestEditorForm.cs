@@ -19,7 +19,7 @@ namespace RMS_Project
         private PresentationModel _presentationModel;
         private Project _project;
         private Test _test;
-
+        private JObject jsonObject;
         private List<Requirement> _requirementArrayList=new List<Requirement>();
         private List<int> _projectMemberArrayList=new List<int>();
         private int _selectedUserId;
@@ -70,6 +70,7 @@ namespace RMS_Project
             }
             if (temp != "")
                 temp = temp.Substring(0, temp.Length - 1);
+            jObject["pid"] = _project.ID;
             jObject["rid_list"] = temp;
             jObject["name"] = testNameTextBox.Text;
             jObject["description"] = descriptionRichTextBox.Text;
@@ -100,6 +101,7 @@ namespace RMS_Project
         {
             JObject jObject = new JObject();
             jObject["id"] = _test.ID.ToString();
+            jObject["pid"] = _test.ProjectID;
             jObject["name"] = testNameTextBox.Text;
             jObject["description"] = descriptionRichTextBox.Text;
             jObject["owner"] = _presentationModel.GetUID();
@@ -227,6 +229,13 @@ namespace RMS_Project
                         JObject jObject = jsonArray[i] as JObject;
                         ownerComboBox.Items.Add(new Item(Int32.Parse(jObject["id"].ToString()), jObject["name"].ToString()));
                         _projectMemberArrayList.Add(Int32.Parse(jObject["id"].ToString()));
+                        if (jsonObject != null)
+                        {
+                            JObject temp = JObject.Parse(jsonObject["owner"].ToString());
+                            string owner = temp["name"].ToString();
+                            if (owner == jObject["name"].ToString())
+                                ownerComboBox.SelectedItem = ownerComboBox.Items[i];
+                        }
                     }
                 }
             }
@@ -249,17 +258,26 @@ namespace RMS_Project
                 JObject json = JObject.Parse(content);
 
                 string message = json["result"].ToString();
-                JObject jsonObject = JObject.Parse(json["test_case"].ToString());
+                jsonObject = JObject.Parse(json["test_case"].ToString());
                 if (message == "success")
                 {
                     testNameTextBox.Text = jsonObject["name"].ToString();
                     inputDataTextBox.Text = jsonObject["input_data"].ToString();
                     expectedResultTextBox.Text = jsonObject["expected_result"].ToString();
                     descriptionRichTextBox.Text = jsonObject["description"].ToString();
-                    JObject temp = JObject.Parse(jsonObject["owner"].ToString());
-                    string owner = temp["name"].ToString();
-                    ownerComboBox.SelectedItem = owner;
-
+                    if (ownerComboBox.Items != null)
+                    {
+                        for (int i = 0; i < ownerComboBox.Items.Count; i++)
+                        {
+                            if (jsonObject != null)
+                            {
+                                JObject temp = JObject.Parse(jsonObject["owner"].ToString());
+                                string owner = temp["name"].ToString();
+                                if (owner.Equals(ownerComboBox.Items[i].ToString()))
+                                    ownerComboBox.SelectedItem = ownerComboBox.Items[i];
+                            }
+                        }
+                    }
                 }
             }
             else if (response.StatusCode == HttpStatusCode.RequestTimeout)
