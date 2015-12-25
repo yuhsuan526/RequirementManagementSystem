@@ -475,7 +475,10 @@ namespace RMS_Project
             attribute.Name = name;
             return attribute;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e00d251eab7bc2149c6bfc995f3a2f97e131cccf
         public void SetFunctionalButton(UserInterfaceForm.FunctionalType type)
         {
             _userInterface.SetFunctionalButton(type);
