@@ -138,7 +138,7 @@ namespace RMS_Project
             {
                 if (test.NAME.Contains(testSearchTextBox.Text.ToString()))
                 {
-                    this.testListDataGridView.Rows.Add(test.NAME, test.ID);
+                    this.testListDataGridView.Rows.Add(test.NAME);
                 }
             }
         }

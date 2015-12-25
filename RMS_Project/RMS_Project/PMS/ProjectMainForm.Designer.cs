@@ -149,13 +149,13 @@
             this._nameLabel.Name = "_nameLabel";
             this._nameLabel.Size = new System.Drawing.Size(346, 40);
             this._nameLabel.TabIndex = 1;
-            this._nameLabel.Text = "label1";
             this._nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // _descriptionText
             // 
             this._descriptionText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._descriptionText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._descriptionText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._descriptionText.Location = new System.Drawing.Point(358, 83);
             this._descriptionText.Multiline = true;
             this._descriptionText.Name = "_descriptionText";

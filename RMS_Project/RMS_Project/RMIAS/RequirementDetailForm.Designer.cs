@@ -63,7 +63,6 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewImageColumn();
             this.testEditorTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._commentDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._associatedTestListDataGridView)).BeginInit();
@@ -72,9 +71,9 @@
             // testEditorTableLayoutPanel
             // 
             this.testEditorTableLayoutPanel.ColumnCount = 5;
-            this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
             this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.testEditorTableLayoutPanel.Controls.Add(this._commentDataGridView, 1, 9);
@@ -143,8 +142,7 @@
             this._commentDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.Column2,
-            this.Column3,
-            this.Column4});
+            this.Column3});
             this.testEditorTableLayoutPanel.SetColumnSpan(this._commentDataGridView, 3);
             this._commentDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -156,7 +154,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this._commentDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this._commentDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._commentDataGridView.Location = new System.Drawing.Point(120, 302);
+            this._commentDataGridView.Location = new System.Drawing.Point(135, 302);
             this._commentDataGridView.Margin = new System.Windows.Forms.Padding(0);
             this._commentDataGridView.MultiSelect = false;
             this._commentDataGridView.Name = "_commentDataGridView";
@@ -179,18 +177,18 @@
             this._commentDataGridView.RowTemplate.Height = 30;
             this._commentDataGridView.RowTemplate.ReadOnly = true;
             this._commentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this._commentDataGridView.Size = new System.Drawing.Size(468, 199);
+            this._commentDataGridView.Size = new System.Drawing.Size(464, 199);
             this._commentDataGridView.TabIndex = 43;
             // 
             // inputDataLabel
             // 
             this.inputDataLabel.AutoSize = true;
             this.inputDataLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputDataLabel.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputDataLabel.Location = new System.Drawing.Point(241, 46);
+            this.inputDataLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputDataLabel.Location = new System.Drawing.Point(249, 46);
             this.inputDataLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.inputDataLabel.Name = "inputDataLabel";
-            this.inputDataLabel.Size = new System.Drawing.Size(46, 26);
+            this.inputDataLabel.Size = new System.Drawing.Size(66, 26);
             this.inputDataLabel.TabIndex = 6;
             this.inputDataLabel.Text = "Type";
             this.inputDataLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -199,10 +197,10 @@
             // 
             this.testNameLabel.AutoSize = true;
             this.testNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.testNameLabel.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.testNameLabel.Location = new System.Drawing.Point(242, 20);
+            this.testNameLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.testNameLabel.Location = new System.Drawing.Point(250, 20);
             this.testNameLabel.Name = "testNameLabel";
-            this.testNameLabel.Size = new System.Drawing.Size(44, 26);
+            this.testNameLabel.Size = new System.Drawing.Size(64, 26);
             this.testNameLabel.TabIndex = 0;
             this.testNameLabel.Text = "Name";
             this.testNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -211,11 +209,11 @@
             // 
             this.expectedResultLabel.AutoSize = true;
             this.expectedResultLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.expectedResultLabel.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.expectedResultLabel.Location = new System.Drawing.Point(241, 72);
+            this.expectedResultLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.expectedResultLabel.Location = new System.Drawing.Point(249, 72);
             this.expectedResultLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.expectedResultLabel.Name = "expectedResultLabel";
-            this.expectedResultLabel.Size = new System.Drawing.Size(46, 26);
+            this.expectedResultLabel.Size = new System.Drawing.Size(66, 26);
             this.expectedResultLabel.TabIndex = 10;
             this.expectedResultLabel.Text = "Owner";
             this.expectedResultLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -224,11 +222,11 @@
             // 
             this.ownerLabel.AutoSize = true;
             this.ownerLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ownerLabel.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ownerLabel.Location = new System.Drawing.Point(241, 98);
+            this.ownerLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ownerLabel.Location = new System.Drawing.Point(249, 98);
             this.ownerLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ownerLabel.Name = "ownerLabel";
-            this.ownerLabel.Size = new System.Drawing.Size(46, 26);
+            this.ownerLabel.Size = new System.Drawing.Size(66, 26);
             this.ownerLabel.TabIndex = 12;
             this.ownerLabel.Text = "Handler";
             this.ownerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -237,11 +235,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(52, 124);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 26);
+            this.label4.Size = new System.Drawing.Size(81, 26);
             this.label4.TabIndex = 9;
             this.label4.Text = "Description";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -250,10 +248,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(591, 20);
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(602, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(175, 26);
+            this.label3.Size = new System.Drawing.Size(164, 26);
             this.label3.TabIndex = 11;
             this.label3.Text = "Associated Tests";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -282,7 +280,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this._associatedTestListDataGridView.DefaultCellStyle = dataGridViewCellStyle5;
             this._associatedTestListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._associatedTestListDataGridView.Location = new System.Drawing.Point(588, 46);
+            this._associatedTestListDataGridView.Location = new System.Drawing.Point(599, 46);
             this._associatedTestListDataGridView.Margin = new System.Windows.Forms.Padding(0);
             this._associatedTestListDataGridView.MultiSelect = false;
             this._associatedTestListDataGridView.Name = "_associatedTestListDataGridView";
@@ -297,7 +295,7 @@
             this._associatedTestListDataGridView.RowTemplate.DividerHeight = 1;
             this._associatedTestListDataGridView.RowTemplate.Height = 50;
             this._associatedTestListDataGridView.RowTemplate.ReadOnly = true;
-            this._associatedTestListDataGridView.Size = new System.Drawing.Size(181, 455);
+            this._associatedTestListDataGridView.Size = new System.Drawing.Size(170, 455);
             this._associatedTestListDataGridView.TabIndex = 26;
             // 
             // Column1
@@ -314,21 +312,22 @@
             this.descriptionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.testEditorTableLayoutPanel.SetColumnSpan(this.descriptionTextBox, 3);
             this.descriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.descriptionTextBox.Location = new System.Drawing.Point(123, 153);
+            this.descriptionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionTextBox.Location = new System.Drawing.Point(138, 153);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.ReadOnly = true;
-            this.descriptionTextBox.Size = new System.Drawing.Size(462, 44);
+            this.descriptionTextBox.Size = new System.Drawing.Size(458, 44);
             this.descriptionTextBox.TabIndex = 27;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(53, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 26);
+            this.label1.Size = new System.Drawing.Size(79, 26);
             this.label1.TabIndex = 28;
             this.label1.Text = "ID";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -337,10 +336,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(53, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 26);
+            this.label2.Size = new System.Drawing.Size(79, 26);
             this.label2.TabIndex = 29;
             this.label2.Text = "Version";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -349,10 +348,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(53, 72);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 26);
+            this.label5.Size = new System.Drawing.Size(79, 26);
             this.label5.TabIndex = 30;
             this.label5.Text = "Priority";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -361,10 +360,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(53, 98);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 26);
+            this.label6.Size = new System.Drawing.Size(79, 26);
             this.label6.TabIndex = 31;
             this.label6.Text = "Status";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -373,9 +372,10 @@
             // 
             this.nameLabel.AutoSize = true;
             this.nameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nameLabel.Location = new System.Drawing.Point(292, 20);
+            this.nameLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.Location = new System.Drawing.Point(320, 20);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(293, 26);
+            this.nameLabel.Size = new System.Drawing.Size(276, 26);
             this.nameLabel.TabIndex = 32;
             this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -383,9 +383,10 @@
             // 
             this.idLabel.AutoSize = true;
             this.idLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.idLabel.Location = new System.Drawing.Point(123, 20);
+            this.idLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idLabel.Location = new System.Drawing.Point(138, 20);
             this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(113, 26);
+            this.idLabel.Size = new System.Drawing.Size(106, 26);
             this.idLabel.TabIndex = 33;
             this.idLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -393,9 +394,10 @@
             // 
             this.versionLabel.AutoSize = true;
             this.versionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.versionLabel.Location = new System.Drawing.Point(123, 46);
+            this.versionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.versionLabel.Location = new System.Drawing.Point(138, 46);
             this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(113, 26);
+            this.versionLabel.Size = new System.Drawing.Size(106, 26);
             this.versionLabel.TabIndex = 34;
             this.versionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -403,9 +405,10 @@
             // 
             this.priorityLabel.AutoSize = true;
             this.priorityLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.priorityLabel.Location = new System.Drawing.Point(123, 72);
+            this.priorityLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priorityLabel.Location = new System.Drawing.Point(138, 72);
             this.priorityLabel.Name = "priorityLabel";
-            this.priorityLabel.Size = new System.Drawing.Size(113, 26);
+            this.priorityLabel.Size = new System.Drawing.Size(106, 26);
             this.priorityLabel.TabIndex = 35;
             this.priorityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -413,9 +416,10 @@
             // 
             this.statusLabel.AutoSize = true;
             this.statusLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statusLabel.Location = new System.Drawing.Point(123, 98);
+            this.statusLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusLabel.Location = new System.Drawing.Point(138, 98);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(113, 26);
+            this.statusLabel.Size = new System.Drawing.Size(106, 26);
             this.statusLabel.TabIndex = 36;
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -423,9 +427,10 @@
             // 
             this.typeLabel.AutoSize = true;
             this.typeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.typeLabel.Location = new System.Drawing.Point(292, 46);
+            this.typeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.typeLabel.Location = new System.Drawing.Point(320, 46);
             this.typeLabel.Name = "typeLabel";
-            this.typeLabel.Size = new System.Drawing.Size(293, 26);
+            this.typeLabel.Size = new System.Drawing.Size(276, 26);
             this.typeLabel.TabIndex = 37;
             this.typeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -433,9 +438,10 @@
             // 
             this.requirementOwnerLabel.AutoSize = true;
             this.requirementOwnerLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.requirementOwnerLabel.Location = new System.Drawing.Point(292, 72);
+            this.requirementOwnerLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.requirementOwnerLabel.Location = new System.Drawing.Point(320, 72);
             this.requirementOwnerLabel.Name = "requirementOwnerLabel";
-            this.requirementOwnerLabel.Size = new System.Drawing.Size(293, 26);
+            this.requirementOwnerLabel.Size = new System.Drawing.Size(276, 26);
             this.requirementOwnerLabel.TabIndex = 38;
             this.requirementOwnerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -443,9 +449,10 @@
             // 
             this.handlerLabel.AutoSize = true;
             this.handlerLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.handlerLabel.Location = new System.Drawing.Point(292, 98);
+            this.handlerLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.handlerLabel.Location = new System.Drawing.Point(320, 98);
             this.handlerLabel.Name = "handlerLabel";
-            this.handlerLabel.Size = new System.Drawing.Size(293, 26);
+            this.handlerLabel.Size = new System.Drawing.Size(276, 26);
             this.handlerLabel.TabIndex = 39;
             this.handlerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -454,21 +461,22 @@
             this.memoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.testEditorTableLayoutPanel.SetColumnSpan(this.memoTextBox, 3);
             this.memoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memoTextBox.Location = new System.Drawing.Point(123, 229);
+            this.memoTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memoTextBox.Location = new System.Drawing.Point(138, 229);
             this.memoTextBox.Multiline = true;
             this.memoTextBox.Name = "memoTextBox";
             this.memoTextBox.ReadOnly = true;
-            this.memoTextBox.Size = new System.Drawing.Size(462, 44);
+            this.memoTextBox.Size = new System.Drawing.Size(458, 44);
             this.memoTextBox.TabIndex = 40;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(53, 200);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(64, 26);
+            this.label15.Size = new System.Drawing.Size(79, 26);
             this.label15.TabIndex = 41;
             this.label15.Text = "Memo";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -477,10 +485,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(53, 276);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 26);
+            this.label7.Size = new System.Drawing.Size(79, 26);
             this.label7.TabIndex = 42;
             this.label7.Text = "Comment";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -509,15 +517,6 @@
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             this.Column3.Width = 5;
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Image = global::RMS_Project.Properties.Resources.ios7_close_empty;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 5;
             // 
             // RequirementDetailForm
             // 
@@ -566,7 +565,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewImageColumn Column4;
 
 
 
