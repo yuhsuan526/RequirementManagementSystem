@@ -25,7 +25,6 @@ namespace RMS_Project
             _presentationModel = presentationModel;
             type = UserInterfaceForm.FunctionalType.Hide;
             RefreshRequirementDetail(requirement);
-            _commentDataGridView.Columns[3].Visible = false;
             CheckPriority();
         }
 
@@ -125,7 +124,6 @@ namespace RMS_Project
                 jObject["priority_type_name"].ToString().Equals("Manager"))
             {
                 type = UserInterfaceForm.FunctionalType.Edit;
-                _commentDataGridView.Columns[3].Visible = true;
                 _presentationModel.SetFunctionalButton(type);
             }
         }

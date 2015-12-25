@@ -34,6 +34,42 @@ namespace RMS_Project
             _functionalType = UserInterfaceForm.FunctionalType.Hide;
             type = UserInterfaceForm.FunctionalType.Hide;
             GetRequirementByProject();
+            GetNoAssociatedTestCaseByProjectId();
+            GetNoAssociatedRequirementByProjectId();
+        }
+
+        public async void GetNoAssociatedTestCaseByProjectId()
+        {
+            try
+            {
+                Requirement[] requirements = await _presentationModel.GetNoAssociatedRequirementByProjectId(_project.ID);
+                _noAssociatedRequirementDataGridView.Rows.Clear();
+                foreach(Requirement requirement in requirements)
+                {
+                    _noAssociatedRequirementDataGridView.Rows.Add(requirement.Name, requirement.Status.Name);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        public async void GetNoAssociatedRequirementByProjectId()
+        {
+            try
+            {
+                Test[] tests = await _presentationModel.GetNoAssociatedTestCaseByProjectId(_project.ID);
+                _noAssociatedTestCaseDataGridView.Rows.Clear();
+                foreach(Test test in tests)
+                {
+                    _noAssociatedTestCaseDataGridView.Rows.Add(test.NAME);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void CreateDataGridViewCell(DataGridView dataGridView, string[] rows, string[] columns, bool readOnly)
@@ -173,6 +209,16 @@ namespace RMS_Project
                         if (chk.Value == chk.TrueValue)
                         {
                             _maxCount++;
+                        }
+                    }
+                }
+                for (int i = 0; i < _RtoTDataGridView.Rows.Count; i++)
+                {
+                    for (int j = 0; j < _RtoTDataGridView.Columns.Count - 1; j++)
+                    {
+                        DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)_RtoTDataGridView.Rows[i].Cells[1 + j];
+                        if (chk.Value == chk.TrueValue)
+                        {
                             JObject jObject = new JObject();
                             jObject["rid"] = _requirements[i].ID;
                             jObject["tid"] = _tests[j].ID;
@@ -181,10 +227,14 @@ namespace RMS_Project
                         }
                     }
                 }
+                if (_maxCount == 0)
+                {
+                    MessageBox.Show("修改成功", "Success", MessageBoxButtons.OK);
+                }
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+                MessageBox.Show(e.Message, "Error3", MessageBoxButtons.OK);
             }
         }
 

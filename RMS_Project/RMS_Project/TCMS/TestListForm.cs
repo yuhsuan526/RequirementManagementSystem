@@ -20,6 +20,7 @@ namespace RMS_Project
         private Project _project;
         private Test _test;
         private ArrayList _arrayList;
+        private UserInterfaceForm.FunctionalType type;
 
         public TestListForm(PresentationModel presentationModel, Project project)
         {
@@ -27,18 +28,12 @@ namespace RMS_Project
             this._presentationModel = presentationModel;
             this._project = project;
             _arrayList = new ArrayList();
+            type = UserInterfaceForm.FunctionalType.Hide;
+            testListDataGridView.Columns[2].Visible = false;
             RefreshTestList();
+            CheckPriority();
         }
-        /*
-        public TestListForm(PresentationModel presentationModel, Test test)
-        {
-            InitializeComponent();
-            this._presentationModel = presentationModel;
-            this._test = test;
-            _arrayList = new ArrayList();
-            RefreshTestList();
-        }
-        */
+
         public async void RefreshTestList()
         {
             /*int projectId;
@@ -50,13 +45,14 @@ namespace RMS_Project
             {
                 JObject json = JObject.Parse(content);
                 string message = json["result"].ToString();
+                _arrayList = new ArrayList();
                 JArray jsonArray = JArray.Parse(json["test_case_list"].ToString());
                 if (message == "success")
                 {
                     this.testListDataGridView.Rows.Clear();
                     foreach (JObject jObject in jsonArray)
                     {
-                        this.testListDataGridView.Rows.Add(jObject["name"], jObject["id"]);
+                        this.testListDataGridView.Rows.Add(jObject["name"]);
                         Test test = new Test(int.Parse(jObject["id"].ToString()), _project.ID, jObject["name"].ToString(), jObject["description"].ToString());
                         _arrayList.Add(test);
                     }
@@ -120,7 +116,31 @@ namespace RMS_Project
 
         public UserInterfaceForm.FunctionalType GetFunctionalType()
         {
-            return UserInterfaceForm.FunctionalType.New;
+            return type;
+        }
+
+        private async void CheckPriority()
+        {
+            JObject jObject = await _presentationModel.GetPriority(_project.ID);
+            if (jObject["priority_type_name"].ToString().Equals("Owner") ||
+                jObject["priority_type_name"].ToString().Equals("Manager"))
+            {
+                type = UserInterfaceForm.FunctionalType.New;
+                testListDataGridView.Columns[2].Visible = true;
+                _presentationModel.SetFunctionalButton(type);
+            }
+        }
+
+        private void testSearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            testListDataGridView.Rows.Clear();
+            foreach (Test test in _arrayList)
+            {
+                if (test.NAME.Contains(testSearchTextBox.Text.ToString()))
+                {
+                    this.testListDataGridView.Rows.Add(test.NAME);
+                }
+            }
         }
     }
 }

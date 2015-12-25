@@ -19,11 +19,11 @@ namespace RMS_Project
         private PresentationModel _presentationModel;
         private Project _project;
         private Test _test;
-
-        private List<Requirement> _requirementArrayList=new List<Requirement>();
-        private List<int> _projectMemberArrayList=new List<int>();
+        private JObject jsonObject;
+        private List<Requirement> _requirementArrayList = new List<Requirement>();
+        private List<int> _projectMemberArrayList = new List<int>();
         private int _selectedUserId;
-        private List<int> _selectedRequirementId=new List<int>();
+        private List<int> _selectedRequirementId = new List<int>();
 
         public TestEditorForm(PresentationModel presentationModel, Project project)
         {
@@ -41,7 +41,7 @@ namespace RMS_Project
             _test = test;
 
             _presentationModel = presentationModel;
-            GetRequirementByTest();
+            GetRequirementByProject();
             GetUserListByTest();
             GetTestCaseDetailInformation();
         }
@@ -70,10 +70,11 @@ namespace RMS_Project
             }
             if (temp != "")
                 temp = temp.Substring(0, temp.Length - 1);
+            jObject["pid"] = _project.ID;
             jObject["rid_list"] = temp;
             jObject["name"] = testNameTextBox.Text;
             jObject["description"] = descriptionRichTextBox.Text;
-            jObject["owner"] =_presentationModel.GetUID();
+            jObject["owner"] = _presentationModel.GetUID();
             jObject["asigned_as"] = _selectedUserId;
             jObject["input_data"] = inputDataTextBox.Text;
             jObject["expected_result"] = expectedResultTextBox.Text;
@@ -100,6 +101,7 @@ namespace RMS_Project
         {
             JObject jObject = new JObject();
             jObject["id"] = _test.ID.ToString();
+            jObject["pid"] = _test.ProjectID;
             jObject["name"] = testNameTextBox.Text;
             jObject["description"] = descriptionRichTextBox.Text;
             jObject["owner"] = _presentationModel.GetUID();
@@ -116,8 +118,6 @@ namespace RMS_Project
                 temp = temp.Substring(0, temp.Length - 1);
             jObject["rid_list"] = temp;
             jObject["finished"] = 0;
-
-            //Console.WriteLine(jObject);
 
             string status = await _presentationModel.EditTestCase(jObject);
             if (status == "success")
@@ -144,14 +144,52 @@ namespace RMS_Project
 
         private async void GetRequirementByProject()
         {
-            HttpResponseMessage response = await _presentationModel.GetRequirementByProject(_project.ID.ToString());
-            GetRequirementByResponse(response);
+            HttpResponseMessage response;
+            if (_project != null)
+            {
+                response = await _presentationModel.GetRequirementByProject(_project.ID.ToString());
+                GetRequirementByResponse(response);
+            }
+            else
+            {
+                response = await _presentationModel.GetRequirementByProject(_test.ProjectID.ToString());
+                GetRequirementByResponse(response);
+                GetRequirementByTest();
+            }
         }
 
         private async void GetRequirementByTest()
         {
-            HttpResponseMessage response = await _presentationModel.GetRequirementByProject(_test.ProjectID.ToString());
-            GetRequirementByResponse(response);
+            HttpResponseMessage response = await _presentationModel.GetRequirementByTestCaseId(_test.ID);
+            string content = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                JObject json = JObject.Parse(content);
+                string message = json["result"].ToString();
+                JArray jsonArray = JArray.Parse(json["requirements"].ToString());
+                if (message == "success")
+                {
+                    foreach (JObject jObject in jsonArray)
+                    {
+                        string name = jObject["name"].ToString();
+                        for (int i = 0; i < checkedListBox.Items.Count; i++)
+                        {
+                            if (name.Equals(checkedListBox.Items[i].ToString()))
+                            {
+                                checkedListBox.SetItemChecked(i, true);
+                            }
+                        }
+                    }
+                }
+            }
+            else if (response.StatusCode == HttpStatusCode.RequestTimeout)
+            {
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
+            }
         }
 
         private async void GetRequirementByResponse(HttpResponseMessage response)
@@ -169,8 +207,6 @@ namespace RMS_Project
                     foreach (JObject jObject in jsonArray)
                     {
                         this.checkedListBox.Items.Add(new Item((int)jObject["id"], jObject["name"].ToString()));
-
-                        //Console.WriteLine(jObject["name"]);
                         JObject jOwner = jObject["owner"] as JObject;
                         JObject jHandler = jObject["handler"] as JObject;
                         JObject jType = jObject["requirement_type"] as JObject;
@@ -227,6 +263,18 @@ namespace RMS_Project
                         JObject jObject = jsonArray[i] as JObject;
                         ownerComboBox.Items.Add(new Item(Int32.Parse(jObject["id"].ToString()), jObject["name"].ToString()));
                         _projectMemberArrayList.Add(Int32.Parse(jObject["id"].ToString()));
+                        if (jsonObject != null)
+                        {
+                            JObject temp = JObject.Parse(jsonObject["owner"].ToString());
+                            string owner = temp["name"].ToString();
+                            if (owner == jObject["name"].ToString())
+                                ownerComboBox.SelectedItem = ownerComboBox.Items[i];
+                        }
+                    }
+                    if (_test == null)
+                    {
+                        if (jsonArray.Count > 0)
+                            ownerComboBox.SelectedItem = ownerComboBox.Items[0];
                     }
                 }
             }
@@ -249,17 +297,31 @@ namespace RMS_Project
                 JObject json = JObject.Parse(content);
 
                 string message = json["result"].ToString();
-                JObject jsonObject = JObject.Parse(json["test_case"].ToString());
+                jsonObject = JObject.Parse(json["test_case"].ToString());
                 if (message == "success")
                 {
                     testNameTextBox.Text = jsonObject["name"].ToString();
                     inputDataTextBox.Text = jsonObject["input_data"].ToString();
                     expectedResultTextBox.Text = jsonObject["expected_result"].ToString();
                     descriptionRichTextBox.Text = jsonObject["description"].ToString();
-                    JObject temp = JObject.Parse(jsonObject["owner"].ToString());
-                    string owner = temp["name"].ToString();
-                    ownerComboBox.SelectedItem = owner;
-
+                    if (ownerComboBox.Items != null)
+                    {
+                        for (int i = 0; i < ownerComboBox.Items.Count; i++)
+                        {
+                            if (_test == null)
+                            {
+                                ownerComboBox.SelectedItem = ownerComboBox.Items[0];
+                                break;
+                            }
+                            if (jsonObject != null)
+                            {
+                                JObject temp = JObject.Parse(jsonObject["owner"].ToString());
+                                string owner = temp["name"].ToString();
+                                if (owner.Equals(ownerComboBox.Items[i].ToString()))
+                                    ownerComboBox.SelectedItem = ownerComboBox.Items[i];
+                            }
+                        }
+                    }
                 }
             }
             else if (response.StatusCode == HttpStatusCode.RequestTimeout)

@@ -11,6 +11,17 @@ namespace RMS_Project
         int _id;
         string _name;
 
+        public User()
+        {
+
+        }
+
+        public User(int id, string name)
+        {
+            this._id = id;
+            this._name = name;
+        }
+
         public int ID
         {
             get
