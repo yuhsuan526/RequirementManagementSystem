@@ -311,7 +311,7 @@ namespace RMS_Project
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     JObject json = JObject.Parse(content);
-                    Console.WriteLine(json.ToString());
+                    //Console.WriteLine(json.ToString());
                     string message = json["result"].ToString();
                     if (message == "success")
                     {
@@ -596,9 +596,38 @@ namespace RMS_Project
             }
         }
 
-        public async Task<string> EditTestCase(Test test)
+        public async Task<string> EditTestCase(JObject jObject)
         {
-            return null;
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "test_case/update";
+                string url = BASE_URL + METHOD;
+                response = await httpClient.PostAsync(url, new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
+                string content = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    JObject json = JObject.Parse(content);
+                    string message = json["result"].ToString();
+                    if (message == "success")
+                    {
+                        return message;
+                    }
+                    else
+                    {
+                        return "測試案例修改失敗";
+                    }
+                }
+                else
+                {
+                    return "測試案例修改失敗";
+                }
+            }
+            catch (HttpRequestException)
+            {
+                return "伺服器無回應";
+            }
         }
 
         public async Task<string> DeleteTestCase(int tsetId)
@@ -879,7 +908,7 @@ namespace RMS_Project
                     throw new Exception("新增失敗");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new Exception("伺服器無回應");
             }

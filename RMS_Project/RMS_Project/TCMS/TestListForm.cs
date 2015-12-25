@@ -43,7 +43,7 @@ namespace RMS_Project
         {
             int projectId;
             projectId = (_project != null) ? _project.ID : _test.ProjectID;
-            Console.WriteLine(projectId);
+            //Console.WriteLine(projectId);
             HttpResponseMessage response = await _presentationModel.GetTestCaseListByProjectId(projectId);
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
@@ -88,14 +88,14 @@ namespace RMS_Project
 
         private void testListDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine("IN");
+            //Console.WriteLine("IN");
             var senderGrid = (DataGridView)sender;
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewImageColumn &&
                 e.RowIndex >= 0)
             {
                 //TODO - Button Clicked - Execute Code Here
-                Console.WriteLine("按下刪除:" + e.RowIndex);
+                //Console.WriteLine("按下刪除:" + e.RowIndex);
                 Test test = _arrayList[e.RowIndex] as Test;
                 DeleteTestCase(test.ID);
             }
@@ -104,7 +104,7 @@ namespace RMS_Project
                 DataGridViewCell cell = testListDataGridView.Rows[e.RowIndex].Cells[0];
                 Test test = _arrayList[e.RowIndex] as Test;
                 Form form = new TestDetailForm(_presentationModel,test);
-                Console.WriteLine("...................");
+                //Console.WriteLine("...................");
                 if (_presentationModel.AddFormToPanel(form))
                     _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_paper_outline);
             }

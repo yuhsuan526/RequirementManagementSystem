@@ -68,7 +68,7 @@ namespace RMS_Project
             {
                 this._yourProjectListDataGridView.Rows.Clear();
                 _ownedProjects = await _presentationModel.GetOwnedProjectListByUserId();
-                Console.WriteLine("count:" + _ownedProjects.Length);
+                //Console.WriteLine("count:" + _ownedProjects.Length);
                 foreach (Project project in _ownedProjects)
                 {
                     this._yourProjectListDataGridView.Rows.Add(project.NAME);
@@ -124,7 +124,7 @@ namespace RMS_Project
                 e.RowIndex >= 0)
             {
                 //TODO - Button Clicked - Execute Code Here
-                Console.WriteLine("按下刪除:" + e.RowIndex);
+                //Console.WriteLine("按下刪除:" + e.RowIndex);
                 DeleteProject(_managedProjects[e.RowIndex].ID);
             }
             else
@@ -159,7 +159,7 @@ namespace RMS_Project
                 e.RowIndex >= 0)
             {
                 //TODO - Button Clicked - Execute Code Here
-                Console.WriteLine("按下刪除:" + e.RowIndex);
+                //Console.WriteLine("按下刪除:" + e.RowIndex);
                 DeleteProject(_ownedProjects[e.RowIndex].ID);
             }
             else

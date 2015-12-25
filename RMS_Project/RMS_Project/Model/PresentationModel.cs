@@ -361,9 +361,9 @@ namespace RMS_Project
             return await _model.DeleteRequirement(RequirementId);
         }
 
-        public async Task<string> EditTestCase(Test test)
+        public async Task<string> EditTestCase(JObject jObject)
         {
-            return await _model.EditTestCase(test);
+            return await _model.EditTestCase(jObject);
         }
 
         public async Task<string> DeleteTestCase(int tsetId)
