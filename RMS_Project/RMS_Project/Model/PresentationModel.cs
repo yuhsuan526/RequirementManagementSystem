@@ -460,7 +460,6 @@ namespace RMS_Project
             }
         }
 
-<<<<<<< HEAD
         public User getUser(int id, string name)
         {
             User user = new User();
@@ -475,11 +474,10 @@ namespace RMS_Project
             attribute.ID = id;
             attribute.Name = name;
             return attribute;
-=======
+        }
         public void SetFunctionalButton(UserInterfaceForm.FunctionalType type)
         {
             _userInterface.SetFunctionalButton(type);
->>>>>>> 577b6c03d758fdd6f13351db675e8e2c1ca55d32
         }
     }
 }
