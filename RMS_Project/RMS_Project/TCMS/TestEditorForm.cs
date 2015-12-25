@@ -119,7 +119,7 @@ namespace RMS_Project
                         handler.Name = jHandler["name"].ToString();
                         Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), owner, handler,
                             jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(),
-                            (int)jObject["requirement_type_id"], (int)jObject["priority_type_id"], (int)jObject["status_type_id"]);
+                            null,null,null);
                         _requirementArrayList.Add(requirement);
                     }
                 }

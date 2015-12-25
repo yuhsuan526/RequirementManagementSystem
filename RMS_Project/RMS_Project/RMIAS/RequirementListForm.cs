@@ -46,17 +46,19 @@ namespace RMS_Project
                     foreach (JObject jObject in jsonArray)
                     {
                         this.requirementListDataGridView.Rows.Add(jObject["name"], jObject["updated_at"]);
-                        User owner = new User();
-                        User handler = new User();
                         JObject jOwner = jObject["owner"] as JObject;
-                        owner.ID = (int)jOwner["id"];
-                        owner.Name = jOwner["name"].ToString();
                         JObject jHandler = jObject["handler"] as JObject;
-                        handler.ID = (int)jHandler["id"];
-                        handler.Name = jHandler["name"].ToString();
+                        JObject jType = jObject["requirement_type"] as JObject;
+                        JObject jPriority = jObject["priority_type"] as JObject;
+                        JObject jStatus = jObject["status_type"] as JObject;
+                        User owner = _presentationModel.getUser((int)jOwner["id"], jOwner["name"].ToString());
+                        User handler = _presentationModel.getUser((int)jHandler["id"], jHandler["name"].ToString());
+                        NormalAttribute type = _presentationModel.getRequirementAttribute((int)jType["id"], jType["name"].ToString());
+                        NormalAttribute priority = _presentationModel.getRequirementAttribute((int)jPriority["id"], jPriority["name"].ToString());
+                        NormalAttribute status = _presentationModel.getRequirementAttribute((int)jStatus["id"], jStatus["name"].ToString());
                         Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), owner, handler,
                             jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(),
-                            (int)jObject["requirement_type_id"], (int)jObject["priority_type_id"], (int)jObject["status_type_id"]);
+                            type, priority, status);
                         _arrayList.Add(requirement);
                     }
                 }
@@ -101,7 +103,7 @@ namespace RMS_Project
             {
                 DataGridViewCell cell = requirementListDataGridView.Rows[e.RowIndex].Cells[0];
                 Requirement requirement = _arrayList[e.RowIndex] as Requirement;
-                Form form = new RequirementDetailForm(requirement);
+                Form form = new RequirementDetailForm(_presentationModel, requirement);
                 if (_presentationModel.AddFormToPanel(form))
                     _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_paper_outline);
             }
@@ -126,20 +128,23 @@ namespace RMS_Project
                     if (message == "success")
                     {
                         this.requirementListDataGridView.Rows.Clear();
+                        _arrayList = new ArrayList();
                         foreach (JObject jObject in jsonArray)
                         {
                             this.requirementListDataGridView.Rows.Add(jObject["name"]);
-                            User owner = new User();
-                            User handler = new User();
                             JObject jOwner = jObject["owner"] as JObject;
-                            owner.ID = (int)jOwner["id"];
-                            owner.Name = jOwner["name"].ToString();
                             JObject jHandler = jObject["handler"] as JObject;
-                            handler.ID = (int)jHandler["id"];
-                            handler.Name = jHandler["name"].ToString();
+                            JObject jType = jObject["requirement_type"] as JObject;
+                            JObject jPriority = jObject["priority_type"] as JObject;
+                            JObject jStatus = jObject["status_type"] as JObject;
+                            User owner = _presentationModel.getUser((int)jOwner["id"], jOwner["name"].ToString());
+                            User handler = _presentationModel.getUser((int)jHandler["id"], jHandler["name"].ToString());
+                            NormalAttribute type = _presentationModel.getRequirementAttribute((int)jType["id"], jType["name"].ToString());
+                            NormalAttribute priority = _presentationModel.getRequirementAttribute((int)jPriority["id"],jPriority["name"].ToString());
+                            NormalAttribute status = _presentationModel.getRequirementAttribute((int)jStatus["id"], jStatus["name"].ToString());
                             Requirement requirement = new Requirement((int)jObject["id"], _project.ID, jObject["name"].ToString(), owner, handler,
                                 jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(),
-                                (int)jObject["requirement_type_id"], (int)jObject["priority_type_id"], (int)jObject["status_type_id"]);
+                                type, priority, status);
                             _arrayList.Add(requirement);
                         }
                     }
