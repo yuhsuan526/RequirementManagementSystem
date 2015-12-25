@@ -209,6 +209,16 @@ namespace RMS_Project
                         if (chk.Value == chk.TrueValue)
                         {
                             _maxCount++;
+                        }
+                    }
+                }
+                for (int i = 0; i < _RtoTDataGridView.Rows.Count; i++)
+                {
+                    for (int j = 0; j < _RtoTDataGridView.Columns.Count - 1; j++)
+                    {
+                        DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)_RtoTDataGridView.Rows[i].Cells[1 + j];
+                        if (chk.Value == chk.TrueValue)
+                        {
                             JObject jObject = new JObject();
                             jObject["rid"] = _requirements[i].ID;
                             jObject["tid"] = _tests[j].ID;
@@ -217,10 +227,14 @@ namespace RMS_Project
                         }
                     }
                 }
+                if (_maxCount == 0)
+                {
+                    MessageBox.Show("修改成功", "Success", MessageBoxButtons.OK);
+                }
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+                MessageBox.Show(e.Message, "Error3", MessageBoxButtons.OK);
             }
         }
 
