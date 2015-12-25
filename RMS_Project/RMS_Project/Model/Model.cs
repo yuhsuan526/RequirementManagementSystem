@@ -108,7 +108,7 @@ namespace RMS_Project
             _username = "";
         }
 
-        public async Task<Priority[]> GetProjectPriorityType()
+        public async Task<NormalAttribute[]> GetProjectPriorityType()
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response;
@@ -120,11 +120,11 @@ namespace RMS_Project
                 response = await httpClient.GetAsync(url);
                 string content = await response.Content.ReadAsStringAsync();
                 JArray array = JArray.Parse(content);
-                Priority[] priorities = new Priority[array.Count];
+                NormalAttribute[] priorities = new NormalAttribute[array.Count];
                 for(int i = 0; i < array.Count; i++)
                 {
                     JObject jObject = (JObject)array[i];
-                    Priority priority = new Priority();
+                    NormalAttribute priority = new NormalAttribute();
                     priority.ID = int.Parse(jObject["id"].ToString());
                     priority.Name = jObject["name"].ToString();
                     priorities[i] = priority;

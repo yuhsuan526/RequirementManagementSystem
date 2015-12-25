@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RMS_Project
 {
-    public class Priority
+    public class NormalAttribute
     {
         int _id;
         string _name;

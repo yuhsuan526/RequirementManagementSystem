@@ -291,7 +291,7 @@ namespace RMS_Project
             return _model.UID;
         }
 
-        public async Task<Priority[]> GetProjectPriorityType()
+        public async Task<NormalAttribute[]> GetProjectPriorityType()
         {
             return await _model.GetProjectPriorityType();
         }

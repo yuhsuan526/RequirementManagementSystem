@@ -19,7 +19,7 @@ namespace RMS_Project
         private Project _project;
         private PresentationModel _presentationModel;
         private ArrayList _arrayList;
-        private Priority[] _priorities;
+        private NormalAttribute[] _priorities;
 
         public UserListForm(PresentationModel presentationModel, Project project)
         {
@@ -35,7 +35,7 @@ namespace RMS_Project
         private async void GetProjectPriorityType()
         {
             _priorities = await _presentationModel.GetProjectPriorityType();
-            foreach (Priority priority in _priorities)
+            foreach (NormalAttribute priority in _priorities)
             {
                 _priorityComboBox.Items.Add(priority.Name);
             }
