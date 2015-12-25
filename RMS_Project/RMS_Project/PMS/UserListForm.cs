@@ -19,7 +19,7 @@ namespace RMS_Project
         private Project _project;
         private PresentationModel _presentationModel;
         private ArrayList _arrayList;
-        private Priority[] _priorities;
+        private NormalAttribute[] _priorities;
 
         public UserListForm(PresentationModel presentationModel, Project project)
         {
@@ -35,7 +35,7 @@ namespace RMS_Project
         private async void GetProjectPriorityType()
         {
             _priorities = await _presentationModel.GetProjectPriorityType();
-            foreach (Priority priority in _priorities)
+            foreach (NormalAttribute priority in _priorities)
             {
                 _priorityComboBox.Items.Add(priority.Name);
             }
@@ -99,7 +99,7 @@ namespace RMS_Project
             }
         }
 
-        private void addUserButton_Click(object sender, EventArgs e)
+        public void AddUser()
         {
             if (!userTextBox.Text.Equals(""))
                 AddUserToProject();
@@ -143,7 +143,7 @@ namespace RMS_Project
 
         public UserInterfaceForm.FunctionalType GetFunctionalType()
         {
-            return UserInterfaceForm.FunctionalType.Hide;
+            return UserInterfaceForm.FunctionalType.New;
         }
 
         private void _userListDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

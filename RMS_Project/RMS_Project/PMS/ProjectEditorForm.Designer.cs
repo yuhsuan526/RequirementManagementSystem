@@ -41,9 +41,10 @@
             // 
             this.confirmButton.AccessibleName = "Confirm";
             this.confirmButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.confirmButton.Location = new System.Drawing.Point(368, 347);
+            this.confirmButton.Location = new System.Drawing.Point(491, 434);
+            this.confirmButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.confirmButton.Name = "confirmButton";
-            this.confirmButton.Size = new System.Drawing.Size(102, 34);
+            this.confirmButton.Size = new System.Drawing.Size(135, 42);
             this.confirmButton.TabIndex = 3;
             this.confirmButton.Text = "Confirm";
             this.confirmButton.UseVisualStyleBackColor = true;
@@ -54,9 +55,10 @@
             this.nameTextBox.AccessibleName = "ProjectName";
             this.tableLayoutPanel.SetColumnSpan(this.nameTextBox, 4);
             this.nameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nameTextBox.Location = new System.Drawing.Point(53, 48);
+            this.nameTextBox.Location = new System.Drawing.Point(71, 60);
+            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(417, 22);
+            this.nameTextBox.Size = new System.Drawing.Size(555, 25);
             this.nameTextBox.TabIndex = 1;
             // 
             // label1
@@ -64,9 +66,10 @@
             this.label1.AutoSize = true;
             this.tableLayoutPanel.SetColumnSpan(this.label1, 4);
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(53, 20);
+            this.label1.Location = new System.Drawing.Point(71, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(417, 25);
+            this.label1.Size = new System.Drawing.Size(555, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Project Name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -76,9 +79,10 @@
             this.label2.AutoSize = true;
             this.tableLayoutPanel.SetColumnSpan(this.label2, 4);
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(53, 75);
+            this.label2.Location = new System.Drawing.Point(71, 94);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(417, 25);
+            this.label2.Size = new System.Drawing.Size(555, 31);
             this.label2.TabIndex = 6;
             this.label2.Text = "Description";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -101,16 +105,17 @@
             this.tableLayoutPanel.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
-            this.tableLayoutPanel.Padding = new System.Windows.Forms.Padding(50, 20, 50, 20);
+            this.tableLayoutPanel.Padding = new System.Windows.Forms.Padding(67, 25, 67, 25);
             this.tableLayoutPanel.RowCount = 6;
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(523, 404);
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel.Size = new System.Drawing.Size(697, 505);
             this.tableLayoutPanel.TabIndex = 1;
             // 
             // descriptionRichTextBox
@@ -118,19 +123,21 @@
             this.descriptionRichTextBox.AccessibleName = "ProjectDescription";
             this.tableLayoutPanel.SetColumnSpan(this.descriptionRichTextBox, 4);
             this.descriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.descriptionRichTextBox.Location = new System.Drawing.Point(53, 103);
+            this.descriptionRichTextBox.Location = new System.Drawing.Point(71, 129);
+            this.descriptionRichTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.descriptionRichTextBox.Name = "descriptionRichTextBox";
-            this.descriptionRichTextBox.Size = new System.Drawing.Size(417, 228);
+            this.descriptionRichTextBox.Size = new System.Drawing.Size(555, 285);
             this.descriptionRichTextBox.TabIndex = 2;
             this.descriptionRichTextBox.Text = "";
             // 
             // ProjectEditorForm
             // 
             this.AccessibleName = "ProjectEditorForm";
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(523, 404);
+            this.ClientSize = new System.Drawing.Size(697, 505);
             this.Controls.Add(this.tableLayoutPanel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ProjectEditorForm";
             this.Text = "ProjectEditorForm";
             this.tableLayoutPanel.ResumeLayout(false);

@@ -18,6 +18,7 @@ namespace RMS_Project
     {
         private PresentationModel _presentationModel;
         private Project _project;
+        private Test _test;
         private ArrayList _arrayList;
 
         public TestListForm(PresentationModel presentationModel, Project project)
@@ -29,9 +30,21 @@ namespace RMS_Project
             RefreshTestList();
         }
 
+        public TestListForm(PresentationModel presentationModel, Test test)
+        {
+            InitializeComponent();
+            this._presentationModel = presentationModel;
+            this._test = test;
+            _arrayList = new ArrayList();
+            RefreshTestList();
+        }
+
         public async void RefreshTestList()
         {
-            HttpResponseMessage response = await _presentationModel.GetTestCaseListByProjectId(_project.ID);
+            int projectId;
+            projectId = (_project != null) ? _project.ID : _test.ProjectID;
+            Console.WriteLine(projectId);
+            HttpResponseMessage response = await _presentationModel.GetTestCaseListByProjectId(projectId);
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -44,7 +57,7 @@ namespace RMS_Project
                     foreach (JObject jObject in jsonArray)
                     {
                         this.testListDataGridView.Rows.Add(jObject["name"], jObject["id"]);
-                        Test project = new Test(int.Parse(jObject["id"].ToString()), _project.ID, jObject["name"].ToString(), jObject["description"].ToString());
+                        Test project = new Test(int.Parse(jObject["id"].ToString()), projectId, jObject["name"].ToString(), jObject["description"].ToString());
                         _arrayList.Add(project);
                     }
                 }
@@ -59,14 +72,42 @@ namespace RMS_Project
             }
         }
 
-        void deleteButton_Click(object sender, EventArgs e)
+        public async void DeleteTestCase(int testCaseId)
         {
-
+            try
+            {
+                string message = await _presentationModel.DeleteTestCase(testCaseId);
+                RefreshTestList();
+                MessageBox.Show(message, "Success", MessageBoxButtons.OK);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void testListDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            Console.WriteLine("IN");
+            var senderGrid = (DataGridView)sender;
 
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewImageColumn &&
+                e.RowIndex >= 0)
+            {
+                //TODO - Button Clicked - Execute Code Here
+                Console.WriteLine("按下刪除:" + e.RowIndex);
+                Test test = _arrayList[e.RowIndex] as Test;
+                DeleteTestCase(test.ID);
+            }
+            else
+            {
+                DataGridViewCell cell = testListDataGridView.Rows[e.RowIndex].Cells[0];
+                Test test = _arrayList[e.RowIndex] as Test;
+                Form form = new TestDetailForm(_presentationModel,test);
+                Console.WriteLine("...................");
+                if (_presentationModel.AddFormToPanel(form))
+                    _presentationModel.AddFormButtonToUserInterface(form, cell.Value.ToString(), Properties.Resources.ios7_paper_outline);
+            }
         }
 
         public Project Project

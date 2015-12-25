@@ -77,7 +77,7 @@ namespace RMS_Project
             TestListForm testListForm = new TestListForm(_presentationModel, _project);
             if (_presentationModel.AddFormToPanel(testListForm))
             {
-                _presentationModel.AddFormButtonToUserInterface(testListForm, "Tests", Properties.Resources.ios7_browsers_outline);
+                _presentationModel.AddFormButtonToUserInterface(testListForm, "Test Cases", Properties.Resources.ios7_browsers_outline);
             }
         }
 
@@ -103,7 +103,7 @@ namespace RMS_Project
 
         private void othersButton_Click(object sender, EventArgs e)
         {
-            TraceabilityMatrixForm traceabilityMatrixForm = new TraceabilityMatrixForm(_presentationModel, _project);
+            OthersForm traceabilityMatrixForm = new OthersForm(_presentationModel, _project);
             if (_presentationModel.AddFormToPanel(traceabilityMatrixForm))
             {
                 _presentationModel.AddFormButtonToUserInterface(traceabilityMatrixForm, "Others", Properties.Resources.ios7_gear_outline);

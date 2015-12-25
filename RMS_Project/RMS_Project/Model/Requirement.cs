@@ -12,22 +12,29 @@ namespace RMS_Project
         private string _name;
         private string _description;
         private User _owner;
+        private User _handler;
         private string _version;
         private string _memo;
         private int _projectId;
-        private int _priorityTypeId;
-        private int _statusTypeId;
+        private NormalAttribute _type;
+        private NormalAttribute _priority;
+        private NormalAttribute _status;
         private int _createdAt;
         private int _updatedAt;
 
-        public Requirement(int id, int projectId, string name, string description, string version, string memo)
+        public Requirement(int id, int projectId, string name, User owner, User handler, string description, string version, string memo, NormalAttribute type, NormalAttribute priority, NormalAttribute status)
         {
             this._id = id;
             this._projectId = projectId;
             this._name = name;
+            this._owner = owner;
+            this._handler = handler;
             this._description = description;
             this._version = version;
             this._memo = memo;
+            this._type = type;
+            this._priority = priority;
+            this._status = status;
         }
 
         public int ID
@@ -44,6 +51,11 @@ namespace RMS_Project
             {
                 return _name;
             }
+            set
+            {
+
+                _name = value;
+            }
         }
 
         public string Description
@@ -51,6 +63,11 @@ namespace RMS_Project
             get
             {
                 return _description;
+            }
+            set
+            {
+
+                _description = value;
             }
         }
 
@@ -60,6 +77,22 @@ namespace RMS_Project
             {
                 return _owner;
             }
+            set
+            {
+                _owner = value;
+            }
+        }
+
+        public User Handler
+        {
+            get
+            {
+                return _handler;
+            }
+            set
+            {
+                _handler = value;
+            }
         }
 
         public string Version
@@ -67,6 +100,10 @@ namespace RMS_Project
             get
             {
                 return _version;
+            }
+            set
+            {
+                _version = value;
             }
         }
 
@@ -76,6 +113,10 @@ namespace RMS_Project
             {
                 return _memo;
             }
+            set
+            {
+                _memo = value;
+            }
         }
 
         public int ProjectID
@@ -84,24 +125,47 @@ namespace RMS_Project
             {
                 return _projectId;
             }
-        }
-
-        public int PriorityTypeId
-        {
-            get
+            set
             {
-                return _priorityTypeId;
+                _projectId = value;
             }
         }
-        private int StatusTypeId
+        public NormalAttribute Type
         {
             get
             {
-                return _statusTypeId;
+                return _type;
+            }
+            set
+            {
+                _type = value;
+            }
+        }
+
+        public NormalAttribute Priority
+        {
+            get
+            {
+                return _priority;
+            }
+            set
+            {
+                _priority = value;
+            }
+        }
+        public NormalAttribute Status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                _status = value;
             }
         }
         private int CreatedAt
-        { 
+        {
             get
             {
                 return _createdAt;
