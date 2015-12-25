@@ -34,7 +34,8 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this._commentColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this._deleteColumn = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.requirementListDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +55,8 @@
             this.requirementListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
-            this.Column3});
+            this._commentColumn,
+            this._deleteColumn});
             this.requirementListDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -101,16 +103,27 @@
             this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Column2.Width = 5;
             // 
-            // Column3
+            // _commentColumn
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Image = global::RMS_Project.Properties.Resources.ios7_close_empty;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column3.Width = 5;
+            this._commentColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this._commentColumn.HeaderText = "Column4";
+            this._commentColumn.Image = global::RMS_Project.Properties.Resources.ios7_compose;
+            this._commentColumn.Name = "_commentColumn";
+            this._commentColumn.ReadOnly = true;
+            this._commentColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this._commentColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this._commentColumn.Width = 5;
+            // 
+            // _deleteColumn
+            // 
+            this._deleteColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this._deleteColumn.HeaderText = "Column3";
+            this._deleteColumn.Image = global::RMS_Project.Properties.Resources.ios7_trash;
+            this._deleteColumn.Name = "_deleteColumn";
+            this._deleteColumn.ReadOnly = true;
+            this._deleteColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this._deleteColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this._deleteColumn.Width = 5;
             // 
             // RequirementListForm
             // 
@@ -134,7 +147,8 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewImageColumn Column3;
+        private System.Windows.Forms.DataGridViewImageColumn _commentColumn;
+        private System.Windows.Forms.DataGridViewImageColumn _deleteColumn;
 
 
     }

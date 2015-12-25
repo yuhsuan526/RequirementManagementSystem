@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TestListDataGridView = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.confirmButton = new System.Windows.Forms.Button();
@@ -41,11 +41,11 @@
             this._requirementListDataGridView = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.inputDataLabel = new System.Windows.Forms.Label();
+            this.idLabel = new System.Windows.Forms.Label();
             this.TestName = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.expectedResultLabel = new System.Windows.Forms.Label();
+            this.ownerLabel = new System.Windows.Forms.Label();
             this.descriptionRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TestListDataGridView)).BeginInit();
@@ -57,10 +57,10 @@
             // 
             this.TestListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TestListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TestListDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.TestListDataGridView.Location = new System.Drawing.Point(50, 15);
             this.TestListDataGridView.Name = "TestListDataGridView";
             this.TestListDataGridView.RowTemplate.Height = 24;
-            this.TestListDataGridView.Size = new System.Drawing.Size(620, 510);
+            this.TestListDataGridView.Size = new System.Drawing.Size(520, 480);
             this.TestListDataGridView.TabIndex = 1;
             // 
             // label2
@@ -73,14 +73,13 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Name：";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // confirmButton
             // 
             this.confirmButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.confirmButton.Location = new System.Drawing.Point(418, 473);
+            this.confirmButton.Location = new System.Drawing.Point(368, 443);
             this.confirmButton.Name = "confirmButton";
-            this.confirmButton.Size = new System.Drawing.Size(199, 34);
+            this.confirmButton.Size = new System.Drawing.Size(149, 34);
             this.confirmButton.TabIndex = 5;
             this.confirmButton.Text = "confirm";
             this.confirmButton.UseVisualStyleBackColor = true;
@@ -89,7 +88,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 309);
+            this.label4.Location = new System.Drawing.Point(3, 294);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(129, 12);
             this.label4.TabIndex = 9;
@@ -106,7 +105,6 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Input data：";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label3
             // 
@@ -139,23 +137,23 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this._requirementListDataGridView, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label10, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.inputDataLabel, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.idLabel, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.TestName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label11, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.expectedResultLabel, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label13, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.ownerLabel, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.descriptionRichTextBox, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.confirmButton, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.label1, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tableLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(50, 15);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
@@ -165,9 +163,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(620, 510);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(520, 480);
             this.tableLayoutPanel1.TabIndex = 2;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // _requirementListDataGridView
             // 
@@ -185,31 +182,31 @@
             this.Column1,
             this.Column3});
             this._requirementListDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._requirementListDataGridView.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._requirementListDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this._requirementListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._requirementListDataGridView.Location = new System.Drawing.Point(415, 40);
+            this._requirementListDataGridView.Location = new System.Drawing.Point(365, 40);
             this._requirementListDataGridView.Margin = new System.Windows.Forms.Padding(0);
             this._requirementListDataGridView.MultiSelect = false;
             this._requirementListDataGridView.Name = "_requirementListDataGridView";
             this._requirementListDataGridView.ReadOnly = true;
             this._requirementListDataGridView.RowHeadersVisible = false;
             this._requirementListDataGridView.RowHeadersWidth = 50;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._requirementListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._requirementListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.tableLayoutPanel1.SetRowSpan(this._requirementListDataGridView, 4);
             this._requirementListDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
             this._requirementListDataGridView.RowTemplate.DividerHeight = 1;
             this._requirementListDataGridView.RowTemplate.Height = 50;
             this._requirementListDataGridView.RowTemplate.ReadOnly = true;
-            this._requirementListDataGridView.Size = new System.Drawing.Size(205, 430);
+            this._requirementListDataGridView.Size = new System.Drawing.Size(155, 400);
             this._requirementListDataGridView.TabIndex = 31;
             // 
             // Column1
@@ -232,30 +229,30 @@
             this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Column3.Width = 5;
             // 
-            // label10
+            // inputDataLabel
             // 
-            this.label10.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.label10, 2);
-            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(138, 43);
-            this.label10.Margin = new System.Windows.Forms.Padding(3);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(274, 34);
-            this.label10.TabIndex = 23;
-            this.label10.Text = "label10";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.inputDataLabel.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.inputDataLabel, 2);
+            this.inputDataLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inputDataLabel.Location = new System.Drawing.Point(138, 43);
+            this.inputDataLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.inputDataLabel.Name = "inputDataLabel";
+            this.inputDataLabel.Size = new System.Drawing.Size(224, 34);
+            this.inputDataLabel.TabIndex = 23;
+            this.inputDataLabel.Text = "label10";
+            this.inputDataLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label8
+            // idLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(343, 3);
-            this.label8.Margin = new System.Windows.Forms.Padding(3);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 34);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "ID：1";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.idLabel.AutoSize = true;
+            this.idLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.idLabel.Location = new System.Drawing.Point(293, 3);
+            this.idLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(69, 34);
+            this.idLabel.TabIndex = 20;
+            this.idLabel.Text = "ID：1";
+            this.idLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TestName
             // 
@@ -264,36 +261,36 @@
             this.TestName.Location = new System.Drawing.Point(138, 3);
             this.TestName.Margin = new System.Windows.Forms.Padding(3);
             this.TestName.Name = "TestName";
-            this.TestName.Size = new System.Drawing.Size(199, 34);
+            this.TestName.Size = new System.Drawing.Size(149, 34);
             this.TestName.TabIndex = 21;
             this.TestName.Text = "TestName";
             this.TestName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label11
+            // expectedResultLabel
             // 
-            this.label11.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.label11, 2);
-            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(138, 83);
-            this.label11.Margin = new System.Windows.Forms.Padding(3);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(274, 34);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "label11";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.expectedResultLabel.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.expectedResultLabel, 2);
+            this.expectedResultLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.expectedResultLabel.Location = new System.Drawing.Point(138, 83);
+            this.expectedResultLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.expectedResultLabel.Name = "expectedResultLabel";
+            this.expectedResultLabel.Size = new System.Drawing.Size(224, 34);
+            this.expectedResultLabel.TabIndex = 24;
+            this.expectedResultLabel.Text = "label11";
+            this.expectedResultLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label13
+            // ownerLabel
             // 
-            this.label13.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.label13, 2);
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(138, 123);
-            this.label13.Margin = new System.Windows.Forms.Padding(3);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(274, 34);
-            this.label13.TabIndex = 26;
-            this.label13.Text = "label13";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ownerLabel.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.ownerLabel, 2);
+            this.ownerLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ownerLabel.Location = new System.Drawing.Point(138, 123);
+            this.ownerLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.ownerLabel.Name = "ownerLabel";
+            this.ownerLabel.Size = new System.Drawing.Size(224, 34);
+            this.ownerLabel.TabIndex = 26;
+            this.ownerLabel.Text = "label13";
+            this.ownerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // descriptionRichTextBox
             // 
@@ -302,7 +299,7 @@
             this.descriptionRichTextBox.Location = new System.Drawing.Point(138, 163);
             this.descriptionRichTextBox.Name = "descriptionRichTextBox";
             this.descriptionRichTextBox.ReadOnly = true;
-            this.descriptionRichTextBox.Size = new System.Drawing.Size(274, 304);
+            this.descriptionRichTextBox.Size = new System.Drawing.Size(224, 274);
             this.descriptionRichTextBox.TabIndex = 29;
             this.descriptionRichTextBox.Text = "";
             // 
@@ -310,9 +307,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(418, 0);
+            this.label1.Location = new System.Drawing.Point(368, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(199, 40);
+            this.label1.Size = new System.Drawing.Size(149, 40);
             this.label1.TabIndex = 32;
             this.label1.Text = "Associated requirements";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -325,6 +322,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.TestListDataGridView);
             this.Name = "TestDetailForm";
+            this.Padding = new System.Windows.Forms.Padding(50, 15, 50, 15);
             this.Text = "Test Detail";
             ((System.ComponentModel.ISupportInitialize)(this.TestListDataGridView)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -344,11 +342,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.Label TestName;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label inputDataLabel;
+        private System.Windows.Forms.Label expectedResultLabel;
+        private System.Windows.Forms.Label ownerLabel;
         private System.Windows.Forms.RichTextBox descriptionRichTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView _requirementListDataGridView;

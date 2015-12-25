@@ -291,6 +291,11 @@ namespace RMS_Project
             return _model.UID;
         }
 
+        public string GetUserName()
+        {
+            return _model.UserName;
+        }
+
         public async Task<NormalAttribute[]> GetProjectPriorityType()
         {
             return await _model.GetProjectPriorityType();
@@ -356,9 +361,9 @@ namespace RMS_Project
             return await _model.DeleteRequirement(RequirementId);
         }
 
-        public async Task<string> EditTestCase(Test test)
+        public async Task<string> EditTestCase(JObject jObject)
         {
-            return await _model.EditTestCase(test);
+            return await _model.EditTestCase(jObject);
         }
 
         public async Task<string> DeleteTestCase(int tsetId)
@@ -409,6 +414,16 @@ namespace RMS_Project
         public async Task<string> DeleteRequirementToTestRelationByProject(int projectId)
         {
             return await _model.DeleteRequirementToTestRelationByProject(projectId);
+        }
+
+        public async Task<HttpResponseMessage> GetTestCaseDetailInformationByTestCaseId(int testId)
+        {
+            return await _model.GetTestCaseDetailInformationByTestCaseId(testId);
+        }
+
+        public async Task<HttpResponseMessage> GetRequirementByTestCaseId(int testId)
+        {
+            return await _model.GetRequirementByTestCaseId(testId);
         }
 
         public void ClickFunctionalButton()
