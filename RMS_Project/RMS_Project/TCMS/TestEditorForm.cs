@@ -20,10 +20,10 @@ namespace RMS_Project
         private Project _project;
         private Test _test;
         private JObject jsonObject;
-        private List<Requirement> _requirementArrayList=new List<Requirement>();
-        private List<int> _projectMemberArrayList=new List<int>();
+        private List<Requirement> _requirementArrayList = new List<Requirement>();
+        private List<int> _projectMemberArrayList = new List<int>();
         private int _selectedUserId;
-        private List<int> _selectedRequirementId=new List<int>();
+        private List<int> _selectedRequirementId = new List<int>();
 
         public TestEditorForm(PresentationModel presentationModel, Project project)
         {
@@ -41,7 +41,7 @@ namespace RMS_Project
             _test = test;
 
             _presentationModel = presentationModel;
-            GetRequirementByTest();
+            GetRequirementByProject();
             GetUserListByTest();
             GetTestCaseDetailInformation();
         }
@@ -74,7 +74,7 @@ namespace RMS_Project
             jObject["rid_list"] = temp;
             jObject["name"] = testNameTextBox.Text;
             jObject["description"] = descriptionRichTextBox.Text;
-            jObject["owner"] =_presentationModel.GetUID();
+            jObject["owner"] = _presentationModel.GetUID();
             jObject["asigned_as"] = _selectedUserId;
             jObject["input_data"] = inputDataTextBox.Text;
             jObject["expected_result"] = expectedResultTextBox.Text;
@@ -119,8 +119,6 @@ namespace RMS_Project
             jObject["rid_list"] = temp;
             jObject["finished"] = 0;
 
-            //Console.WriteLine(jObject);
-
             string status = await _presentationModel.EditTestCase(jObject);
             if (status == "success")
             {
@@ -146,14 +144,52 @@ namespace RMS_Project
 
         private async void GetRequirementByProject()
         {
-            HttpResponseMessage response = await _presentationModel.GetRequirementByProject(_project.ID.ToString());
-            GetRequirementByResponse(response);
+            HttpResponseMessage response;
+            if (_project != null)
+            {
+                response = await _presentationModel.GetRequirementByProject(_project.ID.ToString());
+                GetRequirementByResponse(response);
+            }
+            else
+            {
+                response = await _presentationModel.GetRequirementByProject(_test.ProjectID.ToString());
+                GetRequirementByResponse(response);
+                GetRequirementByTest();
+            }
         }
 
         private async void GetRequirementByTest()
         {
-            HttpResponseMessage response = await _presentationModel.GetRequirementByProject(_test.ProjectID.ToString());
-            GetRequirementByResponse(response);
+            HttpResponseMessage response = await _presentationModel.GetRequirementByTestCaseId(_test.ID);
+            string content = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                JObject json = JObject.Parse(content);
+                string message = json["result"].ToString();
+                JArray jsonArray = JArray.Parse(json["requirements"].ToString());
+                if (message == "success")
+                {
+                    foreach (JObject jObject in jsonArray)
+                    {
+                        string name = jObject["name"].ToString();
+                        for (int i = 0; i < checkedListBox.Items.Count; i++)
+                        {
+                            if (name.Equals(checkedListBox.Items[i].ToString()))
+                            {
+                                checkedListBox.SetItemChecked(i, true);
+                            }
+                        }
+                    }
+                }
+            }
+            else if (response.StatusCode == HttpStatusCode.RequestTimeout)
+            {
+                MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
+            }
         }
 
         private async void GetRequirementByResponse(HttpResponseMessage response)
@@ -171,8 +207,6 @@ namespace RMS_Project
                     foreach (JObject jObject in jsonArray)
                     {
                         this.checkedListBox.Items.Add(new Item((int)jObject["id"], jObject["name"].ToString()));
-
-                        //Console.WriteLine(jObject["name"]);
                         JObject jOwner = jObject["owner"] as JObject;
                         JObject jHandler = jObject["handler"] as JObject;
                         JObject jType = jObject["requirement_type"] as JObject;
