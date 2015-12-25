@@ -82,6 +82,12 @@
     <Compile Include="Model\Requirement.cs" />
     <Compile Include="Model\Test.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="RMIAS\CommentEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RMIAS\CommentEditorForm.Designer.cs">
+      <DependentUpon>CommentEditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UGMS\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,9 @@
       <DependentUpon>UserListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Util.cs" />
+    <EmbeddedResource Include="RMIAS\CommentEditorForm.resx">
+      <DependentUpon>CommentEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UGMS\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
