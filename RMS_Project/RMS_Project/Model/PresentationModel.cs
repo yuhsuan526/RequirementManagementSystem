@@ -411,6 +411,16 @@ namespace RMS_Project
             return await _model.DeleteRequirementToTestRelationByProject(projectId);
         }
 
+        public async Task<HttpResponseMessage> GetTestCaseDetailInformationByTestCaseId(int testId)
+        {
+            return await _model.GetTestCaseDetailInformationByTestCaseId(testId);
+        }
+
+        public async Task<HttpResponseMessage> GetRequirementByTestCaseId(int testId)
+        {
+            return await _model.GetRequirementByTestCaseId(testId);
+        }
+
         public void ClickFunctionalButton()
         {
             Control control = GetCurrentFormInPanel();

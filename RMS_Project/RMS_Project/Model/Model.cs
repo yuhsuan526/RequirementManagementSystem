@@ -843,7 +843,7 @@ namespace RMS_Project
                     throw new Exception("新增失敗");
                 }
             }
-            catch (Exception e)
+            catch
             {
                 throw new Exception("伺服器無回應");
             }
@@ -882,6 +882,46 @@ namespace RMS_Project
             catch (Exception e)
             {
                 throw new Exception("伺服器無回應");
+            }
+        }
+
+        public async Task<HttpResponseMessage> GetTestCaseDetailInformationByTestCaseId(int testId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "test_case/getTestCaseByTestCaseId/";
+                string url = BASE_URL + METHOD + testId.ToString();
+                response = await httpClient.GetAsync(url);
+                return response;
+            }
+            catch (HttpRequestException)
+            {
+                response = new HttpResponseMessage();
+                response.StatusCode = HttpStatusCode.RequestTimeout;
+                return response;
+            }
+        }
+
+        public async Task<HttpResponseMessage> GetRequirementByTestCaseId(int testId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "requirement/getRequirementListByTestCaseId/";
+                string url = BASE_URL + METHOD + testId.ToString();
+                response = await httpClient.GetAsync(url);
+                return response;
+            }
+            catch (HttpRequestException)
+            {
+                response = new HttpResponseMessage();
+                response.StatusCode = HttpStatusCode.RequestTimeout;
+                return response;
             }
         }
     }
