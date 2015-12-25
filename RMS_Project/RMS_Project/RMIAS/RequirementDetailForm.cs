@@ -17,15 +17,16 @@ namespace RMS_Project
     {
         private PresentationModel _presentationModel;
         private Requirement _requirement;
+        private UserInterfaceForm.FunctionalType type;
 
         public RequirementDetailForm(PresentationModel presentationModel, Requirement requirement)
         {
             InitializeComponent();
             _presentationModel = presentationModel;
+            type = UserInterfaceForm.FunctionalType.Hide;
             RefreshRequirementDetail(requirement);
-
-            // Add Comment
-            _commentDataGridView.Rows.Add("receiver name", "comment", "decision");
+            _commentDataGridView.Columns[3].Visible = false;
+            CheckPriority();
         }
 
         public void RefreshRequirementDetail(Requirement requirement)
@@ -55,7 +56,7 @@ namespace RMS_Project
 
         public UserInterfaceForm.FunctionalType GetFunctionalType()
         {
-            return UserInterfaceForm.FunctionalType.Edit;
+            return type;
         }
 
         private async void getTestcaseByRequirementId()
@@ -114,6 +115,18 @@ namespace RMS_Project
             else
             {
                 MessageBox.Show("伺服器錯誤", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private async void CheckPriority()
+        {
+            JObject jObject = await _presentationModel.GetPriority(_requirement.ProjectID);
+            if (jObject["priority_type_name"].ToString().Equals("Owner") ||
+                jObject["priority_type_name"].ToString().Equals("Manager"))
+            {
+                type = UserInterfaceForm.FunctionalType.Edit;
+                _commentDataGridView.Columns[3].Visible = true;
+                _presentationModel.SetFunctionalButton(type);
             }
         }
     }

@@ -132,7 +132,7 @@ namespace RMS_Project
             {
                 MessageBox.Show("需求建立成功", "Success", MessageBoxButtons.OK);
                 RequirementListForm form = _presentationModel.GetFormByType(typeof(RequirementListForm)) as RequirementListForm;
-                form.RefreshRequirementList();
+                form.GetRequirementByProject();
                 _presentationModel.PopFormFromPanel();
             }
             else if (status == "需求建立失敗")

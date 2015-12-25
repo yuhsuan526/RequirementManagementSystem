@@ -21,7 +21,10 @@ namespace RMS_Project
         private Test[] _tests;
         private int _counter;
         private int _maxCount;
+        private string[] rList;
+        private string[] tList;
         private UserInterfaceForm.FunctionalType _functionalType;
+        private UserInterfaceForm.FunctionalType type;
 
         public OthersForm(PresentationModel presentationModel, Project project)
         {
@@ -29,10 +32,11 @@ namespace RMS_Project
             _project = project;
             _presentationModel = presentationModel;
             _functionalType = UserInterfaceForm.FunctionalType.Hide;
+            type = UserInterfaceForm.FunctionalType.Hide;
             GetRequirementByProject();
         }
 
-        private void CreateDataGridViewCell(DataGridView dataGridView, string[] rows, string[] columns)
+        private void CreateDataGridViewCell(DataGridView dataGridView, string[] rows, string[] columns, bool readOnly)
         {
             dataGridView.Columns.Clear();
             dataGridView.Rows.Clear();
@@ -46,6 +50,7 @@ namespace RMS_Project
                 checkColumn.TrueValue = true;
                 checkColumn.FalseValue = false;
                 checkColumn.FillWeight = 10;
+                checkColumn.ReadOnly = readOnly;
                 matrixColumns.Add(checkColumn);
             }
             DataGridViewRowCollection matrixRows = dataGridView.Rows;
@@ -76,8 +81,11 @@ namespace RMS_Project
                         break;
                 }
             }
-            DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)_RtoRDataGridView.Rows[rowIndex].Cells[1 + columnIndex];
-            chk.Value = chk.TrueValue;
+            if (rowIndex >= 0 && columnIndex >= 0)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)_RtoRDataGridView.Rows[rowIndex].Cells[1 + columnIndex];
+                chk.Value = chk.TrueValue;
+            }
 
         }
 
@@ -101,8 +109,11 @@ namespace RMS_Project
                     break;
                 }
             }
-            DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)_RtoTDataGridView.Rows[rowIndex].Cells[1 + columnIndex];
-            chk.Value = chk.TrueValue;
+            if (rowIndex >= 0 && columnIndex >= 0)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)_RtoTDataGridView.Rows[rowIndex].Cells[1 + columnIndex];
+                chk.Value = chk.TrueValue;
+            }
         }
 
         public void ClickFunctionalButton()
@@ -210,7 +221,7 @@ namespace RMS_Project
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+                MessageBox.Show(e.Message, "Error1", MessageBoxButtons.OK);
             }
         }
 
@@ -227,7 +238,7 @@ namespace RMS_Project
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+                MessageBox.Show(e.Message, "Error2", MessageBoxButtons.OK);
             }
         }
 
@@ -276,13 +287,13 @@ namespace RMS_Project
                             type, priority, status);
 
                     }
-                    string[] rList = new string[_requirements.Length];
+                    rList = new string[_requirements.Length];
                     for (int i = 0; i < _requirements.Length; i++)
                     {
                         rList[i] = _requirements[i].Name;
                     }
                     CreateAllDataGridView();
-                    CreateDataGridViewCell(_RtoRDataGridView, rList, rList);
+                    CreateDataGridViewCell(_RtoRDataGridView, rList, rList, true);
                     GetRequirementToRequirementRelationByProjectId();
                     GetTestListByProject();
                 }
@@ -315,18 +326,14 @@ namespace RMS_Project
                         _tests[i] = new Test(int.Parse(jObject["id"].ToString()), _project.ID, 
                             jObject["name"].ToString(), jObject["description"].ToString());
                     }
-                    string[] rList = new string[_requirements.Length];
-                    for (int i = 0; i < _requirements.Length; i++)
-                    {
-                        rList[i] = _requirements[i].Name;
-                    }
-                    string[] tList = new string[_tests.Length];
+                    tList = new string[_tests.Length];
                     for (int i = 0; i < _tests.Length; i++)
                     {
                         tList[i] = _tests[i].NAME;
                     }
-                    CreateDataGridViewCell(_RtoTDataGridView, rList, tList);
+                    CreateDataGridViewCell(_RtoTDataGridView, rList, tList,true);
                     GetRequirementToTestRelationByProjectId();
+                    CheckPriority();
                 }
             }
             else if (response.StatusCode == HttpStatusCode.RequestTimeout)
@@ -348,17 +355,32 @@ namespace RMS_Project
         {
             if (_othersTabControl.SelectedTab == RtoTTabPage)
             {
-                _functionalType = UserInterfaceForm.FunctionalType.Edit;
+                _functionalType = type;
             }
             else if (_othersTabControl.SelectedTab == RtoRTabPage)
             {
-                _functionalType = UserInterfaceForm.FunctionalType.Edit;
+                _functionalType = type;
             }
             else
             {
                 _functionalType = UserInterfaceForm.FunctionalType.Hide;
             }
             _presentationModel.SetFunctionalButton(this.GetFunctionalType());
+        }
+
+        private async void CheckPriority()
+        {
+            JObject jObject = await _presentationModel.GetPriority(_project.ID);
+            if (jObject["priority_type_name"].ToString().Equals("Owner") ||
+                jObject["priority_type_name"].ToString().Equals("Manager"))
+            {
+                type = UserInterfaceForm.FunctionalType.Edit;
+                _presentationModel.SetFunctionalButton(this.GetFunctionalType());
+                CreateDataGridViewCell(_RtoRDataGridView, rList, rList, false);
+                GetRequirementToRequirementRelationByProjectId();
+                CreateDataGridViewCell(_RtoTDataGridView, rList, tList, false);
+                GetRequirementToTestRelationByProjectId();
+            }
         }
     }
 }
