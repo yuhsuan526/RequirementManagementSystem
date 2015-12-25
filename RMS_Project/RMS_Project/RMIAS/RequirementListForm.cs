@@ -44,6 +44,7 @@ namespace RMS_Project
             {
                 JObject json = JObject.Parse(content);
                 string message = json["result"].ToString();
+                _arrayList = new ArrayList();
                 JArray jsonArray = JArray.Parse(json["requirements"].ToString());
                 if (message == "success")
                 {
@@ -143,9 +144,16 @@ namespace RMS_Project
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            this.requirementListDataGridView.Rows.Clear();
+            foreach (Requirement requirement in _arrayList)
+            {
+                if (requirement.Name.Contains(searchTextBox.Text.ToString()))
+                {
+                    this.requirementListDataGridView.Rows.Add(requirement.Name, requirement.Status.Name);
+                }
+            }
         }
     }
 }
