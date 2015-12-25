@@ -103,7 +103,7 @@ namespace RMS_Project
                     {
                         JObject jOwner = jObject["user"] as JObject;
                         User owner = _presentationModel.getUser((int)jOwner["id"], jOwner["name"].ToString());
-                        this._commentDataGridView.Rows.Add(owner.Name, jObject["comment"]);
+                        this._commentDataGridView.Rows.Add(owner.Name, jObject["comment"], jObject["decision"]);
                     }
                 }
             }
