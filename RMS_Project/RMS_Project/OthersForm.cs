@@ -168,11 +168,19 @@ namespace RMS_Project
                     for (int i = 0; i < jsonArray.Count; i++ )
                     {
                         JObject jObject = (JObject)jsonArray[i];
+                        User owner = new User();
+                        User handler = new User();
+                        JObject jOwner = jObject["owner"] as JObject;
+                        owner.ID = (int)jOwner["id"];
+                        owner.Name = jOwner["name"].ToString();
+                        JObject jHandler = jObject["handler"] as JObject;
+                        handler.ID = (int)jHandler["id"];
+                        handler.Name = jHandler["name"].ToString();
                         _requirements[i] = 
                             new Requirement(
                             int.Parse(jObject["id"].ToString()), 
-                            _project.ID, 
-                            jObject["name"].ToString(),
+                            _project.ID,
+                            jObject["name"].ToString(), owner, handler,
                             jObject["description"].ToString(), 
                             jObject["version"].ToString(), 
                             jObject["memo"].ToString(),
