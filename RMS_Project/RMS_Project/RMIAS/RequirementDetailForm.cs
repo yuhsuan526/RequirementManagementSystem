@@ -23,6 +23,9 @@ namespace RMS_Project
             InitializeComponent();
             _presentationModel = presentationModel;
             RefreshRequirementDetail(requirement);
+
+            // Add Comment
+            _commentDataGridView.Rows.Add("receiver name", "comment", "decision");
         }
 
         public void RefreshRequirementDetail(Requirement requirement)

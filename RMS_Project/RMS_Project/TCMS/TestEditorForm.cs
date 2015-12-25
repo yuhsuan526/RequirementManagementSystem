@@ -67,7 +67,8 @@ namespace RMS_Project
                 temp += rid;
                 temp += ",";
             }
-            temp = temp.Substring(0, temp.Length - 1);
+            if (temp != "")
+                temp = temp.Substring(0, temp.Length - 1);
             jObject["rid_list"] = temp;
             jObject["name"] = testNameTextBox.Text;
             jObject["description"] = descriptionRichTextBox.Text;
@@ -115,7 +116,9 @@ namespace RMS_Project
             if (status == "success")
             {
                 MessageBox.Show("測試案例修改成功", "Success", MessageBoxButtons.OK);
-                _presentationModel.AddFormToPanel(new TestListForm(_presentationModel, _test));
+                TestDetailForm form = _presentationModel.GetFormByType(typeof(TestDetailForm)) as TestDetailForm;
+                form.RefreshTestDetail(_test);
+                _presentationModel.PopFormFromPanel();
             }
             else if (status == "測試案例修改失敗")
             {

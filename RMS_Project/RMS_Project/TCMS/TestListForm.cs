@@ -29,7 +29,7 @@ namespace RMS_Project
             _arrayList = new ArrayList();
             RefreshTestList();
         }
-
+        /*
         public TestListForm(PresentationModel presentationModel, Test test)
         {
             InitializeComponent();
@@ -38,13 +38,13 @@ namespace RMS_Project
             _arrayList = new ArrayList();
             RefreshTestList();
         }
-
+        */
         public async void RefreshTestList()
         {
-            int projectId;
-            projectId = (_project != null) ? _project.ID : _test.ProjectID;
+            /*int projectId;
+            projectId = (_project != null) ? _project.ID : _test.ProjectID;*/
             //Console.WriteLine(projectId);
-            HttpResponseMessage response = await _presentationModel.GetTestCaseListByProjectId(projectId);
+            HttpResponseMessage response = await _presentationModel.GetTestCaseListByProjectId(_project.ID);
             string content = await response.Content.ReadAsStringAsync();
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -57,7 +57,7 @@ namespace RMS_Project
                     foreach (JObject jObject in jsonArray)
                     {
                         this.testListDataGridView.Rows.Add(jObject["name"], jObject["id"]);
-                        Test project = new Test(int.Parse(jObject["id"].ToString()), projectId, jObject["name"].ToString(), jObject["description"].ToString());
+                        Test project = new Test(int.Parse(jObject["id"].ToString()), _project.ID, jObject["name"].ToString(), jObject["description"].ToString());
                         _arrayList.Add(project);
                     }
                 }
