@@ -34,6 +34,42 @@ namespace RMS_Project
             _functionalType = UserInterfaceForm.FunctionalType.Hide;
             type = UserInterfaceForm.FunctionalType.Hide;
             GetRequirementByProject();
+            GetNoAssociatedTestCaseByProjectId();
+            GetNoAssociatedRequirementByProjectId();
+        }
+
+        public async void GetNoAssociatedTestCaseByProjectId()
+        {
+            try
+            {
+                Requirement[] requirements = await _presentationModel.GetNoAssociatedRequirementByProjectId(_project.ID);
+                _noAssociatedRequirementDataGridView.Rows.Clear();
+                foreach(Requirement requirement in requirements)
+                {
+                    _noAssociatedRequirementDataGridView.Rows.Add(requirement.Name, requirement.Status.Name);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        public async void GetNoAssociatedRequirementByProjectId()
+        {
+            try
+            {
+                Test[] tests = await _presentationModel.GetNoAssociatedTestCaseByProjectId(_project.ID);
+                _noAssociatedTestCaseDataGridView.Rows.Clear();
+                foreach(Test test in tests)
+                {
+                    _noAssociatedTestCaseDataGridView.Rows.Add(test.NAME);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void CreateDataGridViewCell(DataGridView dataGridView, string[] rows, string[] columns, bool readOnly)

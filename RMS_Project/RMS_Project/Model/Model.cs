@@ -1049,5 +1049,103 @@ namespace RMS_Project
                 throw e;
             }
         }
+
+        public async Task<Requirement[]> GetNoAssociatedRequirementByProjectId(int projectId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "requirement/getRequirementByProject/";
+                string url = BASE_URL + METHOD + projectId;
+                response = await httpClient.GetAsync(url);
+                string content = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    JObject json = JObject.Parse(content);
+                    string message = json["result"].ToString();
+                    JArray jsonArray = JArray.Parse(json["requirements"].ToString());
+                    if (message == "success")
+                    {
+                        Requirement[] requirements = new Requirement[jsonArray.Count];
+                        for (int i = 0; i < jsonArray.Count; i++)
+                        {
+                            JObject jObject = jsonArray[i] as JObject;
+                            JObject jOwner = jObject["owner"] as JObject;
+                            JObject jHandler = jObject["handler"] as JObject;
+                            JObject jType = jObject["requirement_type"] as JObject;
+                            JObject jPriority = jObject["priority_type"] as JObject;
+                            JObject jStatus = jObject["status_type"] as JObject;
+                            User owner = new User((int)jOwner["id"], jOwner["name"].ToString());
+                            User handler = new User((int)jHandler["id"], jHandler["name"].ToString());
+                            NormalAttribute type = new NormalAttribute((int)jType["id"], jType["name"].ToString());
+                            NormalAttribute priority = new NormalAttribute((int)jPriority["id"], jPriority["name"].ToString());
+                            NormalAttribute status = new NormalAttribute((int)jStatus["id"], jStatus["name"].ToString());
+                            requirements[i] =  new Requirement((int)jObject["id"], projectId, jObject["name"].ToString(), owner, handler,
+                                jObject["description"].ToString(), jObject["version"].ToString(), jObject["memo"].ToString(),
+                                type, priority, status);
+                        }
+                        return requirements;
+                    }
+                    throw new Exception("取得失敗");
+                }
+                else if (response.StatusCode == HttpStatusCode.RequestTimeout)
+                {
+                    throw new Exception("伺服器無回應");
+                }
+                else
+                {
+                    throw new Exception("伺服器錯誤");
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public async Task<Test[]> GetNoAssociatedTestCaseByProjectId(int projectId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "test_case/getNoAssociatedTestCaseByProjectId/";
+                string url = BASE_URL + METHOD + projectId;
+                response = await httpClient.GetAsync(url);
+                string content = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    JObject json = JObject.Parse(content);
+                    string message = json["result"].ToString();
+                    JArray jsonArray = JArray.Parse(json["test_case_list"].ToString());
+                    if (message == "success")
+                    {
+                        Test[] tests = new Test[jsonArray.Count];
+                        for (int i = 0; i < jsonArray.Count; i++)
+                        {
+                            JObject jObject = JObject.Parse(jsonArray[i].ToString());
+                            tests[i] = new Test((int)jObject["id"], projectId, jObject["name"].ToString(), jObject["description"].ToString());
+                        }
+                        return tests;
+                    }
+                    throw new Exception("取得失敗");
+                }
+                else if (response.StatusCode == HttpStatusCode.RequestTimeout)
+                {
+                    throw new Exception("伺服器無回應");
+                }
+                else
+                {
+                    throw new Exception("伺服器錯誤");
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }
