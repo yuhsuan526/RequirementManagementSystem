@@ -39,7 +39,8 @@ namespace RMS_Project
         private async void AddComment()
         {
             JObject jObject = new JObject();
-            jObject["name"] = _presentationModel.GetUserName();//_presentationModel.GetUID();
+            jObject["rid"] = _requirement.ID;
+            jObject["uid"] = _presentationModel.GetUID();
             jObject["comment"] = _commentRichTextBox.Text;
             jObject["decision"] = _decisionRichTextBox.Text;
 
@@ -47,8 +48,6 @@ namespace RMS_Project
             if (status == "success")
             {
                 MessageBox.Show("評論成功", "Success", MessageBoxButtons.OK);
-                RequirementDetailForm form = _presentationModel.GetFormByType(typeof(RequirementDetailForm)) as RequirementDetailForm;
-                form.RefreshRequirementDetail(_requirement);
                 _presentationModel.PopFormFromPanel();
             }
             else if (status == "評論失敗")

@@ -42,6 +42,7 @@ namespace RMS_Project
             descriptionTextBox.Text = _requirement.Description;
             memoTextBox.Text = _requirement.Memo;
             getTestcaseByRequirementId();
+            getComment();
         }
 
         public Requirement Requirement
