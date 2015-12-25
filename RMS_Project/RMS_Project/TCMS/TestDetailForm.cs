@@ -19,6 +19,7 @@ namespace RMS_Project
         private PresentationModel _presentationModel;
         private ArrayList _arrayList;
         private Test _test;
+        private UserInterfaceForm.FunctionalType type;
 
         public TestDetailForm(PresentationModel presentationModel,Test test)
         {
@@ -26,7 +27,9 @@ namespace RMS_Project
             _presentationModel = presentationModel;
             _test = test;
             _arrayList = new ArrayList();
+            type = UserInterfaceForm.FunctionalType.Hide;
             RefreshTestDetail(test);
+            CheckPriority();
         }
 
         public void RefreshTestDetail(Test test)
@@ -126,7 +129,18 @@ namespace RMS_Project
 
         public UserInterfaceForm.FunctionalType GetFunctionalType()
         {
-            return UserInterfaceForm.FunctionalType.Edit;
+            return type;
+        }
+
+        private async void CheckPriority()
+        {
+            JObject jObject = await _presentationModel.GetPriority(_test.ProjectID);
+            if (jObject["priority_type_name"].ToString().Equals("Owner") ||
+                jObject["priority_type_name"].ToString().Equals("Manager"))
+            {
+                type = UserInterfaceForm.FunctionalType.Edit;
+                _presentationModel.SetFunctionalButton(type);
+            }
         }
     }
 }
