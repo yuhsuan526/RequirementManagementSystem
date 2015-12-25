@@ -676,5 +676,109 @@ namespace RMS_Project
                 return response;
             }
         } 
+
+        public async Task<JArray> GetRequirementToRequirementRelationByProjectId(int projectId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "requirement/getRtoRRelationByProjectId/";
+                string url = BASE_URL + METHOD + projectId.ToString();
+                response = await httpClient.GetAsync(url);
+                 string content = await response.Content.ReadAsStringAsync();
+                 if (response.StatusCode == HttpStatusCode.OK)
+                 {
+                     JObject json = JObject.Parse(content);
+                     if (json["result"].ToString() =="success")
+                     {
+                         return (JArray)json["rr_relations"];
+                     }
+                     else
+                     {
+                         throw new Exception("資料取得失敗");
+                     }
+                 }
+                 else
+                 {
+                     throw new Exception("資料取得失敗: " + response.ToString());
+                 }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public async Task<string> DeleteRequirementToRequirementRelationByProject(int projectId)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "requirement/deleteRtoRRelationByProjectId/";
+                string url = BASE_URL + METHOD + projectId.ToString();
+                response = await httpClient.GetAsync(url);
+                string content = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    JObject json = JObject.Parse(content);
+                    if (json["result"].ToString() == "success")
+                    {
+                        return "刪除成功";
+                    }
+                    else
+                    {
+                        throw new Exception("刪除失敗");
+                    }
+                }
+                else
+                {
+                    throw new Exception("刪除失敗: " + response.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public async Task<string> CreateRequirementToRequirementRelation(JObject jObject)
+        {
+            HttpClient client = new HttpClient();
+
+            HttpResponseMessage response;
+            var httpClient = new HttpClient();
+            try
+            {
+                const string METHOD = "requirement/newRtoRRelation";
+                string url = BASE_URL + METHOD;
+                response = await httpClient.PostAsync(url, new StringContent(jObject.ToString(), Encoding.UTF8, "application/json"));
+                string content = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    JObject json = JObject.Parse(content);
+                    string message = json["result"].ToString();
+                    if (message == "success")
+                    {
+                        return message;
+                    }
+                    else
+                    {
+                        throw new Exception("新增失敗");
+                    }
+                }
+                else
+                {
+                    throw new Exception("新增失敗");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("伺服器無回應");
+            }
+        }
     }
 }
