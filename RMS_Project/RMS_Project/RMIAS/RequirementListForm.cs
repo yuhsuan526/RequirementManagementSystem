@@ -91,13 +91,17 @@ namespace RMS_Project
         {
             var senderGrid = (DataGridView)sender;
 
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewImageColumn &&
-                e.RowIndex >= 0)
+            if (senderGrid.Columns[e.ColumnIndex] == _deleteColumn)
             {
-                //TODO - Button Clicked - Execute Code Here
-                Console.WriteLine("按下刪除:" + e.RowIndex);
                 Requirement requirement = _arrayList[e.RowIndex] as Requirement;
                 DeleteRequirement(requirement.ID);
+            }
+            else if (senderGrid.Columns[e.ColumnIndex] == _commentColumn)
+            {
+                Requirement requirement = _arrayList[e.RowIndex] as Requirement;
+                CommentEditorForm form = new CommentEditorForm(_presentationModel, requirement);
+                if (_presentationModel.AddFormToPanel(form))
+                    _presentationModel.AddFormButtonToUserInterface(form, "Add Comment", Properties.Resources.ios7_compose_outline);
             }
             else
             {

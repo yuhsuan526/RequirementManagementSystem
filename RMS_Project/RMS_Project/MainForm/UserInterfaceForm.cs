@@ -118,6 +118,7 @@ namespace RMS_Project
             flowLayoutPanel.Controls.Add(model.PictureBox);
             flowLayoutPanel.Controls.Add(model.Button);
             _buttonArrayList.Add(model);
+            flowLayoutPanel.AutoScrollPosition = new Point (flowLayoutPanel.HorizontalScroll.Maximum,0);
         }
 
         void button_Click(object sender, EventArgs e)
