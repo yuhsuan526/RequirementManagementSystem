@@ -30,11 +30,11 @@ namespace RMS_Project
             GetRequirementByProject();
         }
 
-        private void CreateCell(string[] rows, string[] columns)
+        private void CreateDataGridViewCell(DataGridView dataGridView, string[] rows, string[] columns)
         {
-            _RtoRDataGridView.Columns.Clear();
-            _RtoRDataGridView.Rows.Clear();
-            DataGridViewColumnCollection matrixColumns = _RtoRDataGridView.Columns;
+            dataGridView.Columns.Clear();
+            dataGridView.Rows.Clear();
+            DataGridViewColumnCollection matrixColumns = dataGridView.Columns;
             matrixColumns.Add("nullColumn", "Traceability Matrix");
             for (int j = 0; j < columns.Length; j++)
             {
@@ -46,14 +46,13 @@ namespace RMS_Project
                 checkColumn.FillWeight = 10;
                 matrixColumns.Add(checkColumn);
             }
-            DataGridViewRowCollection matrixRows = _RtoRDataGridView.Rows;
+            DataGridViewRowCollection matrixRows = dataGridView.Rows;
             for (int i = 0; i < rows.Length; i++)
             {
                 matrixRows.Add(rows[i]);
             }
-            _RtoRDataGridView.Columns[0].Frozen = true;
-            _RtoRDataGridView.Columns[0].ReadOnly = true;
-            GetRequirementToRequirementRelationByProjectId();
+            dataGridView.Columns[0].Frozen = true;
+            dataGridView.Columns[0].ReadOnly = true;
         }
 
         private void SetCellValue(string rowID, string columnID)
@@ -194,8 +193,9 @@ namespace RMS_Project
                         rList[i] = _requirements[i].Name;
                     }
                     CreateAllDataGridView();
-                    CreateCell(rList, rList);
-                    //RefreshTestList();
+                    CreateDataGridViewCell(_RtoRDataGridView, rList, rList);
+                    GetRequirementToRequirementRelationByProjectId();
+                    GetTestListByProject();
                 }
             }
             else if (response.StatusCode == HttpStatusCode.RequestTimeout)
@@ -208,7 +208,7 @@ namespace RMS_Project
             }
         }
 
-        public async void RefreshTestList()
+        public async void GetTestListByProject()
         {
             HttpResponseMessage response = await _presentationModel.GetTestCaseListByRequirementId(_project.ID);
             string content = await response.Content.ReadAsStringAsync();
@@ -236,7 +236,7 @@ namespace RMS_Project
                     {
                         tList[i] = testList[i].NAME;
                     }
-                    CreateCell(rList, rList);
+                    CreateDataGridViewCell(_RtoTDataGridView, rList, tList);
                 }
             }
             else if (response.StatusCode == HttpStatusCode.RequestTimeout)

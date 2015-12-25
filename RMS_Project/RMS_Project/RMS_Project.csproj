@@ -158,10 +158,10 @@
     <Compile Include="TCMS\TestDetailForm.Designer.cs">
       <DependentUpon>TestDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OthersForm.cs">
+    <Compile Include="PMS\OthersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OthersForm.Designer.cs">
+    <Compile Include="PMS\OthersForm.Designer.cs">
       <DependentUpon>OthersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm\UserInterfaceForm.cs">
@@ -223,7 +223,7 @@
     <EmbeddedResource Include="TCMS\TestDetailForm.resx">
       <DependentUpon>TestDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OthersForm.resx">
+    <EmbeddedResource Include="PMS\OthersForm.resx">
       <DependentUpon>OthersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm\UserInterfaceForm.resx">
