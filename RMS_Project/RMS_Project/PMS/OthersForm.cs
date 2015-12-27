@@ -268,6 +268,15 @@ namespace RMS_Project
                     JObject jObject = (JObject)jsonArray[i];
                     SetRtoRDataGridViewCheckBoxCellValue(jObject["requirement1_id"].ToString(), jObject["requirement2_id"].ToString());
                 }
+                string[] rIDList = new string[_requirements.Length];
+                for (int i = 0; i < _requirements.Length; i++)
+                {
+                    rIDList[i] = _requirements[i].ID.ToString();
+                }
+                for (int i = 0; i < _requirements.Length; i++)
+                {
+                    SetRtoRDataGridViewCheckBoxCellValue(rIDList[i], rIDList[i]);
+                }
             }
             catch (Exception e)
             {
