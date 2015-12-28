@@ -31,13 +31,13 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this._mainFormPanel = new System.Windows.Forms.Panel();
             this._navigationPanel = new System.Windows.Forms.Panel();
+            this._defaultLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this._defaultLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this._navigationPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this._defaultLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -54,7 +54,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 461);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 561);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // _mainFormPanel
@@ -63,7 +63,7 @@
             this._mainFormPanel.Location = new System.Drawing.Point(0, 90);
             this._mainFormPanel.Margin = new System.Windows.Forms.Padding(0);
             this._mainFormPanel.Name = "_mainFormPanel";
-            this._mainFormPanel.Size = new System.Drawing.Size(784, 371);
+            this._mainFormPanel.Size = new System.Drawing.Size(784, 471);
             this._mainFormPanel.TabIndex = 3;
             // 
             // _navigationPanel
@@ -75,6 +75,17 @@
             this._navigationPanel.Name = "_navigationPanel";
             this._navigationPanel.Size = new System.Drawing.Size(784, 90);
             this._navigationPanel.TabIndex = 4;
+            // 
+            // _defaultLayoutPanel
+            // 
+            this._defaultLayoutPanel.BackColor = System.Drawing.Color.White;
+            this._defaultLayoutPanel.Controls.Add(this.pictureBox1);
+            this._defaultLayoutPanel.Controls.Add(this.label1);
+            this._defaultLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._defaultLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this._defaultLayoutPanel.Name = "_defaultLayoutPanel";
+            this._defaultLayoutPanel.Size = new System.Drawing.Size(784, 90);
+            this._defaultLayoutPanel.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -100,31 +111,20 @@
             this.label1.Text = "Welcome!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // _defaultLayoutPanel
-            // 
-            this._defaultLayoutPanel.BackColor = System.Drawing.Color.White;
-            this._defaultLayoutPanel.Controls.Add(this.pictureBox1);
-            this._defaultLayoutPanel.Controls.Add(this.label1);
-            this._defaultLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._defaultLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this._defaultLayoutPanel.Name = "_defaultLayoutPanel";
-            this._defaultLayoutPanel.Size = new System.Drawing.Size(784, 90);
-            this._defaultLayoutPanel.TabIndex = 1;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(500, 500);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.tableLayoutPanel1.ResumeLayout(false);
             this._navigationPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this._defaultLayoutPanel.ResumeLayout(false);
             this._defaultLayoutPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

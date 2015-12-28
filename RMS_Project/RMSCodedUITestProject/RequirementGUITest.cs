@@ -51,7 +51,10 @@ namespace RMSCodedUITestProject
 
             Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0);
 
+            //Robot.ClickOtherFormButton("MainForm", "requirementButton");
+
             Robot.ClickOtherFormButton("projectMainForm", "requirementButton");
+
 
             Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
 

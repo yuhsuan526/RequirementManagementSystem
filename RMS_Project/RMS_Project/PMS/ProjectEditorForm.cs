@@ -29,18 +29,27 @@ namespace RMS_Project
             InitializeComponent();
             this._presentationModel = presentationModel;
             this._project = project;
+            nameTextBox.Text = _project.NAME;
+            descriptionRichTextBox.Text = _project.DESC;
         }
 
         private void modifyProjectButton_Click(object sender, EventArgs e)
         {
-            AddProject();
+            if (_project == null) {
+                AddProject();
+            }
+            else {
+                _project.NAME = nameTextBox.Text;
+                _project.DESC = descriptionRichTextBox.Text;
+                EditProject();
+            }
         }
 
         private async void AddProject()
         {
             JObject jObject = new JObject();
             jObject["name"] = nameTextBox.Text;
-            jObject["descript"] = descriptionRichTextBox.Text;
+            jObject["description"] = descriptionRichTextBox.Text;
             jObject["uid"] = _presentationModel.GetUID();
 
             string status = await _presentationModel.AddProject(jObject);
@@ -60,6 +69,23 @@ namespace RMS_Project
                 MessageBox.Show("伺服器無回應", "Error", MessageBoxButtons.OK);
             }
         }
+
+        private async void EditProject()
+        {
+            string message = await _presentationModel.EditProject(_project);
+            try
+            {
+                ProjectMainForm form = _presentationModel.GetFormByType(typeof(ProjectMainForm)) as ProjectMainForm;
+                form.RefreshProjectDetail(_project);
+                _presentationModel.PopFormFromPanel();
+                MessageBox.Show(message, "Success", MessageBoxButtons.OK);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+            }
+        }
+
 
         public UserInterfaceForm.FunctionalType GetFunctionalType()
         {

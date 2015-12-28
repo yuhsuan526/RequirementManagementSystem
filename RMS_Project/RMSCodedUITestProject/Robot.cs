@@ -165,7 +165,6 @@ namespace ezLogUITest
             Mouse.Click(button);
         }
 
-
         public static void ClickOtherFormComboBox(string formName, string conboBoxName,string selectName)
         {
             string[] item;
@@ -260,7 +259,6 @@ namespace ezLogUITest
             int halfHeightOfCell = cell.BoundingRectangle.Height / 2;
             int upperPartYOffset = halfHeightOfCell - SPINBUTTON_HEIGHT_FINE_TUNE;
             int lowerPartYOffset = halfHeightOfCell + SPINBUTTON_HEIGHT_FINE_TUNE;
-            Robot.SetDelayBetweenActions(5000);
             Mouse.Click(new Point(boundingRectangle.X + boundingRectangle.Width - HALF_BUTTON_WIDTH, boundingRectangle.Y + upperPartYOffset));
         }
 
