@@ -139,7 +139,7 @@
             this.tableLayoutPanel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tableLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(50, 15);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
@@ -222,7 +222,7 @@
             this.inputDataLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inputDataLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inputDataLabel.Location = new System.Drawing.Point(118, 55);
-            this.inputDataLabel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.inputDataLabel.Margin = new System.Windows.Forms.Padding(3);
             this.inputDataLabel.Name = "inputDataLabel";
             this.inputDataLabel.Size = new System.Drawing.Size(392, 20);
             this.inputDataLabel.TabIndex = 23;
@@ -234,7 +234,7 @@
             this.idLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.idLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idLabel.Location = new System.Drawing.Point(118, 3);
-            this.idLabel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.idLabel.Margin = new System.Windows.Forms.Padding(3);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(392, 20);
             this.idLabel.TabIndex = 20;
@@ -246,7 +246,7 @@
             this.testName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.testName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.testName.Location = new System.Drawing.Point(118, 29);
-            this.testName.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.testName.Margin = new System.Windows.Forms.Padding(3);
             this.testName.Name = "testName";
             this.testName.Size = new System.Drawing.Size(392, 20);
             this.testName.TabIndex = 21;
@@ -258,7 +258,7 @@
             this.expectedResultLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expectedResultLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.expectedResultLabel.Location = new System.Drawing.Point(118, 81);
-            this.expectedResultLabel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.expectedResultLabel.Margin = new System.Windows.Forms.Padding(3);
             this.expectedResultLabel.Name = "expectedResultLabel";
             this.expectedResultLabel.Size = new System.Drawing.Size(392, 20);
             this.expectedResultLabel.TabIndex = 24;
@@ -270,7 +270,7 @@
             this.ownerLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ownerLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ownerLabel.Location = new System.Drawing.Point(118, 107);
-            this.ownerLabel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.ownerLabel.Margin = new System.Windows.Forms.Padding(3);
             this.ownerLabel.Name = "ownerLabel";
             this.ownerLabel.Size = new System.Drawing.Size(392, 20);
             this.ownerLabel.TabIndex = 26;
@@ -327,6 +327,7 @@
             // 
             // TestDetailForm
             // 
+            this.AccessibleName = "testDetailForm";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);

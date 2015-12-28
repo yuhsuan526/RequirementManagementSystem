@@ -135,7 +135,8 @@
             // 
             // _commentRichTextBox
             // 
-            this._commentRichTextBox.AccessibleName = "descriptionLabel";
+            this._commentRichTextBox.AccessibleDescription = "";
+            this._commentRichTextBox.AccessibleName = "commentRichTextBox";
             this._commentRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tableLayoutPanel1.SetColumnSpan(this._commentRichTextBox, 4);
             this._commentRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -148,7 +149,7 @@
             // 
             // _decisionRichTextBox
             // 
-            this._decisionRichTextBox.AccessibleName = "memoLabel";
+            this._decisionRichTextBox.AccessibleName = "decisionRichTextBox";
             this._decisionRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tableLayoutPanel1.SetColumnSpan(this._decisionRichTextBox, 4);
             this._decisionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -186,6 +187,7 @@
             // 
             // CommentEditorForm
             // 
+            this.AccessibleName = "commentEditorForm";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 492);

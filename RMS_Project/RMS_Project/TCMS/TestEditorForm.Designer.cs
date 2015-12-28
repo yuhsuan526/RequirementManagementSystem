@@ -89,7 +89,7 @@
             this.descriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.descriptionRichTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionRichTextBox.Location = new System.Drawing.Point(52, 172);
-            this.descriptionRichTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.descriptionRichTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.descriptionRichTextBox.Name = "descriptionRichTextBox";
             this.descriptionRichTextBox.Size = new System.Drawing.Size(680, 327);
             this.descriptionRichTextBox.TabIndex = 25;
@@ -101,7 +101,7 @@
             this.expectedResultTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expectedResultTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.expectedResultTextBox.Location = new System.Drawing.Point(167, 82);
-            this.expectedResultTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.expectedResultTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.expectedResultTextBox.Name = "expectedResultTextBox";
             this.expectedResultTextBox.Size = new System.Drawing.Size(308, 26);
             this.expectedResultTextBox.TabIndex = 23;
@@ -114,7 +114,7 @@
             this.ownerComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ownerComboBox.FormattingEnabled = true;
             this.ownerComboBox.Location = new System.Drawing.Point(167, 112);
-            this.ownerComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ownerComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.ownerComboBox.Name = "ownerComboBox";
             this.ownerComboBox.Size = new System.Drawing.Size(308, 27);
             this.ownerComboBox.TabIndex = 21;
@@ -151,7 +151,7 @@
             this.testNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.testNameTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.testNameTextBox.Location = new System.Drawing.Point(167, 22);
-            this.testNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.testNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.testNameTextBox.Name = "testNameTextBox";
             this.testNameTextBox.Size = new System.Drawing.Size(308, 26);
             this.testNameTextBox.TabIndex = 1;
@@ -175,7 +175,7 @@
             this.inputDataTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inputDataTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inputDataTextBox.Location = new System.Drawing.Point(167, 52);
-            this.inputDataTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.inputDataTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.inputDataTextBox.Name = "inputDataTextBox";
             this.inputDataTextBox.Size = new System.Drawing.Size(308, 26);
             this.inputDataTextBox.TabIndex = 17;
@@ -212,7 +212,7 @@
             this.confirmButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.confirmButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmButton.Location = new System.Drawing.Point(592, 503);
-            this.confirmButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.confirmButton.Margin = new System.Windows.Forms.Padding(2);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(140, 36);
             this.confirmButton.TabIndex = 5;
@@ -222,12 +222,13 @@
             // 
             // checkedListBox
             // 
+            this.checkedListBox.AccessibleName = "checkedListBox";
             this.testEditorTableLayoutPanel.SetColumnSpan(this.checkedListBox, 2);
             this.checkedListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkedListBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkedListBox.FormattingEnabled = true;
             this.checkedListBox.Location = new System.Drawing.Point(479, 52);
-            this.checkedListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkedListBox.Margin = new System.Windows.Forms.Padding(2);
             this.checkedListBox.Name = "checkedListBox";
             this.testEditorTableLayoutPanel.SetRowSpan(this.checkedListBox, 3);
             this.checkedListBox.Size = new System.Drawing.Size(253, 86);
@@ -248,6 +249,7 @@
             // 
             // TestEditorForm
             // 
+            this.AccessibleName = "testEditorForm";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);

@@ -118,6 +118,7 @@ namespace ezLogUITest
             WinEdit edit = new WinEdit(window);
             edit.SearchProperties[WinWindow.PropertyNames.Name] = editName;
             Assert.AreEqual(edit.Text, assertValue);
+
         }
 
 
@@ -244,10 +245,10 @@ namespace ezLogUITest
             }
         }
 
-        public static void ClickDataGridView(string formName,string dataGridViewName, int rowIndex, int columnIndex)
+        public static void ClickDataGridView(string formName,string dataGridViewName, int rowIndex, int columnIndex,int width,int heigh)
         {
-            const int HALF_BUTTON_WIDTH = 550;
-            const int SPINBUTTON_HEIGHT_FINE_TUNE = 3;
+            int HALF_BUTTON_WIDTH = width;
+            int SPINBUTTON_HEIGHT_FINE_TUNE = heigh;
             //Win window
             WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
             //
@@ -259,6 +260,7 @@ namespace ezLogUITest
             int halfHeightOfCell = cell.BoundingRectangle.Height / 2;
             int upperPartYOffset = halfHeightOfCell - SPINBUTTON_HEIGHT_FINE_TUNE;
             int lowerPartYOffset = halfHeightOfCell + SPINBUTTON_HEIGHT_FINE_TUNE;
+            Mouse.Click(new Point(boundingRectangle.X + boundingRectangle.Width - HALF_BUTTON_WIDTH, boundingRectangle.Y + upperPartYOffset));
             Mouse.Click(new Point(boundingRectangle.X + boundingRectangle.Width - HALF_BUTTON_WIDTH, boundingRectangle.Y + upperPartYOffset));
         }
 
@@ -284,6 +286,7 @@ namespace ezLogUITest
             if (comboBox.SelectedItem != targetName)
                 comboBox.SelectedItem = targetName;
         }
+
 
         public static void SetCheckBox(string name, bool isChecked)
         {

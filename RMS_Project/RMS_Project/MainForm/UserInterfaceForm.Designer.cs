@@ -68,7 +68,7 @@
             this.flowLayoutPanel.TabIndex = 5;
             this.flowLayoutPanel.WrapContents = false;
             // 
-            // userButton
+            // _userButton
             // 
             this._userButton.AccessibleName = "UserButton";
             this._userButton.AutoSize = true;
@@ -80,7 +80,7 @@
             this._userButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._userButton.Image = global::RMS_Project.Properties.Resources.ios7_contact_outline;
             this._userButton.Location = new System.Drawing.Point(667, 3);
-            this._userButton.Name = "userButton";
+            this._userButton.Name = "_userButton";
             this._userButton.Size = new System.Drawing.Size(114, 75);
             this._userButton.TabIndex = 6;
             this._userButton.TabStop = false;
@@ -92,7 +92,7 @@
             this._userButton.MouseLeave += new System.EventHandler(this.userButton_MouseLeave);
             this._userButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.userButton_MouseMove);
             // 
-            // newButton
+            // _functionalButton
             // 
             this._functionalButton.AccessibleName = "NewProjectButton";
             this._functionalButton.AutoSize = true;
@@ -104,7 +104,7 @@
             this._functionalButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._functionalButton.Image = global::RMS_Project.Properties.Resources.ios7_plus_outline;
             this._functionalButton.Location = new System.Drawing.Point(547, 3);
-            this._functionalButton.Name = "newButton";
+            this._functionalButton.Name = "_functionalButton";
             this._functionalButton.Size = new System.Drawing.Size(114, 75);
             this._functionalButton.TabIndex = 0;
             this._functionalButton.TabStop = false;
@@ -124,6 +124,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 81);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "UserInterfaceForm";
             this.Text = "UserInterfaceForm";
             this.tableLayoutPanel1.ResumeLayout(false);

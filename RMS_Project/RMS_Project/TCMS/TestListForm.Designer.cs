@@ -71,8 +71,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.testListDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this.testListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.testListDataGridView.Location = new System.Drawing.Point(4, 66);
-            this.testListDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.testListDataGridView.Location = new System.Drawing.Point(3, 53);
             this.testListDataGridView.MultiSelect = false;
             this.testListDataGridView.Name = "testListDataGridView";
             this.testListDataGridView.ReadOnly = true;
@@ -85,7 +84,7 @@
             this.testListDataGridView.RowTemplate.DividerHeight = 1;
             this.testListDataGridView.RowTemplate.Height = 50;
             this.testListDataGridView.RowTemplate.ReadOnly = true;
-            this.testListDataGridView.Size = new System.Drawing.Size(626, 581);
+            this.testListDataGridView.Size = new System.Drawing.Size(470, 465);
             this.testListDataGridView.TabIndex = 3;
             this.testListDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.testListDataGridView_CellClick);
             // 
@@ -122,19 +121,18 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.testSearchTextBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.testListDataGridView, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(67, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(50, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(634, 651);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(476, 521);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // testSearchTextBox
@@ -143,10 +141,9 @@
             this.testSearchTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.testSearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.testSearchTextBox.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.testSearchTextBox.Location = new System.Drawing.Point(71, 12);
-            this.testSearchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.testSearchTextBox.Location = new System.Drawing.Point(53, 9);
             this.testSearchTextBox.Name = "testSearchTextBox";
-            this.testSearchTextBox.Size = new System.Drawing.Size(559, 38);
+            this.testSearchTextBox.Size = new System.Drawing.Size(420, 32);
             this.testSearchTextBox.TabIndex = 5;
             this.testSearchTextBox.TextChanged += new System.EventHandler(this.testSearchTextBox_TextChanged);
             // 
@@ -157,19 +154,19 @@
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(67, 62);
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
             // TestListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AccessibleName = "testListForm";
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 651);
+            this.ClientSize = new System.Drawing.Size(576, 521);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TestListForm";
-            this.Padding = new System.Windows.Forms.Padding(67, 0, 67, 0);
+            this.Padding = new System.Windows.Forms.Padding(50, 0, 50, 0);
             this.Text = "TestListForm";
             ((System.ComponentModel.ISupportInitialize)(this.testListDataGridView)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);

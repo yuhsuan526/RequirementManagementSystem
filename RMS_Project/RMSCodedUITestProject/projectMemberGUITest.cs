@@ -47,9 +47,6 @@ namespace RMSCodedUITestProject
         [DeploymentItem("RMS_Project.exe")]
         public void CheckMemberData()
         {
-            //string[] data = new string[2];
-            //data[0] = "ZZ";
-            //data[1] = "j00064qaz123@gmail.com";
 
             //設定帳密
             Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
@@ -59,12 +56,11 @@ namespace RMSCodedUITestProject
             Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
             Robot.ClickOtherFormButton("loginForm", "signInButton");
 
-            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0);
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0,550,3);
 
             //確認 member資料是否正確
             Robot.ClickOtherFormDoubleButton("ProjectMainForm", "memberButton");
             Robot.AssertDataGridViewNumericUpDownCellValue("MainForm", "memberDataGridView", 0, 0, "ZZ");
-            //Robot.AssertOtherListViewByValue("MainForm", "projectDataGridView", data);
         }
 
 
@@ -72,11 +68,6 @@ namespace RMSCodedUITestProject
         [DeploymentItem("RMS_Project.exe")]
         public void AddMemberData()
         {
-            //string[] data = new string[4];
-            //data[0] = "ZZ";
-            //data[1] = "AA";
-            //data[2] = "j00064qaz123@gmail.com";
-            //data[3] = "user@user.com";
             //設定帳密
             Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
             Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "a123456");
@@ -85,17 +76,20 @@ namespace RMSCodedUITestProject
             Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
             Robot.ClickOtherFormButton("loginForm", "signInButton");
 
-            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0);
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0,550,3);
 
             //確認 member資料是否正確
             Robot.ClickOtherFormDoubleButton("ProjectMainForm", "memberButton");
-            Robot.SetOtherFormEdit("userListForm", "userName", "user@user.com");
-            Robot.ClickOtherFormButton("userListForm", "userButton");
+            Robot.SetOtherFormEdit("userListForm", "userName", "user@user");
+            Robot.ClickOtherFormComboBox("userListForm", "priorityComboBox", "Member");
+            Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
             Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
             Robot.AssertDataGridViewNumericUpDownCellValue("MainForm", "memberDataGridView", 0, 0, "ZZ");
-            Robot.AssertDataGridViewNumericUpDownCellValue("MainForm", "memberDataGridView", 1, 0, "AA");
+            Robot.AssertDataGridViewNumericUpDownCellValue("MainForm", "memberDataGridView", 1, 0, "YH");
         }
+
+        
     }
 }
 

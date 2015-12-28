@@ -153,6 +153,7 @@
             // 
             // _descriptionText
             // 
+            this._descriptionText.AccessibleName = "projectMainDescription";
             this._descriptionText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._descriptionText.Dock = System.Windows.Forms.DockStyle.Fill;
             this._descriptionText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
