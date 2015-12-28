@@ -19,8 +19,8 @@ namespace RMS_Project
         private NormalAttribute _type;
         private NormalAttribute _priority;
         private NormalAttribute _status;
-        private int _createdAt;
-        private int _updatedAt;
+        /*private int _createdAt;
+        private int _updatedAt;*/
 
         public Requirement(int id, int projectId, string name, User owner, User handler, string description, string version, string memo, NormalAttribute type, NormalAttribute priority, NormalAttribute status)
         {
@@ -153,6 +153,7 @@ namespace RMS_Project
                 _priority = value;
             }
         }
+
         public NormalAttribute Status
         {
             get
@@ -164,6 +165,7 @@ namespace RMS_Project
                 _status = value;
             }
         }
+        /*
         private int CreatedAt
         {
             get
@@ -178,5 +180,6 @@ namespace RMS_Project
                 return _updatedAt;
             }
         }
+        */
     }
 }
