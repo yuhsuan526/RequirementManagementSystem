@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="2d69bdcf-0a67-4c0d-ab75-df5affe8e900"
   name="Linq"
@@ -61,6 +61,64 @@
                 Id="6490cf5a-9ca3-46a6-a7dd-bff595f1fd1c">
                 <propertyInstance
                   Id="0504e7d0-bbe6-43cb-9def-1ea0f62995af"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7b445ef2-a05d-4055-8539-25926c1f8179"
+        name="JArray"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="9348ecbe-e25f-4a38-b7b2-19116a008ea6"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FMicrosoft Visual Studio 12.0%2FBlend%2FNewtonsoft.Json.dll&quot; Namespace%3DNewtonsoft.Json.Linq Type%3DJArray"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="bf9f7719-bfd3-471a-91ff-6ad0f3091c9c"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="8b947d1d-0653-4c7d-b8f8-a5d9bf5b5f2f">
+                <propertyInstance
+                  Id="298ca2a4-b2d6-44c9-ba98-369b8bea31de"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fd21cffa-9837-4e7c-ad8b-c2dfce154a19">
+                <propertyInstance
+                  Id="8c01a4bf-66d3-4b83-a42e-56f18b8f73a8"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c46d1633-f503-4d81-b1cd-02c35286eecb">
+                <propertyInstance
+                  Id="0d111d86-4a9d-43ea-81e6-f43b1f57ca29"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1f621b43-b85c-4a79-ae51-e1cd1bca8348">
+                <propertyInstance
+                  Id="3e602ac2-2da6-47bc-acea-a670984d652b"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3a6dbc67-be93-4196-ad25-fa9461754af7">
+                <propertyInstance
+                  Id="be6961d2-75a9-4618-8911-28313f9c22b1"
                   name="PackageVisibility"
                   value="internal" />
               </stereotypeInstanceHasPropertyInstances>
