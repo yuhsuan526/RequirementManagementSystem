@@ -98,9 +98,18 @@ namespace ezLogUITest
             Mouse.Click(label);
         }
 
-        public static void ClickTabControl(string name)
+        public static void ClickTabControl(string formName,string controlName,string name, UITestControl parent = null)
         {
-            Mouse.Click((WinTabPage)Robot.FindWinControl(typeof(WinTabPage), name, _root));
+            
+            parent = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
+
+            if (parent == null)
+                parent = _root;
+
+            Mouse.Click((WinTabPage)Robot.FindWinControl(typeof(WinTabPage), name, parent));
+            //WinTabList control = Robot.FindWinControl(typeof(WinTabList), controlName, parent) as WinTabList;
+            //WinTabPage page = Robot.FindWinControl(typeof(WinTabPage),name,control) as WinTabPage;
+            //Console.Write(page);
         }
 
         public static void SetEdit(string name, string keys)
@@ -516,6 +525,27 @@ namespace ezLogUITest
             WinText label = (WinText)Robot.FindWinControl(typeof(WinText), labelName, _root);
             Bitmap bitmap = new Bitmap(label.CaptureImage());
             Assert.AreEqual(color.ToArgb(), bitmap.GetPixel(0, 0).ToArgb());
+        }
+
+        public static void CheckTheCheckedListBox(string formName,string name, int index, bool check, UITestControl parent = null)
+        {
+            if (parent == null)
+                parent = _root;
+
+            WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
+
+            WinList checkedList = Robot.FindWinControl(typeof(WinList), name, sec) as WinList;
+
+            //WinList checkedList = Robot.FindWinControl(typeof(WinList), name, parent) as WinList;
+            WinCheckBox checkBox = checkedList.Items[index] as WinCheckBox;
+            checkBox.Checked = check;
+        }
+
+        public static void AssertCheckedListBox(string name, int index, bool check)
+        {
+            WinCheckBox checkBox = (_cache[name] as WinList).Items[index] as WinCheckBox;
+            bool checkBoxChecked = checkBox.Checked;
+            Assert.AreEqual(check, checkBoxChecked);
         }
     }
 }

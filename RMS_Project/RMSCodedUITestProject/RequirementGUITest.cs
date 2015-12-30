@@ -139,7 +139,7 @@ namespace RMSCodedUITestProject
 
             Robot.AssertOtherText("requirementDetailForm", "priorityLabel", "Medium");
             Robot.AssertOtherText("requirementDetailForm", "handlerLabel", "YH");
-            //Robot.AssertOtherText("requirementDetailForm", "memoTextBox", "None!");
+            Robot.AssertOtherFormEdit("requirementDetailForm", "memoTextBox", "None!");
 
 
         }

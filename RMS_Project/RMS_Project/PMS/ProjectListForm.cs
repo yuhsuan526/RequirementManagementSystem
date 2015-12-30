@@ -14,14 +14,14 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class ProjectListForm : Form, FunctionalTypeInterface
+    public partial class projectListForm : Form, FunctionalTypeInterface
     {
         private PresentationModel _presentationModel;
         private ArrayList _joinedProjects;
         private Project[] _ownedProjects;
         private Project[] _managedProjects;
 
-        public ProjectListForm(PresentationModel presentationModel)
+        public projectListForm(PresentationModel presentationModel)
         {
             InitializeComponent();
             this._presentationModel = presentationModel;
@@ -43,10 +43,10 @@ namespace RMS_Project
                 JArray jsonArray = JArray.Parse(json["projects"].ToString());
                 if (message == "success")
                 {
-                    this._joinedProjectListDataGridView.Rows.Clear();
+                    this.joinedProjectListDataGridView.Rows.Clear();
                     foreach (JObject jObject in jsonArray)
                     {
-                        this._joinedProjectListDataGridView.Rows.Add(jObject["name"]);
+                        this.joinedProjectListDataGridView.Rows.Add(jObject["name"]);
                         Project project = new Project(int.Parse(jObject["id"].ToString()), jObject["name"].ToString(), jObject["description"].ToString());
                         _joinedProjects.Add(project);
                     }

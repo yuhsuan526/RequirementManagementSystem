@@ -58,9 +58,11 @@ namespace RMSCodedUITestProject
 
             Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0,550,3);
 
+            Robot.AssertWindowExist("ProjectMainForm", true);
             //確認 member資料是否正確
-            Robot.ClickOtherFormDoubleButton("ProjectMainForm", "memberButton");
-            Robot.AssertDataGridViewNumericUpDownCellValue("MainForm", "memberDataGridView", 0, 0, "ZZ");
+            Robot.ClickOtherFormButton("ProjectMainForm", "memberButton");
+            Robot.AssertWindowExist("UserListForm", true);
+            Robot.AssertDataGridViewNumericUpDownCellValue("UserListForm", "memberDataGridView", 0, 0, "ZZ");
         }
 
 
@@ -78,15 +80,19 @@ namespace RMSCodedUITestProject
 
             Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0,550,3);
 
+
+            Robot.AssertWindowExist("ProjectMainForm", true);
             //確認 member資料是否正確
-            Robot.ClickOtherFormDoubleButton("ProjectMainForm", "memberButton");
+            Robot.ClickOtherFormButton("ProjectMainForm", "memberButton");
+            
+
             Robot.SetOtherFormEdit("userListForm", "userName", "user@user");
             Robot.ClickOtherFormComboBox("userListForm", "priorityComboBox", "Member");
             Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
             Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
-            Robot.AssertDataGridViewNumericUpDownCellValue("MainForm", "memberDataGridView", 0, 0, "ZZ");
-            Robot.AssertDataGridViewNumericUpDownCellValue("MainForm", "memberDataGridView", 1, 0, "YH");
+            Robot.AssertDataGridViewNumericUpDownCellValue("UserListForm", "memberDataGridView", 0, 0, "ZZ");
+            Robot.AssertDataGridViewNumericUpDownCellValue("UserListForm", "memberDataGridView", 1, 0, "YH");
         }
 
         

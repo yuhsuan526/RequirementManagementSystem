@@ -85,6 +85,7 @@
             // 
             // descriptionRichTextBox
             // 
+            this.descriptionRichTextBox.AccessibleName = "testDescription";
             this.testEditorTableLayoutPanel.SetColumnSpan(this.descriptionRichTextBox, 5);
             this.descriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.descriptionRichTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -97,6 +98,7 @@
             // 
             // expectedResultTextBox
             // 
+            this.expectedResultTextBox.AccessibleName = "testResult";
             this.testEditorTableLayoutPanel.SetColumnSpan(this.expectedResultTextBox, 2);
             this.expectedResultTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expectedResultTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -108,6 +110,7 @@
             // 
             // ownerComboBox
             // 
+            this.ownerComboBox.AccessibleName = "ownerCombobox";
             this.testEditorTableLayoutPanel.SetColumnSpan(this.ownerComboBox, 2);
             this.ownerComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ownerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -147,6 +150,7 @@
             // 
             // testNameTextBox
             // 
+            this.testNameTextBox.AccessibleName = "testName";
             this.testEditorTableLayoutPanel.SetColumnSpan(this.testNameTextBox, 2);
             this.testNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.testNameTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -171,6 +175,7 @@
             // 
             // inputDataTextBox
             // 
+            this.inputDataTextBox.AccessibleName = "testInputData";
             this.testEditorTableLayoutPanel.SetColumnSpan(this.inputDataTextBox, 2);
             this.inputDataTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inputDataTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -190,7 +195,7 @@
             this.ownerLabel.Name = "ownerLabel";
             this.ownerLabel.Size = new System.Drawing.Size(111, 30);
             this.ownerLabel.TabIndex = 12;
-            this.ownerLabel.Text = "Owner";
+            this.ownerLabel.Text = "Handler";
             this.ownerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4
@@ -209,6 +214,7 @@
             // 
             // confirmButton
             // 
+            this.confirmButton.AccessibleName = "testConfirm";
             this.confirmButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.confirmButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmButton.Location = new System.Drawing.Point(592, 503);

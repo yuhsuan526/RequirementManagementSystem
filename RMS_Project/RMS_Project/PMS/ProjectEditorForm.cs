@@ -55,7 +55,7 @@ namespace RMS_Project
             string status = await _presentationModel.AddProject(jObject);
             if (status == "success")
             {
-                ProjectListForm form = _presentationModel.GetFormByType(typeof(ProjectListForm)) as ProjectListForm;
+                projectListForm form = _presentationModel.GetFormByType(typeof(projectListForm)) as projectListForm;
                 form.RefreshProjectList();
                 _presentationModel.PopFormFromPanel();
                 MessageBox.Show("專案建立成功", "Success", MessageBoxButtons.OK);

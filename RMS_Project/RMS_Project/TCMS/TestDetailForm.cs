@@ -53,7 +53,7 @@ namespace RMS_Project
                 JObject jsonObject = JObject.Parse(json["test_case"].ToString());
                 if (message == "success")
                 {
-                    testName.Text = jsonObject["name"].ToString();
+                    nameLabel.Text = jsonObject["name"].ToString();
                     idLabel.Text = jsonObject["id"].ToString();
                     JObject temp = JObject.Parse(jsonObject["owner"].ToString());
                     string owner = temp["name"].ToString();

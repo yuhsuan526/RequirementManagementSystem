@@ -83,7 +83,14 @@ namespace RMSCodedUITestProject
             Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
             Robot.ClickOtherFormButton("loginForm", "signInButton");
             Robot.AssertWindowExist("projectListForm", true);
+            Robot.ClickTabControl("projectListForm", "projectTabControl", "Joined Projects");
+
+            Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm", "joinedProjectListDataGridView", 0, 0, "RMS_Project");
+
+            Robot.ClickTabControl("projectListForm", "projectTabControl", "Your Projects");
+            //_joinedProjectListDataGridView
             Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm", "projectDataGridView", 0, 0, "RMS_Project");
+            
         }
 
         [TestMethod]
@@ -104,7 +111,7 @@ namespace RMSCodedUITestProject
 
             //確認Detail資料顯示是否正確
             Robot.AssertOtherText("ProjectMainForm", "projectName", "RMS_Project");
-            //Robot.AssertOtherText("ProjectMainForm", "projectMainDescription", "This project aims to develop a system that facilitates the management of project requirements.\n");
+            //Robot.AssertOtherFormEdit("ProjectMainForm", "projectMainDescription", "This project aims to develop a system that facilitates the management of project requirements.\n");
         }
 
 
@@ -137,7 +144,7 @@ namespace RMSCodedUITestProject
             Robot.AssertWindowExist("ProjectMainForm", true);
 
             Robot.AssertOtherText("ProjectMainForm", "projectName", "RMS_PROJECT");
-            //Robot.AssertOtherText("ProjectMainForm", "projectMainDescription", "This project aims to develop a system that facilitates the management of project requirements.\n");
+            //Robot.AssertOtherFormEdit("ProjectMainForm", "projectMainDescription", "This project aims to develop a system that facilitates the management of project requirements.\n");
         }
     }
 }

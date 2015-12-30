@@ -27,7 +27,7 @@ namespace RMS_Project
             this._project = project;
             this._presentationModel = presentationModel;
             this._arrayList = new ArrayList();
-            _userListDataGridView.Columns[2].Visible = false;
+            memberDataGridView.Columns[2].Visible = false;
             GetUserListByProject();
             GetProjectPriorityType();
         }
@@ -75,15 +75,15 @@ namespace RMS_Project
                 JArray jsonArray = JArray.Parse(json["users"].ToString());
                 if (message == "success")
                 {
-                    _userListDataGridView.Rows.Clear();
+                    memberDataGridView.Rows.Clear();
                     for (int i = 0; i < jsonArray.Count; i++)
                     {
                         JObject jObject = jsonArray[i] as JObject;
-                        this._userListDataGridView.Rows.Add(jObject["name"], jObject["priority_type_name"]);
+                        this.memberDataGridView.Rows.Add(jObject["name"], jObject["priority_type_name"]);
                         _arrayList.Add(jObject);
                         if (jObject["id"].ToString().Equals(_presentationModel.GetUID().ToString()))
                         {
-                            _userListDataGridView.Columns[2].Visible = jObject["priority_type_name"].ToString().Equals("Owner")
+                            memberDataGridView.Columns[2].Visible = jObject["priority_type_name"].ToString().Equals("Owner")
                                 || jObject["priority_type_name"].ToString().Equals("Manager");
                         }
                     }

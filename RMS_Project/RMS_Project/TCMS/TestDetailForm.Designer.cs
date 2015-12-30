@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -41,7 +41,7 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inputDataLabel = new System.Windows.Forms.Label();
             this.idLabel = new System.Windows.Forms.Label();
-            this.testName = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
             this.expectedResultLabel = new System.Windows.Forms.Label();
             this.ownerLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -124,7 +124,7 @@
             this.tableLayoutPanel1.Controls.Add(this.inputDataLabel, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.idLabel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.testName, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.nameLabel, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
@@ -167,7 +167,7 @@
             // 
             // _requirementListDataGridView
             // 
-            this._requirementListDataGridView.AccessibleName = "projectDataGridView";
+            this._requirementListDataGridView.AccessibleName = "testDataGridView";
             this._requirementListDataGridView.AllowUserToAddRows = false;
             this._requirementListDataGridView.AllowUserToDeleteRows = false;
             this._requirementListDataGridView.AllowUserToResizeColumns = false;
@@ -180,14 +180,14 @@
             this._requirementListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
             this._requirementListDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._requirementListDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._requirementListDataGridView.DefaultCellStyle = dataGridViewCellStyle7;
             this._requirementListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._requirementListDataGridView.Location = new System.Drawing.Point(513, 26);
             this._requirementListDataGridView.Margin = new System.Windows.Forms.Padding(0);
@@ -196,9 +196,9 @@
             this._requirementListDataGridView.ReadOnly = true;
             this._requirementListDataGridView.RowHeadersVisible = false;
             this._requirementListDataGridView.RowHeadersWidth = 50;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._requirementListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._requirementListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.tableLayoutPanel1.SetRowSpan(this._requirementListDataGridView, 7);
             this._requirementListDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
             this._requirementListDataGridView.RowTemplate.DividerHeight = 1;
@@ -218,6 +218,7 @@
             // 
             // inputDataLabel
             // 
+            this.inputDataLabel.AccessibleName = "inputDataLabel";
             this.inputDataLabel.AutoSize = true;
             this.inputDataLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inputDataLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -230,6 +231,7 @@
             // 
             // idLabel
             // 
+            this.idLabel.AccessibleName = "idLabel";
             this.idLabel.AutoSize = true;
             this.idLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.idLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -240,20 +242,22 @@
             this.idLabel.TabIndex = 20;
             this.idLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // testName
+            // nameLabel
             // 
-            this.testName.AutoSize = true;
-            this.testName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.testName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.testName.Location = new System.Drawing.Point(118, 29);
-            this.testName.Margin = new System.Windows.Forms.Padding(3);
-            this.testName.Name = "testName";
-            this.testName.Size = new System.Drawing.Size(392, 20);
-            this.testName.TabIndex = 21;
-            this.testName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.nameLabel.AccessibleName = "nameLabel";
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nameLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.Location = new System.Drawing.Point(118, 29);
+            this.nameLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(392, 20);
+            this.nameLabel.TabIndex = 21;
+            this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // expectedResultLabel
             // 
+            this.expectedResultLabel.AccessibleName = "expectedResultLabel";
             this.expectedResultLabel.AutoSize = true;
             this.expectedResultLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expectedResultLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -266,6 +270,7 @@
             // 
             // ownerLabel
             // 
+            this.ownerLabel.AccessibleName = "ownerLabel";
             this.ownerLabel.AutoSize = true;
             this.ownerLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ownerLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -315,6 +320,7 @@
             // 
             // handlerLabel
             // 
+            this.handlerLabel.AccessibleName = "handlerLabel";
             this.handlerLabel.AutoSize = true;
             this.handlerLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.handlerLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -334,7 +340,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "TestDetailForm";
             this.Padding = new System.Windows.Forms.Padding(50, 15, 50, 15);
-            this.Text = "Test Detail";
+            this.Text = "TestDetailForm";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._requirementListDataGridView)).EndInit();
@@ -351,7 +357,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label idLabel;
-        private System.Windows.Forms.Label testName;
+        private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label inputDataLabel;
         private System.Windows.Forms.Label expectedResultLabel;
         private System.Windows.Forms.Label ownerLabel;

@@ -45,7 +45,7 @@
             // 
             // testListDataGridView
             // 
-            this.testListDataGridView.AccessibleName = "requirementListDataGridView";
+            this.testListDataGridView.AccessibleName = "testListDataGridView";
             this.testListDataGridView.AllowUserToAddRows = false;
             this.testListDataGridView.AllowUserToDeleteRows = false;
             this.testListDataGridView.AllowUserToResizeColumns = false;
