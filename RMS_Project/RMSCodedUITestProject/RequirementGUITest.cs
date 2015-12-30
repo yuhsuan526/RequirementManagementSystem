@@ -51,8 +51,9 @@ namespace RMSCodedUITestProject
 
             Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0,550,3);
 
+            Robot.AssertWindowExist("projectMainForm", true);
 
-            Robot.ClickOtherFormDoubleButton("projectMainForm", "requirementButton");
+            Robot.ClickOtherFormButton("projectMainForm", "requirementButton");
 
             Robot.AssertWindowExist("requirementListForm", true);
 
@@ -86,10 +87,12 @@ namespace RMSCodedUITestProject
 
             Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0, 550, 3);
 
+            Robot.AssertWindowExist("projectMainForm", true);
 
-            Robot.ClickOtherFormDoubleButton("projectMainForm", "requirementButton");
+            Robot.ClickOtherFormButton("projectMainForm", "requirementButton");
 
             Robot.AssertWindowExist("requirementListForm", true);
+
             Robot.ClickDataGridView("requirementListForm", "requirementListDataGridView", 0, 2, 20, 3);
 
             Robot.SetOtherFormEdit("commentEditorForm", "commentRichTextBox", "Good!");
@@ -98,6 +101,9 @@ namespace RMSCodedUITestProject
             Robot.ClickOtherFormButton("commentEditorForm", "confirmButton");
             Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
+
+            Robot.AssertWindowExist("requirementListForm", true);
+
             Robot.ClickDataGridView("requirementListForm", "requirementListDataGridView", 0, 0, 300, 3);
             Robot.AssertDataGridViewNumericUpDownCellValue("requirementDetailForm", "commentDataGridView", 0, 0, "ZZ");
             Robot.AssertDataGridViewNumericUpDownCellValue("requirementDetailForm", "commentDataGridView", 0, 1, "Good!");

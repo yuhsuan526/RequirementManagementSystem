@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
@@ -16,10 +16,10 @@ using System.Timers;
 namespace RMSCodedUITestProject
 {
     /// <summary>
-    /// TestGUITest 的摘要描述
+    /// DeleteTest 的摘要描述
     /// </summary>
     [CodedUITest]
-    public class TestGUITest
+    public class TestGUITestDelete
     {
         private string FILE_PATH = "../../../RMS_Project/bin/debug/RMS_Project.exe";
         private string UI_TESTING_EXAMPLE_TITLE = "RMS_Project";
@@ -39,7 +39,7 @@ namespace RMSCodedUITestProject
 
         [TestMethod]
         [DeploymentItem("RMS_Project.exe")]
-        public void NewTestCoded()
+        public void CheckDeleteTest()
         {
             Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
 
@@ -58,66 +58,52 @@ namespace RMSCodedUITestProject
 
             Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
 
-            Robot.SetOtherFormEdit("testEditorForm", "testName", "login test");
-            Robot.SetOtherFormEdit("testEditorForm", "testInputData", "test2@test/123456");
-            Robot.SetOtherFormEdit("testEditorForm", "testResult", "success");
+            Robot.SetOtherFormEdit("testEditorForm", "testName", "login test Error");
+            Robot.SetOtherFormEdit("testEditorForm", "testInputData", "test2@test/a123456");
+            Robot.SetOtherFormEdit("testEditorForm", "testResult", "fail");
             Robot.ClickOtherFormComboBox("testEditorForm", "ownerCombobox", "ZZ");
-            Robot.SetOtherFormEdit("testEditorForm", "testDescription", "Test login account and password is true");
-            Robot.CheckTheCheckedListBox("testEditorForm","checkedListBox",0,true);
-            Robot.ClickOtherFormButton("testEditorForm", "testConfirm");
-
-            Robot.AssertWindowExist("Success", true);
-            Robot.ClickOtherFormButton("Success", "確定");
-
-            Robot.AssertDataGridViewNumericUpDownCellValue("testListForm", "testListDataGridView", 0, 0, "login test");
-            //Robot.SetCheckBox("testEditorForm", "checkedListBox");
-        }
-
-        [TestMethod]
-        [DeploymentItem("RMS_Project.exe")]
-        public void EditTestCoded()
-        {
-            Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
-
-            Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "a123456");
-
-            Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
-            Robot.ClickOtherFormButton("loginForm", "signInButton");
-            Robot.AssertWindowExist("projectListForm", true);
-
-            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0, 550, 3);
-            Robot.AssertWindowExist("ProjectMainForm", true);
-
-            Robot.ClickOtherFormButton("ProjectMainForm", "testButton");
-
-            Robot.AssertWindowExist("testListForm", true);
-
-            Robot.ClickDataGridView("testListForm", "testListDataGridView", 0, 0, 300, 3);
-
-            Robot.AssertWindowExist("testDetailForm", true);
-
-            Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
-
-            Robot.SetOtherFormEdit("testEditorForm", "testName", "login_test");
-            Robot.SetOtherFormEdit("testEditorForm", "testInputData", "account:test2@test/password:123456");
-            Robot.SetOtherFormEdit("testEditorForm", "testResult", "success");
-            Robot.ClickOtherFormComboBox("testEditorForm", "ownerCombobox", "YH");
-            Robot.SetOtherFormEdit("testEditorForm", "testDescription", "Test login account and password is true");
+            Robot.SetOtherFormEdit("testEditorForm", "testDescription", "Test login account and password is false");
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 0, true);
             Robot.ClickOtherFormButton("testEditorForm", "testConfirm");
 
             Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
 
-            Robot.AssertWindowExist("testDetailForm", true);
+            Robot.ClickDataGridView("testListForm", "testListDataGridView", 0, 2, 5, 3);
 
-            Robot.AssertOtherText("testDetailForm", "nameLabel", "login_test");
-            Robot.AssertOtherText("testDetailForm", "inputDataLabel", "account:test2@test/password:123456");
-            Robot.AssertOtherText("testDetailForm", "expectedResultLabel", "success");
-            Robot.AssertOtherText("testDetailForm", "ownerLabel", "ZZ");
-            Robot.AssertOtherText("testDetailForm", "handlerLabel", "YH");
+            Robot.AssertWindowExist("Success", true);
+            Robot.ClickOtherFormButton("Success", "確定");
 
-            Robot.AssertDataGridViewNumericUpDownCellValue("testDetailForm", "testDataGridView", 0, 0, "The system shall provide a project management mechanism.");
+            Robot.AssertDataGridViewNumericUpDownCellValue("testListForm", "testListDataGridView", 0, 0, "login test Error");
+        }
+
+        [TestMethod]
+        [DeploymentItem("RMS_Project.exe")]
+        public void CheckRequirmentDetail()
+        {
+            Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+
+            Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "a123456");
+
+            Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.ClickOtherFormButton("loginForm", "signInButton");
+            Robot.AssertWindowExist("projectListForm", true);
+
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0, 550, 3);
+            Robot.AssertWindowExist("ProjectMainForm", true);
+
+
+            Robot.ClickOtherFormButton("projectMainForm", "requirementButton");
+
+
+            Robot.ClickDataGridView("requirementListForm", "requirementListDataGridView", 0, 0, 300, 3);
+
+            Robot.AssertWindowExist("requirementDetailForm", true);
+
+            //associatedTestListDataGridView
+
+            Robot.AssertDataGridViewNumericUpDownCellValue("requirementDetailForm", "associatedTestListDataGridView", 0, 0, "login test Error");
+
         }
     }
 }
