@@ -261,14 +261,17 @@ namespace RMS_Project
                     for (int i = 0; i < jsonArray.Count; i++)
                     {
                         JObject jObject = jsonArray[i] as JObject;
-                        ownerComboBox.Items.Add(new Item(Int32.Parse(jObject["id"].ToString()), jObject["name"].ToString()));
-                        _projectMemberArrayList.Add(Int32.Parse(jObject["id"].ToString()));
-                        if (jsonObject != null)
+                        if (!jObject["priority_type_name"].ToString().Equals("Customer"))
                         {
-                            JObject temp = JObject.Parse(jsonObject["owner"].ToString());
-                            string owner = temp["name"].ToString();
-                            if (owner == jObject["name"].ToString())
-                                ownerComboBox.SelectedItem = ownerComboBox.Items[i];
+                            ownerComboBox.Items.Add(new Item(Int32.Parse(jObject["id"].ToString()), jObject["name"].ToString()));
+                            _projectMemberArrayList.Add(Int32.Parse(jObject["id"].ToString()));
+                            if (jsonObject != null)
+                            {
+                                JObject temp = JObject.Parse(jsonObject["owner"].ToString());
+                                string owner = temp["name"].ToString();
+                                if (owner == jObject["name"].ToString())
+                                    ownerComboBox.SelectedItem = ownerComboBox.Items[i];
+                            }
                         }
                     }
                     if (_test == null)

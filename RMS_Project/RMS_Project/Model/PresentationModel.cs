@@ -42,6 +42,8 @@ namespace RMS_Project
             form.Show();
             if (_mainFormPanel.Controls.Count > 1)
             {
+                if (_userInterface != null)
+                    _userInterface.SetFunctionalButton(UserInterfaceForm.FunctionalType.Hide);
                 Util.Animate(_mainFormPanel.Controls[_mainFormPanel.Controls.Count - 2], Util.Effect.Slide, 500, 180);
                 waitForAnimation(500);
                 if (_userInterface != null)
