@@ -18,7 +18,6 @@ namespace RMS_Project
     {
         private PresentationModel _presentationModel;
         private Project _project;
-        private Test _test;
         private ArrayList _arrayList;
         private UserInterfaceForm.FunctionalType type;
 

@@ -1,6 +1,5 @@
 
 ﻿using System;
-﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
@@ -83,8 +82,14 @@ namespace RMSCodedUITestProject
             Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
             Robot.ClickOtherFormButton("loginForm", "signInButton");
             Robot.AssertWindowExist("projectListForm", true);
-            //Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm", "projectDataGridView", 0, 0, "ZZ");
+            Robot.ClickTabControl("projectListForm", "projectTabControl", "Joined Projects");
+
+            Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm", "joinedProjectListDataGridView", 0, 0, "RMS_Project");
+
+            Robot.ClickTabControl("projectListForm", "projectTabControl", "Your Projects");
+            //_joinedProjectListDataGridView
             Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm", "projectDataGridView", 0, 0, "RMS_Project");
+            
         }
 
         [TestMethod]
@@ -100,12 +105,45 @@ namespace RMSCodedUITestProject
             Robot.ClickOtherFormButton("loginForm", "signInButton");
             Robot.AssertWindowExist("projectListForm", true);
 
-            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0);
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0,550,3);
             Robot.AssertWindowExist("ProjectMainForm", true);
 
             //確認Detail資料顯示是否正確
             Robot.AssertOtherText("ProjectMainForm", "projectName", "RMS_Project");
-           // Robot.AssertOtherText("projectDetailForm", "projectDescription", "AAA");
+            //Robot.AssertOtherFormEdit("ProjectMainForm", "projectMainDescription", "This project aims to develop a system that facilitates the management of project requirements.\n");
+        }
+
+
+        [TestMethod]
+        [DeploymentItem("RMS_Project.exe")]
+        public void EditProjectDetailFormDataGridView()
+        {
+            //設定帳密
+            Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "a123456");
+
+            //確認登入資料
+            Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.ClickOtherFormButton("loginForm", "signInButton");
+            Robot.AssertWindowExist("projectListForm", true);
+
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0, 550, 3);
+            Robot.AssertWindowExist("ProjectMainForm", true);
+
+            Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
+            
+            //確認Detail資料顯示是否正確
+            Robot.SetOtherFormEdit("ProjectEditorForm", "ProjectName", "RMS_PROJECT");
+
+            Robot.ClickOtherFormButton("ProjectEditorForm", "Confirm");
+
+            //messageBox成功
+            Robot.AssertWindowExist("Success", true);
+            Robot.ClickOtherFormButton("Success", "確定");
+            Robot.AssertWindowExist("ProjectMainForm", true);
+
+            Robot.AssertOtherText("ProjectMainForm", "projectName", "RMS_PROJECT");
+            //Robot.AssertOtherFormEdit("ProjectMainForm", "projectMainDescription", "This project aims to develop a system that facilitates the management of project requirements.\n");
         }
     }
 }

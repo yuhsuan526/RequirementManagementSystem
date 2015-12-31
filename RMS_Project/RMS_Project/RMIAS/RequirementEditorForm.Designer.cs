@@ -95,7 +95,7 @@
             // 
             // handlerComboBox
             // 
-            this.handlerComboBox.AccessibleName = "statusComboBox";
+            this.handlerComboBox.AccessibleName = "handlerComboBox";
             this.handlerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.handlerComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.handlerComboBox.FormattingEnabled = true;

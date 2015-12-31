@@ -59,7 +59,7 @@ namespace RMS_Project
                 UserInterfaceForm form = new UserInterfaceForm(this);
                 AddFormToNavigationPanel(form);
                 _userInterface = form;
-                _userInterface.setProjectsButton(new ProjectListForm(this));
+                _userInterface.setProjectsButton(new projectListForm(this));
             }
             return status;
         }
@@ -444,7 +444,7 @@ namespace RMS_Project
         public void ClickFunctionalButton()
         {
             Control control = GetCurrentFormInPanel();
-            if (control.GetType().Equals(typeof(ProjectListForm)))
+            if (control.GetType().Equals(typeof(projectListForm)))
             {
                 ProjectEditorForm form = new ProjectEditorForm(this);
                 AddFormToPanel(form);

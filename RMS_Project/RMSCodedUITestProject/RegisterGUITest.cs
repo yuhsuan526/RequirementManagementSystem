@@ -52,7 +52,7 @@ namespace RMSCodedUITestProject
             Robot.AssertOtherFormEdit("registrantionForm", "userNameLabel", "ZZ");
             Robot.AssertOtherFormEdit("registrantionForm", "emailLabel", "j00064qaz123@gmail.com");
 
-            Robot.ClickOtherFormButton("registrantionForm", "createAccountButton");
+            Robot.ClickOtherFormDoubleButton("registrantionForm", "createAccountButton");
             //messageBox錯誤
             Robot.AssertWindowExist("Error", true);
             Robot.ClickOtherFormButton("Error", "確定");
@@ -75,7 +75,7 @@ namespace RMSCodedUITestProject
             Robot.AssertOtherFormEdit("registrantionForm", "userNameLabel", "ZZ");
             Robot.AssertOtherFormEdit("registrantionForm", "emailLabel", "a00064qaz123@gmail.com");
 
-            Robot.ClickOtherFormButton("registrantionForm", "createAccountButton");
+            Robot.ClickOtherFormDoubleButton("registrantionForm", "createAccountButton");
             //messageBox成功
             Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");

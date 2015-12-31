@@ -49,26 +49,105 @@ namespace RMSCodedUITestProject
             Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
             Robot.ClickOtherFormButton("loginForm", "signInButton");
 
-            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0);
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0,550,3);
 
-            //Robot.ClickOtherFormButton("MainForm", "requirementButton");
+            Robot.AssertWindowExist("projectMainForm", true);
 
             Robot.ClickOtherFormButton("projectMainForm", "requirementButton");
 
+            Robot.AssertWindowExist("requirementListForm", true);
 
             Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
 
-            Robot.SetOtherFormEdit("requirementEditorForm", "requirementName", "RMS");
+            Robot.SetOtherFormEdit("requirementEditorForm", "requirementName", "The system shall provide a project management mechanism.");
             Robot.ClickOtherFormComboBox("requirementEditorForm", "typeComboBox", "functional");
-            Robot.SetOtherFormEdit("requirementEditorForm", "versionLabel", "1.0");
-            Robot.ClickOtherFormComboBox("requirementEditorForm", "priorityComboBox", "Medium");
-            Robot.ClickOtherFormComboBox("requirementEditorForm", "statusComboBox", "under review");
-            Robot.SetOtherFormEdit("requirementEditorForm", "descriptionLabel", "Test");
-            Robot.SetOtherFormEdit("requirementEditorForm", "memoLabel", "Test");
+            Robot.ClickOtherFormComboBox("requirementEditorForm", "priorityComboBox", "High");
+            Robot.ClickOtherFormComboBox("requirementEditorForm", "statusComboBox", "Open");
+            Robot.ClickOtherFormComboBox("requirementEditorForm", "handlerComboBox", "ZZ");
+            Robot.SetOtherFormEdit("requirementEditorForm", "descriptionLabel", "The system shall provide a mechanism that allows to manage project.");
+            Robot.SetOtherFormEdit("requirementEditorForm", "memoLabel", "none");
             Robot.ClickOtherFormButton("requirementEditorForm", "confirmButton");
-
             Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
+            Robot.AssertDataGridViewNumericUpDownCellValue("requirementListForm", "requirementListDataGridView", 0, 0, "The system shall provide a project management mechanism.");
+        }
+
+
+        [TestMethod]
+        [DeploymentItem("RMS_Project.exe")]
+        public void AddRequirementComment() 
+        {
+            //設定帳密
+            Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "a123456");
+
+            //確認登入資料
+            Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.ClickOtherFormButton("loginForm", "signInButton");
+
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0, 550, 3);
+
+            Robot.AssertWindowExist("projectMainForm", true);
+
+            Robot.ClickOtherFormButton("projectMainForm", "requirementButton");
+
+            Robot.AssertWindowExist("requirementListForm", true);
+
+            Robot.ClickDataGridView("requirementListForm", "requirementListDataGridView", 0, 2, 20, 3);
+
+            Robot.SetOtherFormEdit("commentEditorForm", "commentRichTextBox", "Good!");
+            Robot.SetOtherFormEdit("commentEditorForm", "decisionRichTextBox", "None");
+
+            Robot.ClickOtherFormButton("commentEditorForm", "confirmButton");
+            Robot.AssertWindowExist("Success", true);
+            Robot.ClickOtherFormButton("Success", "確定");
+
+            Robot.AssertWindowExist("requirementListForm", true);
+
+            Robot.ClickDataGridView("requirementListForm", "requirementListDataGridView", 0, 0, 300, 3);
+            Robot.AssertDataGridViewNumericUpDownCellValue("requirementDetailForm", "commentDataGridView", 0, 0, "ZZ");
+            Robot.AssertDataGridViewNumericUpDownCellValue("requirementDetailForm", "commentDataGridView", 0, 1, "Good!");
+            Robot.AssertDataGridViewNumericUpDownCellValue("requirementDetailForm", "commentDataGridView", 0, 2, "None");
+        }
+
+
+        [TestMethod]
+        [DeploymentItem("RMS_Project.exe")]
+        public void EditRequirementData()
+        {
+            //設定帳密
+            Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "a123456");
+
+            //確認登入資料
+            Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.ClickOtherFormButton("loginForm", "signInButton");
+
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0, 550, 3);
+
+
+            Robot.ClickOtherFormDoubleButton("projectMainForm", "requirementButton");
+
+            
+            Robot.ClickDataGridView("requirementListForm", "requirementListDataGridView", 0, 0, 300, 3);
+
+            Robot.AssertWindowExist("requirementDetailForm", true);
+
+            Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
+            Robot.ClickOtherFormComboBox("requirementEditorForm", "priorityComboBox", "Medium");
+            Robot.ClickOtherFormComboBox("requirementEditorForm", "handlerComboBox", "YH");
+
+            Robot.SetOtherFormEdit("requirementEditorForm", "memoLabel", "None!");
+
+            Robot.ClickOtherFormButton("requirementEditorForm", "confirmButton");
+            Robot.AssertWindowExist("Success", true);
+            Robot.ClickOtherFormButton("Success", "確定");
+
+            Robot.AssertOtherText("requirementDetailForm", "priorityLabel", "Medium");
+            Robot.AssertOtherText("requirementDetailForm", "handlerLabel", "YH");
+            Robot.AssertOtherFormEdit("requirementDetailForm", "memoTextBox", "None!");
+
+
         }
     }
 }

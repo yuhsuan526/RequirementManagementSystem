@@ -16,7 +16,7 @@ namespace RMS_Project
     {
         private PresentationModel _presentationModel;
         private ArrayList _buttonArrayList;
-        private ProjectListForm _projectListForm;
+        private projectListForm _projectListForm;
         private ContextMenuStrip _contextMenuStrip;
 
         public enum FunctionalType { New, Edit, Hide, None };
@@ -30,7 +30,7 @@ namespace RMS_Project
             addUserMenu();
         }
 
-        public void setProjectsButton(ProjectListForm form)
+        public void setProjectsButton(projectListForm form)
         {
             _projectListForm = form;
             _presentationModel.AddFormToPanel(_projectListForm);
