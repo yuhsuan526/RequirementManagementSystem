@@ -20,6 +20,9 @@ namespace RMS_Project
         private ArrayList _arrayList;
         private Test _test;
         private UserInterfaceForm.FunctionalType type;
+        private bool isFinished;
+        private JObject testJObject;
+        private JArray rIdListJArray;
 
         public TestDetailForm(PresentationModel presentationModel,Test test)
         {
@@ -35,6 +38,8 @@ namespace RMS_Project
         public void RefreshTestDetail(Test test)
         {  
             _test = test;
+            isFinished = false;
+            _finishButton.Enabled = false;         
             GetTestCaseDetailInformation();
             GetRequirementByTestCaseId();
         }
@@ -64,6 +69,27 @@ namespace RMS_Project
                     inputDataLabel.Text = jsonObject["input_data"].ToString();
                     expectedResultLabel.Text = jsonObject["expected_result"].ToString();
                     descriptionTextBox.Text = jsonObject["description"].ToString();
+                    if (Int32.Parse(jHandler["id"].ToString()) == _presentationModel.GetUID())
+                    {
+                        _finishButton.Enabled = true;
+                    }
+                    else
+                    {
+                        _finishButton.Enabled = false;
+                    }
+                    if (jsonObject["finished"].ToString() != "False" )
+                    {
+                        _finishButton.Image = Properties.Resources.ios7_checkmark_outline;
+                        _finishButton.Text = "Finished";
+                        isFinished = true;
+                    }
+                    else
+                    {
+                        _finishButton.Image = Properties.Resources.ios7_circle_outline;
+                        _finishButton.Text = "Unfinished";
+                        isFinished = false; ;
+                    }
+                    testJObject = jsonObject;
                 }
             }
             else if (response.StatusCode == HttpStatusCode.RequestTimeout)
@@ -85,6 +111,7 @@ namespace RMS_Project
                 JObject json = JObject.Parse(content);
                 string message = json["result"].ToString();
                 JArray jsonArray = JArray.Parse(json["requirements"].ToString());
+                rIdListJArray = jsonArray;
                 if (message == "success")
                 {
                     this._requirementListDataGridView.Rows.Clear();
@@ -139,6 +166,73 @@ namespace RMS_Project
             {
                 type = UserInterfaceForm.FunctionalType.Edit;
                 _presentationModel.SetFunctionalButton(type);
+            }
+        }
+
+        private void _finishButton_MouseLeave(object sender, EventArgs e)
+        {
+            _finishButton.ForeColor = Color.Black;
+            _finishButton.Image = _presentationModel.ChangeColor(new Bitmap(_finishButton.Image), Color.Black);
+        }
+
+        private void _finishButton_MouseMove(object sender, MouseEventArgs e)
+        {
+            _finishButton.ForeColor = Color.CornflowerBlue;
+            _finishButton.Image = _presentationModel.ChangeColor(new Bitmap(_finishButton.Image), Color.CornflowerBlue);
+        }
+
+        private void _finishButton_Click(object sender, EventArgs e)
+        {
+            EditTestCase();
+        }
+
+        async void EditTestCase()
+        {
+            JObject jObject = new JObject();
+            jObject["id"] = testJObject["id"].ToString();
+            jObject["pid"] = _test.ProjectID;
+            jObject["name"] = testJObject["name"].ToString();
+            jObject["description"] = testJObject["description"].ToString();
+            JObject tempOwner = JObject.Parse(testJObject["owner"].ToString());
+            string owner = tempOwner["id"].ToString();
+            jObject["owner"] = owner;
+            JObject jHandler = JObject.Parse(testJObject["asigned_as"].ToString());
+            jObject["asigned_as"] = jHandler["id"].ToString();
+            jObject["input_data"] = testJObject["input_data"].ToString();
+            jObject["expected_result"] = testJObject["expected_result"].ToString();
+            string temp = "";
+            foreach (JObject rIdObject in rIdListJArray)
+            {
+                int rid = Int32.Parse(rIdObject["id"].ToString());
+                temp += rid;
+                temp += ",";
+            }
+            if (temp != "")
+                temp = temp.Substring(0, temp.Length - 1);
+            jObject["rid_list"] = temp;
+            isFinished = !isFinished;
+            if (isFinished)
+            {
+                jObject["finished"] = 1;
+            }
+            else
+            {
+                jObject["finished"] = 0;
+            }
+
+            string status = await _presentationModel.EditTestCase(jObject);
+            if (status == "success")
+            {
+                RefreshTestDetail(_test);
+                MessageBox.Show("測試案例修改成功", "Success", MessageBoxButtons.OK);
+            }
+            else if (status == "測試案例修改失敗")
+            {
+                MessageBox.Show("測試案例修改失敗", "Error", MessageBoxButtons.OK);
+            }
+            else if (status == "伺服器無回應")
+            {
+                MessageBox.Show("測試案例伺服器無回應", "Error", MessageBoxButtons.OK);
             }
         }
     }
