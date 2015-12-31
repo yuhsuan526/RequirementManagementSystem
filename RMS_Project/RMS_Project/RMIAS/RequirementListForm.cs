@@ -142,6 +142,11 @@ namespace RMS_Project
                 requirementListDataGridView.Columns[3].Visible = true;
                 _presentationModel.SetFunctionalButton(type);
             }
+            else if (jObject["priority_type_name"].ToString().Equals("Customer") )
+            {
+                type = UserInterfaceForm.FunctionalType.New;
+                _presentationModel.SetFunctionalButton(type);
+            }
         }
 
         private void searchTextBox_TextChanged(object sender, EventArgs e)

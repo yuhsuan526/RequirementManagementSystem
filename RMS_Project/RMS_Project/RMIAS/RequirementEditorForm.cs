@@ -59,6 +59,7 @@ namespace RMS_Project
             GetRequirementMethod(PRIORITY);
             GetRequirementMethod(REQUIREMENT);
             GetRequirementMethod(STATUS);
+            CheckPriority();
         }
 
         public RequirementEditorForm(PresentationModel presentationModel, Requirement requirement)
@@ -84,7 +85,7 @@ namespace RMS_Project
             GetRequirementMethod(PRIORITY);
             GetRequirementMethod(REQUIREMENT);
             GetRequirementMethod(STATUS);
-
+            CheckPriority();
             nameTextBox.Text = _requirement.Name;
             typeComboBox.SelectedItem = _requirement.Type.Name;
             versionLabel.Text = (Int32.Parse(_requirement.Version) + 1).ToString();
@@ -322,12 +323,15 @@ namespace RMS_Project
                     for (int i = 0; i < jsonArray.Count; i++)
                     {
                         JObject jObject = jsonArray[i] as JObject;
-                        handlerComboBox.Items.Add(new Item(Int32.Parse(jObject["id"].ToString()), jObject["name"].ToString()));
-                        _projectMemberArrayList.Add(Int32.Parse(jObject["id"].ToString()));
-                        if (_requirement != null)
+                        if (!jObject["priority_type_name"].ToString().Equals("Customer"))
                         {
-                            if (Int32.Parse(jObject["id"].ToString()) == _requirement.Handler.ID)
-                                tempIndex = i;
+                            handlerComboBox.Items.Add(new Item(Int32.Parse(jObject["id"].ToString()), jObject["name"].ToString()));
+                            _projectMemberArrayList.Add(Int32.Parse(jObject["id"].ToString()));
+                            if (_requirement != null)
+                            {
+                                if (Int32.Parse(jObject["id"].ToString()) == _requirement.Handler.ID)
+                                    tempIndex = i;
+                            }
                         }
                     }
                     if (handlerComboBox.Items.Count > 0)
@@ -352,6 +356,22 @@ namespace RMS_Project
         public UserInterfaceForm.FunctionalType GetFunctionalType()
         {
             return UserInterfaceForm.FunctionalType.Hide;
+        }
+
+        private async void CheckPriority()
+        {
+            int id;
+            if (_requirement != null)
+                id = _requirement.ProjectID;
+            else
+                id = _project.ID;
+            JObject jObject = await _presentationModel.GetPriority(id);
+            if (jObject["priority_type_name"].ToString().Equals("Owner") ||
+                jObject["priority_type_name"].ToString().Equals("Manager"))
+            {
+                statusComboBox.Enabled = true;
+                handlerComboBox.Enabled = true;
+            }
         }
     }
 }

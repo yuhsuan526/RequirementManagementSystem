@@ -71,7 +71,7 @@ namespace RMSCodedUITestProject
 
             Robot.ClickDataGridView("testListForm", "testListDataGridView", 0, 2, 5, 3);
 
-            Robot.AssertWindowExist("Success", true);
+            
             Robot.ClickOtherFormButton("Success", "確定");
 
             Robot.AssertDataGridViewNumericUpDownCellValue("testListForm", "testListDataGridView", 0, 0, "login test Error");

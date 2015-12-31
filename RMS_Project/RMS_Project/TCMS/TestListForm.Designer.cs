@@ -141,6 +141,7 @@
             this.testSearchTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.testSearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.testSearchTextBox.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.testSearchTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.testSearchTextBox.Location = new System.Drawing.Point(53, 9);
             this.testSearchTextBox.Name = "testSearchTextBox";
             this.testSearchTextBox.Size = new System.Drawing.Size(420, 32);

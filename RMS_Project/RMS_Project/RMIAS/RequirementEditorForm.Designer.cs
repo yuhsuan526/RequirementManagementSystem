@@ -97,6 +97,7 @@
             // 
             this.handlerComboBox.AccessibleName = "handlerComboBox";
             this.handlerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.handlerComboBox.Enabled = false;
             this.handlerComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.handlerComboBox.FormattingEnabled = true;
             this.handlerComboBox.Location = new System.Drawing.Point(597, 113);
@@ -121,6 +122,7 @@
             // 
             this.statusComboBox.AccessibleName = "statusComboBox";
             this.statusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.statusComboBox.Enabled = false;
             this.statusComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusComboBox.FormattingEnabled = true;
             this.statusComboBox.Location = new System.Drawing.Point(461, 113);

@@ -80,6 +80,7 @@
             this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.testEditorTableLayoutPanel.Size = new System.Drawing.Size(784, 561);
             this.testEditorTableLayoutPanel.TabIndex = 2;
             // 
@@ -89,6 +90,7 @@
             this.testEditorTableLayoutPanel.SetColumnSpan(this.descriptionRichTextBox, 5);
             this.descriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.descriptionRichTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionRichTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.descriptionRichTextBox.Location = new System.Drawing.Point(52, 172);
             this.descriptionRichTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.descriptionRichTextBox.Name = "descriptionRichTextBox";
@@ -102,6 +104,7 @@
             this.testEditorTableLayoutPanel.SetColumnSpan(this.expectedResultTextBox, 2);
             this.expectedResultTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expectedResultTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.expectedResultTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.expectedResultTextBox.Location = new System.Drawing.Point(167, 82);
             this.expectedResultTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.expectedResultTextBox.Name = "expectedResultTextBox";
@@ -154,6 +157,7 @@
             this.testEditorTableLayoutPanel.SetColumnSpan(this.testNameTextBox, 2);
             this.testNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.testNameTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.testNameTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.testNameTextBox.Location = new System.Drawing.Point(167, 22);
             this.testNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.testNameTextBox.Name = "testNameTextBox";
@@ -179,6 +183,7 @@
             this.testEditorTableLayoutPanel.SetColumnSpan(this.inputDataTextBox, 2);
             this.inputDataTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inputDataTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputDataTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.inputDataTextBox.Location = new System.Drawing.Point(167, 52);
             this.inputDataTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.inputDataTextBox.Name = "inputDataTextBox";
@@ -201,13 +206,13 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.testEditorTableLayoutPanel.SetColumnSpan(this.label4, 5);
+            this.testEditorTableLayoutPanel.SetColumnSpan(this.label4, 3);
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(52, 140);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(680, 30);
+            this.label4.Size = new System.Drawing.Size(423, 30);
             this.label4.TabIndex = 9;
             this.label4.Text = "Description";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -233,11 +238,11 @@
             this.checkedListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkedListBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkedListBox.FormattingEnabled = true;
-            this.checkedListBox.Location = new System.Drawing.Point(479, 52);
-            this.checkedListBox.Margin = new System.Windows.Forms.Padding(2);
+            this.checkedListBox.Location = new System.Drawing.Point(477, 50);
+            this.checkedListBox.Margin = new System.Windows.Forms.Padding(0);
             this.checkedListBox.Name = "checkedListBox";
-            this.testEditorTableLayoutPanel.SetRowSpan(this.checkedListBox, 3);
-            this.checkedListBox.Size = new System.Drawing.Size(253, 86);
+            this.testEditorTableLayoutPanel.SetRowSpan(this.checkedListBox, 4);
+            this.checkedListBox.Size = new System.Drawing.Size(257, 120);
             this.checkedListBox.TabIndex = 26;
             // 
             // label3

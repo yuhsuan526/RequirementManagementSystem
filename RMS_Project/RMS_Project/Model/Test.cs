@@ -12,6 +12,8 @@ namespace RMS_Project
         int _projectId;
         string _name;
         string _description;
+        User _handler;
+        bool _isFinished;
 
         public Test(int id,int projectId, string name, string description)
         {
@@ -53,5 +55,28 @@ namespace RMS_Project
             }
         }
 
+        public User Handler
+        {
+            get
+            {
+                return _handler;
+            }
+            set
+            {
+                _handler = value;
+            }
+        }
+
+        public bool IsFinished
+        {
+            get
+            {
+                return _isFinished;
+            }
+            set
+            {
+                _isFinished = value;
+            }
+        }
     }
 }

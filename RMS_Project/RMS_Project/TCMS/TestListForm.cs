@@ -53,6 +53,7 @@ namespace RMS_Project
                     {
                         this.testListDataGridView.Rows.Add(jObject["name"]);
                         Test test = new Test(int.Parse(jObject["id"].ToString()), _project.ID, jObject["name"].ToString(), jObject["description"].ToString());
+                        //test.Handler = new User()
                         _arrayList.Add(test);
                     }
                 }

@@ -18,6 +18,10 @@ namespace RMS_Project
         private PresentationModel _presentationModel;
         private Requirement _requirement;
         private UserInterfaceForm.FunctionalType type;
+        private bool isFinished;
+        private const int OPEN_ID = 1;
+        private const int APPROVED_ID = 3;
+        private const int FINISHED_ID = 5;
 
         public RequirementDetailForm(PresentationModel presentationModel, Requirement requirement)
         {
@@ -25,7 +29,6 @@ namespace RMS_Project
             _presentationModel = presentationModel;
             type = UserInterfaceForm.FunctionalType.Hide;
             RefreshRequirementDetail(requirement);
-            CheckPriority();
         }
 
         public void RefreshRequirementDetail(Requirement requirement)
@@ -41,8 +44,31 @@ namespace RMS_Project
             handlerLabel.Text = _requirement.Handler.Name;
             descriptionTextBox.Text = _requirement.Description;
             memoTextBox.Text = _requirement.Memo;
+            isFinished = false;
+            if (requirement.Handler.ID == _presentationModel.GetUID() &&
+                (requirement.Status.ID == APPROVED_ID || requirement.Status.ID == FINISHED_ID))
+            {
+                _finishButton.Enabled = true;
+            }
+            else
+            {
+                _finishButton.Enabled = false;
+            }
+            if (requirement.Status.ID == FINISHED_ID)
+            {
+                _finishButton.Image = Properties.Resources.ios7_checkmark_outline;
+                _finishButton.Text = "Finished";
+                isFinished = true;
+            }
+            else
+            {
+                _finishButton.Image = Properties.Resources.ios7_circle_outline;
+                _finishButton.Text = "Unfinished";
+                isFinished = false; ;
+            }
             getTestcaseByRequirementId();
             getComment();
+            CheckPriority();
         }
 
         public Requirement Requirement
@@ -125,6 +151,55 @@ namespace RMS_Project
             {
                 type = UserInterfaceForm.FunctionalType.Edit;
                 _presentationModel.SetFunctionalButton(type);
+            }
+            else if (jObject["priority_type_name"].ToString().Equals("Customer"))
+            {
+                if (_requirement.Status.ID == OPEN_ID && _requirement.Owner.ID == _presentationModel.GetUID())
+                {
+                    type = UserInterfaceForm.FunctionalType.Edit;
+                    _presentationModel.SetFunctionalButton(type);
+                }
+            }
+        }
+
+        private void _finishButton_MouseLeave(object sender, EventArgs e)
+        {
+            _finishButton.ForeColor = Color.Black;
+            _finishButton.Image = _presentationModel.ChangeColor(new Bitmap(_finishButton.Image), Color.Black);
+        }
+
+        private void _finishButton_MouseMove(object sender, MouseEventArgs e)
+        {
+            _finishButton.ForeColor = Color.CornflowerBlue;
+            _finishButton.Image = _presentationModel.ChangeColor(new Bitmap(_finishButton.Image), Color.CornflowerBlue);
+        }
+
+        private void _finishButton_Click(object sender, EventArgs e)
+        {
+            if (isFinished == false)
+            {
+                _requirement.Status = new NormalAttribute(5,"Finished");
+            }
+            else
+            {
+                _requirement.Status = new NormalAttribute(3,"Approved");
+            }
+            EditRequirement();
+        }
+
+        private async void EditRequirement()
+        {
+            string message = await _presentationModel.EditRequirement(_requirement);
+            try
+            {
+                RefreshRequirementDetail(_requirement);
+                RequirementListForm form = _presentationModel.GetFormByType(typeof(RequirementListForm)) as RequirementListForm;
+                form.GetRequirementByProject();
+                MessageBox.Show(message, "Success", MessageBoxButtons.OK);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
             }
         }
     }

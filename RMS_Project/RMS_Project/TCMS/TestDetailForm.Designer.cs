@@ -48,6 +48,7 @@
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.handlerLabel = new System.Windows.Forms.Label();
+            this._finishButton = new RMS_Project.NoFocusCueButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._requirementListDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -119,8 +120,9 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.Controls.Add(this._finishButton, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this._requirementListDataGridView, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this._requirementListDataGridView, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.inputDataLabel, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.idLabel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
@@ -131,7 +133,7 @@
             this.tableLayoutPanel1.Controls.Add(this.expectedResultLabel, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.ownerLabel, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.descriptionTextBox, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.label8, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.handlerLabel, 1, 5);
@@ -150,6 +152,9 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(684, 531);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
@@ -189,7 +194,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this._requirementListDataGridView.DefaultCellStyle = dataGridViewCellStyle7;
             this._requirementListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._requirementListDataGridView.Location = new System.Drawing.Point(513, 26);
+            this._requirementListDataGridView.Location = new System.Drawing.Point(513, 104);
             this._requirementListDataGridView.Margin = new System.Windows.Forms.Padding(0);
             this._requirementListDataGridView.MultiSelect = false;
             this._requirementListDataGridView.Name = "_requirementListDataGridView";
@@ -199,12 +204,12 @@
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._requirementListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.tableLayoutPanel1.SetRowSpan(this._requirementListDataGridView, 7);
+            this.tableLayoutPanel1.SetRowSpan(this._requirementListDataGridView, 4);
             this._requirementListDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
             this._requirementListDataGridView.RowTemplate.DividerHeight = 1;
             this._requirementListDataGridView.RowTemplate.Height = 50;
             this._requirementListDataGridView.RowTemplate.ReadOnly = true;
-            this._requirementListDataGridView.Size = new System.Drawing.Size(171, 505);
+            this._requirementListDataGridView.Size = new System.Drawing.Size(171, 427);
             this._requirementListDataGridView.TabIndex = 31;
             // 
             // Column1
@@ -286,7 +291,7 @@
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(516, 0);
+            this.label1.Location = new System.Drawing.Point(516, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(165, 26);
             this.label1.TabIndex = 32;
@@ -331,6 +336,33 @@
             this.handlerLabel.TabIndex = 36;
             this.handlerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // _finishButton
+            // 
+            this._finishButton.AccessibleName = "finishButton";
+            this._finishButton.AutoSize = true;
+            this._finishButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._finishButton.Enabled = false;
+            this._finishButton.FlatAppearance.BorderSize = 0;
+            this._finishButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this._finishButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this._finishButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._finishButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._finishButton.Image = global::RMS_Project.Properties.Resources.ios7_circle_outline;
+            this._finishButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._finishButton.Location = new System.Drawing.Point(516, 3);
+            this._finishButton.Name = "_finishButton";
+            this.tableLayoutPanel1.SetRowSpan(this._finishButton, 3);
+            this._finishButton.Size = new System.Drawing.Size(165, 72);
+            this._finishButton.TabIndex = 45;
+            this._finishButton.TabStop = false;
+            this._finishButton.Text = "Unfinished";
+            this._finishButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._finishButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this._finishButton.UseVisualStyleBackColor = true;
+            this._finishButton.Click += new System.EventHandler(this._finishButton_Click);
+            this._finishButton.MouseLeave += new System.EventHandler(this._finishButton_MouseLeave);
+            this._finishButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this._finishButton_MouseMove);
+            // 
             // TestDetailForm
             // 
             this.AccessibleName = "testDetailForm";
@@ -368,5 +400,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label handlerLabel;
+        private NoFocusCueButton _finishButton;
     }
 }

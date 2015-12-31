@@ -101,6 +101,7 @@ namespace RMS_Project
                     _functionalButton.Visible = false;
                     break;
             }
+            flowLayoutPanel.AutoScrollPosition = new Point(flowLayoutPanel.HorizontalScroll.Maximum, 0);
         }
 
         public void AddFormButtonToBar(Form form, string buttonName, Image image)

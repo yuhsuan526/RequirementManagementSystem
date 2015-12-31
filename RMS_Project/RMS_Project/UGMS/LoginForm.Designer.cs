@@ -110,6 +110,7 @@
             this.email.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::RMS_Project.Properties.Settings.Default, "Email", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.email.Dock = System.Windows.Forms.DockStyle.Fill;
             this.email.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.email.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.email.Location = new System.Drawing.Point(53, 158);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(336, 26);
@@ -123,6 +124,7 @@
             this.password.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::RMS_Project.Properties.Settings.Default, "Password", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.password.Dock = System.Windows.Forms.DockStyle.Fill;
             this.password.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.password.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.password.Location = new System.Drawing.Point(395, 158);
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(336, 26);

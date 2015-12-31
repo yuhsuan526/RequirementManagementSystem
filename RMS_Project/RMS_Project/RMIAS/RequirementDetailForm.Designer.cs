@@ -35,6 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.testEditorTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this._finishButton = new RMS_Project.NoFocusCueButton();
             this._commentDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,18 +73,19 @@
             // 
             this.testEditorTableLayoutPanel.ColumnCount = 5;
             this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.testEditorTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.testEditorTableLayoutPanel.Controls.Add(this._finishButton, 4, 0);
             this.testEditorTableLayoutPanel.Controls.Add(this._commentDataGridView, 1, 9);
             this.testEditorTableLayoutPanel.Controls.Add(this.inputDataLabel, 2, 1);
             this.testEditorTableLayoutPanel.Controls.Add(this.testNameLabel, 2, 0);
             this.testEditorTableLayoutPanel.Controls.Add(this.expectedResultLabel, 2, 2);
             this.testEditorTableLayoutPanel.Controls.Add(this.ownerLabel, 2, 3);
             this.testEditorTableLayoutPanel.Controls.Add(this.label4, 0, 4);
-            this.testEditorTableLayoutPanel.Controls.Add(this.label3, 4, 0);
-            this.testEditorTableLayoutPanel.Controls.Add(this._associatedTestListDataGridView, 4, 1);
+            this.testEditorTableLayoutPanel.Controls.Add(this.label3, 4, 3);
+            this.testEditorTableLayoutPanel.Controls.Add(this._associatedTestListDataGridView, 4, 4);
             this.testEditorTableLayoutPanel.Controls.Add(this.descriptionTextBox, 1, 5);
             this.testEditorTableLayoutPanel.Controls.Add(this.label1, 0, 0);
             this.testEditorTableLayoutPanel.Controls.Add(this.label2, 0, 1);
@@ -118,6 +120,33 @@
             this.testEditorTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.testEditorTableLayoutPanel.Size = new System.Drawing.Size(819, 521);
             this.testEditorTableLayoutPanel.TabIndex = 3;
+            // 
+            // _finishButton
+            // 
+            this._finishButton.AccessibleName = "finishButton";
+            this._finishButton.AutoSize = true;
+            this._finishButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._finishButton.Enabled = false;
+            this._finishButton.FlatAppearance.BorderSize = 0;
+            this._finishButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this._finishButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this._finishButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._finishButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._finishButton.Image = global::RMS_Project.Properties.Resources.ios7_circle_outline;
+            this._finishButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._finishButton.Location = new System.Drawing.Point(586, 23);
+            this._finishButton.Name = "_finishButton";
+            this.testEditorTableLayoutPanel.SetRowSpan(this._finishButton, 3);
+            this._finishButton.Size = new System.Drawing.Size(180, 72);
+            this._finishButton.TabIndex = 44;
+            this._finishButton.TabStop = false;
+            this._finishButton.Text = "Unfinished";
+            this._finishButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._finishButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this._finishButton.UseVisualStyleBackColor = true;
+            this._finishButton.Click += new System.EventHandler(this._finishButton_Click);
+            this._finishButton.MouseLeave += new System.EventHandler(this._finishButton_MouseLeave);
+            this._finishButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this._finishButton_MouseMove);
             // 
             // _commentDataGridView
             // 
@@ -177,7 +206,7 @@
             this._commentDataGridView.RowTemplate.Height = 30;
             this._commentDataGridView.RowTemplate.ReadOnly = true;
             this._commentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this._commentDataGridView.Size = new System.Drawing.Size(464, 199);
+            this._commentDataGridView.Size = new System.Drawing.Size(448, 199);
             this._commentDataGridView.TabIndex = 43;
             // 
             // dataGridViewTextBoxColumn1
@@ -210,7 +239,7 @@
             this.inputDataLabel.AutoSize = true;
             this.inputDataLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inputDataLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputDataLabel.Location = new System.Drawing.Point(249, 46);
+            this.inputDataLabel.Location = new System.Drawing.Point(237, 46);
             this.inputDataLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.inputDataLabel.Name = "inputDataLabel";
             this.inputDataLabel.Size = new System.Drawing.Size(66, 26);
@@ -223,7 +252,7 @@
             this.testNameLabel.AutoSize = true;
             this.testNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.testNameLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.testNameLabel.Location = new System.Drawing.Point(250, 20);
+            this.testNameLabel.Location = new System.Drawing.Point(238, 20);
             this.testNameLabel.Name = "testNameLabel";
             this.testNameLabel.Size = new System.Drawing.Size(64, 26);
             this.testNameLabel.TabIndex = 0;
@@ -235,7 +264,7 @@
             this.expectedResultLabel.AutoSize = true;
             this.expectedResultLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expectedResultLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.expectedResultLabel.Location = new System.Drawing.Point(249, 72);
+            this.expectedResultLabel.Location = new System.Drawing.Point(237, 72);
             this.expectedResultLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.expectedResultLabel.Name = "expectedResultLabel";
             this.expectedResultLabel.Size = new System.Drawing.Size(66, 26);
@@ -248,7 +277,7 @@
             this.ownerLabel.AutoSize = true;
             this.ownerLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ownerLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ownerLabel.Location = new System.Drawing.Point(249, 98);
+            this.ownerLabel.Location = new System.Drawing.Point(237, 98);
             this.ownerLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ownerLabel.Name = "ownerLabel";
             this.ownerLabel.Size = new System.Drawing.Size(66, 26);
@@ -274,9 +303,9 @@
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(602, 20);
+            this.label3.Location = new System.Drawing.Point(586, 98);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(164, 26);
+            this.label3.Size = new System.Drawing.Size(180, 26);
             this.label3.TabIndex = 11;
             this.label3.Text = "Associated Tests";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -305,7 +334,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this._associatedTestListDataGridView.DefaultCellStyle = dataGridViewCellStyle5;
             this._associatedTestListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._associatedTestListDataGridView.Location = new System.Drawing.Point(599, 46);
+            this._associatedTestListDataGridView.Location = new System.Drawing.Point(583, 124);
             this._associatedTestListDataGridView.Margin = new System.Windows.Forms.Padding(0);
             this._associatedTestListDataGridView.MultiSelect = false;
             this._associatedTestListDataGridView.Name = "_associatedTestListDataGridView";
@@ -315,12 +344,12 @@
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._associatedTestListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.testEditorTableLayoutPanel.SetRowSpan(this._associatedTestListDataGridView, 9);
+            this.testEditorTableLayoutPanel.SetRowSpan(this._associatedTestListDataGridView, 6);
             this._associatedTestListDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
             this._associatedTestListDataGridView.RowTemplate.DividerHeight = 1;
             this._associatedTestListDataGridView.RowTemplate.Height = 50;
             this._associatedTestListDataGridView.RowTemplate.ReadOnly = true;
-            this._associatedTestListDataGridView.Size = new System.Drawing.Size(170, 455);
+            this._associatedTestListDataGridView.Size = new System.Drawing.Size(186, 377);
             this._associatedTestListDataGridView.TabIndex = 26;
             // 
             // Column1
@@ -342,7 +371,7 @@
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.ReadOnly = true;
-            this.descriptionTextBox.Size = new System.Drawing.Size(458, 44);
+            this.descriptionTextBox.Size = new System.Drawing.Size(442, 44);
             this.descriptionTextBox.TabIndex = 27;
             // 
             // label1
@@ -398,9 +427,9 @@
             this.nameLabel.AutoSize = true;
             this.nameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nameLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel.Location = new System.Drawing.Point(320, 20);
+            this.nameLabel.Location = new System.Drawing.Point(308, 20);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(276, 26);
+            this.nameLabel.Size = new System.Drawing.Size(272, 26);
             this.nameLabel.TabIndex = 32;
             this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -411,7 +440,7 @@
             this.idLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idLabel.Location = new System.Drawing.Point(138, 20);
             this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(106, 26);
+            this.idLabel.Size = new System.Drawing.Size(94, 26);
             this.idLabel.TabIndex = 33;
             this.idLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -423,7 +452,7 @@
             this.versionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.versionLabel.Location = new System.Drawing.Point(138, 46);
             this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(106, 26);
+            this.versionLabel.Size = new System.Drawing.Size(94, 26);
             this.versionLabel.TabIndex = 34;
             this.versionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -435,7 +464,7 @@
             this.priorityLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.priorityLabel.Location = new System.Drawing.Point(138, 72);
             this.priorityLabel.Name = "priorityLabel";
-            this.priorityLabel.Size = new System.Drawing.Size(106, 26);
+            this.priorityLabel.Size = new System.Drawing.Size(94, 26);
             this.priorityLabel.TabIndex = 35;
             this.priorityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -446,7 +475,7 @@
             this.statusLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusLabel.Location = new System.Drawing.Point(138, 98);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(106, 26);
+            this.statusLabel.Size = new System.Drawing.Size(94, 26);
             this.statusLabel.TabIndex = 36;
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -455,9 +484,9 @@
             this.typeLabel.AutoSize = true;
             this.typeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.typeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.typeLabel.Location = new System.Drawing.Point(320, 46);
+            this.typeLabel.Location = new System.Drawing.Point(308, 46);
             this.typeLabel.Name = "typeLabel";
-            this.typeLabel.Size = new System.Drawing.Size(276, 26);
+            this.typeLabel.Size = new System.Drawing.Size(272, 26);
             this.typeLabel.TabIndex = 37;
             this.typeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -466,9 +495,9 @@
             this.requirementOwnerLabel.AutoSize = true;
             this.requirementOwnerLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requirementOwnerLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.requirementOwnerLabel.Location = new System.Drawing.Point(320, 72);
+            this.requirementOwnerLabel.Location = new System.Drawing.Point(308, 72);
             this.requirementOwnerLabel.Name = "requirementOwnerLabel";
-            this.requirementOwnerLabel.Size = new System.Drawing.Size(276, 26);
+            this.requirementOwnerLabel.Size = new System.Drawing.Size(272, 26);
             this.requirementOwnerLabel.TabIndex = 38;
             this.requirementOwnerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -478,9 +507,9 @@
             this.handlerLabel.AutoSize = true;
             this.handlerLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.handlerLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.handlerLabel.Location = new System.Drawing.Point(320, 98);
+            this.handlerLabel.Location = new System.Drawing.Point(308, 98);
             this.handlerLabel.Name = "handlerLabel";
-            this.handlerLabel.Size = new System.Drawing.Size(276, 26);
+            this.handlerLabel.Size = new System.Drawing.Size(272, 26);
             this.handlerLabel.TabIndex = 39;
             this.handlerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -495,7 +524,7 @@
             this.memoTextBox.Multiline = true;
             this.memoTextBox.Name = "memoTextBox";
             this.memoTextBox.ReadOnly = true;
-            this.memoTextBox.Size = new System.Drawing.Size(458, 44);
+            this.memoTextBox.Size = new System.Drawing.Size(442, 44);
             this.memoTextBox.TabIndex = 40;
             // 
             // label15
@@ -570,6 +599,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private NoFocusCueButton _finishButton;
 
 
 

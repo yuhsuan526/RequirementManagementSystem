@@ -75,7 +75,7 @@ namespace RMSCodedUITestProject
             Robot.AssertOtherFormEdit("registrantionForm", "userNameLabel", "ZZ");
             Robot.AssertOtherFormEdit("registrantionForm", "emailLabel", "a00064qaz123@gmail.com");
 
-            Robot.ClickOtherFormDoubleButton("registrantionForm", "createAccountButton");
+            Robot.ClickOtherFormButton("registrantionForm", "createAccountButton");
             //messageBox成功
             Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");

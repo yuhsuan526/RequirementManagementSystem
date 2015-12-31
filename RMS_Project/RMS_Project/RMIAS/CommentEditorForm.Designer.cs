@@ -141,6 +141,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this._commentRichTextBox, 4);
             this._commentRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this._commentRichTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._commentRichTextBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this._commentRichTextBox.Location = new System.Drawing.Point(53, 83);
             this._commentRichTextBox.Name = "_commentRichTextBox";
             this._commentRichTextBox.Size = new System.Drawing.Size(544, 155);
@@ -154,6 +155,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this._decisionRichTextBox, 4);
             this._decisionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this._decisionRichTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._decisionRichTextBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this._decisionRichTextBox.Location = new System.Drawing.Point(53, 274);
             this._decisionRichTextBox.Name = "_decisionRichTextBox";
             this._decisionRichTextBox.Size = new System.Drawing.Size(544, 155);
