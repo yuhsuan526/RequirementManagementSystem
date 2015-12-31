@@ -51,6 +51,8 @@ namespace RMSCodedUITestProject
             Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
             Robot.ClickOtherFormButton("loginForm", "signInButton");
 
+            Robot.AssertWindowExist("projectListForm", true);
+
             Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0,550,3);
 
             Robot.AssertWindowExist("ProjectMainForm", true);
@@ -72,6 +74,8 @@ namespace RMSCodedUITestProject
             //確認登入資料
             Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
             Robot.ClickOtherFormButton("loginForm", "signInButton");
+
+            Robot.AssertWindowExist("projectListForm", true);
 
             Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0,550,3);
 

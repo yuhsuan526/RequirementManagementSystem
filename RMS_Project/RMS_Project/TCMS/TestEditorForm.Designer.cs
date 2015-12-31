@@ -90,6 +90,7 @@
             this.testEditorTableLayoutPanel.SetColumnSpan(this.descriptionRichTextBox, 5);
             this.descriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.descriptionRichTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionRichTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.descriptionRichTextBox.Location = new System.Drawing.Point(52, 172);
             this.descriptionRichTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.descriptionRichTextBox.Name = "descriptionRichTextBox";
@@ -103,6 +104,7 @@
             this.testEditorTableLayoutPanel.SetColumnSpan(this.expectedResultTextBox, 2);
             this.expectedResultTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expectedResultTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.expectedResultTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.expectedResultTextBox.Location = new System.Drawing.Point(167, 82);
             this.expectedResultTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.expectedResultTextBox.Name = "expectedResultTextBox";
@@ -155,6 +157,7 @@
             this.testEditorTableLayoutPanel.SetColumnSpan(this.testNameTextBox, 2);
             this.testNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.testNameTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.testNameTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.testNameTextBox.Location = new System.Drawing.Point(167, 22);
             this.testNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.testNameTextBox.Name = "testNameTextBox";
@@ -180,6 +183,7 @@
             this.testEditorTableLayoutPanel.SetColumnSpan(this.inputDataTextBox, 2);
             this.inputDataTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inputDataTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputDataTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.inputDataTextBox.Location = new System.Drawing.Point(167, 52);
             this.inputDataTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.inputDataTextBox.Name = "inputDataTextBox";

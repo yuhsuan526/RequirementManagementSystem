@@ -30,8 +30,6 @@
         {
             this.registerTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.createButton = new System.Windows.Forms.Button();
-            this.backButton = new System.Windows.Forms.Button();
             this.userNameLabel = new System.Windows.Forms.Label();
             this.emailLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
@@ -40,6 +38,8 @@
             this.password = new System.Windows.Forms.TextBox();
             this.confirmPasswordLabel = new System.Windows.Forms.Label();
             this.confirmPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.backButton = new System.Windows.Forms.Button();
+            this.createButton = new System.Windows.Forms.Button();
             this.registerTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,31 +92,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Create a Account";
             // 
-            // createButton
-            // 
-            this.createButton.AccessibleName = "createAccountButton";
-            this.createButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.createButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createButton.Location = new System.Drawing.Point(577, 474);
-            this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(74, 34);
-            this.createButton.TabIndex = 5;
-            this.createButton.Text = "Send";
-            this.createButton.UseVisualStyleBackColor = true;
-            this.createButton.Click += new System.EventHandler(this.createButton_Click);
-            // 
-            // backButton
-            // 
-            this.backButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.backButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backButton.Location = new System.Drawing.Point(657, 474);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(74, 34);
-            this.backButton.TabIndex = 6;
-            this.backButton.Text = "Cancel";
-            this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
             // userNameLabel
             // 
             this.userNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -162,6 +137,7 @@
             this.userName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.registerTableLayoutPanel.SetColumnSpan(this.userName, 3);
             this.userName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userName.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.userName.Location = new System.Drawing.Point(53, 118);
             this.userName.Name = "userName";
             this.userName.Size = new System.Drawing.Size(678, 26);
@@ -173,6 +149,7 @@
             this.email.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.registerTableLayoutPanel.SetColumnSpan(this.email, 3);
             this.email.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.email.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.email.Location = new System.Drawing.Point(53, 178);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(678, 26);
@@ -184,6 +161,7 @@
             this.password.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.registerTableLayoutPanel.SetColumnSpan(this.password, 3);
             this.password.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.password.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.password.Location = new System.Drawing.Point(53, 238);
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(678, 26);
@@ -209,11 +187,37 @@
             this.registerTableLayoutPanel.SetColumnSpan(this.confirmPasswordTextBox, 3);
             this.confirmPasswordTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.confirmPasswordTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmPasswordTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.confirmPasswordTextBox.Location = new System.Drawing.Point(53, 298);
             this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
             this.confirmPasswordTextBox.Size = new System.Drawing.Size(678, 26);
             this.confirmPasswordTextBox.TabIndex = 4;
             this.confirmPasswordTextBox.UseSystemPasswordChar = true;
+            // 
+            // backButton
+            // 
+            this.backButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.backButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backButton.Location = new System.Drawing.Point(657, 474);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(74, 34);
+            this.backButton.TabIndex = 6;
+            this.backButton.Text = "Cancel";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
+            // createButton
+            // 
+            this.createButton.AccessibleName = "createAccountButton";
+            this.createButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.createButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createButton.Location = new System.Drawing.Point(577, 474);
+            this.createButton.Name = "createButton";
+            this.createButton.Size = new System.Drawing.Size(74, 34);
+            this.createButton.TabIndex = 5;
+            this.createButton.Text = "Send";
+            this.createButton.UseVisualStyleBackColor = true;
+            this.createButton.Click += new System.EventHandler(this.createButton_Click);
             // 
             // RegistrantionForm
             // 

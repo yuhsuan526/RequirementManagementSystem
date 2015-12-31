@@ -270,7 +270,6 @@ namespace ezLogUITest
             int upperPartYOffset = halfHeightOfCell - SPINBUTTON_HEIGHT_FINE_TUNE;
             int lowerPartYOffset = halfHeightOfCell + SPINBUTTON_HEIGHT_FINE_TUNE;
             Mouse.Click(new Point(boundingRectangle.X + boundingRectangle.Width - HALF_BUTTON_WIDTH, boundingRectangle.Y + upperPartYOffset));
-            Mouse.Click(new Point(boundingRectangle.X + boundingRectangle.Width - HALF_BUTTON_WIDTH, boundingRectangle.Y + upperPartYOffset));
         }
 
         public static void ClickListViewToEmpty(string name, string data)

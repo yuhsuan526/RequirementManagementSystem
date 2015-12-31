@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.testEditorTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this._finishButton = new RMS_Project.NoFocusCueButton();
             this._commentDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,7 +64,6 @@
             this.memoTextBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this._finishButton = new RMS_Project.NoFocusCueButton();
             this.testEditorTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._commentDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._associatedTestListDataGridView)).BeginInit();
@@ -121,6 +121,33 @@
             this.testEditorTableLayoutPanel.Size = new System.Drawing.Size(819, 521);
             this.testEditorTableLayoutPanel.TabIndex = 3;
             // 
+            // _finishButton
+            // 
+            this._finishButton.AccessibleName = "finishButton";
+            this._finishButton.AutoSize = true;
+            this._finishButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._finishButton.Enabled = false;
+            this._finishButton.FlatAppearance.BorderSize = 0;
+            this._finishButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this._finishButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this._finishButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._finishButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._finishButton.Image = global::RMS_Project.Properties.Resources.ios7_circle_outline;
+            this._finishButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._finishButton.Location = new System.Drawing.Point(586, 23);
+            this._finishButton.Name = "_finishButton";
+            this.testEditorTableLayoutPanel.SetRowSpan(this._finishButton, 3);
+            this._finishButton.Size = new System.Drawing.Size(180, 72);
+            this._finishButton.TabIndex = 44;
+            this._finishButton.TabStop = false;
+            this._finishButton.Text = "Unfinished";
+            this._finishButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._finishButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this._finishButton.UseVisualStyleBackColor = true;
+            this._finishButton.Click += new System.EventHandler(this._finishButton_Click);
+            this._finishButton.MouseLeave += new System.EventHandler(this._finishButton_MouseLeave);
+            this._finishButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this._finishButton_MouseMove);
+            // 
             // _commentDataGridView
             // 
             this._commentDataGridView.AccessibleName = "commentDataGridView";
@@ -131,14 +158,14 @@
             this._commentDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this._commentDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._commentDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this._commentDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this._commentDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this._commentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._commentDataGridView.ColumnHeadersVisible = false;
             this._commentDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -147,33 +174,33 @@
             this.Column3});
             this.testEditorTableLayoutPanel.SetColumnSpan(this._commentDataGridView, 3);
             this._commentDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._commentDataGridView.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._commentDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this._commentDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._commentDataGridView.Location = new System.Drawing.Point(135, 302);
             this._commentDataGridView.Margin = new System.Windows.Forms.Padding(0);
             this._commentDataGridView.MultiSelect = false;
             this._commentDataGridView.Name = "_commentDataGridView";
             this._commentDataGridView.ReadOnly = true;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this._commentDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this._commentDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this._commentDataGridView.RowHeadersVisible = false;
             this._commentDataGridView.RowHeadersWidth = 50;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._commentDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._commentDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this._commentDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
             this._commentDataGridView.RowTemplate.DividerHeight = 1;
             this._commentDataGridView.RowTemplate.Height = 30;
@@ -298,14 +325,14 @@
             this._associatedTestListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
             this._associatedTestListDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._associatedTestListDataGridView.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._associatedTestListDataGridView.DefaultCellStyle = dataGridViewCellStyle5;
             this._associatedTestListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._associatedTestListDataGridView.Location = new System.Drawing.Point(583, 124);
             this._associatedTestListDataGridView.Margin = new System.Windows.Forms.Padding(0);
@@ -314,9 +341,9 @@
             this._associatedTestListDataGridView.ReadOnly = true;
             this._associatedTestListDataGridView.RowHeadersVisible = false;
             this._associatedTestListDataGridView.RowHeadersWidth = 50;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._associatedTestListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._associatedTestListDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.testEditorTableLayoutPanel.SetRowSpan(this._associatedTestListDataGridView, 6);
             this._associatedTestListDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
             this._associatedTestListDataGridView.RowTemplate.DividerHeight = 1;
@@ -523,33 +550,6 @@
             this.label7.TabIndex = 42;
             this.label7.Text = "Comment";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // _finishButton
-            // 
-            this._finishButton.AccessibleName = "UserButton";
-            this._finishButton.AutoSize = true;
-            this._finishButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._finishButton.Enabled = false;
-            this._finishButton.FlatAppearance.BorderSize = 0;
-            this._finishButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this._finishButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this._finishButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._finishButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._finishButton.Image = global::RMS_Project.Properties.Resources.ios7_circle_outline;
-            this._finishButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._finishButton.Location = new System.Drawing.Point(586, 23);
-            this._finishButton.Name = "_finishButton";
-            this.testEditorTableLayoutPanel.SetRowSpan(this._finishButton, 3);
-            this._finishButton.Size = new System.Drawing.Size(180, 72);
-            this._finishButton.TabIndex = 44;
-            this._finishButton.TabStop = false;
-            this._finishButton.Text = "Unfinished";
-            this._finishButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._finishButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this._finishButton.UseVisualStyleBackColor = true;
-            this._finishButton.Click += new System.EventHandler(this._finishButton_Click);
-            this._finishButton.MouseLeave += new System.EventHandler(this._finishButton_MouseLeave);
-            this._finishButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this._finishButton_MouseMove);
             // 
             // RequirementDetailForm
             // 
