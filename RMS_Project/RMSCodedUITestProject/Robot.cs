@@ -132,17 +132,21 @@ namespace ezLogUITest
 
 
 
-        public static void SetOtherFormEdit(string formName, string editName, string keys)
+        public static void SetOtherFormEdit(string formName, string editName, string keys, UITestControl parent = null)
         {
-            WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
-            //
-            WinEdit edit = Robot.FindWinControl(typeof(WinEdit), editName, sec) as WinEdit;
+            parent = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
+            if (parent == null)
+                parent = _root;
+
+            //WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
+
+            WinEdit edit = Robot.FindWinControl(typeof(WinEdit), editName, parent) as WinEdit;
+
+            edit.SearchProperties[WinWindow.PropertyNames.Name] = editName;
+            Mouse.Click(edit);
             if (edit.Text != keys)
                 edit.Text = keys;
         }
-
-        
-
 
         public static void SetOtherFormUseSystemPasswordChar(string formName, string editName, string keys) 
         {
@@ -182,6 +186,8 @@ namespace ezLogUITest
             WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
             //
             WinComboBox comboBox = Robot.FindWinControl(typeof(WinComboBox), conboBoxName, sec) as WinComboBox;
+            comboBox.SearchProperties[WinWindow.PropertyNames.Name] = conboBoxName;
+            //Mouse.Click(comboBox);
             item = comboBox.GetContent();
             foreach (string items in item) 
             {
@@ -430,6 +436,7 @@ namespace ezLogUITest
         public static void AssertWindowExist(string name, bool isExist)
         {
             WinWindow form = (WinWindow)Robot.FindWinControl(typeof(WinWindow), name, null);
+            //form.SearchProperties[WinWindow.PropertyNames.Name] = name;
             int count = form.FindMatchingControls().Count;
             if (isExist)
             {
@@ -535,8 +542,12 @@ namespace ezLogUITest
 
             WinList checkedList = Robot.FindWinControl(typeof(WinList), name, sec) as WinList;
 
-            //WinList checkedList = Robot.FindWinControl(typeof(WinList), name, parent) as WinList;
+            checkedList.SearchProperties[WinWindow.PropertyNames.Name] = name;
+
             WinCheckBox checkBox = checkedList.Items[index] as WinCheckBox;
+
+            //checkBox.SearchProperties[WinWindow.PropertyNames.Name] = name;
+
             checkBox.Checked = check;
         }
 

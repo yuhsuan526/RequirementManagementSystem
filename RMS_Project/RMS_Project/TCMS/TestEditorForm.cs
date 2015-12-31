@@ -85,7 +85,10 @@ namespace RMS_Project
             if (status == "success")
             {
                 MessageBox.Show("測試案例建立成功", "Success", MessageBoxButtons.OK);
-                _presentationModel.AddFormToPanel(new TestListForm(_presentationModel, _project));
+                TestListForm form = _presentationModel.GetFormByType(typeof(TestListForm)) as TestListForm;
+                form.RefreshTestList();
+                _presentationModel.PopFormFromPanel();
+                //_presentationModel.AddFormToPanel(new TestListForm(_presentationModel, _project));
             }
             else if (status == "測試案例建立失敗")
             {
