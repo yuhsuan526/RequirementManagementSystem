@@ -87,6 +87,7 @@ namespace RMS_Project
                 checkColumn.FalseValue = false;
                 checkColumn.FillWeight = 10;
                 checkColumn.ReadOnly = readOnly;
+                checkColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                 matrixColumns.Add(checkColumn);
             }
             DataGridViewRowCollection matrixRows = dataGridView.Rows;
@@ -96,6 +97,7 @@ namespace RMS_Project
             }
             dataGridView.Columns[0].Frozen = true;
             dataGridView.Columns[0].ReadOnly = true;
+            dataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
         }
 
         private void SetRtoRDataGridViewCheckBoxCellValue(string rowID, string columnID)

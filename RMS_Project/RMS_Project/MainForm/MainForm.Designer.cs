@@ -120,7 +120,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Requirement Management System";
             this.tableLayoutPanel1.ResumeLayout(false);
             this._navigationPanel.ResumeLayout(false);
             this._defaultLayoutPanel.ResumeLayout(false);
