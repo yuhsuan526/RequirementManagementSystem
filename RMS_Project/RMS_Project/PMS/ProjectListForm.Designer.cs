@@ -35,6 +35,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this._yourProjectListDataGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deleteColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.projectTabControl = new System.Windows.Forms.TabControl();
             this.YourProjects = new System.Windows.Forms.TabPage();
@@ -44,8 +46,6 @@
             this.JoinedProjects = new System.Windows.Forms.TabPage();
             this.joinedProjectListDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deleteColumn = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this._yourProjectListDataGridView)).BeginInit();
             this.projectTabControl.SuspendLayout();
             this.YourProjects.SuspendLayout();
@@ -98,6 +98,26 @@
             this._yourProjectListDataGridView.TabIndex = 1;
             this._yourProjectListDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this._yourProjectListDataGridView_CellClick);
             // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.FillWeight = 179.6954F;
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // deleteColumn
+            // 
+            this.deleteColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.deleteColumn.HeaderText = "Column3";
+            this.deleteColumn.Image = global::RMS_Project.Properties.Resources.ios7_trash;
+            this.deleteColumn.Name = "deleteColumn";
+            this.deleteColumn.ReadOnly = true;
+            this.deleteColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.deleteColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.deleteColumn.Width = 5;
+            // 
             // projectTabControl
             // 
             this.projectTabControl.AccessibleName = "projectTabControl";
@@ -139,7 +159,7 @@
             // 
             // _managedProjectListDataGridView
             // 
-            this._managedProjectListDataGridView.AccessibleName = "";
+            this._managedProjectListDataGridView.AccessibleName = "managedProjectListDataGridView";
             this._managedProjectListDataGridView.AllowUserToAddRows = false;
             this._managedProjectListDataGridView.AllowUserToDeleteRows = false;
             this._managedProjectListDataGridView.AllowUserToResizeColumns = false;
@@ -249,26 +269,6 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.FillWeight = 179.6954F;
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // deleteColumn
-            // 
-            this.deleteColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.deleteColumn.HeaderText = "Column3";
-            this.deleteColumn.Image = global::RMS_Project.Properties.Resources.ios7_trash;
-            this.deleteColumn.Name = "deleteColumn";
-            this.deleteColumn.ReadOnly = true;
-            this.deleteColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.deleteColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.deleteColumn.Width = 5;
             // 
             // projectListForm
             // 

@@ -90,10 +90,95 @@ namespace RMSCodedUITestProject
             Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
             Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
+
+            Robot.SetOtherFormEdit("userListForm", "userName", "test1@test");
+            Robot.ClickOtherFormComboBox("userListForm", "priorityComboBox", "Manager");
+            Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
+            //Robot.AssertWindowExist("Success", true);
+            Robot.ClickOtherFormButton("Success", "確定");
+
+            Robot.SetOtherFormEdit("userListForm", "userName", "test2@test");
+            Robot.ClickOtherFormComboBox("userListForm", "priorityComboBox", "Customer");
+            Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
+            //Robot.AssertWindowExist("Success", true);
+            Robot.ClickOtherFormButton("Success", "確定");
+
             Robot.AssertDataGridViewNumericUpDownCellValue("UserListForm", "memberDataGridView", 0, 0, "ZZ");
-            Robot.AssertDataGridViewNumericUpDownCellValue("UserListForm", "memberDataGridView", 1, 0, "YH");
+            Robot.AssertDataGridViewNumericUpDownCellValue("UserListForm", "memberDataGridView", 1, 0, "test_acc_1");
+            Robot.AssertDataGridViewNumericUpDownCellValue("UserListForm", "memberDataGridView", 2, 0, "YH");
+            Robot.AssertDataGridViewNumericUpDownCellValue("UserListForm", "memberDataGridView", 3, 0, "test_acc_2");
         }
 
+
+        [TestMethod]
+        [DeploymentItem("RMS_Project.exe")]
+        public void DeleteMemberData()
+        {
+            //設定帳密
+            Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "a123456");
+
+            //確認登入資料
+            Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.ClickOtherFormButton("loginForm", "signInButton");
+
+            Robot.AssertWindowExist("projectListForm", true);
+
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0, 550, 3);
+
+
+            Robot.AssertWindowExist("ProjectMainForm", true);
+            //確認 member資料是否正確
+            Robot.ClickOtherFormButton("ProjectMainForm", "memberButton");
+
+            Robot.ClickDataGridView("userListForm", "memberDataGridView", 3, 2, 10, 3);
+
+            Robot.ClickOtherFormButton("Success", "確定");
+            
+
+            Robot.AssertDataGridViewNumericUpDownCellValue("UserListForm", "memberDataGridView", 0, 0, "ZZ");
+            Robot.AssertDataGridViewNumericUpDownCellValue("UserListForm", "memberDataGridView", 1, 0, "test_acc_1");
+            Robot.AssertDataGridViewNumericUpDownCellValue("UserListForm", "memberDataGridView", 2, 0, "YH");
+            //Robot.AssertDataGridViewNumericUpDownCellValue("UserListForm", "memberDataGridView", 3, 0, "test_acc_2");
+        }
+
+        [TestMethod]
+        [DeploymentItem("RMS_Project.exe")]
+        public void ManagerCheck()
+        {
+            //設定帳密
+            Robot.SetOtherFormEdit("loginForm", "emailLabel", "test1@test");
+            Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "123456");
+
+            //確認登入資料
+            Robot.AssertOtherFormEdit("loginForm", "emailLabel", "test1@test");
+            Robot.ClickOtherFormButton("loginForm", "signInButton");
+
+            Robot.AssertWindowExist("projectListForm", true);
+
+            Robot.ClickTabControl("projectListForm", "projectTabControl", "Managed Projects");
+
+            Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm", "managedProjectListDataGridView", 0, 0, "RMS_PROJECT");
+        }
+
+        [TestMethod]
+        [DeploymentItem("RMS_Project.exe")]
+        public void MemberCheck()
+        {
+            //設定帳密
+            Robot.SetOtherFormEdit("loginForm", "emailLabel", "user@user");
+            Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "123456");
+
+            //確認登入資料
+            Robot.AssertOtherFormEdit("loginForm", "emailLabel", "user@user");
+            Robot.ClickOtherFormButton("loginForm", "signInButton");
+
+            Robot.AssertWindowExist("projectListForm", true);
+
+            Robot.ClickTabControl("projectListForm", "projectTabControl", "Joined Projects");
+
+            Robot.AssertDataGridViewNumericUpDownCellValue("projectListForm", "joinedProjectListDataGridView", 0, 0, "RMS_PROJECT");
+        }
         
     }
 }

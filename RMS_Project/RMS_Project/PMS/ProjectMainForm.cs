@@ -92,7 +92,7 @@ namespace RMS_Project
 
         private void othersButton_Click(object sender, EventArgs e)
         {
-            OthersForm traceabilityMatrixForm = new OthersForm(_presentationModel, _project);
+            TraceabilityMatrixForm traceabilityMatrixForm = new TraceabilityMatrixForm(_presentationModel, _project);
             if (_presentationModel.AddFormToPanel(traceabilityMatrixForm))
             {
                 _presentationModel.AddFormButtonToUserInterface(traceabilityMatrixForm, "Others", Properties.Resources.ios7_gear_outline);

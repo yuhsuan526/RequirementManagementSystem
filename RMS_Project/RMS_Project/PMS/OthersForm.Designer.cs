@@ -1,6 +1,6 @@
 ﻿namespace RMS_Project
 {
-    partial class OthersForm
+    partial class TraceabilityMatrixForm
     {
         /// <summary>
         /// Required designer variable.
@@ -76,6 +76,7 @@
             // 
             // _othersTabControl
             // 
+            this._othersTabControl.AccessibleName = "othersTabControl";
             this._othersTabControl.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this._othersTabControl.Controls.Add(this.tabPage1);
             this._othersTabControl.Controls.Add(this.tabPage2);
@@ -95,6 +96,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.AccessibleName = "Approved Requirements";
             this.tabPage1.Controls.Add(this._approvedRequirementDataGridView);
             this.tabPage1.Location = new System.Drawing.Point(4, 65);
             this.tabPage1.Name = "tabPage1";
@@ -156,6 +158,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.AccessibleName = "Not Approved Requirements";
             this.tabPage2.Controls.Add(this._notApprovedRequirementDataGridView);
             this.tabPage2.Location = new System.Drawing.Point(4, 65);
             this.tabPage2.Name = "tabPage2";
@@ -217,6 +220,7 @@
             // 
             // RtoTTabPage
             // 
+            this.RtoTTabPage.AccessibleName = "Traceability Matrix (R-T)";
             this.RtoTTabPage.Controls.Add(this._RtoTDataGridView);
             this.RtoTTabPage.Location = new System.Drawing.Point(4, 65);
             this.RtoTTabPage.Name = "RtoTTabPage";
@@ -227,6 +231,7 @@
             // 
             // _RtoTDataGridView
             // 
+            this._RtoTDataGridView.AccessibleName = "RtoTDataGridView";
             this._RtoTDataGridView.AllowUserToAddRows = false;
             this._RtoTDataGridView.AllowUserToDeleteRows = false;
             this._RtoTDataGridView.AllowUserToResizeColumns = false;
@@ -271,6 +276,7 @@
             // 
             // RtoRTabPage
             // 
+            this.RtoRTabPage.AccessibleName = "Traceability Matrix (R-R)";
             this.RtoRTabPage.Controls.Add(this._RtoRDataGridView);
             this.RtoRTabPage.Location = new System.Drawing.Point(4, 65);
             this.RtoRTabPage.Name = "RtoRTabPage";
@@ -281,6 +287,7 @@
             // 
             // _RtoRDataGridView
             // 
+            this._RtoRDataGridView.AccessibleName = "RtoRDataGridView";
             this._RtoRDataGridView.AllowUserToAddRows = false;
             this._RtoRDataGridView.AllowUserToDeleteRows = false;
             this._RtoRDataGridView.AllowUserToResizeColumns = false;
@@ -325,6 +332,7 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.AccessibleName = "No Associated Test Cases";
             this.tabPage5.Controls.Add(this._noAssociatedTestCaseDataGridView);
             this.tabPage5.Location = new System.Drawing.Point(4, 65);
             this.tabPage5.Name = "tabPage5";
@@ -385,6 +393,7 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.AccessibleName = "No Associated Requirements";
             this.tabPage6.Controls.Add(this._noAssociatedRequirementDataGridView);
             this.tabPage6.Location = new System.Drawing.Point(4, 65);
             this.tabPage6.Name = "tabPage6";
@@ -443,13 +452,14 @@
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // OthersForm
+            // TraceabilityMatrixForm
             // 
+            this.AccessibleName = "traceabilityMatrixForm";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this._othersTabControl);
-            this.Name = "OthersForm";
+            this.Name = "TraceabilityMatrixForm";
             this.Padding = new System.Windows.Forms.Padding(50, 15, 50, 0);
             this.Text = "TraceabilityMatrixForm";
             this._othersTabControl.ResumeLayout(false);

@@ -480,9 +480,9 @@ namespace RMS_Project
                 TestEditorForm requirementEditorForm = new TestEditorForm(this, form.Test);
                 AddFormToPanel(requirementEditorForm);
             }
-            else if (control.GetType().Equals(typeof(OthersForm)))
+            else if (control.GetType().Equals(typeof(TraceabilityMatrixForm)))
             {
-                OthersForm form = control as OthersForm;
+                TraceabilityMatrixForm form = control as TraceabilityMatrixForm;
                 form.ClickFunctionalButton();
             }
             else if (control.GetType().Equals(typeof(UserListForm)))

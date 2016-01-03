@@ -63,6 +63,7 @@
     <Compile Include="TestGUITestDeleteRquirment.cs" />
     <Compile Include="TestGUITestDeleteTheProject.cs" />
     <Compile Include="TestGUITestMatrixAll.cs" />
+    <Compile Include="TestGUITestOwnerDemo.cs" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

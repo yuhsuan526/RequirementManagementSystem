@@ -79,6 +79,36 @@ namespace RMSCodedUITestProject
 
         [TestMethod]
         [DeploymentItem("RMS_Project.exe")]
+        public void CheckTestFinished()
+        {
+            Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+
+            Robot.SetOtherFormUseSystemPasswordChar("loginForm", "passwordLabel", "a123456");
+
+
+            Robot.AssertOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");
+            Robot.ClickOtherFormButton("loginForm", "signInButton");
+            Robot.AssertWindowExist("projectListForm", true);
+
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0, 550, 3);
+            Robot.AssertWindowExist("ProjectMainForm", true);
+
+            Robot.ClickOtherFormButton("ProjectMainForm", "testButton");
+
+            Robot.AssertWindowExist("testListForm", true);
+
+            Robot.ClickDataGridView("testListForm", "testListDataGridView", 0, 0, 300, 3);
+
+            Robot.AssertWindowExist("testDetailForm", true);
+            Robot.ClickOtherFormButton("testDetailForm", "finishButton");
+
+            Robot.AssertWindowExist("Success", true);
+            Robot.ClickOtherFormButton("Success", "確定");
+            Robot.AssertWindowExist("testDetailForm", true);
+        }
+
+        [TestMethod]
+        [DeploymentItem("RMS_Project.exe")]
         public void CheckRequirmentDetail()
         {
             Robot.SetOtherFormEdit("loginForm", "emailLabel", "j00064qaz123@gmail.com");

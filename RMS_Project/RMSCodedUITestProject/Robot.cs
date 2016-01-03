@@ -260,6 +260,27 @@ namespace ezLogUITest
             }
         }
 
+
+        public static void ClickOtherDataGridView(string formName, string name ,string dataGridViewName, int rowIndex, int columnIndex)
+        {
+
+            //Win window DataGridViewCheckBoxColumn
+            WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
+            //
+            WinTabPage tab = Robot.FindWinControl(typeof(WinTabPage), name, sec) as WinTabPage;
+
+            //DataGridViewCheckBoxColumn
+
+            
+            WinTable table = Robot.FindWinControl(typeof(WinTable), dataGridViewName, tab) as WinTable;
+            
+            WinRow row = table.Rows[rowIndex] as WinRow;
+            WinCell cell = row.Cells[columnIndex] as WinCell;
+            table.SearchProperties[WinWindow.PropertyNames.Name] = dataGridViewName;
+
+            Mouse.Click(table);
+        }
+
         public static void ClickDataGridView(string formName,string dataGridViewName, int rowIndex, int columnIndex,int width,int heigh)
         {
             int HALF_BUTTON_WIDTH = width;
@@ -267,8 +288,8 @@ namespace ezLogUITest
             //Win window
             WinWindow sec = Robot.FindWinControl(typeof(WinWindow), formName, null) as WinWindow;
             //
-
             WinTable table = Robot.FindWinControl(typeof(WinTable), dataGridViewName, sec) as WinTable;
+            table.SearchProperties[WinWindow.PropertyNames.Name] = dataGridViewName;
             WinRow row = table.Rows[rowIndex] as WinRow;
             WinCell cell = row.Cells[columnIndex] as WinCell;
             Rectangle boundingRectangle = cell.BoundingRectangle;

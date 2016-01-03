@@ -70,7 +70,7 @@
             // 
             // othersButton
             // 
-            this.othersButton.AccessibleName = "projectButton";
+            this.othersButton.AccessibleName = "otherButton";
             this.othersButton.BackColor = System.Drawing.Color.Transparent;
             this.othersButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.othersButton.FlatAppearance.BorderSize = 0;
