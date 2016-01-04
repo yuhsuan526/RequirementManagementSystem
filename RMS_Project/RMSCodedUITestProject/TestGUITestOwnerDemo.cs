@@ -52,7 +52,7 @@ namespace RMSCodedUITestProject
             Robot.AssertWindowExist("projectListForm", true);
 
             Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
-            Robot.SetOtherFormEdit("ProjectEditorForm", "ProjectName", "POSD_HW7");
+            Robot.SetOtherFormEdit("ProjectEditorForm", "ProjectName", "POSD_#7");
             Robot.SetOtherFormEdit("ProjectEditorForm", "ProjectDescription", "本次作業須接續上ㄧ次作業的功能繼續擴充，需要套入 MVC 架構，讓 View 只專心處理畫面，與 GUI 無關的程式、變數移動到 Model 中。為了讓 GUI 的按鈕能隨著使用者操作動態更新狀態，須套入 observer pattern 來達到此目的。");
 
             Robot.ClickOtherFormButton("ProjectEditorForm", "Confirm");
@@ -62,9 +62,27 @@ namespace RMSCodedUITestProject
 
             Robot.AssertWindowExist("projectListForm", true);
 
-            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0, 550, 3);
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 1, 10, 3);
 
+            Robot.ClickOtherFormButton("Success", "確定");
+
+            Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
+            Robot.SetOtherFormEdit("ProjectEditorForm", "ProjectName", "POSD_#7");
+            Robot.SetOtherFormEdit("ProjectEditorForm", "ProjectDescription", "本次作業須接續上ㄧ次作業的功能繼續擴充，需要套入 MVC 架構，讓 View 只專心處理畫面，與 GUI 無關的程式、變數移動到 Model 中。為了讓 GUI 的按鈕能隨著使用者操作動態更新狀態，須套入 observer pattern 來達到此目的。");
+
+            Robot.ClickOtherFormButton("ProjectEditorForm", "Confirm");
+            Robot.ClickOtherFormButton("Success", "確定");
+
+
+            Robot.ClickDataGridView("projectListForm", "projectDataGridView", 0, 0, 300, 3);
             Robot.AssertWindowExist("projectMainForm", true);
+            Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
+            //確認Detail資料顯示是否正確
+            Robot.SetOtherFormEdit("ProjectEditorForm", "ProjectName", "POSD_HW7");
+            Robot.ClickOtherFormButton("ProjectEditorForm", "Confirm");
+            Robot.ClickOtherFormButton("Success", "確定");
+            Robot.AssertWindowExist("ProjectMainForm", true);
+
 
             Robot.ClickOtherFormButton("ProjectMainForm", "memberButton");
 
@@ -72,39 +90,44 @@ namespace RMSCodedUITestProject
             Robot.SetOtherFormEdit("userListForm", "userName", "anglebeats711529@gmail.com");
             Robot.ClickOtherFormComboBox("userListForm", "priorityComboBox", "Manager");
             Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
-            Robot.AssertWindowExist("Success", true);
+            Robot.ClickOtherFormButton("Success", "確定");
+            Robot.AssertWindowExist("userListForm", true);
+            Robot.ClickDataGridView("userListForm", "memberDataGridView", 1, 2, 10, 3);
+
+            Robot.ClickOtherFormButton("Success", "確定");
+
+            Robot.SetOtherFormEdit("userListForm", "userName", "anglebeats711529@gmail.com");
+            Robot.ClickOtherFormComboBox("userListForm", "priorityComboBox", "Manager");
+            Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
             Robot.ClickOtherFormButton("Success", "確定");
 
             Robot.SetOtherFormEdit("userListForm", "userName", "hsiaohan0614@gmail.com");
             Robot.ClickOtherFormComboBox("userListForm", "priorityComboBox", "Member");
             Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
-            //Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
 
             Robot.SetOtherFormEdit("userListForm", "userName", "j00064qaz123@gmail.com");
             Robot.ClickOtherFormComboBox("userListForm", "priorityComboBox", "Member");
             Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
-            //Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
 
             Robot.SetOtherFormEdit("userListForm", "userName", "pcf2200@gmail.com");
             Robot.ClickOtherFormComboBox("userListForm", "priorityComboBox", "Member");
             Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
-            //Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
 
             Robot.SetOtherFormEdit("userListForm", "userName", "t104598001@ntut.edu.tw");
             Robot.ClickOtherFormComboBox("userListForm", "priorityComboBox", "Member");
             Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
-            //Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
 
             Robot.SetOtherFormEdit("userListForm", "userName", "cliu@ntut.edu.tw");
             Robot.ClickOtherFormComboBox("userListForm", "priorityComboBox", "Customer");
             Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
-            //Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
 
+
+            Robot.AssertWindowExist("userListForm", true);
             Robot.AssertWindowExist("projectMainForm", true);
 
             Robot.ClickOtherFormButton("projectMainForm", "requirementButton");
@@ -121,10 +144,50 @@ namespace RMSCodedUITestProject
             Robot.SetOtherFormEdit("requirementEditorForm", "descriptionLabel", "程式能讀取空的.txt 檔，讀入前如果有未存檔的圖形正在編輯，跳出警告視窗。詢問使用者是否先存檔之後再讀取新的檔案。\n");
             Robot.SetOtherFormEdit("requirementEditorForm", "memoLabel", "none");
             Robot.ClickOtherFormButton("requirementEditorForm", "confirmButton");
-            Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
             Robot.AssertWindowExist("requirementListForm", true);
             Robot.AssertDataGridViewNumericUpDownCellValue("requirementListForm", "requirementListDataGridView", 0, 0, "讀檔要求");
+
+            Robot.ClickDataGridView("requirementListForm", "requirementListDataGridView", 0, 3, 10, 3);
+            Robot.ClickOtherFormButton("Success", "確定");
+
+
+            //requirement1
+            Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
+            Robot.SetOtherFormEdit("requirementEditorForm", "requirementName", "讀檔要求\n");
+            Robot.ClickOtherFormComboBox("requirementEditorForm", "typeComboBox", "functional");
+            Robot.ClickOtherFormComboBox("requirementEditorForm", "priorityComboBox", "High");
+            Robot.ClickOtherFormComboBox("requirementEditorForm", "statusComboBox", "Open");
+            Robot.ClickOtherFormComboBox("requirementEditorForm", "handlerComboBox", "廖振諺");
+            Robot.SetOtherFormEdit("requirementEditorForm", "descriptionLabel", "程式能讀取空的.txt 檔，讀入前如果有未存檔的圖形正在編輯，跳出警告視窗。詢問使用者是否先存檔之後再讀取新的檔案。\n");
+            Robot.SetOtherFormEdit("requirementEditorForm", "memoLabel", "none");
+            Robot.ClickOtherFormButton("requirementEditorForm", "confirmButton");
+            Robot.ClickOtherFormButton("Success", "確定");
+            Robot.AssertWindowExist("requirementListForm", true);
+            Robot.AssertDataGridViewNumericUpDownCellValue("requirementListForm", "requirementListDataGridView", 0, 0, "讀檔要求");
+
+
+            Robot.ClickDataGridView("requirementListForm", "requirementListDataGridView", 0, 2, 20, 3);
+            Robot.SetOtherFormEdit("commentEditorForm", "commentRichTextBox", "快一點!DeadLine快到了!");
+            Robot.SetOtherFormEdit("commentEditorForm", "decisionRichTextBox", "None");
+            Robot.ClickOtherFormButton("commentEditorForm", "confirmButton");
+
+            Robot.ClickOtherFormButton("Success", "確定");
+            Robot.AssertWindowExist("requirementListForm", true);
+            Robot.ClickDataGridView("requirementListForm", "requirementListDataGridView", 0, 0, 300, 3);
+
+            Robot.AssertWindowExist("requirementDetailForm", true);
+            Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
+            Robot.SetOtherFormEdit("requirementEditorForm", "requirementName", "讀檔需求\n");
+            Robot.ClickOtherFormComboBox("requirementEditorForm", "typeComboBox", "functional");
+            Robot.ClickOtherFormComboBox("requirementEditorForm", "priorityComboBox", "High");
+            Robot.ClickOtherFormComboBox("requirementEditorForm", "handlerComboBox", "廖振諺");
+            Robot.SetOtherFormEdit("requirementEditorForm", "memoLabel", "None!");
+            Robot.ClickOtherFormButton("requirementEditorForm", "confirmButton");
+            Robot.ClickOtherFormButton("Success", "確定");
+
+            Robot.AssertWindowExist("requirementDetailForm", true);
+            Robot.AssertWindowExist("requirementListForm", true);
 
             //requirement2
             Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
@@ -287,12 +350,9 @@ namespace RMSCodedUITestProject
             Robot.SetOtherFormEdit("requirementEditorForm", "descriptionLabel", "當選取單一個 composite graphic 或其中的 simple graphic 時，若該圖形具備上下層移動的條件，move up、move down 按鈕需為 enable，其他時候為 disable。\n");
             Robot.SetOtherFormEdit("requirementEditorForm", "memoLabel", "(參照 HW6)\n");
             Robot.ClickOtherFormButton("requirementEditorForm", "confirmButton");
-            //Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
-            //Robot.AssertWindowExist("requirementListForm", true);
-            //Robot.AssertDataGridViewNumericUpDownCellValue("requirementListForm", "requirementListDataGridView", 11, 0, "圖層需求");
 
-
+            Robot.AssertWindowExist("requirementListForm", true);
             Robot.AssertWindowExist("ProjectMainForm", true);
 
             Robot.ClickOtherFormButton("ProjectMainForm", "testButton");
@@ -311,10 +371,54 @@ namespace RMSCodedUITestProject
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 6, true);
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 7, true);
             Robot.ClickOtherFormButton("testEditorForm", "testConfirm");
-            //Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
             Robot.AssertWindowExist("testListForm", true);
             Robot.AssertDataGridViewNumericUpDownCellValue("testListForm", "testListDataGridView", 0, 0, "讀存檔測試");
+
+            Robot.ClickDataGridView("testListForm", "testListDataGridView", 0, 0, 300, 3);
+
+            Robot.AssertWindowExist("testDetailForm", true);
+
+            Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
+
+            Robot.SetOtherFormEdit("testEditorForm", "testName", "存讀檔測試");
+            Robot.SetOtherFormEdit("testEditorForm", "testInputData", "存/讀檔");
+            Robot.SetOtherFormEdit("testEditorForm", "testResult", "可以讀出圖形跟存圖形");
+            Robot.ClickOtherFormComboBox("testEditorForm", "ownerCombobox", "李宗哲");
+            Robot.SetOtherFormEdit("testEditorForm", "testDescription", "存檔/讀檔按鈕更新狀態(10 分)");
+            Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 0, true);
+            Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 1, true);
+            Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 6, true);
+            Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 7, true);
+            Robot.ClickOtherFormButton("testEditorForm", "testConfirm");
+
+            Robot.ClickOtherFormButton("Success", "確定");
+            Robot.AssertWindowExist("testDetailForm", true);
+
+            Robot.AssertWindowExist("testListForm", true);
+            Robot.ClickDataGridView("testListForm", "testListDataGridView", 0, 2, 5, 3);
+            Robot.ClickOtherFormButton("Success", "確定");
+
+
+            //Test1
+            Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
+            Robot.SetOtherFormEdit("testEditorForm", "testName", "讀存檔測試\n");
+            Robot.SetOtherFormEdit("testEditorForm", "testInputData", "讀/存檔\n");
+            Robot.SetOtherFormEdit("testEditorForm", "testResult", "可以讀出圖形跟存圖形\n");
+            Robot.ClickOtherFormComboBox("testEditorForm", "ownerCombobox", "李宗哲");
+            Robot.SetOtherFormEdit("testEditorForm", "testDescription", "存檔/讀檔按鈕更新狀態(10 分)\n");
+            Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 0, true);
+            Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 1, true);
+            Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 6, true);
+            Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 7, true);
+            Robot.ClickOtherFormButton("testEditorForm", "testConfirm");
+            Robot.ClickOtherFormButton("Success", "確定");
+            Robot.AssertWindowExist("testListForm", true);
+            Robot.AssertDataGridViewNumericUpDownCellValue("testListForm", "testListDataGridView", 0, 0, "讀存檔測試");
+
+
+
+
 
             //Test2
             Robot.ClickOtherFormButton("UserInterfaceForm", "NewProjectButton");
@@ -330,7 +434,6 @@ namespace RMSCodedUITestProject
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 4, true);
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 5, true);
             Robot.ClickOtherFormButton("testEditorForm", "testConfirm");
-            //Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
             Robot.AssertWindowExist("testListForm", true);
             Robot.AssertDataGridViewNumericUpDownCellValue("testListForm", "testListDataGridView", 1, 0, "新增圖形測試");
@@ -346,7 +449,6 @@ namespace RMSCodedUITestProject
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 4, true);
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 5, true);
             Robot.ClickOtherFormButton("testEditorForm", "testConfirm");
-            //Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
             Robot.AssertWindowExist("testListForm", true);
             Robot.AssertDataGridViewNumericUpDownCellValue("testListForm", "testListDataGridView", 2, 0, "圖形狀態測試");
@@ -362,7 +464,6 @@ namespace RMSCodedUITestProject
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 5, true);
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 8, true);
             Robot.ClickOtherFormButton("testEditorForm", "testConfirm");
-            //Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
             Robot.AssertWindowExist("testListForm", true);
             Robot.AssertDataGridViewNumericUpDownCellValue("testListForm", "testListDataGridView", 3, 0, "group按鈕需求測試");
@@ -378,7 +479,6 @@ namespace RMSCodedUITestProject
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 5, true);
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 9, true);
             Robot.ClickOtherFormButton("testEditorForm", "testConfirm");
-            //Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
             Robot.AssertWindowExist("testListForm", true);
             Robot.AssertDataGridViewNumericUpDownCellValue("testListForm", "testListDataGridView", 4, 0, "ungroup按鈕需求測試");
@@ -394,7 +494,6 @@ namespace RMSCodedUITestProject
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 5, true);
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 10, true);
             Robot.ClickOtherFormButton("testEditorForm", "testConfirm");
-            //Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
             Robot.AssertWindowExist("testListForm", true);
             Robot.AssertDataGridViewNumericUpDownCellValue("testListForm", "testListDataGridView", 5, 0, "delete按鈕需求測試");
@@ -410,7 +509,6 @@ namespace RMSCodedUITestProject
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 5, true);
             Robot.CheckTheCheckedListBox("testEditorForm", "checkedListBox", 11, true);
             Robot.ClickOtherFormButton("testEditorForm", "testConfirm");
-            //Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
             Robot.AssertWindowExist("testListForm", true);
             Robot.AssertDataGridViewNumericUpDownCellValue("testListForm", "testListDataGridView", 6, 0, "move up/move down 按鈕測試");
@@ -423,11 +521,10 @@ namespace RMSCodedUITestProject
             Robot.ClickOtherFormComboBox("testEditorForm", "ownerCombobox", "李宗哲");
             Robot.SetOtherFormEdit("testEditorForm", "testDescription", "助教測資(20 分)\n");
             Robot.ClickOtherFormButton("testEditorForm", "testConfirm");
-            //Robot.AssertWindowExist("Success", true);
             Robot.ClickOtherFormButton("Success", "確定");
-            //Robot.AssertWindowExist("testListForm", true);
-            //Robot.AssertDataGridViewNumericUpDownCellValue("testListForm", "testListDataGridView", 7, 0, "助教測試");
 
+
+            Robot.AssertWindowExist("testListForm", true);
             Robot.AssertWindowExist("projectMainForm", true);
 
             Robot.ClickOtherFormButton("projectMainForm", "otherButton");
@@ -443,17 +540,23 @@ namespace RMSCodedUITestProject
             Robot.AssertWindowExist("traceabilityMatrixForm", true);
 
             Robot.ClickTabControl("traceabilityMatrixForm", "othersTabControl", "Traceability Matrix (R-R)");
-            //Robot.ClickOtherDataGridView("traceabilityMatrixForm", "Traceability Matrix (R-R)", "RtoRDataGridView", 1, 3);
             Robot.AssertWindowExist("traceabilityMatrixForm", true);
 
             Robot.ClickTabControl("traceabilityMatrixForm", "othersTabControl", "No Associated Test Cases");
             Robot.AssertWindowExist("traceabilityMatrixForm", true);
 
             Robot.ClickTabControl("traceabilityMatrixForm", "othersTabControl", "No Associated Requirements");
-            Robot.AssertWindowExist("traceabilityMatrixForm", true);
 
-            Robot.ClickTabControl("traceabilityMatrixForm", "othersTabControl", "Approved Requirements");
-            Robot.AssertWindowExist("traceabilityMatrixForm", true);
+            Robot.ClickOtherFormButton("projectMainForm", "requirementButton");
+            Robot.ClickDataGridView("requirementListForm", "requirementListDataGridView", 0, 0, 300, 3);
+            Robot.AssertWindowExist("requirementDetailForm", true);
+
+
+            Robot.ClickOtherFormButton("ProjectMainForm", "testButton");
+            Robot.AssertWindowExist("testListForm", true);
+            Robot.ClickDataGridView("testListForm", "testListDataGridView", 0, 0, 300, 3);
+            Robot.AssertWindowExist("testDetailForm", true);
+
 
         }
     }

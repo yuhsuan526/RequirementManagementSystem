@@ -75,6 +75,7 @@ namespace RMS_Project
                 JArray jsonArray = JArray.Parse(json["users"].ToString());
                 if (message == "success")
                 {
+                    _arrayList.Clear();
                     memberDataGridView.Rows.Clear();
                     for (int i = 0; i < jsonArray.Count; i++)
                     {
