@@ -1057,7 +1057,7 @@ namespace RMS_Project
             var httpClient = new HttpClient();
             try
             {
-                const string METHOD = "requirement/getRequirementByProject/";
+                const string METHOD = "requirement/getNoAssociatedRequirementByProjectId/";
                 string url = BASE_URL + METHOD + projectId;
                 response = await httpClient.GetAsync(url);
                 string content = await response.Content.ReadAsStringAsync();
@@ -1065,7 +1065,7 @@ namespace RMS_Project
                 {
                     JObject json = JObject.Parse(content);
                     string message = json["result"].ToString();
-                    JArray jsonArray = JArray.Parse(json["requirements"].ToString());
+                    JArray jsonArray = JArray.Parse(json["requirement_list"].ToString());
                     if (message == "success")
                     {
                         Requirement[] requirements = new Requirement[jsonArray.Count];

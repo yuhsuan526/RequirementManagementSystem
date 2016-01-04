@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace RMS_Project
 {
-    public partial class TraceabilityMatrixForm : Form, FunctionalTypeInterface
+    public partial class OthersForm : Form, FunctionalTypeInterface
     {
         private Project _project;
         private PresentationModel _presentationModel;
@@ -26,7 +26,7 @@ namespace RMS_Project
         private UserInterfaceForm.FunctionalType _functionalType;
         private UserInterfaceForm.FunctionalType type;
 
-        public TraceabilityMatrixForm(PresentationModel presentationModel, Project project)
+        public OthersForm(PresentationModel presentationModel, Project project)
         {
             InitializeComponent();
             _project = project;

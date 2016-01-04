@@ -1,6 +1,6 @@
 ﻿namespace RMS_Project
 {
-    partial class TraceabilityMatrixForm
+    partial class OthersForm
     {
         /// <summary>
         /// Required designer variable.
